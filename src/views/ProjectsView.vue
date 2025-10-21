@@ -1,82 +1,16 @@
 <script setup lang="ts">
-// AJOUT: Importer 'computed' de Vue
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
+import { projects, categoryOrder, getProjectsByCategory, type ProjectCategory } from '@/data/projects'
 
-// --- (Vos interfaces ProjectCategory, ProjectPurpose, et Project sont inchangées) ---
-type ProjectCategory = 'IA' | 'Dev Web' | 'Logiciel' | 'Jeux Vidéo'
-type ProjectPurpose = 'Éducation' | 'Personnel'
+const groupedProjects = computed(() => getProjectsByCategory())
 
-interface Project {
-  id: string
-  name: string
-  description: string
-  tags: string[]
-  image: string
-  category: ProjectCategory
-  purpose: ProjectPurpose
+// Fonction pour limiter les tags affichés
+const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
+  const displayed = tags.slice(0, maxTags)
+  const remaining = tags.length - maxTags
+  return { displayed, remaining }
 }
-
-const projects: Project[] = [
-  { 
-    id: 'project-1', 
-    name: 'Mon Premier Projet',
-    description: 'Application web moderne développée avec Vue.js et TypeScript',
-    tags: ['Vue.js', 'TypeScript', 'Vite'],
-    image: 'https://picsum.photos/seed/project1/600/400',
-    category: 'Dev Web',
-    purpose: 'Personnel'
-  },
-  { 
-    id: 'project-2', 
-    name: 'Mon Deuxième Projet',
-    description: 'Site e-commerce avec gestion complète des produits',
-    tags: ['Vue.js', 'Node.js', 'MongoDB'],
-    image: 'https://picsum.photos/seed/project2/600/400',
-    category: 'Dev Web',
-    purpose: 'Éducation'
-  },
-  { 
-    id: 'project-3', 
-    name: 'Mon Troisième Projet',
-    description: 'Jeu vidéo interactif créé avec Unity et C#',
-    tags: ['Unity', 'C#', 'Jeux'],
-    image: 'https://picsum.photos/seed/project3/600/400',
-    category: 'Jeux Vidéo',
-    purpose: 'Éducation'
-  },
-  // CORRECTION: J'ai corrigé l'ID et le nom dupliqués pour éviter les erreurs
-  { 
-    id: 'project-4', 
-    name: 'Mon Quatrième Projet',
-    description: 'Agent IA pour un jeu de stratégie',
-    tags: ['Python', 'IA', 'Reinforcement Learning'],
-    image: 'https://picsum.photos/seed/project4/600/400',
-    category: 'IA',
-    purpose: 'Éducation'
-  }
-]
-
-// AJOUT: Un tableau pour définir l'ordre d'affichage des catégories
-const categoryOrder: ProjectCategory[] = ['Dev Web', 'IA', 'Jeux Vidéo', 'Logiciel']
-
-// AJOUT: Une propriété calculée pour grouper les projets par catégorie
-const groupedProjects = computed(() => {
-  // On utilise 'reduce' pour transformer le tableau plat en objet groupé
-  return projects.reduce((groups, project) => {
-    const category = project.category
-    
-    // Si la clé pour cette catégorie n'existe pas, on la crée
-    if (!groups[category]) {
-      groups[category] = []
-    }
-    
-    // On ajoute le projet au tableau de sa catégorie
-    groups[category].push(project)
-    
-    return groups
-  }, {} as Record<ProjectCategory, Project[]>) // On type l'objet résultant
-})
 </script>
 
 <template>
@@ -92,7 +26,6 @@ const groupedProjects = computed(() => {
         class="category-section"
       >
         <template v-if="groupedProjects[category] && groupedProjects[category].length > 0">
-          
           <h2 class="category-title">{{ category }}</h2>
           
           <div class="projects-grid">
@@ -119,7 +52,19 @@ const groupedProjects = computed(() => {
               <p class="card-description">{{ project.description }}</p>
               
               <div class="card-tags">
-                <span v-for="tag in project.tags" :key="tag" class="tag">{{ tag }}</span>
+                <span 
+                  v-for="tag in getDisplayedTags(project.tags).displayed" 
+                  :key="tag" 
+                  class="tag"
+                >
+                  {{ tag }}
+                </span>
+                <span 
+                  v-if="getDisplayedTags(project.tags).remaining > 0" 
+                  class="tag tag-more"
+                >
+                  +{{ getDisplayedTags(project.tags).remaining }}
+                </span>
               </div>
               
               <div class="card-footer">
@@ -134,7 +79,6 @@ const groupedProjects = computed(() => {
 </template>
 
 <style scoped>
-/* ... (Tous vos styles existants de .projects-page à .page-subtitle) ... */
 .projects-page {
   min-height: 80vh;
   padding: 4rem 2rem;
@@ -315,6 +259,13 @@ const groupedProjects = computed(() => {
   font-weight: 500;
   color: var(--primary);
   border: 1px solid var(--color-border);
+}
+
+.tag-more {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: white;
+  border: none;
+  font-weight: 600;
 }
 
 .card-footer {

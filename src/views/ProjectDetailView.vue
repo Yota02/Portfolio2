@@ -1,52 +1,40 @@
 <script setup lang="ts">
 import { useRoute, RouterLink } from 'vue-router'
+import { ref, onMounted, computed } from 'vue'
+import { getProjectById, techIconMap } from '@/data/projects'
 
 const route = useRoute()
 const projectId = route.params.id as string
 
-// Données du projet (à adapter selon vos besoins)
-const projectData: Record<string, any> = {
-  'project-1': {
-    name: 'Mon Premier Projet',
-    description: 'Application web moderne développée avec Vue.js et TypeScript',
-    longDescription: 'Ce projet est une application web complète qui démontre l\'utilisation des technologies modernes comme Vue.js, TypeScript et Vite. L\'application offre une expérience utilisateur fluide et performante.',
-    technologies: ['Vue.js', 'TypeScript', 'Vite', 'CSS3'],
-    features: [
-      'Interface utilisateur responsive',
-      'Performance optimisée',
-      'Code TypeScript type-safe',
-      'Architecture modulaire'
-    ],
-    links: {
-      demo: '#',
-      github: '#'
-    }
-  },
-  'project-2': {
-    name: 'Mon Deuxième Projet',
-    description: 'Site e-commerce avec gestion complète des produits',
-    longDescription: 'Plateforme e-commerce complète avec gestion des produits, panier d\'achat et système de paiement intégré. Le projet utilise une stack moderne avec Vue.js pour le frontend et Node.js pour le backend.',
-    technologies: ['Vue.js', 'Node.js', 'MongoDB', 'Express'],
-    features: [
-      'Gestion des produits',
-      'Panier d\'achat',
-      'Système de paiement',
-      'Dashboard administrateur'
-    ],
-    links: {
-      demo: '#',
-      github: '#'
+const project = computed(() => {
+  const found = getProjectById(projectId)
+  return found || {
+    name: 'Projet Inconnu',
+    description: 'Ce projet n\'existe pas',
+    longDescription: '',
+    tags: [],
+    features: [],
+    links: { demo: '#', github: '#' }
+  }
+})
+
+const techIcons = ref<Record<string, string>>({})
+
+onMounted(() => {
+  const icons: Record<string, string> = {}
+  
+  for (const tech of project.value.tags) {
+    const iconFileName = techIconMap[tech]
+    if (iconFileName) {
+      icons[tech] = `${iconFileName}.png`
     }
   }
-}
+  
+  techIcons.value = icons
+})
 
-const project = projectData[projectId] || {
-  name: 'Projet Inconnu',
-  description: 'Ce projet n\'existe pas',
-  longDescription: '',
-  technologies: [],
-  features: [],
-  links: { demo: '#', github: '#' }
+const getTechIcon = (tech: string): string => {
+  return techIcons.value[tech] || ''
 }
 </script>
 
@@ -91,12 +79,12 @@ const project = projectData[projectId] || {
           </div>
         </div>
 
-        <aside class="sidebar">
+        <aside>
           <div class="info-card">
             <h3>Technologies</h3>
             <div class="tech-list">
-              <span v-for="tech in project.technologies" :key="tech" class="tech-tag">
-                {{ tech }}
+              <span v-for="tech in project.tags" :key="tech" class="tech-icon" :title="tech">
+                <img v-if="getTechIcon(tech)" :src="`/icone/${getTechIcon(tech)}`" :alt="tech" width="24" height="24" />
               </span>
             </div>
           </div>
@@ -267,13 +255,29 @@ const project = projectData[projectId] || {
   gap: 0.5rem;
 }
 
-.tech-tag {
-  padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+.tech-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-background-soft);
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  color: var(--primary);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tech-icon:hover {
+  background: var(--primary);
   color: white;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 600;
+  transform: scale(1.1);
+}
+
+.tech-icon svg {
+  width: 24px;
+  height: 24px;
 }
 
 .links {
