@@ -13,10 +13,34 @@ const project = computed(() => {
     description: 'Ce projet n\'existe pas',
     longDescription: '',
     tags: [],
+    images: [],  // Ajouté pour le fallback
+    folder: '',  // Ajouté pour le fallback
     features: [],
     links: { demo: '#', github: '#' }
   }
 })
+
+// Ajout: Propriété calculée pour construire les chemins complets des images
+const fullImages = computed(() => {
+  return project.value.images.map(img => 
+    img.startsWith('http') ? img : `../public/projet/${project.value.folder}/${img}`
+  )
+})
+
+// Ajout pour le carrousel
+const currentImageIndex = ref(0)
+
+const nextImage = () => {
+  if (fullImages.value.length > 1) {
+    currentImageIndex.value = (currentImageIndex.value + 1) % fullImages.value.length
+  }
+}
+
+const prevImage = () => {
+  if (fullImages.value.length > 1) {
+    currentImageIndex.value = currentImageIndex.value === 0 ? fullImages.value.length - 1 : currentImageIndex.value - 1
+  }
+}
 
 const techIcons = ref<Record<string, string>>({})
 
@@ -52,13 +76,24 @@ const getTechIcon = (tech: string): string => {
 
       <div class="project-content">
         <div class="main-section">
-          <div class="image-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-              <circle cx="8.5" cy="8.5" r="1.5"></circle>
-              <polyline points="21 15 16 10 5 21"></polyline>
-            </svg>
-            <p>Image du projet</p>
+          <!-- Remplacement de l'image placeholder par le carrousel -->
+          <div class="carousel-container">
+            <div class="carousel">
+              <img v-if="fullImages.length > 0" :src="fullImages[currentImageIndex]" alt="Image du projet" class="carousel-image" />
+              <div v-else class="image-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                <p>Image du projet</p>
+              </div>
+            </div>
+            <button v-if="fullImages.length > 1" @click="prevImage" class="carousel-btn prev">&lt;</button>
+            <button v-if="fullImages.length > 1" @click="nextImage" class="carousel-btn next">&gt;</button>
+            <div v-if="fullImages.length > 1" class="carousel-indicators">
+              <span v-for="(img, index) in fullImages" :key="index" :class="['indicator', { active: index === currentImageIndex }]" @click="currentImageIndex = index"></span>
+            </div>
           </div>
 
           <div class="description-section">
@@ -89,15 +124,46 @@ const getTechIcon = (tech: string): string => {
             </div>
           </div>
 
-          <div class="info-card">
+          <div v-if="(project.links.demo && project.links.demo !== '#') || (project.links.github && project.links.github !== '#')" class="info-card">
             <h3>Liens</h3>
             <div class="links">
-              <a :href="project.links.demo" class="btn btn-primary" target="_blank">
+              <a v-if="project.links.demo && project.links.demo !== '#'" :href="project.links.demo" class="btn btn-primary" target="_blank">
                 Voir la démo
               </a>
-              <a :href="project.links.github" class="btn btn-secondary" target="_blank">
+              <a v-if="project.links.github && project.links.github !== '#'" :href="project.links.github" class="btn btn-secondary" target="_blank">
                 Code source
               </a>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3>Statistiques du Projet</h3>
+            <div class="stats-list">
+              <div class="stat-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <strong>Date de début :</strong> {{ project.startDate || 'Non spécifiée' }}
+              </div>
+              <div class="stat-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <strong>Date de fin :</strong> {{ project.endDate || 'En cours' }}
+              </div>
+              <div class="stat-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <strong>Statut :</strong> {{ project.isOngoing ? 'En cours' : 'Terminé' }}
+              </div>
             </div>
           </div>
         </aside>
@@ -172,6 +238,63 @@ const getTechIcon = (tech: string): string => {
   animation: fadeInUp 0.6s ease-out 0.1s backwards;
 }
 
+.carousel-container {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.carousel {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--color-background-soft);
+}
+
+.carousel-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border-radius: 50%;
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-border);
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.indicator.active {
+  background: var(--primary);
+}
+
 .image-placeholder {
   background: var(--color-background-soft);
   border: 2px dashed var(--color-border);
@@ -188,12 +311,14 @@ const getTechIcon = (tech: string): string => {
 }
 
 .description-section,
-.features-section {
+.features-section,
+.stats-section {
   margin-bottom: 2rem;
 }
 
 .description-section h2,
-.features-section h2 {
+.features-section h2,
+.stats-section h2 {
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -204,6 +329,41 @@ const getTechIcon = (tech: string): string => {
   line-height: 1.8;
   color: var(--color-text);
   opacity: 0.8;
+}
+
+.stats-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--color-background-soft) 0%, rgba(var(--primary-rgb), 0.05) 100%);
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.1) 0%, var(--color-background-soft) 100%);
+}
+
+.stat-item svg {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.stat-item strong {
+  font-weight: 600;
+  color: var(--color-heading);
 }
 
 .features-list {
