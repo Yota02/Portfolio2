@@ -17,7 +17,7 @@ function toggleMenu() {
         </RouterLink>
 
         <!-- Bouton menu mobile -->
-        <button class="menu-toggle" @click="toggleMenu" :aria-expanded="isOpen.toString()" aria-label="Toggle navigation">
+        <button class="menu-toggle" @click="toggleMenu" :aria-expanded="isOpen" aria-label="Toggle navigation">
           <svg v-if="!isOpen" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
