@@ -37,4 +37,14 @@ const router = createRouter({
   ]
 })
 
+// Gestion des redirections depuis 404.html
+router.beforeEach((to, from, next) => {
+  if (to.path === '/' && to.query['/']) {
+    const path = to.query['/'] as string
+    next({ path: path.replace(/~and~/g, '&'), query: {} })
+  } else {
+    next()
+  }
+})
+
 export default router
