@@ -36,7 +36,7 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
             >
               <div class="card-image-container">
                 <img
-                  :src="project.logo.startsWith('http') ? project.logo : `/Portfolio2/projet/${project.folder}/${project.logo}`"
+                  :src="project.logo.startsWith('http') ? project.logo : `/Portfolio2/public/projet/${project.folder}/${project.logo}`"
                   :alt="`Logo du projet ${project.name}`"
                   class="card-image"
                   loading="lazy"
