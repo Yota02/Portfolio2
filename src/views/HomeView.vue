@@ -204,14 +204,14 @@ import { RouterLink } from 'vue-router'
   box-shadow: var(--shadow-xl);
   animation: float 6s ease-in-out infinite;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .floating-card img {
   max-width: 100%;
   max-height: 100%;
-  border-radius: 16px;
+  object-fit: cover;
 }
 
 .card-1 {

@@ -16,17 +16,14 @@ const project = computed(() => {
     images: [],  // Ajouté pour le fallback
     folder: '',  // Ajouté pour le fallback
     features: [],
-    links: { demo: '#', github: '#' },
-    startDate: undefined,
-    endDate: undefined,
-    isOngoing: false
+    links: { demo: '#', github: '#' }
   }
 })
 
 // Ajout: Propriété calculée pour construire les chemins complets des images
 const fullImages = computed(() => {
   return project.value.images.map(img => 
-    img.startsWith('http') ? img : `../public/projet/${project.value.folder}/${img}`
+    img.startsWith('http') ? img : `/Portfolio2/projet/${project.value.folder}/${img}`
   )
 })
 
@@ -122,7 +119,7 @@ const getTechIcon = (tech: string): string => {
             <h3>Technologies</h3>
             <div class="tech-list">
               <span v-for="tech in project.tags" :key="tech" class="tech-icon" :title="tech">
-                <img v-if="getTechIcon(tech)" :src="`/icone/${getTechIcon(tech)}`" :alt="tech" width="24" height="24" />
+                <img v-if="getTechIcon(tech)" :src="`/Portfolio2/icone/${getTechIcon(tech)}`" :alt="tech" width="24" height="24" />
               </span>
             </div>
           </div>
