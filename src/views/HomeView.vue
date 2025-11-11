@@ -39,13 +39,13 @@
         </div>
         <div class="hero-visual">
           <div class="floating-card card-1">
-            <img src="/projet/starGuardian/icon.png" alt="Image de code">
+            <img src="../../public/projet/starGuardian/icon.png" alt="Image de code">
           </div>
           <div class="floating-card card-2">
-            <img src="/projet/starGuardian/icon.png" alt="Image de développement web">
+            <img src="../../public/projet/starGuardian/icon.png" alt="Image de développement web">
           </div>
           <div class="floating-card card-3">
-            <img src="/projet/starGuardian/icon.png" alt="Image de technologie">
+            <img src="../../public/projet/starGuardian/icon.png" alt="Image de technologie">
           </div>
         </div>
       </div>

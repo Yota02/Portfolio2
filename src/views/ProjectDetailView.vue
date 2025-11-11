@@ -26,7 +26,7 @@ const project = computed(() => {
 // Ajout: Propriété calculée pour construire les chemins complets des images
 const fullImages = computed(() => {
   return project.value.images.map(img => 
-    img.startsWith('http') ? img : `/projet/${project.value.folder}/${img}`
+    img.startsWith('http') ? img : `../public/projet/${project.value.folder}/${img}`
   )
 })
 

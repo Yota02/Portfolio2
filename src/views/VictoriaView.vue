@@ -9,7 +9,7 @@ const victoriaProject = computed(() => projects.find(p => p.id === 'project-7'))
 // Propriété calculée pour construire les chemins complets des images
 const fullImages = computed(() => {
   return victoriaProject.value?.images.map(img => 
-    img.startsWith('http') ? img : `/projet/${victoriaProject.value?.folder}/${img}`
+    img.startsWith('http') ? img : `../public/projet/${victoriaProject.value?.folder}/${img}`
   ) || []
 })
 
