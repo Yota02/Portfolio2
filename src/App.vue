@@ -25,7 +25,6 @@ function toggleMenu() {
             <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </button>
-        
 
         <div class="nav-links" :class="{ open: isOpen }">
           <RouterLink to="/" class="nav-link" @click="isOpen = false">Accueil</RouterLink>
