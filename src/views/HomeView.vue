@@ -38,14 +38,18 @@
           </div>
         </div>
         <div class="hero-visual">
-          <div class="floating-card card-1"></div>
-          <div class="floating-card card-2"></div>
-          <div class="floating-card card-3"></div>
+          <div class="floating-card card-1">
+            <img src="../../public/projet/starGuardian/icon.png" alt="Image de code">
+          </div>
+          <div class="floating-card card-2">
+            <img src="../../public/projet/starGuardian/icon.png" alt="Image de développement web">
+          </div>
+          <div class="floating-card card-3">
+            <img src="../../public/projet/starGuardian/icon.png" alt="Image de technologie">
+          </div>
         </div>
       </div>
     </section>
-
-    
   </div>
 </template>
 
@@ -59,7 +63,7 @@ import { RouterLink } from 'vue-router'
 }
 
 .hero {
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   padding: 2rem;
@@ -197,9 +201,17 @@ import { RouterLink } from 'vue-router'
 .floating-card {
   position: absolute;
   border-radius: 16px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   box-shadow: var(--shadow-xl);
   animation: float 6s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-card img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 16px;
 }
 
 .card-1 {
