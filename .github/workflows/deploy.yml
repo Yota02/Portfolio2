@@ -26,9 +26,10 @@ jobs:
         run: npm run build
 
       # Note: Assurez-vous que "Workflow permissions" est défini sur "Read and write permissions" dans Settings > Actions > General pour permettre au GITHUB_TOKEN de pousser.
+      # Si cela ne fonctionne pas, utilisez un Personal Access Token (PAT) avec le scope 'repo' ajouté comme secret ACCESS_TOKEN.
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.ACCESS_TOKEN }}  # Changé de GITHUB_TOKEN à ACCESS_TOKEN
           publish_dir: ./dist
