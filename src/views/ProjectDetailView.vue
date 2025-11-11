@@ -16,7 +16,10 @@ const project = computed(() => {
     images: [],  // Ajouté pour le fallback
     folder: '',  // Ajouté pour le fallback
     features: [],
-    links: { demo: '#', github: '#' }
+    links: { demo: '#', github: '#' },
+    startDate: undefined,
+    endDate: undefined,
+    isOngoing: undefined
   }
 })
 
