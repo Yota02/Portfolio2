@@ -45,7 +45,13 @@
             <img src="../../public/projet/starGuardian/icon.png" alt="Image de développement web">
           </div>
           <div class="floating-card card-3">
-            <img src="../../public/projet/starGuardian/icon.png" alt="Image de technologie">
+            <img src="../../public/projet/WorldOfChan/WorldOfChan.png" alt="Image de technologie">
+          </div>
+          <div class="floating-card card-4">
+            <img src="../../public/projet/CodeTonFutur/victoria_v.png" alt="Image de projet supplémentaire">
+          </div>
+          <div class="floating-card card-5">
+            <img src="../../public/projet/CapitalWars/logo.png" alt="Image de projet supplémentaire">
           </div>
         </div>
       </div>
@@ -238,6 +244,24 @@ import { RouterLink } from 'vue-router'
   left: 100px;
   opacity: 0.7;
   animation-delay: -4s;
+}
+
+.card-4 {
+  width: 130px;
+  height: 130px;
+  bottom: 50px;
+  right: -120px;
+  opacity: 0.7;
+  animation-delay: -1s;
+}
+
+.card-5 {
+  width: 100px;
+  height: 110px;
+  top: 100px;
+  right: -230px;
+  opacity: 0.6;
+  animation-delay: -3s;
 }
 
 @keyframes float {

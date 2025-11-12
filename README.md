@@ -1,42 +1,32 @@
-# Portfolio
+# Portfolio Requirements - To-Do List
 
-This template should help get you started developing with Vue 3 in Vite.
+## Réalisations
+<input type="checkbox"> Nombre de réalisation : Présentation obligatoire d’au moins 3 réalisations en informatique (Projets IUT, code Game Jam, Nuit de l’info…) depuis le début du BUT.
 
-## Recommended IDE Setup
+## Présentation de Soi
+<input type="checkbox"> Rédiger un paragraphe de présentation de soi en mettant en avant ses traits de personnalités et en expliquant son projet post-BUT
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Parcours
+<input type="checkbox"> Présentation de son parcours académique avec son CV à jour
 
-## Recommended Browser Setup
+## Page Contact
+<input type="checkbox"> Présence de vos coordonnées et de vos liens vers vos réseaux sociaux professionnels
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Analyse des Réalisations
+<input type="checkbox"> Pour chaque page réalisation, analyser en détail le contexte et les compétences développées
 
-## Type Support for `.vue` Imports in TS
+## Preuve de Réalisation
+<input type="checkbox"> Chaque projet ou expérience est accompagné d’une trace pertinente, si possible visuelle qui est commentée
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Ergonomie
+<input type="checkbox"> Soin apporté à l'ergonomie et à l'expérience utilisateur (facilité de navigation sur le site, menu clair…)
 
-## Customize configuration
+## Qualité Rédactionnelle
+<input type="checkbox"> Qualité rédactionnelle (syntaxe, orthographe, lien logique entre les paragraphes)
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Profil LinkedIn
+<input type="checkbox"> Profil complet (voir cours) et trace d'au moins deux activités au cours du semestre (post, commentaire ou réaction)
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
+## Détails Supplémentaires
+<input type="checkbox"> Une page de présentation de soi : biographie parcours de formation, projet(s) professionnel(s) envisagé(s) après le BUT + prévoir un CV actualisé en téléchargement et les liens vers LinkedIn et Github
+<input type="checkbox"> 2 à 3 pages dédiées chacune à un projet du semestre 4 ou du semestre 5 (saé, perso, Code Game Jam, Nuit de l’info…). Le projet de BUT 1 ne sont pas comptés.

@@ -33,6 +33,11 @@ const router = createRouter({
       path: '/victoria',
       name: 'victoria',
       component: () => import('../views/VictoriaView.vue')
+    },
+    {
+      path: '/objectives',
+      name: 'objectives',
+      component: () => import('../views/ObjectivesView.vue')
     }
   ]
 })

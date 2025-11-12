@@ -63,6 +63,7 @@ export const techIconMap: Record<string, string> = {
   'Tkinter': 'Tkinter',
   'CustomTkinter': 'CustomTkinter',
   'Watchdog': 'Watchdog',
+  'Firebase': 'firebase',
 }
 
 // Ordre d'affichage des catégories
@@ -126,7 +127,7 @@ export const projects: Project[] = [
     longDescription: 'Application Web de jeu vidéo qui permet aux utilisateurs de s\'affronter dans la simulation d\'entreprise.',
     tags: ['Symfony', 'Twig'],
     images: ['https://picsum.photo/seed/project3/600/400'],  // Gardé tel quel pour les URLs externes
-    logo: 'https://picsum.photos/seed/project3-logo/200/200',  // Gardé tel quel pour les URLs externes
+    logo: 'logo.png',  // Gardé tel quel pour les URLs externes
     category: 'Dev Web',
     purpose: 'Éducation',
     features: [
@@ -139,7 +140,7 @@ export const projects: Project[] = [
       demo: 'https://dev.capitalwars.rlbrt.fr/accueil',
       github: '#'
     },
-    folder: 'Capital_Wars',
+    folder: 'CapitalWars',
     startDate: '2023-03-01',
     endDate: undefined,
     isOngoing: true
@@ -234,6 +235,50 @@ export const projects: Project[] = [
       github: '#'
     },
     folder: 'Victoria',
+    startDate: 'Novembre 2024',
+    endDate: undefined,
+    isOngoing: true
+  }, 
+  {
+    id: 'project-8',
+    name: 'World of chan',
+    description: '',
+    longDescription: '',
+    tags: ['Symfony', 'Firebase'],
+    images: ['main.png', 'shiru.png','main_langue.png', 'shiruchan-liste.png', 'shiruchan-quiz.png'],  
+    logo: 'WorldOfChan.png',  
+    category: 'Dev Web',
+    purpose: 'Personnel',
+    features: [
+      '',
+    ],
+    links: {
+      demo: 'https://yota02.github.io/WorldOfChan/',
+      github: '#'
+    },
+    folder: 'WorldOfChan',
+    startDate: 'Septembre 2025',
+    endDate: undefined,
+    isOngoing: true
+  }, 
+  {
+    id: 'project-8',
+    name: 'EarthToSpace',
+    description: '',
+    longDescription: '',
+    tags: ['Symfony', 'Firebase'],
+    images: ['res_lumine.png', 'cnn.png','convolution.gif', 'entrainement.png'],  
+    logo: 'logo.png',  
+    category: 'Dev Web',
+    purpose: 'Personnel',
+    features: [
+      '',
+    ],
+    links: {
+      demo: 'https://yota02.github.io/WorldOfChan/',
+      github: '#'
+    },
+    folder: 'EarthToSpace',
     startDate: 'Novembre 2024',
     endDate: undefined,
     isOngoing: true

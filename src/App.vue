@@ -31,6 +31,7 @@ function toggleMenu() {
           <RouterLink to="/projects" class="nav-link" @click="isOpen = false">Projets</RouterLink>
           <RouterLink to="/certifications" class="nav-link" @click="isOpen = false">Certifications</RouterLink>
           <RouterLink to="/victoria" class="nav-link" @click="isOpen = false">Victoria</RouterLink>
+          <RouterLink to="/objectives" class="nav-link" @click="isOpen = false">Objectifs</RouterLink>
           <RouterLink to="/contact" class="nav-link" @click="isOpen = false">Contact</RouterLink>
         </div>
       </nav>
