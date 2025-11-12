@@ -121,8 +121,9 @@ const getSortKey = (date: string | undefined) => {
   if (!date) return 0
   const parts = date.split(' ')
   if (parts.length !== 2) return 0
-  const month = monthMap[parts[0]]
-  const year = parseInt(parts[1])
+  const monthKey = parts[0] as keyof typeof monthMap
+  const month = monthMap[monthKey]
+  const year = parseInt(parts[1]!)
   if (!month || isNaN(year)) return 0
   return year * 100 + month  // Exemple : 202403 pour Mars 2024, 202409 pour Septembre 2024
 }
