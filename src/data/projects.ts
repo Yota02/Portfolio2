@@ -65,6 +65,8 @@ export const techIconMap: Record<string, string> = {
   'CustomTkinter': 'CustomTkinter',
   'Watchdog': 'Watchdog',
   'Firebase': 'firebase',
+  'ChromaDb': 'chromadb',
+  'Ollama': 'ollama',
 }
 
 // Ordre d'affichage des catégories
@@ -227,9 +229,9 @@ export const projects: Project[] = [
     name: 'Victoria',
     description: 'Un logiciel basé sur un model d\'Intéligence Artificielle pour trié des images',
     longDescription: 'L\'idée de ce projet personnel est née d\'une problématique liée au tri des images dans une bibliothèque. Le processus consistant à classer les images par catégorie tout en les renommant s\'avérait long et fastidieux. Je me suis alors dit : pourquoi ne pas créer une IA capable de réaliser cette tâche à ma place ? \n Cela m\'a conduit à explorer ce sujet, en me lançant dans la réalisation de ce projet. J\'ai ainsi découvert des outils comme PyTorch, les réseaux de convolution et le deep learning.',
-    tags: ['Python', 'CustomTkinter', 'Watchdog'],
+    tags: ['Python', 'CustomTkinter', 'Watchdog', 'ChromaDb', 'Ollama'],
     images: ['res_lumine.png', 'cnn.png','convolution.gif', 'entrainement.png'],  // Gardé tel quel pour les URLs externes
-    logo: 'kiana.png',  // Gardé tel quel pour les URLs externes
+    logo: 'logo.png',  // Gardé tel quel pour les URLs externes
     category: 'IA',
     purpose: 'Personnel',
     features: [
@@ -273,7 +275,7 @@ export const projects: Project[] = [
     newTech: ['Firebase'],  // Nouvelle
   },
   {
-    id: 'project-8',
+    id: 'project-9',
     name: 'EarthToSpace',
     description: '',
     longDescription: '',
@@ -296,7 +298,7 @@ export const projects: Project[] = [
     newTech: [],  // Aucune nouvelle
   }, 
   {
-    id: 'project-9',
+    id: 'project-10',
     name: 'Anakomi',
     description: 'Ce site permet de noté des jeux vidéo, anime et manga afin de partagé son avis avec la communauté.',
     longDescription: '',

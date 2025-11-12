@@ -35,6 +35,7 @@ function toggleDropdown() {
 
         <div class="nav-links" :class="{ open: isOpen }">
           <RouterLink to="/" class="nav-link" @click="isOpen = false; isDropdownOpen = false">Accueil</RouterLink>
+          <RouterLink to="/about" class="nav-link" @click="isOpen = false; isDropdownOpen = false">À propos</RouterLink>
           
           <!-- Dropdown pour Projets -->
           <div class="nav-dropdown">

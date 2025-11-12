@@ -81,7 +81,7 @@ const items = ref([
     year: 'Janvier 2025 - Avril 2025',
     type: 'experience',
     title: 'Stage au CSUM',
-    description: 'Centre Spatial Universitaire de Montpellier - Stage de 4 mois en analyse de données spatiales',
+    description: 'Centre Spatial Universitaire de Montpellier',
     icon: Briefcase
   },
   {
@@ -89,7 +89,7 @@ const items = ref([
     year: '2025-2026',
     type: 'diplome',
     title: 'Licence 3 MTS eLearning',
-    description: 'Tech Solutions - 6 mois',
+    description: 'IAE de Montpellier',
     icon: GraduationCap,
     isCurrent: true
   },

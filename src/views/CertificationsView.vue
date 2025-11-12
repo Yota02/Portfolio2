@@ -7,6 +7,7 @@ interface Certification {
   date: string
   description: string
   link: string
+  logo: string
 }
 
 // Liste d'exemple de certifications (à personnaliser)
@@ -17,7 +18,8 @@ const certifications: Certification[] = [
     issuer: 'Ministère de l’Éducation nationale',
     date: '2021',
     description: 'Diplôme attestant des connaissances fondamentales en aéronautique et en espace.',
-    link: 'https://eduscol.education.fr/sti/aeronautique/bia'
+    link: 'https://eduscol.education.fr/sti/aeronautique/bia',
+    logo: 'bia.gif'
 },
   
   // Ajoutez d'autres certifications ici
@@ -34,6 +36,12 @@ const certifications: Certification[] = [
 
       <div class="certifications-grid">
         <div v-for="cert in certifications" :key="cert.id" class="certification-card">
+          <img :src="cert.logo.startsWith('http') ? cert.logo : `/Portfolio2/icone/${cert.logo}`" 
+              :alt="`Logo de la certification`"
+              class="cert-logo"
+              loading="lazy"
+           />
+          
           <h2 class="cert-title">{{ cert.name }}</h2>
           <p class="cert-issuer">Émis par : {{ cert.issuer }}</p>
           <p class="cert-date">Date : {{ cert.date }}</p>
@@ -96,21 +104,33 @@ const certifications: Certification[] = [
 }
 
 .certification-card {
-  background: var(--color-background);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow-sm);
+  background: linear-gradient(135deg, var(--color-background) 0%, rgba(var(--primary-rgb, 59, 130, 246), 0.05) 100%);
+  border: 2px solid transparent;
+  border-radius: 20px;
+  padding: 2.5rem;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   animation: fadeInUp 0.6s ease-out backwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.certification-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
 }
 
 .certification-card:nth-child(1) { animation-delay: 0.1s; }
 .certification-card:nth-child(2) { animation-delay: 0.2s; }
 
 .certification-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
   border-color: var(--primary);
 }
 
@@ -145,6 +165,15 @@ const certifications: Certification[] = [
 .cert-link:hover {
   transform: translateX(5px);
   color: var(--accent);
+}
+
+.cert-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
