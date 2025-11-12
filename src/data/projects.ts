@@ -1,6 +1,14 @@
 export type ProjectCategory = 'IA' | 'Dev Web' | 'Logiciel' | 'Jeux Vidéo'
 export type ProjectPurpose = 'Éducation' | 'Personnel'
 
+export interface SubProject {
+  id: string
+  name: string
+  description: string
+  images: string[]
+  features: string[]
+}
+
 export interface Project {
   id: string
   name: string
@@ -22,6 +30,7 @@ export interface Project {
   endDate?: string
   isOngoing?: boolean
   newTech: string[]      // Nouvelles technologies apprises pendant/après le projet
+  subProjects?: SubProject[]  // Nouveau champ pour les sous-projets
 }
 
 // Mapping des noms de technologies vers les noms de fichiers d'icônes
@@ -125,6 +134,22 @@ export const projects: Project[] = [
     endDate: 'Janvier 2025',
     isOngoing: false,
     newTech: ['Docker', 'Scrum', 'SSH', 'Flask'],  // Nouvelles apprises
+    subProjects: [
+      {
+        id: 'sub-1',
+        name: 'Défi SSH',
+        description: 'Défi basé sur des vulnérabilités SSH.',
+        images: ['ssh.png'],
+        features: ['Exploitation de failles SSH', 'Obtention de flag via connexion sécurisée']
+      },
+      {
+        id: 'sub-2',
+        name: 'Rainbow Jumper',
+        description: 'Jeu pour obtenir le flag.',
+        images: ['rainbow_jumper.gif'],
+        features: ['Mécanique de saut', 'Récompense par flag']
+      }
+    ]
   },
   {
     id: 'project-3',
@@ -250,6 +275,22 @@ export const projects: Project[] = [
     endDate: undefined,
     isOngoing: true,
     newTech: ['CustomTkinter', 'Watchdog'],  // Nouvelles
+    subProjects: [
+      {
+        id: 'sub-victoria-1',
+        name: 'Plugin RSS',
+        description: 'Plugin pour lire les flux RSS.',
+        images: ['rss.png'],
+        features: ['Lecture automatique', 'Filtrage des articles']
+      },
+      {
+        id: 'sub-victoria-2',
+        name: 'Issue Maker',
+        description: 'Plugin pour créer des issues GitHub.',
+        images: ['issue_maker.png'],
+        features: ['Intégration GitHub', 'Génération automatique']
+      }
+    ]
   }, 
   {
     id: 'project-8',
@@ -275,6 +316,78 @@ export const projects: Project[] = [
     endDate: undefined,
     isOngoing: true,
     newTech: ['Firebase'],  // Nouvelle
+    subProjects: [
+      {
+        id: 'sub-worldofchan-english',
+        name: 'Anglais',
+        description: 'Apprenez l\'anglais avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
+        images: [],
+        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
+      },
+      {
+        id: 'sub-worldofchan-spanish',
+        name: 'Espagnol',
+        description: 'Apprenez l\'espagnol avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
+        images: [],
+        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
+      },
+      {
+        id: 'sub-worldofchan-french',
+        name: 'Français',
+        description: 'Apprenez le français avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
+        images: [],
+        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
+      },
+      {
+        id: 'sub-worldofchan-german',
+        name: 'Allemand',
+        description: 'Apprenez l\'allemand avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
+        images: [],
+        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
+      },
+      {
+        id: 'sub-worldofchan-italian',
+        name: 'Italien',
+        description: 'Apprenez l\'italien avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
+        images: [],
+        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
+      },
+      {
+        id: 'sub-worldofchan-japanese',
+        name: 'Japonais',
+        description: 'Apprenez le japonais avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
+        images: [],
+        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
+      },
+      {
+        id: 'sub-worldofchan-chinese',
+        name: 'Chinois',
+        description: 'Apprenez le chinois avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
+        images: [],
+        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
+      },
+      {
+        id: 'sub-worldofchan-korean',
+        name: 'Coréen',
+        description: 'Apprenez le coréen avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
+        images: [],
+        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
+      },
+      {
+        id: 'sub-worldofchan-arabic',
+        name: 'Arabe',
+        description: 'Apprenez l\'arabe avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
+        images: [],
+        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
+      },
+      {
+        id: 'sub-worldofchan-russian',
+        name: 'Russe',
+        description: 'Apprenez le russe avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
+        images: [],
+        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
+      }
+    ]
   },
   {
     id: 'project-9',

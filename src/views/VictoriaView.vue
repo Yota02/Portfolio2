@@ -128,6 +128,25 @@ const getTechIcon = (tech: string): string => techIcons.value[tech] || ''
         </div>
         <p>Ce projet met en œuvre Python pour la logique, PyTorch pour l'IA, et CustomTkinter pour l'interface. Watchdog permet la surveillance automatique des fichiers.</p>
       </div>
+
+      <!-- Sous-projets (Plugins) -->
+      <div v-if="victoriaProject?.subProjects && victoriaProject.subProjects.length > 0" class="sub-projects-section">
+        <h2>Plugins Disponibles</h2>
+        <div class="sub-projects-grid">
+          <div v-for="sub in victoriaProject.subProjects" :key="sub.id" class="sub-project-card">
+            <RouterLink :to="{ name: 'sub-project-detail', params: { projectId: victoriaProject.id, subId: sub.id } }" class="sub-project-link">
+              <h3>{{ sub.name }}</h3>
+            </RouterLink>
+            <p>{{ sub.description }}</p>
+            <ul class="sub-features-list">
+              <li v-for="feature in sub.features" :key="feature">{{ feature }}</li>
+            </ul>
+            <div v-if="sub.images.length > 0" class="sub-images">
+              <img v-for="img in sub.images" :key="img" :src="`/Portfolio2/projet/${victoriaProject.folder}/${img}`" :alt="sub.name" class="sub-image" />
+            </div>
+          </div>
+        </div>
+      </div>
       
     </div>
   </div>
@@ -361,5 +380,66 @@ const getTechIcon = (tech: string): string => techIcons.value[tech] || ''
   .stats-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.sub-projects-section {
+  margin-bottom: 3rem;
+}
+
+.sub-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.sub-project-card {
+  background: var(--color-background-soft);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.sub-project-card:hover {
+  transform: translateY(-5px);
+}
+
+.sub-project-link {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.sub-project-link:hover {
+  color: var(--accent);
+}
+
+.sub-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.sub-features-list li {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sub-features-list li:last-child {
+  border-bottom: none;
+}
+
+.sub-images {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.sub-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
 }
 </style>

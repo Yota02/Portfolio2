@@ -111,6 +111,9 @@ const totalProjects = computed(() => projects.length)
                     >
                       +{{ getDisplayedTags(project.tags).remaining }}
                     </span>
+                    <span v-if="project.subProjects && project.subProjects.length > 0" class="tag tag-sub">
+                      Sous-projets: {{ project.subProjects.length }}
+                    </span>
                   </div>
                   
                   <div class="card-footer">
@@ -408,6 +411,13 @@ const totalProjects = computed(() => projects.length)
   border: none;
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
+}
+
+.tag-sub {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+  color: white;
+  border: none;
+  font-weight: 600;
 }
 
 .card-footer {

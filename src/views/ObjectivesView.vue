@@ -114,7 +114,7 @@ const items = ref([
     year: '2031-...',
     type: 'objectif',
     title: 'Travaillé dans plusieurs universités internationales ',
-    description: 'être enseignant-chercheur et enseigné dans des universités à travers le monde (Japon, Chine, Royaume-Uni, Allemagne, etc...)',
+    description: 'être enseignant-chercheur et enseigner dans des universités à travers le monde (Japon, Chine, Royaume-Uni, Allemagne, etc...)',
     icon: Target
   }, 
 

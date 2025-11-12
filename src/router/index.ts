@@ -1,9 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import ProjectsView from '../views/ProjectsView.vue'
+import ProjectDetailView from '../views/ProjectDetailView.vue'
+import SubProjectDetailView from '../views/SubProjectDetailView.vue'
+import VictoriaView from '../views/VictoriaView.vue'
+import AboutView from '../views/AboutView.vue'
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
+const routes = [
     {
       path: '/',
       name: 'home',
@@ -12,17 +15,17 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      component: () => import('../views/AboutView.vue')
+      component: AboutView
     },
     {
       path: '/projects',
       name: 'projects',
-      component: () => import('../views/ProjectsView.vue')
+      component: ProjectsView
     },
     {
       path: '/project/:id',
       name: 'project-detail',
-      component: () => import('../views/ProjectDetailView.vue')
+      component: ProjectDetailView
     },
     {
       path: '/contact',
@@ -37,7 +40,7 @@ const router = createRouter({
     {
       path: '/victoria',
       name: 'victoria',
-      component: () => import('../views/VictoriaView.vue')
+      component: VictoriaView
     },
     {
       path: '/objectives',
@@ -49,7 +52,17 @@ const router = createRouter({
       name: 'projects-timeline',
       component: () => import('../views/ProjectsTimelineView.vue')
     },
+    {
+      path: '/projects/:projectId/sub/:subId',
+      name: 'sub-project-detail',
+      component: SubProjectDetailView,
+      props: true
+    },
   ]
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes
 })
 
 // Gestion des redirections depuis 404.html

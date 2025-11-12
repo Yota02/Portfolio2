@@ -9,6 +9,7 @@ const projectId = route.params.id as string
 const project = computed(() => {
   const found = getProjectById(projectId)
   return found || {
+    id: projectId,
     name: 'Projet Inconnu',
     description: 'Ce projet n\'existe pas',
     longDescription: '',
@@ -19,7 +20,8 @@ const project = computed(() => {
     links: { demo: '#', github: '#' },
     startDate: undefined,
     endDate: undefined,
-    isOngoing: undefined
+    isOngoing: undefined,
+    subProjects: []  // Ajouté pour le fallback
   }
 })
 
@@ -166,6 +168,21 @@ const getTechIcon = (tech: string): string => {
                   <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
                 <strong>Statut :</strong> {{ project.isOngoing ? 'En cours' : 'Terminé' }}
+              </div>
+            </div>
+          </div>
+
+          <div v-if="project.subProjects && project.subProjects.length > 0" class="info-card">
+            <h3>Sous-projets</h3>
+            <div class="sub-projects-list">
+              <div v-for="sub in project.subProjects" :key="sub.id" class="sub-project-item">
+                <RouterLink :to="{ name: 'sub-project-detail', params: { projectId: project.id, subId: sub.id } }" class="sub-project-link">
+                  <h4>{{ sub.name }}</h4>
+                </RouterLink>
+                <p>{{ sub.description }}</p>
+                <div v-if="sub.images.length > 0" class="sub-images">
+                  <img v-for="img in sub.images" :key="img" :src="`/Portfolio2/projet/${project.folder}/${img}`" :alt="sub.name" class="sub-image" />
+                </div>
               </div>
             </div>
           </div>
@@ -481,6 +498,72 @@ const getTechIcon = (tech: string): string => {
   color: white;
 }
 
+.sub-projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 300px; /* Limite la hauteur pour éviter l'étirement */
+  overflow-y: auto; /* Ajoute un défilement vertical si nécessaire */
+  padding-right: 0.5rem; /* Espace pour la barre de défilement */
+}
+
+.sub-project-item {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--color-background-soft) 0%, rgba(var(--primary-rgb), 0.05) 100%);
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.sub-project-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.1) 0%, var(--color-background-soft) 100%);
+}
+
+.sub-project-link {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.sub-project-link:hover {
+  color: var(--accent);
+}
+
+.sub-features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sub-features li {
+  padding: 0.25rem 0;
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+.sub-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.sub-image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.sub-image:hover {
+  transform: scale(1.05);
+}
+
 @media (max-width: 1024px) {
   .project-content {
     grid-template-columns: 1fr;
@@ -506,6 +589,14 @@ const getTechIcon = (tech: string): string => {
 
   .image-placeholder {
     padding: 2rem;
+  }
+
+  .sub-images {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  }
+
+  .sub-image {
+    height: 80px;
   }
 }
 </style>
