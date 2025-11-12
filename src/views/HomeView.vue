@@ -31,10 +31,9 @@
               </svg>
             </a>
           </div>
-          <p class="hero-subtitle">Développeur Full Stack passionné</p>
+          <p class="hero-subtitle">Étudiant en BUT Informatique</p>
           <p class="hero-description">
-            Je crée des applications web modernes et performantes avec Vue.js, TypeScript et bien plus encore.
-            Bienvenue dans mon univers créatif.
+            Je suis passionné par l'IA, le développement web et les technologies émergentes. Chaque jour, j'apprends et j'explore de nouvelles idées pour devenir enseignant-chercheur en IA. 
           </p>
           <div class="hero-actions">
             <RouterLink to="/projects" class="btn btn-primary">
