@@ -86,8 +86,10 @@ const getTechIcon = (tech: string): string => techIcons.value[tech] || ''
       <!-- Description détaillée -->
       <div class="description-section">
         <h2>Description du Projet</h2>
-        <p>{{ victoriaProject?.longDescription }}</p>
-        <p>Victoria est un outil innovant qui utilise l'intelligence artificielle pour automatiser le tri d'images. Inspiré par des besoins personnels, ce projet explore les réseaux de neurones convolutionnels (CNN) et le deep learning avec PyTorch.</p>
+        <p>Victoria est une application de bureau utilisant une intelligence artificielle locale, et qui a pour but d'être le plus modulable et personnalisable possible. 
+          L'objectif principal est de permettre aux utilisateurs d'ajouter des plugins pour étendre ses fonctionnalités de manière simple et efficace. 
+          Victoria est une plateforme polyvalente conçue pour être partagé, adaptée à divers besoins et facilement extensible grâce à son architecture modulaire.
+        </p>
       </div>
 
       <!-- Fonctionnalités -->
@@ -110,7 +112,7 @@ const getTechIcon = (tech: string): string => techIcons.value[tech] || ''
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            Surveillance en temps réel des dossiers avec Watchdog pour un tri automatique.
+            Surveillance en temps réel des dossiers plugins avec Watchdog.
           </li>
         </ul>
       </div>
@@ -126,45 +128,7 @@ const getTechIcon = (tech: string): string => techIcons.value[tech] || ''
         </div>
         <p>Ce projet met en œuvre Python pour la logique, PyTorch pour l'IA, et CustomTkinter pour l'interface. Watchdog permet la surveillance automatique des fichiers.</p>
       </div>
-
-      <!-- Statistiques -->
-      <div class="stats-section">
-        <h2>Statistiques et Performances</h2>
-        <div class="stats-grid">
-          <div class="stat-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-            <strong>Temps d'entraînement :</strong> ~2 heures sur GPU
-          </div>
-          <div class="stat-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-            <strong>Images traitées :</strong> Plus de 10 000 en test
-          </div>
-          <div class="stat-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            <strong>Précision moyenne :</strong> 95% sur dataset varié
-          </div>
-        </div>
-      </div>
-
-      <!-- Liens -->
-      <div class="links-section">
-        <h2>Liens et Ressources</h2>
-        <div class="links">
-          <a v-if="victoriaProject?.links.demo && victoriaProject.links.demo !== '#'" :href="victoriaProject.links.demo" class="btn btn-primary" target="_blank">Voir une démo</a>
-          <a v-if="victoriaProject?.links.github && victoriaProject.links.github !== '#'" :href="victoriaProject.links.github" class="btn btn-secondary" target="_blank">Code source</a>
-          <RouterLink to="/contact" class="btn btn-secondary">Me contacter</RouterLink>
-        </div>
-      </div>
+      
     </div>
   </div>
 </template>

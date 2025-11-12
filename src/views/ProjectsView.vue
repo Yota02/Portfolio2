@@ -20,6 +20,12 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
   const remaining = tags.length - maxTags
   return { displayed, remaining }
 }
+
+// Fonction pour obtenir la source de l'image du logo (priorise logo_recadrer si disponible)
+const getLogoSrc = (project: Project) => {
+  const logo = project.logo_recadrer || project.logo
+  return logo.startsWith('http') ? logo : `/Portfolio2/projet/${project.folder}/${logo}`
+}
 </script>
 
 <template>
@@ -75,7 +81,7 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
                 >
                   <div class="card-image-container">
                     <img
-                      :src="project.logo.startsWith('http') ? project.logo : `/Portfolio2/projet/${project.folder}/${project.logo}`"
+                      :src="getLogoSrc(project)"
                       :alt="`Logo du projet ${project.name}`"
                       class="card-image"
                       loading="lazy"
@@ -502,7 +508,7 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
 
 .tech-icons {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: 1rem;
   justify-items: center;
   transition: opacity 0.3s ease;
@@ -518,17 +524,21 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
-  border-radius: 8px;
-  transition: background 0.3s ease;
+  border-radius: 12px;
+  background: var(--color-background-soft);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tech-icon-item:hover {
-  background: var(--color-background-soft);
+  background: var(--color-background-mute);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .tech-icon {
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
 }
 

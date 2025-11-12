@@ -9,6 +9,7 @@ export interface Project {
   tags: string[]
   images: string[]  // Maintenant, contient seulement les noms de fichiers ou URLs externes
   logo: string  // Maintenant, nom de fichier ou URL externe
+  logo_recadrer?: string  // Nouveau champ optionnel pour une version recadrée du logo
   category: ProjectCategory
   purpose: ProjectPurpose
   features: string[]
@@ -227,21 +228,22 @@ export const projects: Project[] = [
   {
     id: 'project-7',
     name: 'Victoria',
-    description: 'Un logiciel basé sur un model d\'Intéligence Artificielle pour trié des images',
-    longDescription: 'L\'idée de ce projet personnel est née d\'une problématique liée au tri des images dans une bibliothèque. Le processus consistant à classer les images par catégorie tout en les renommant s\'avérait long et fastidieux. Je me suis alors dit : pourquoi ne pas créer une IA capable de réaliser cette tâche à ma place ? \n Cela m\'a conduit à explorer ce sujet, en me lançant dans la réalisation de ce projet. J\'ai ainsi découvert des outils comme PyTorch, les réseaux de convolution et le deep learning.',
+    description: 'Victoria est une application de bureau utilisant une intelligence artificielle locale.',
+    longDescription: 'Elle a était conçue pour assister les utilisateurs dans diverses tâches quotidiennes grâce à une interface conviviale. Elle est complétement modulaire et personnalisable. Il est possible d\'ajouter des plugins pour étendre ses fonctionnalités de manière simple et efficace.',
     tags: ['Python', 'CustomTkinter', 'Watchdog', 'ChromaDb', 'Ollama'],
-    images: ['res_lumine.png', 'cnn.png','convolution.gif', 'entrainement.png'],  // Gardé tel quel pour les URLs externes
-    logo: 'logo.png',  // Gardé tel quel pour les URLs externes
+    images: ['main.png', 'rss.png','issue_maker.png', 'logo.png'],  
+    logo: 'logo.png',
+    logo_recadrer: 'logo_recadrer.png',
     category: 'IA',
     purpose: 'Personnel',
     features: [
-      'L\'image a été détectée avec une précision de 98 % lors des tests.',
-      'La convolution extrait des caractéristiques importantes des images en appliquant des filtres pour détecter des motifs comme les bords, les textures et les formes.',
-      'Un tableau de bord permettant de visualiser sa progression et d\'identifier les points à améliorer.',
+      'Interface utilisateur moderne et intuitive avec CustomTkinter.',
+      'Système de plugins pour ajouter facilement de nouvelles fonctionnalités.',
+      'Intégration de ChromaDb pour la gestion de la mémoire du model',
     ],
     links: {
       demo: '#',
-      github: '#'
+      github: 'https://github.com/Yota02/Victoria_v3'
     },
     folder: 'Victoria',
     startDate: 'Mai 2025',
