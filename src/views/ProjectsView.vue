@@ -438,7 +438,7 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
   border-right: 1px solid var(--color-border);
   padding: 2rem 1rem;
   position: sticky;
-  top: 0;
+  margin-top: 10rem;
   height: auto;
   max-height: 80vh; /* Limiter la hauteur maximale */
   overflow-y: auto;

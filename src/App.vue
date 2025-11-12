@@ -3,8 +3,15 @@ import { RouterLink, RouterView } from 'vue-router'
 import { ref } from 'vue'
 
 const isOpen = ref(false)
+const isDropdownOpen = ref(false)
+
 function toggleMenu() {
   isOpen.value = !isOpen.value
+  isDropdownOpen.value = false // Fermer le dropdown quand on ouvre/ferme le menu mobile
+}
+
+function toggleDropdown() {
+  isDropdownOpen.value = !isDropdownOpen.value
 }
 </script>
 
@@ -12,7 +19,7 @@ function toggleMenu() {
   <div class="app-container">
     <header>
       <nav class="nav-container">
-        <RouterLink to="/" class="logo" @click="isOpen = false">
+        <RouterLink to="/" class="logo" @click="isOpen = false; isDropdownOpen = false">
           <span class="logo-text">Portfolio</span>
         </RouterLink>
 
@@ -27,12 +34,26 @@ function toggleMenu() {
         </button>
 
         <div class="nav-links" :class="{ open: isOpen }">
-          <RouterLink to="/" class="nav-link" @click="isOpen = false">Accueil</RouterLink>
-          <RouterLink to="/projects" class="nav-link" @click="isOpen = false">Projets</RouterLink>
-          <RouterLink to="/certifications" class="nav-link" @click="isOpen = false">Certifications</RouterLink>
-          <RouterLink to="/victoria" class="nav-link" @click="isOpen = false">Victoria</RouterLink>
-          <RouterLink to="/objectives" class="nav-link" @click="isOpen = false">Objectifs</RouterLink>
-          <RouterLink to="/contact" class="nav-link" @click="isOpen = false">Contact</RouterLink>
+          <RouterLink to="/" class="nav-link" @click="isOpen = false; isDropdownOpen = false">Accueil</RouterLink>
+          
+          <!-- Dropdown pour Projets -->
+          <div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle" @click="toggleDropdown" :class="{ active: isDropdownOpen }">
+              Projets
+              <svg class="dropdown-arrow" :class="{ rotated: isDropdownOpen }" width="12" height="12" viewBox="0 0 24 24" fill="none">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="dropdown-menu" :class="{ open: isDropdownOpen }">
+              <RouterLink to="/projects" class="dropdown-item" @click="isOpen = false; isDropdownOpen = false">Tous les projets</RouterLink>
+              <RouterLink to="/projects-timeline" class="dropdown-item" @click="isOpen = false; isDropdownOpen = false">Timeline des projets</RouterLink>
+            </div>
+          </div>
+          
+          <RouterLink to="/certifications" class="nav-link" @click="isOpen = false; isDropdownOpen = false">Certifications</RouterLink>
+          <RouterLink to="/victoria" class="nav-link" @click="isOpen = false; isDropdownOpen = false">Victoria</RouterLink>
+          <RouterLink to="/objectives" class="nav-link" @click="isOpen = false; isDropdownOpen = false">Objectifs</RouterLink>
+          <RouterLink to="/contact" class="nav-link" @click="isOpen = false; isDropdownOpen = false">Contact</RouterLink>
         </div>
       </nav>
     </header>
@@ -198,6 +219,15 @@ header {
     padding: 0.7rem 1rem;
     border-radius: 8px;
   }
+
+  .nav-dropdown {
+    width: 100%;
+  }
+
+  .dropdown-toggle {
+    justify-content: space-between;
+    width: 100%;
+  }
 }
 
 .main-content {
@@ -212,5 +242,98 @@ header {
   text-align: center;
   color: var(--color-text);
   opacity: 0.9;
+}
+
+/* Nouveaux styles pour le dropdown */
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  transition: all 0.22s ease;
+}
+
+.dropdown-toggle:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(2,6,23,0.06);
+  background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+}
+
+.dropdown-toggle.active {
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+}
+
+.dropdown-arrow {
+  transition: transform 0.2s ease;
+}
+
+.dropdown-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.95));
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(2,6,23,0.1);
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 1001;
+}
+
+.dropdown-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: background 0.2s ease;
+  border-radius: 8px;
+  margin: 0.25rem;
+}
+
+.dropdown-item:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .nav-links.open .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background: transparent;
+    border: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    margin-top: 0.5rem;
+  }
+
+  .dropdown-item {
+    padding: 0.5rem 1rem;
+    margin: 0;
+    border-radius: 8px;
+  }
 }
 </style>

@@ -20,6 +20,7 @@ export interface Project {
   startDate?: string
   endDate?: string
   isOngoing?: boolean
+  newTech: string[]      // Nouvelles technologies apprises pendant/après le projet
 }
 
 // Mapping des noms de technologies vers les noms de fichiers d'icônes
@@ -51,7 +52,7 @@ export const techIconMap: Record<string, string> = {
   'Pandas': 'pandas',
   'NumPy': 'numpy',
   'PyGame': 'pygame',
-  'Ssh': 'ssh',
+  'SSH': 'ssh',
   'WordPress': 'wordpress',
   'Linux': 'linux',
   'Symfony': 'symfony',
@@ -76,9 +77,9 @@ export const projects: Project[] = [
     name: 'CodeTonFutur',
     description: 'CodeTonFutur est un site de vulgarisation scientifique axé sur l\'informatique, montrant comment celle-ci peut s\'intégrer dans divers domaines scientifiques. Le site propose de nombreux défis interactifs couvrant une variété de thèmes scientifiques.',
     longDescription: 'Ce projet est une application web complète qui démontre l\'utilisation des technologies modernes comme Vue.js, TypeScript et Vite. L\'application offre une expérience utilisateur fluide et performante.',
-    tags: ['JavaScript', 'Flask', 'Python', 'MySQL'],
+    tags: ['Flask', 'Python', 'MySQL','JavaScript', 'HTML5', 'CSS3',],  // Gardé pour compatibilité, mais non utilisé dans l'affichage
     images: ['main.png', 'chatbot.png', 'Exercice1.png', 'progression.png'],  // Gardé tel quel pour les URLs externes
-    logo: 'victoria_v.png',  // Gardé tel quel pour les URLs externes
+    logo: 'logo.png',  // Gardé tel quel pour les URLs externes
     category: 'Dev Web',
     purpose: 'Personnel',
     features: [
@@ -90,18 +91,19 @@ export const projects: Project[] = [
       github: '#'
     },
     folder: 'CodeTonFutur',
-    startDate: '2023-01-01',
-    endDate: '2023-06-01',
-    isOngoing: false
+    startDate: 'Avril 2025',
+    endDate: undefined,
+    isOngoing: true,
+    newTech: [],  // Apprises pendant le projet
   },
   {
     id: 'project-2',
     name: 'Break The Code',
     description: 'Plateforme dédiée aux défis Capture The Flag. Lors de ma deuxième année à l\'IUT informatique, j\'ai travaillé pour l\'association Yggame sur un événement CTF en cybersécurité.',
     longDescription: 'Break The Code est une plateforme interactive pour les défis Capture The Flag (CTF) en cybersécurité, développée dans le cadre d\'un projet associatif à l\'IUT. Elle permet aux participants de tester leurs compétences en sécurité informatique de manière ludique et pédagogique.',
-    tags: ['Python', 'Flask', 'JavaScript', 'HTML5', 'CSS3', 'Docker', 'Scrum', 'MySQL'],
+    tags: ['Python', 'Flask', 'JavaScript', 'HTML5', 'CSS3', 'Docker', 'Scrum', 'MySQL', 'SSH'],
     images: ['affichage_challenge.png', 'breakthecode1.png', 'challenge.png', 'ssh.png', 'rainbow_jumper.gif', 'cristal_malicieux.gif'],  // Changé pour ne contenir que le nom du fichier
-    logo: 'StormFlash.png', 
+    logo: 'logo.png', 
     category: 'Dev Web',
     purpose: 'Éducation',
     features: [
@@ -118,14 +120,15 @@ export const projects: Project[] = [
     folder: 'CTF',
     startDate: 'September 2024',
     endDate: 'Janvier 2025',
-    isOngoing: false
+    isOngoing: false,
+    newTech: ['Docker', 'Scrum', 'SSH', 'Flask'],  // Nouvelles apprises
   },
   {
     id: 'project-3',
     name: 'Capital Wars',
     description: 'Application Web de jeu vidéo qui permet aux utilisateurs de s\'affronter dans la simulation d\'entreprise.',
     longDescription: 'Application Web de jeu vidéo qui permet aux utilisateurs de s\'affronter dans la simulation d\'entreprise.',
-    tags: ['Symfony', 'Twig'],
+    tags: ['Symfony', 'Twig', 'CSS3', 'HTML5', 'JavaScript'],
     images: ['https://picsum.photo/seed/project3/600/400'],  // Gardé tel quel pour les URLs externes
     logo: 'logo.png',  // Gardé tel quel pour les URLs externes
     category: 'Dev Web',
@@ -141,9 +144,10 @@ export const projects: Project[] = [
       github: '#'
     },
     folder: 'CapitalWars',
-    startDate: '2023-03-01',
+    startDate: 'Septembre 2025',
     endDate: undefined,
-    isOngoing: true
+    isOngoing: true,
+    newTech: ['Symfony', 'Twig'],  // Toutes apprises
   },
   {
     id: 'project-4',
@@ -152,7 +156,7 @@ export const projects: Project[] = [
     longDescription: 'Star Guardian est un logiciel conçu pour effectuer des analyses statistiques avancées sur les alertes de collision impliquant des satellites en orbite.',
     tags: ['Python', 'Pandas', 'Excel'],
     images: ['main.png', 'starguardian_complet.png', 'execl_star_guardian.png'],  // Gardé tel quel pour les URLs externes
-    logo: 'icon.png',  // Gardé tel quel pour les URLs externes
+    logo: 'logo.png',  // Gardé tel quel pour les URLs externes
     category: 'Logiciel',
     purpose: 'Éducation',
     features: [
@@ -165,8 +169,9 @@ export const projects: Project[] = [
     },
     folder: 'starGuardian',
     startDate: 'Janvier 2025',
-    endDate: undefined,
-    isOngoing: true
+    endDate: 'Avril 2025',
+    isOngoing: false,
+    newTech: ['Pandas'],  // Nouvelles
   }, 
   {
     id: 'project-5',
@@ -175,7 +180,7 @@ export const projects: Project[] = [
     longDescription: 'Lors de ma première année, j\'ai dû développer une application en Java. Ce projet consistait à recréer le jeu de société japonais Trains en Java, en commençant par le back-end, puis en abordant dans un second temps l\'interface graphique avec JavaFX.',
     tags: ['Java', 'JavaFX', 'JUnit'],
     images: ['Trains_IHM.png', 'jeux_en_cours (1).gif', 'test_train.png', 'page_accueil.gif'],  // Gardé tel quel pour les URLs externes
-    logo: 'trains.png',  // Gardé tel quel pour les URLs externes
+    logo: 'logo.png',  // Gardé tel quel pour les URLs externes
     category: 'Jeux Vidéo',
     purpose: 'Éducation',
     features: [
@@ -189,7 +194,8 @@ export const projects: Project[] = [
     folder: 'trains',
     startDate: 'Mars 2024',
     endDate: 'Juin 2024',
-    isOngoing: false
+    isOngoing: false,
+    newTech: ['JavaFX', 'JUnit'],  // Toutes apprises
   }, 
   {
     id: 'project-6',
@@ -198,7 +204,7 @@ export const projects: Project[] = [
     longDescription: 'L\'idée de ce projet personnel est née d\'une problématique liée au tri des images dans une bibliothèque. Le processus consistant à classer les images par catégorie tout en les renommant s\'avérait long et fastidieux. Je me suis alors dit : pourquoi ne pas créer une IA capable de réaliser cette tâche à ma place ? \n Cela m\'a conduit à explorer ce sujet, en me lançant dans la réalisation de ce projet. J\'ai ainsi découvert des outils comme PyTorch, les réseaux de convolution et le deep learning.',
     tags: ['Python', 'Tkinter', 'Pytorch'],
     images: ['res_lumine.png', 'cnn.png','convolution.gif', 'entrainement.png'],  
-    logo: 'kiana.png',  
+    logo: 'logo.png',  
     category: 'IA',
     purpose: 'Personnel',
     features: [
@@ -212,8 +218,9 @@ export const projects: Project[] = [
     },
     folder: 'IA_Kiana',
     startDate: 'Juin 2023',
-    endDate: undefined,
-    isOngoing: true
+    endDate: 'Juin 2024',
+    isOngoing: false,
+    newTech: ['Pytorch'],  // Nouvelles
   }, 
   {
     id: 'project-7',
@@ -235,18 +242,19 @@ export const projects: Project[] = [
       github: '#'
     },
     folder: 'Victoria',
-    startDate: 'Novembre 2024',
+    startDate: 'Mai 2025',
     endDate: undefined,
-    isOngoing: true
+    isOngoing: true,
+    newTech: ['CustomTkinter', 'Watchdog'],  // Nouvelles
   }, 
   {
     id: 'project-8',
     name: 'World of chan',
     description: '',
     longDescription: 'World of Chan est une application web conçue pour aider les utilisateurs à apprendre de nouvelles langues de manière ludique et efficace. En utilisant des quiz interactifs et des fiches de révision, l\'application vise à faciliter l\'apprentissage quotidien de 10 mots dans une langue étrangère choisie par l\'utilisateur.',
-    tags: ['Symfony', 'Firebase'],
+    tags: ['Symfony', 'Twig', 'Firebase', 'MySQL', 'CSS3', 'HTML5', 'JavaScript'],
     images: ['main.png', 'shiru.png','main_langue.png', 'shiruchan-liste.png', 'shiruchan-quiz.png'],  
-    logo: 'WorldOfChan.png',  
+    logo: 'logo.png',  
     category: 'Dev Web',
     purpose: 'Personnel',
     features: [
@@ -261,14 +269,15 @@ export const projects: Project[] = [
     folder: 'WorldOfChan',
     startDate: 'Septembre 2025',
     endDate: undefined,
-    isOngoing: true
-  }, 
+    isOngoing: true,
+    newTech: ['Firebase'],  // Nouvelle
+  },
   {
     id: 'project-8',
     name: 'EarthToSpace',
     description: '',
     longDescription: '',
-    tags: ['Symfony', 'Firebase'],
+    tags: ['Symfony', 'Twig','MySQL', 'CSS3', 'HTML5', 'JavaScript'],
     images: ['res_lumine.png', 'cnn.png','convolution.gif', 'entrainement.png'],  
     logo: 'logo.png',  
     category: 'Dev Web',
@@ -281,9 +290,35 @@ export const projects: Project[] = [
       github: '#'
     },
     folder: 'EarthToSpace',
-    startDate: 'Novembre 2024',
+    startDate: 'Novembre 2025',
     endDate: undefined,
-    isOngoing: true
+    isOngoing: true,
+    newTech: [],  // Aucune nouvelle
+  }, 
+  {
+    id: 'project-9',
+    name: 'Anakomi',
+    description: 'Ce site permet de noté des jeux vidéo, anime et manga afin de partagé son avis avec la communauté.',
+    longDescription: '',
+    tags: ['Flask', 'MySQL', 'CSS3', 'HTML5', 'JavaScript'],
+    images: ['main_anime.png', 'main_jv.png','top_anime.png'],  
+    logo: 'logo.png',  
+    category: 'Dev Web',
+    purpose: 'Personnel',
+    features: [
+      'Créer des animés / manga / jeux vidéo afin de les notés',
+      'Noté les animés / manga / jeux vidéo des autres utilisateurs et ajouter un commentaires',
+      'Voir les top animés / manga / jeux vidéo des autres utilisateurs de la communauté',
+    ],
+    links: {
+      demo: 'https://anakomi.onrender.com/',
+      github: '#'
+    },
+    folder: 'Anakomi',
+    startDate: 'Septembre 2025',
+    endDate: 'Septembre 2025',
+    isOngoing: false,
+    newTech: [],  // Aucune nouvelle
   }, 
 ] 
 
