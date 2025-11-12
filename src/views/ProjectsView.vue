@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import { projects, categoryOrder, getProjectsByCategory, type ProjectCategory, techIconMap } from '@/data/projects'
+import { projects, categoryOrder, getProjectsByCategory, type ProjectCategory, type Project, techIconMap } from '@/data/projects'
 
 const groupedProjects = computed(() => getProjectsByCategory())
 
