@@ -26,6 +26,9 @@ const getLogoSrc = (project: Project) => {
   const logo = project.logo_recadrer || project.logo
   return logo.startsWith('http') ? logo : `/Portfolio2/projet/${project.folder}/${logo}`
 }
+
+// Nouvelle propriété calculée pour le nombre total de projets
+const totalProjects = computed(() => projects.length)
 </script>
 
 <template>
@@ -62,7 +65,7 @@ const getLogoSrc = (project: Project) => {
       <main class="main-content">
         <div class="container">
           <div class="header">
-            <h1 class="page-title">Mes Projets</h1>
+            <h1 class="page-title">Mes Projets ({{ totalProjects }})</h1>
           </div>
 
           <div 
@@ -71,7 +74,7 @@ const getLogoSrc = (project: Project) => {
             class="category-section"
           >
             <template v-if="groupedProjects[category] && groupedProjects[category].length > 0">
-              <h2 class="category-title">{{ category }}</h2>
+              <h2 class="category-title">{{ category }} ({{ groupedProjects[category].length }})</h2>
               
               <div class="projects-grid">
                 <RouterLink 
