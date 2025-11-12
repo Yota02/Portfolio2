@@ -1,9 +1,18 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import { projects, categoryOrder, getProjectsByCategory, type ProjectCategory } from '@/data/projects'
+import { projects, categoryOrder, getProjectsByCategory, type ProjectCategory, techIconMap } from '@/data/projects'
 
 const groupedProjects = computed(() => getProjectsByCategory())
+
+// Calculer les technologies uniques à partir des tags des projets
+const uniqueTechnologies = computed(() => {
+  const allTags = projects.flatMap(project => project.tags)
+  return [...new Set(allTags)]
+})
+
+// État pour le repli de la sidebar
+const isCollapsed = ref(false)
 
 // Fonction pour limiter les tags affichés
 const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
@@ -15,63 +24,95 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
 
 <template>
   <div class="projects-page">
-    <div class="container">
-      <div class="header">
-        <h1 class="page-title">Mes Projets</h1>
-      </div>
-
-      <div 
-        v-for="category in categoryOrder" 
-        :key="category" 
-        class="category-section"
-      >
-        <template v-if="groupedProjects[category] && groupedProjects[category].length > 0">
-          <h2 class="category-title">{{ category }}</h2>
-          
-          <div class="projects-grid">
-            <RouterLink 
-              v-for="project in groupedProjects[category]" :key="project.id"
-              :to="{ name: 'project-detail', params: { id: project.id } }"
-              class="project-card"
-            >
-              <div class="card-image-container">
-                <img
-                  :src="project.logo.startsWith('http') ? project.logo : `/Portfolio2/projet/${project.folder}/${project.logo}`"
-                  :alt="`Logo du projet ${project.name}`"
-                  class="card-image"
-                  loading="lazy"
-                />
-              </div>
-              
-              <div class="card-info-badges">
-                <span class="badge purpose-badge">{{ project.purpose }}</span>
-              </div>
-              
-              <h2 class="card-title">{{ project.name }}</h2>
-              
-              <div class="card-tags">
-                <span 
-                  v-for="tag in getDisplayedTags(project.tags).displayed" 
-                  :key="tag" 
-                  class="tag"
-                >
-                  {{ tag }}
-                </span>
-                <span 
-                  v-if="getDisplayedTags(project.tags).remaining > 0" 
-                  class="tag tag-more"
-                >
-                  +{{ getDisplayedTags(project.tags).remaining }}
-                </span>
-              </div>
-              
-              <div class="card-footer">
-                <span class="link-text">Voir le projet →</span>
-              </div>
-            </RouterLink>
+    <div class="layout-container">
+      <!-- Sidebar gauche pour les icônes des technologies -->
+      <aside class="tech-sidebar" :class="{ collapsed: isCollapsed }">
+        <div class="sidebar-header">
+          <h3 v-if="!isCollapsed" class="sidebar-title">Technologies</h3>
+          <button @click="isCollapsed = !isCollapsed" class="collapse-btn">
+            <svg class="arrow" :class="{ rotated: isCollapsed }" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div v-if="!isCollapsed" class="tech-icons">
+          <div
+            v-for="tech in uniqueTechnologies"
+            :key="tech"
+            class="tech-icon-item"
+            :title="tech"
+          >
+            <img
+              :src="`/Portfolio2/icone/${techIconMap[tech]}.png`"
+              :alt="`Icône de ${tech}`"
+              class="tech-icon"
+              loading="lazy"
+            />
           </div>
-        </template>
-      </div>
+        </div>
+      </aside>
+      
+      <!-- Contenu principal existant -->
+      <main class="main-content">
+        <div class="container">
+          <div class="header">
+            <h1 class="page-title">Mes Projets</h1>
+          </div>
+
+          <div 
+            v-for="category in categoryOrder" 
+            :key="category" 
+            class="category-section"
+          >
+            <template v-if="groupedProjects[category] && groupedProjects[category].length > 0">
+              <h2 class="category-title">{{ category }}</h2>
+              
+              <div class="projects-grid">
+                <RouterLink 
+                  v-for="project in groupedProjects[category]" :key="project.id"
+                  :to="{ name: 'project-detail', params: { id: project.id } }"
+                  class="project-card"
+                >
+                  <div class="card-image-container">
+                    <img
+                      :src="project.logo.startsWith('http') ? project.logo : `/Portfolio2/projet/${project.folder}/${project.logo}`"
+                      :alt="`Logo du projet ${project.name}`"
+                      class="card-image"
+                      loading="lazy"
+                    />
+                  </div>
+                  
+                  <div class="card-info-badges">
+                    <span class="badge purpose-badge">{{ project.purpose }}</span>
+                  </div>
+                  
+                  <h2 class="card-title">{{ project.name }}</h2>
+                  
+                  <div class="card-tags">
+                    <span 
+                      v-for="tag in getDisplayedTags(project.tags).displayed" 
+                      :key="tag" 
+                      class="tag"
+                    >
+                      {{ tag }}
+                    </span>
+                    <span 
+                      v-if="getDisplayedTags(project.tags).remaining > 0" 
+                      class="tag tag-more"
+                    >
+                      +{{ getDisplayedTags(project.tags).remaining }}
+                    </span>
+                  </div>
+                  
+                  <div class="card-footer">
+                    <span class="link-text">Voir le projet →</span>
+                  </div>
+                </RouterLink>
+              </div>
+            </template>
+          </div>
+        </div>
+      </main>
     </div>
   </div>
 </template>
@@ -381,17 +422,119 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
   gap: 0.5rem;
 }
 
-.link-text::after {
-  content: '→';
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 .project-card:hover .link-text {
   color: var(--accent);
 }
 
-.project-card:hover .link-text::after {
-  transform: translateX(8px);
+/* Nouveaux styles pour le layout */
+.layout-container {
+  display: flex;
+  min-height: 80vh;
+}
+
+.tech-sidebar {
+  width: 250px;
+  background: var(--color-background);
+  border-right: 1px solid var(--color-border);
+  padding: 2rem 1rem;
+  position: sticky;
+  top: 0;
+  height: auto;
+  max-height: 80vh; /* Limiter la hauteur maximale */
+  overflow-y: auto;
+  animation: fadeInLeft 0.6s ease-out;
+  border-radius: 15px; /* Bordures arrondies */
+  margin-right: 1rem;
+  transition: width 0.3s ease, padding 0.3s ease;
+}
+
+.tech-sidebar.collapsed {
+  width: 60px;
+  padding: 1rem 0.5rem;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin: 0;
+}
+
+.collapse-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--color-text);
+  transition: color 0.3s ease;
+}
+
+.collapse-btn:hover {
+  color: var(--primary);
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+  color: var(--color-text);
+}
+
+.arrow.rotated {
+  transform: rotate(180deg);
+}
+
+.tech-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.tech-sidebar.collapsed .tech-icons {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tech-icon-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.tech-icon-item:hover {
+  background: var(--color-background-soft);
+}
+
+.tech-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.main-content {
+  flex: 1;
+  padding-left: 2rem;
 }
 
 @media (max-width: 768px) {
@@ -440,6 +583,30 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
   
   .card-footer {
     padding: 1rem 1.5rem;
+  }
+  
+  .layout-container {
+    flex-direction: column;
+  }
+  
+  .tech-sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+  
+  .tech-sidebar.collapsed {
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .main-content {
+    padding-left: 0;
+    padding-top: 2rem;
   }
 }
 </style>

@@ -197,8 +197,8 @@ export const projects: Project[] = [
     description: 'Un logiciel basé sur un model d\'Intéligence Artificielle pour trié des images',
     longDescription: 'L\'idée de ce projet personnel est née d\'une problématique liée au tri des images dans une bibliothèque. Le processus consistant à classer les images par catégorie tout en les renommant s\'avérait long et fastidieux. Je me suis alors dit : pourquoi ne pas créer une IA capable de réaliser cette tâche à ma place ? \n Cela m\'a conduit à explorer ce sujet, en me lançant dans la réalisation de ce projet. J\'ai ainsi découvert des outils comme PyTorch, les réseaux de convolution et le deep learning.',
     tags: ['Python', 'Tkinter', 'Pytorch'],
-    images: ['res_lumine.png', 'cnn.png','convolution.gif', 'entrainement.png'],  // Gardé tel quel pour les URLs externes
-    logo: 'kiana.png',  // Gardé tel quel pour les URLs externes
+    images: ['res_lumine.png', 'cnn.png','convolution.gif', 'entrainement.png'],  
+    logo: 'kiana.png',  
     category: 'IA',
     purpose: 'Personnel',
     features: [
@@ -211,7 +211,7 @@ export const projects: Project[] = [
       github: '#'
     },
     folder: 'IA_Kiana',
-    startDate: '2023-02-01',
+    startDate: 'Juin 2023',
     endDate: undefined,
     isOngoing: true
   }, 
@@ -243,14 +243,16 @@ export const projects: Project[] = [
     id: 'project-8',
     name: 'World of chan',
     description: '',
-    longDescription: '',
+    longDescription: 'World of Chan est une application web conçue pour aider les utilisateurs à apprendre de nouvelles langues de manière ludique et efficace. En utilisant des quiz interactifs et des fiches de révision, l\'application vise à faciliter l\'apprentissage quotidien de 10 mots dans une langue étrangère choisie par l\'utilisateur.',
     tags: ['Symfony', 'Firebase'],
     images: ['main.png', 'shiru.png','main_langue.png', 'shiruchan-liste.png', 'shiruchan-quiz.png'],  
     logo: 'WorldOfChan.png',  
     category: 'Dev Web',
     purpose: 'Personnel',
     features: [
-      '',
+      'Permet d\'apprendre 10 mots d\'une langue étrangère par jour à travers des quiz et des fiches de révision.',
+      'Système de rappel intelligent pour renforcer la mémorisation des mots appris.',
+      'Avec 10 langues proposées, les utilisateurs peuvent choisir celle qu\'ils souhaitent apprendre.',
     ],
     links: {
       demo: 'https://yota02.github.io/WorldOfChan/',
