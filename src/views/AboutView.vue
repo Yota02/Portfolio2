@@ -38,9 +38,9 @@
         <div class="commandements-section card" role="region" aria-labelledby="commandements-title">
           <h2 id="commandements-title"><i class="fas fa-scroll" aria-hidden="true"></i> Mes 3 commandements</h2>
           <ul class="commandements-list">
-            <li>"Je ne passerais pas un jour sans apprendre au moins 1 chose"</li>
-            <li>"Je poserais toujours des questions pour comprendre le monde"</li>
-            <li>"J'explorerais de nouvelles idées sans crainte de l'échec"</li>
+            <li>"Je ne passerai pas un jour sans apprendre au moins 1 chose"</li>
+            <li>"Je poserai toujours des questions pour comprendre le monde"</li>
+            <li>"J'explorerai de nouvelles idées sans crainte de l'échec"</li>
           </ul>
         </div>
 
