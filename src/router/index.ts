@@ -48,7 +48,7 @@ const router = createRouter({
       path: '/projects-timeline',
       name: 'projects-timeline',
       component: () => import('../views/ProjectsTimelineView.vue')
-    }
+    },
   ]
 })
 
