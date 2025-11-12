@@ -7,71 +7,46 @@
       </div>
 
       <div class="content-section">
-        <div class="bio-section">
-          <h2>Qui suis-je ?</h2>
+        <div class="bio-section card" role="region" aria-labelledby="bio-title">
+          <h2 id="bio-title"><i class="fas fa-user" aria-hidden="true"></i> Qui suis-je ?</h2>
           <p>
-            Je suis Alexis Michaux-Kinet, étudiant en BUT Informatique à l'IUT de Montpellier. Passionné par l'informatique depuis mon plus jeune âge, je m'intéresse particulièrement au développement web, à l'intelligence artificielle et aux technologies émergentes. Curieux, rigoureux et créatif, j'aime relever des défis techniques et apprendre de nouvelles technologies.
+            Je suis Alexis Michaux-Kinet, étudiant en dernière année de BUT Informatique à l'IUT de Montpellier. Passionné par l'informatique depuis mon plus jeune âge, je m'intéresse particulièrement au développement web, à l'intelligence artificielle et aux technologies émergentes. <strong>Curieux</strong>, rigoureux et créatif, j'aime relever des défis techniques et apprendre de nouvelles technologies.
           </p>
           <p>
-            Mon objectif après le BUT est de poursuivre mes études en master en IA, tout en acquérant de l'expérience professionnelle dans le développement full-stack. Je vise à devenir un expert en technologies innovantes et à contribuer à des projets impactants.
+            Mon objectif après le BUT est de poursuivre mes études en master en IA, tout en acquérant de l'expérience professionnelle dans l'IA. Je vise à devenir un enseignant-chercheur dans ce domaine.
           </p>
         </div>
 
-        <div class="parcours-section">
-          <h2>Mon Parcours Académique</h2>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <h3>Baccalauréat (2020-2023)</h3>
-                <p>Lycée Jean Jaurès - Obtention du baccalauréat avec mention.</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <h3>BUT Informatique (2023-2026)</h3>
-                <p>IUT de Montpellier - Formation en développement, IA et gestion de projets.</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <h3>Stage au CSUM (Janvier-Avril 2025)</h3>
-                <p>Centre Spatial Universitaire de Montpellier - Analyse de données spatiales.</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <h3>Licence 3 MTS eLearning (2025-2026)</h3>
-                <p>Tech Solutions - Spécialisation en eLearning et technologies éducatives.</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <h3>Master en IA (2026-2028)</h3>
-                <p>IAE de Montpellier - Recherche et développement en intelligence artificielle.</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-content">
-                <h3>Thèse et Carrière Internationale (2028-...)</h3>
-                <p>Thèse sur l'IA et la sociologie, puis enseignement-chercheur dans des universités internationales (Japon, Chine, Royaume-Uni, Allemagne, etc.).</p>
-              </div>
+        <div class="objectives-section card" role="region" aria-labelledby="objectives-title">
+          <h2 id="objectives-title"><i class="fas fa-bullseye" aria-hidden="true"></i> Mon placement sur l'IA</h2>
+          <p>
+            Tel un pyromane passionné par le feu, je suis fasciné par l'IA, cette force capable de transformer l'humanité telle que nous la connaissons, pour le meilleur comme pour le pire.
+            Nous avons franchis la ligne des horizons et il est impératif de comprendre et maîtriser cette puissance avant qu'elle ne nous dépasse.
+          </p>
+        </div>
+
+        <div class="hobbies-section card" role="region" aria-labelledby="hobbies-title">
+          <h2 id="hobbies-title"><i class="fas fa-heart" aria-hidden="true"></i> Mes Hobbies</h2>
+          <div class="hobbies-grid">
+            <div class="hobby-card" v-for="(hobby, index) in hobbies" :key="index" :aria-label="hobby.label">
+              <i :class="hobby.icon" aria-hidden="true"></i>
+              <span>{{ hobby.label }}</span>
             </div>
           </div>
         </div>
 
-        <div class="objectives-section">
-          <h2>Mes Objectifs Professionnels</h2>
-          <ul class="objectives-list">
-            <li>Devenir un développeur full-stack expert en Vue.js, TypeScript et IA.</li>
-            <li>Contribuer à des projets open-source et innovants.</li>
-            <li>Poursuivre une carrière académique en recherche sur l'IA.</li>
-            <li>Travailler dans un environnement international et collaboratif.</li>
+        <div class="commandements-section card" role="region" aria-labelledby="commandements-title">
+          <h2 id="commandements-title"><i class="fas fa-scroll" aria-hidden="true"></i> Mes 3 commandements</h2>
+          <ul class="commandements-list">
+            <li>"Je ne passerais pas un jour sans apprendre au moins 1 choses"</li>
+            <li>"Je poserais toujours des questions pour comprendre le monde"</li>
+            <li>"J'explorerais de nouvelles idées sans crainte de l'échec"</li>
           </ul>
         </div>
 
-        <div class="cv-section">
-          <h2>Téléchargez mon CV</h2>
-          <a href="/cv-alexis-michaux-kinet.pdf" class="btn btn-primary" download>Télécharger le CV</a>
+        <div class="cv-section card" role="region" aria-labelledby="cv-title">
+          <h2 id="cv-title"><i class="fas fa-download" aria-hidden="true"></i> Téléchargez mon CV</h2>
+          <a href="/pdf/cv.pdf" class="btn btn-primary" download aria-label="Télécharger le CV en PDF">Télécharger le CV</a>
         </div>
       </div>
     </div>
@@ -79,14 +54,23 @@
 </template>
 
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
 // Aucun script nécessaire pour cette vue statique
+const hobbies = [
+  { icon: 'fas fa-globe', label: 'Géopolitique' },
+  { icon: 'fas fa-flask', label: 'Science' },
+  { icon: 'fas fa-rocket', label: 'Science fiction' },
+  { icon: 'fas fa-users', label: 'Sociologie' },
+  { icon: 'fas fa-film', label: 'Films' }
+]
 </script>
 
 <style scoped>
+/* Styles de base existants */
 .about-page {
   min-height: 80vh;
   padding: 2rem;
-  background: linear-gradient(180deg, transparent 0%, var(--color-background-mute) 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, var(--color-background-mute) 100%);
 }
 
 .container {
@@ -107,6 +91,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .page-subtitle {
@@ -126,6 +111,26 @@
   font-weight: 700;
   margin-bottom: 1rem;
   color: var(--color-heading);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.content-section h2 i {
+  color: var(--primary);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .bio-section p {
@@ -133,50 +138,6 @@
   color: var(--color-text);
   opacity: 0.8;
   margin-bottom: 1rem;
-}
-
-.timeline {
-  position: relative;
-  padding-left: 2rem;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--primary), var(--accent));
-}
-
-.timeline-item {
-  margin-bottom: 2rem;
-  position: relative;
-}
-
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -2rem;
-  top: 0.5rem;
-  width: 12px;
-  height: 12px;
-  background: var(--primary);
-  border-radius: 50%;
-  border: 3px solid white;
-}
-
-.timeline-content h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--color-heading);
-  margin-bottom: 0.5rem;
-}
-
-.timeline-content p {
-  color: var(--color-text);
-  opacity: 0.7;
 }
 
 .objectives-list {
@@ -188,9 +149,80 @@
   padding: 0.75rem 0;
   border-bottom: 1px solid var(--color-border);
   color: var(--color-text);
+  transition: color 0.3s ease;
+}
+
+.objectives-list li:hover {
+  color: var(--primary);
 }
 
 .objectives-list li:last-child {
+  border-bottom: none;
+}
+
+.hobbies-section {
+  margin-bottom: 3rem;
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.hobby-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hobby-card:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hobby-card i {
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+.hobby-card span {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.commandements-section {
+  margin-bottom: 3rem;
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.commandements-list {
+  list-style: none;
+  padding: 0;
+}
+
+.commandements-list li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-style: italic;
+  transition: color 0.3s ease;
+}
+
+.commandements-list li:hover {
+  color: var(--primary);
+}
+
+.commandements-list li:last-child {
   border-bottom: none;
 }
 
@@ -204,6 +236,7 @@
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary {
@@ -213,6 +246,7 @@
 
 .btn:hover {
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes fadeInUp {
@@ -230,8 +264,20 @@
   .page-title {
     font-size: 2rem;
   }
-  .timeline {
-    padding-left: 1rem;
+  .card {
+    padding: 1.5rem;
+  }
+  .hobbies-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .hobbies-grid {
+    grid-template-columns: 1fr;
+  }
+  .page-title {
+    font-size: 1.8rem;
   }
 }
 </style>
