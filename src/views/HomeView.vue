@@ -39,16 +39,16 @@
         </div>
         <div class="hero-visual">
           <div class="floating-card card-1">
-            <img src="../../public/projet/starGuardian/icon.png" alt="Image de code">
+            <img src="../../public/projet/starGuardian/logo.png" alt="Image de code">
           </div>
           <div class="floating-card card-2">
-            <img src="../../public/projet/starGuardian/icon.png" alt="Image de développement web">
+            <img src="../../public/projet/starGuardian/logo.png" alt="Image de développement web">
           </div>
           <div class="floating-card card-3">
-            <img src="../../public/projet/WorldOfChan/WorldOfChan.png" alt="Image de technologie">
+            <img src="../../public/projet/WorldOfChan/logo.png" alt="Image de technologie">
           </div>
           <div class="floating-card card-4">
-            <img src="../../public/projet/CodeTonFutur/victoria_v.png" alt="Image de projet supplémentaire">
+            <img src="../../public/projet/CodeTonFutur/logo.png" alt="Image de projet supplémentaire">
           </div>
           <div class="floating-card card-5">
             <img src="../../public/projet/CapitalWars/logo.png" alt="Image de projet supplémentaire">
