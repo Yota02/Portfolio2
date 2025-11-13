@@ -156,7 +156,7 @@ export const projects: Project[] = [
     name: 'Capital Wars',
     description: 'Application Web de jeu vidéo qui permet aux utilisateurs de s\'affronter dans la simulation d\'entreprise.',
     longDescription: 'Application Web de jeu vidéo qui permet aux utilisateurs de s\'affronter dans la simulation d\'entreprise.',
-    tags: ['Symfony', 'Twig', 'CSS3', 'HTML5', 'JavaScript'],
+    tags: ['Symfony', 'Twig', 'CSS3', 'HTML5', 'JavaScript', 'MySQL'],
     images: ['https://picsum.photo/seed/project3/600/400'],  // Gardé tel quel pour les URLs externes
     logo: 'logo.png',  // Gardé tel quel pour les URLs externes
     category: 'Dev Web',

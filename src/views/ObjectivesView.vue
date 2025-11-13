@@ -70,7 +70,7 @@ const items = ref([
   },
   {
     id: 3,
-    year: '2025',
+    year: 'Juillet 2025',
     type: 'diplome',
     title: 'DUT Informatique',
     description: 'IUT de Montpellier',
