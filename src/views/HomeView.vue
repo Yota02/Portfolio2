@@ -25,7 +25,7 @@
               </svg>
             </a>
             <!-- Add this link with PDF icon for downloading cv.pdf -->
-            <a href="../../Portfolio2/public/pdf/cv.pdf" download class="social-icon" title="mon cv">
+            <a href="/pdf/cv.pdf" download class="social-icon" title="mon cv">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16h-4v-4h-4l6-6v4h4v6z"/>
               </svg>
