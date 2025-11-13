@@ -3,7 +3,19 @@ import { computed, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { projects, categoryOrder, getProjectsByCategory, type ProjectCategory, type Project, techIconMap } from '@/data/projects'
 
-const groupedProjects = computed(() => getProjectsByCategory())
+const groupedProjects = computed(() => {
+  const allProjects = getProjectsByCategory()
+  if (selectedTechs.value.length === 0) {
+    return allProjects
+  }
+  const filtered: Record<ProjectCategory, Project[]> = {} as Record<ProjectCategory, Project[]>
+  for (const category of categoryOrder) {
+    filtered[category] = allProjects[category].filter(project =>
+      selectedTechs.value.every(tech => project.tags.includes(tech))
+    )
+  }
+  return filtered
+})
 
 // Calculer les technologies uniques à partir des tags des projets
 const uniqueTechnologies = computed(() => {
@@ -13,6 +25,9 @@ const uniqueTechnologies = computed(() => {
 
 // État pour le repli de la sidebar
 const isCollapsed = ref(false)
+
+// État pour les technologies sélectionnées
+const selectedTechs = ref<string[]>([])
 
 // Fonction pour limiter les tags affichés
 const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
@@ -29,6 +44,16 @@ const getLogoSrc = (project: Project) => {
 
 // Nouvelle propriété calculée pour le nombre total de projets
 const totalProjects = computed(() => projects.length)
+
+// Fonction pour basculer la sélection d'une technologie
+const toggleTech = (tech: string) => {
+  const index = selectedTechs.value.indexOf(tech)
+  if (index > -1) {
+    selectedTechs.value.splice(index, 1)
+  } else {
+    selectedTechs.value.push(tech)
+  }
+}
 </script>
 
 <template>
@@ -49,6 +74,8 @@ const totalProjects = computed(() => projects.length)
             v-for="tech in uniqueTechnologies"
             :key="tech"
             class="tech-icon-item"
+            :class="{ selected: selectedTechs.includes(tech) }"
+            @click="toggleTech(tech)"
             :title="tech"
           >
             <img
@@ -542,6 +569,12 @@ const totalProjects = computed(() => projects.length)
   border: 1px solid var(--color-border);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-icon-item.selected {
+  border-color: var(--primary);
+  background: var(--color-background-mute);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
 }
 
 .tech-icon-item:hover {
