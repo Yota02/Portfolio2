@@ -82,7 +82,7 @@
             <h2>Collaborons</h2>
             <p>Prêt à relever des défis techniques ?</p>
           </div>
-          <a href="/pdf/cv.pdf" class="btn-download" download aria-label="Télécharger le CV">
+          <a :href="`${import.meta.env.BASE_URL}pdf/cv.pdf`" download aria-label="Télécharger le CV">
             <span>Télécharger mon CV</span>
             <i class="fas fa-download"></i>
           </a>
