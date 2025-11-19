@@ -9,7 +9,7 @@ const victoriaProject = computed(() => projects.find(p => p.id === 'project-7'))
 // Propriété calculée pour construire les chemins complets des images
 const fullImages = computed(() => {
   return victoriaProject.value?.images.map(img => 
-    img.startsWith('http') ? img : `/projet/${victoriaProject.value?.folder}/${img}`
+    img.startsWith('http') ? img : `/Portfolio2/projet/${victoriaProject.value?.folder}/${img}`
   ) || []
 })
 
@@ -142,7 +142,7 @@ const getTechIcon = (tech: string): string => techIcons.value[tech] || ''
               <li v-for="feature in sub.features" :key="feature">{{ feature }}</li>
             </ul>
             <div v-if="sub.images.length > 0" class="sub-images">
-              <img v-for="img in sub.images" :key="img" :src="`/projet/${victoriaProject.folder}/${img}`" :alt="sub.name" class="sub-image" />
+              <img v-for="img in sub.images" :key="img" :src="`/Portfolio2/projet/${victoriaProject.folder}/${img}`" :alt="sub.name" class="sub-image" />
             </div>
           </div>
         </div>
