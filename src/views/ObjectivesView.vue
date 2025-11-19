@@ -21,12 +21,13 @@
             <div :class="`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`">
               <div :class="`${item.isCurrent ? 'bg-green-50' : 'bg-white'} rounded-lg shadow-lg p-6 border-l-4 ${item.isCurrent ? 'border-green-500' : 'border-blue-500'} hover:shadow-xl transition-shadow duration-300`">
                 <div :class="`flex items-center gap-2 mb-2 ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'}`">
-                  <span class="text-blue-900 font-bold text-lg flex items-center gap-1">
-                    <Calendar class="w-4 h-4" />
-                    {{ item.year }}
-                  </span>
+                  <Calendar class="w-4 h-4" />
+                  {{ item.year }}
                 </div>
-                <h3 class="text-2xl font-bold text-blue-900 mb-2">{{ item.title }}</h3>
+                <div :class="`flex items-center gap-1 mb-2 ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'}`">
+                  <img v-if="item.logo" :src="item.logo" alt="Logo de l'élément" class="w-10 h-4 rounded-full" />
+                  <h3 class="text-2xl font-bold text-blue-900 mb-2">{{ item.title }}</h3>
+                </div>
                 <p class="text-blue-800 font-semibold">{{ item.description }}</p>
               </div>
             </div>
@@ -58,7 +59,8 @@ const items = ref([
     type: 'diplome',
     title: 'Baccalauréat',
     description: 'Lycée Jean Jaurès',
-    icon: GraduationCap
+    icon: GraduationCap,
+    logo: '/Portfolio2/icone/jeanJaurès.jpeg'
   },
   {
     id: 2,
@@ -66,7 +68,8 @@ const items = ref([
     type: 'diplome',
     title: 'BUT Informatique',
     description: "IUT de Montpellier",
-    icon: GraduationCap
+    icon: GraduationCap,
+    logo: '/Portfolio2/icone/IUT-Montpellier.png'
   },
     {
     id: 4,
@@ -74,7 +77,8 @@ const items = ref([
     type: 'experience',
     title: 'Stage au CSUM',
     description: 'Centre Spatial Universitaire de Montpellier',
-    icon: Briefcase
+    icon: Briefcase,
+    logo: '/Portfolio2/icone/csum.jpg'
   },
   {
     id: 5,
@@ -83,7 +87,8 @@ const items = ref([
     title: 'Licence 3 MTS eLearning',
     description: 'IAE de Montpellier',
     icon: GraduationCap,
-    isCurrent: true
+    isCurrent: true,
+    logo: '/Portfolio2/icone/iae.png'
   },
   {
     id: 6,
@@ -91,7 +96,8 @@ const items = ref([
     type: 'diplome',
     title: 'Master en IA',
     description: 'IAE de Montpellier',
-    icon: Target
+    icon: Target,
+    logo: '/Portfolio2/icone/iae.png'
   },
   {
     id: 7,
@@ -99,7 +105,8 @@ const items = ref([
     type: 'objectif',
     title: 'Thèse sur l\'Intelligence Artificielle et la sociologie',
     description: 'Réalisation d\'une thèse doctorale sur l\'IA et son impact sociétal',
-    icon: Target
+    icon: Target,
+    logo: ''
   },
   {
     id: 8,
@@ -107,7 +114,8 @@ const items = ref([
     type: 'objectif',
     title: 'Travaillé dans plusieurs universités internationales ',
     description: 'être enseignant-chercheur et enseigner dans des universités à travers le monde (Japon, Chine, Royaume-Uni, Allemagne, etc...)',
-    icon: Target
+    icon: Target,
+    logo: ''
   }, 
 ])
 
