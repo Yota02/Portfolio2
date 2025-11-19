@@ -38,6 +38,11 @@ const routes = [
       component: () => import('../views/CertificationsView.vue')
     },
     {
+      path: '/languages',
+      name: 'languages',
+      component: () => import('../views/LanguagesView.vue')
+    },
+    {
       path: '/victoria',
       name: 'victoria',
       component: VictoriaView
@@ -46,6 +51,11 @@ const routes = [
       path: '/objectives',
       name: 'objectives',
       component: () => import('../views/ObjectivesView.vue')
+    },
+    {
+      path: '/participations',
+      name: 'participations',
+      component: () => import('../views/ParticipationsView.vue')
     },
     {
       path: '/projects-timeline',

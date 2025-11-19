@@ -136,7 +136,7 @@ const getSortKeyForProject = (project: typeof projects[0]) => {
 
 // Trier les projets par date appropriée (chronologique)
 const sortedProjects = computed(() => {
-  return [...projects].sort((a, b) => getSortKeyForProject(a) - getSortKeyForProject(b))
+  return [...projects].sort((a, b) => getSortKeyForProject(b) - getSortKeyForProject(a))
 })
 
 // Fonction pour choisir une icône basée sur la catégorie

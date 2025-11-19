@@ -32,7 +32,7 @@
           </div>
           <p class="hero-subtitle">Étudiant en BUT Informatique</p>
           <p class="hero-description">
-            Je suis passionné par l'IA, le développement web et les technologies émergentes. Chaque jour, j'apprends et j'explore de nouvelles idées pour devenir enseignant-chercheur en IA. 
+            Je suis passionné par l'IA, le développement web et les technologies émergentes. Chaque jour, j'apprends et j'explore de nouvelles idées pour devenir enseignant-chercheur. 
           </p>
           <div class="hero-actions">
             <RouterLink to="/projects" class="btn btn-primary">

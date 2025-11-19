@@ -2,8 +2,8 @@
   <div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 p-8">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-blue-900 mb-3">Mon Parcours</h1>
-        <p class="text-blue-600 text-lg">Diplômes, Expériences & Objectifs</p>
+        <h1 class="text-4xl font-bold text-blue-900 mb-3">Mes Participations</h1>
+        <p class="text-blue-600 text-lg">Événements et compétitions auxquels j'ai participé</p>
       </div>
 
       <div class="relative">
@@ -13,28 +13,39 @@
         <!-- Items de la timeline -->
         <div class="space-y-12">
           <div
-            v-for="(item, index) in items"
-            :key="item.id"
+            v-for="(participation, index) in participations"
+            :key="participation.id"
             :class="`relative flex items-center ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'}`"
           >
             <!-- Contenu -->
             <div :class="`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`">
-              <div :class="`${item.isCurrent ? 'bg-green-50' : 'bg-white'} rounded-lg shadow-lg p-6 border-l-4 ${item.isCurrent ? 'border-green-500' : 'border-blue-500'} hover:shadow-xl transition-shadow duration-300`">
+              <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-blue-500 hover:shadow-xl transition-shadow duration-300">
                 <div :class="`flex items-center gap-2 mb-2 ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'}`">
                   <span class="text-blue-900 font-bold text-lg flex items-center gap-1">
                     <Calendar class="w-4 h-4" />
-                    {{ item.year }}
+                    {{ participation.date }}
                   </span>
                 </div>
-                <h3 class="text-2xl font-bold text-blue-900 mb-2">{{ item.title }}</h3>
-                <p class="text-blue-800 font-semibold">{{ item.description }}</p>
+                <h3 class="text-2xl font-bold text-blue-900 mb-2">{{ participation.title }}</h3>
+                <p class="text-blue-800 font-semibold mb-3">{{ participation.description }}</p>
+                <p class="text-sm text-gray-600 mb-4">Type : {{ participation.type }}{{ participation.result ? ' | Résultat : ' + participation.result : '' }}</p>
+                
+                <!-- Lien vers plus d'infos si disponible -->
+                <a
+                  v-if="participation.link"
+                  :href="participation.link"
+                  target="_blank"
+                  class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+                >
+                  En savoir plus →
+                </a>
               </div>
             </div>
 
             <!-- Point central avec icône -->
             <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-              <div :class="`${getTypeColor(item)} w-16 h-16 rounded-full flex items-center justify-center shadow-lg border-4 border-white z-10`">
-                <component :is="item.icon" class="w-8 h-8 text-white" />
+              <div class="bg-blue-500 w-16 h-16 rounded-full flex items-center justify-center shadow-lg border-4 border-white z-10">
+                <component :is="getParticipationIcon(participation.type)" class="w-8 h-8 text-white" />
               </div>
             </div>
 
@@ -48,120 +59,82 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { GraduationCap, Briefcase, Target, Calendar, ArrowLeft } from 'lucide-vue-next'
+import { ref, computed } from 'vue'
+import { GraduationCap, Briefcase, Target, Calendar, Trophy, Users } from 'lucide-vue-next'
 
-const items = ref([
+const participationsData = ref([
   {
     id: 1,
-    year: '2020-2023',
-    type: 'diplome',
-    title: 'Baccalauréat',
-    description: 'Lycée Jean Jaurès',
-    icon: GraduationCap
+    date: '5 décembre 2024',
+    type: 'concours',
+    title: 'Nuit de l\'Info 2024',
+    description: 'Participation à la Nuit de l\'Info, un marathon de développement de 24h pour créer une application web sur un thème donné.',
+    result: '',
+    link: 'https://www.nuitdelinfo.com/'
   },
   {
     id: 2,
-    year: '2023-2026',
-    type: 'diplome',
-    title: 'BUT Informatique',
-    description: "IUT de Montpellier",
-    icon: GraduationCap
+    date: '22-24 janvier 2026',
+    type: 'hackathon',
+    title: 'Code Game Jam 2026',
+    description: 'Participation à une game jam de codage pour développer un jeu en équipe.',
+    result: '',
+    link: '#'
   },
-    {
+  {
+    id: 3,
+    date: '30-31 janvier 2026',
+    type: 'hackathon',
+    title: 'Hackathon ActInSpace',
+    description: 'Hackathon organisé par ActInSpace pour innover dans le domaine spatial.',
+    result: '',
+    link: '#'
+  },
+  {
     id: 4,
-    year: 'Janvier 2025 - Avril 2025',
-    type: 'experience',
-    title: 'Stage au CSUM',
-    description: 'Centre Spatial Universitaire de Montpellier',
-    icon: Briefcase
+    date: '4-5 décembre 2025',
+    type: 'concours',
+    title: 'Nuit de l\'Info 2025',
+    description: 'Participation à la Nuit de l\'Info, un marathon de développement de 24h pour créer une application web sur un thème donné.',
+    result: '',
+    link: 'https://www.nuitdelinfo.com/'
   },
-  {
-    id: 5,
-    year: '2025-2026',
-    type: 'diplome',
-    title: 'Licence 3 MTS eLearning',
-    description: 'IAE de Montpellier',
-    icon: GraduationCap,
-    isCurrent: true
-  },
-  {
-    id: 6,
-    year: '2026-2028',
-    type: 'diplome',
-    title: 'Master en IA',
-    description: 'IAE de Montpellier',
-    icon: Target
-  },
-  {
-    id: 7,
-    year: '2028-2031',
-    type: 'objectif',
-    title: 'Thèse sur l\'Intelligence Artificielle et la sociologie',
-    description: 'Réalisation d\'une thèse doctorale sur l\'IA et son impact sociétal',
-    icon: Target
-  },
-  {
-    id: 8,
-    year: '2031-...',
-    type: 'objectif',
-    title: 'Travaillé dans plusieurs universités internationales ',
-    description: 'être enseignant-chercheur et enseigner dans des universités à travers le monde (Japon, Chine, Royaume-Uni, Allemagne, etc...)',
-    icon: Target
-  }, 
+  // Ajoutez d'autres participations ici
 ])
 
-// Fonction pour extraire l'année de début
-const getSortKey = (year: string) => {
-  const match = year.match(/\d{4}/);
-  return match ? parseInt(match[0]) : 0;
-}
-
-// Trier les items par année croissante (chronologique)
-items.value.sort((a, b) => getSortKey(a.year) - getSortKey(b.year))
-
-const getTypeColor = (item: any) => {
-  if (item.isCurrent) return 'bg-green-500'
-  switch (item.type) {
-    case 'diplome': return 'bg-blue-500'
-    case 'experience': return 'bg-blue-500'
-    case 'objectif': return 'bg-blue-500'
-    default: return 'bg-blue-500'
+// Fonction pour analyser les dates
+const parseDate = (dateStr: string): Date => {
+  if (dateStr.includes('décembre')) {
+    const parts = dateStr.split(' ')
+    const year = parts[2]
+    return new Date(`${year}-12-05`)
+  } else if (dateStr.includes('janvier')) {
+    const parts = dateStr.split(' ')
+    const year = parts[2]
+    return new Date(`${year}-01-30`)
+  } else if (/^\d{4}$/.test(dateStr)) {
+    return new Date(`${dateStr}-01-01`)
   }
+  return new Date(dateStr) // fallback
 }
 
-const getTypeLabel = (type: string) => {
+// Propriété calculée pour trier par date
+const participations = computed(() => {
+  return [...participationsData.value].sort((a, b) => parseDate(a.date).getTime() - parseDate(b.date).getTime())
+})
+
+// Fonction pour choisir une icône basée sur le type
+const getParticipationIcon = (type: string) => {
   switch (type) {
-    case 'diplome': return 'Diplôme'
-    case 'experience': return 'Expérience'
-    case 'objectif': return 'Objectif'
-    default: return ''
+    case 'concours': return Trophy
+    case 'hackathon': return Users
+    case 'formation': return GraduationCap
+    default: return Target
   }
 }
 </script>
 
 <style scoped>
-
-.bg-blue-600 {
-  background-color: #2563eb;
-}
-
-.text-blue-900 {
-  color: #1e3a8a;
-}
-
-.bg-green-50 {
-  background-color: #f0fdf4;
-}
-
-.border-green-500 {
-  border-color: #22c55e;
-}
-
-.bg-green-500 {
-  background-color: #22c55e;
-}
-
 .min-h-screen {
   min-height: 100vh;
 }
@@ -499,5 +472,75 @@ const getTypeLabel = (type: string) => {
 
 .text-blue-900 {
   color: #1e3a8a;
+}
+
+.bg-blue-100 {
+  background-color: #dbeafe;
+}
+
+.text-blue-800 {
+  color: #1e40af;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.bg-blue-500 {
+  background-color: #3b82f6;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.hover\:bg-blue-600:hover {
+  background-color: #2563eb;
+}
+
+.transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.text-gray-600 {
+  color: #4b5563;
 }
 </style>

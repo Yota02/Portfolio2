@@ -4,14 +4,22 @@ import { ref } from 'vue'
 
 const isOpen = ref(false)
 const isDropdownOpen = ref(false)
+const isParcoursDropdownOpen = ref(false)
 
 function toggleMenu() {
   isOpen.value = !isOpen.value
-  isDropdownOpen.value = false // Fermer le dropdown quand on ouvre/ferme le menu mobile
+  isDropdownOpen.value = false
+  isParcoursDropdownOpen.value = false // Fermer les deux dropdowns
 }
 
-function toggleDropdown() {
+function toggleProjectsDropdown() {
   isDropdownOpen.value = !isDropdownOpen.value
+  isParcoursDropdownOpen.value = false // Fermer l'autre dropdown
+}
+
+function toggleParcoursDropdown() {
+  isParcoursDropdownOpen.value = !isParcoursDropdownOpen.value
+  isDropdownOpen.value = false // Fermer l'autre dropdown
 }
 </script>
 
@@ -19,7 +27,7 @@ function toggleDropdown() {
   <div class="app-container">
     <header>
       <nav class="nav-container">
-        <RouterLink to="/" class="logo" @click="isOpen = false; isDropdownOpen = false">
+        <RouterLink to="/" class="logo" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">
           <span class="logo-text">Portfolio</span>
         </RouterLink>
 
@@ -34,26 +42,41 @@ function toggleDropdown() {
         </button>
 
         <div class="nav-links" :class="{ open: isOpen }">
-          <RouterLink to="/" class="nav-link" @click="isOpen = false; isDropdownOpen = false">Accueil</RouterLink>
+          <RouterLink to="/" class="nav-link" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Accueil</RouterLink>
           
           <!-- Dropdown pour Projets -->
           <div class="nav-dropdown">
-            <button class="nav-link dropdown-toggle" @click="toggleDropdown" :class="{ active: isDropdownOpen }">
+            <button class="nav-link dropdown-toggle" @click="toggleProjectsDropdown" :class="{ active: isDropdownOpen }">
               Projets
               <svg class="dropdown-arrow" :class="{ rotated: isDropdownOpen }" width="12" height="12" viewBox="0 0 24 24" fill="none">
                 <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
             <div class="dropdown-menu" :class="{ open: isDropdownOpen }">
-              <RouterLink to="/projects" class="dropdown-item" @click="isOpen = false; isDropdownOpen = false">Tous les projets</RouterLink>
-              <RouterLink to="/projects-timeline" class="dropdown-item" @click="isOpen = false; isDropdownOpen = false">Timeline des projets</RouterLink>
+              <RouterLink to="/projects" class="dropdown-item" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Tous les projets</RouterLink>
+              <RouterLink to="/projects-timeline" class="dropdown-item" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Timeline des projets</RouterLink>
             </div>
           </div>
           
-          <RouterLink to="/certifications" class="nav-link" @click="isOpen = false; isDropdownOpen = false">Certifications</RouterLink>
-          <RouterLink to="/victoria" class="nav-link" @click="isOpen = false; isDropdownOpen = false">Victoria</RouterLink>
-          <RouterLink to="/objectives" class="nav-link" @click="isOpen = false; isDropdownOpen = false">Objectifs</RouterLink>
-          <RouterLink to="/contact" class="nav-link" @click="isOpen = false; isDropdownOpen = false">Contact</RouterLink>
+          <RouterLink to="/certifications" class="nav-link" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Certifications</RouterLink>
+          <RouterLink to="/languages" class="nav-link" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Langues</RouterLink>
+          <RouterLink to="/victoria" class="nav-link" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Victoria</RouterLink>
+          
+          <!-- Dropdown pour Mon parcours -->
+          <div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle" @click="toggleParcoursDropdown" :class="{ active: isParcoursDropdownOpen }">
+              Mon parcours
+              <svg class="dropdown-arrow" :class="{ rotated: isParcoursDropdownOpen }" width="12" height="12" viewBox="0 0 24 24" fill="none">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="dropdown-menu" :class="{ open: isParcoursDropdownOpen }">
+              <RouterLink to="/objectives" class="dropdown-item" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Diplômes & Expériences</RouterLink>
+              <RouterLink to="/participations" class="dropdown-item" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Participations</RouterLink>
+            </div>
+          </div>
+          
+          <RouterLink to="/contact" class="nav-link" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Contact</RouterLink>
         </div>
       </nav>
     </header>
