@@ -45,21 +45,21 @@
           </div>
         </div>
         <div class="hero-visual">
-          <div class="floating-card card-1">
+          <RouterLink :to="{ name: 'project-detail', params: { id: 'project-7' } }" class="floating-card card-1" title="Voir le projet Victoria">
             <img src="../../public/projet/Victoria/logo.png" alt="Image de code">
-          </div>
-          <div class="floating-card card-2">
+          </RouterLink>
+          <RouterLink :to="{ name: 'project-detail', params: { id: 'project-4' } }" class="floating-card card-2" title="Voir le projet Star Guardian">
             <img src="../../public/projet/starGuardian/logo.png" alt="Image de développement web">
-          </div>
-          <div class="floating-card card-3">
+          </RouterLink>
+          <RouterLink :to="{ name: 'project-detail', params: { id: 'project-8' } }" class="floating-card card-3" title="Voir le projet World of Chan">
             <img src="../../public/projet/WorldOfChan/logo.png" alt="Image de technologie">
-          </div>
-          <div class="floating-card card-4">
+          </RouterLink>
+          <RouterLink :to="{ name: 'project-detail', params: { id: 'project-1' } }" class="floating-card card-4" title="Voir le projet CodeTonFutur">
             <img src="../../public/projet/CodeTonFutur/logo.png" alt="Image de projet supplémentaire">
-          </div>
-          <div class="floating-card card-5">
+          </RouterLink>
+          <RouterLink :to="{ name: 'project-detail', params: { id: 'project-3' } }" class="floating-card card-5" title="Voir le projet Capital Wars">
             <img src="../../public/projet/CapitalWars/logo.png" alt="Image de projet supplémentaire">
-          </div>
+          </RouterLink>
         </div>
       </div>
     </section>
@@ -219,6 +219,7 @@ import { RouterLink } from 'vue-router'
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer; /* Ajout pour indiquer que c'est cliquable */
 }
 
 .floating-card img {
