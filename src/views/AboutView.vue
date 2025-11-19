@@ -82,7 +82,7 @@
             <h2>Collaborons</h2>
             <p>Prêt à relever des défis techniques ?</p>
           </div>
-          <a :href="`${import.meta.env.BASE_URL}pdf/cv.pdf`" download aria-label="Télécharger le CV">
+          <a href="pdf/cv.pdf" class="btn-download" download aria-label="Télécharger le CV">
             <span>Télécharger mon CV</span>
             <i class="fas fa-download"></i>
           </a>
@@ -208,7 +208,6 @@ const hobbies = [
 /* --- BENTO GRID LAYOUT --- */
 .bento-grid {
   display: grid;
-  grid-template-columns: 1fr;
   gap: 1.5rem;
   padding-bottom: 2rem;
 }
@@ -345,7 +344,6 @@ const hobbies = [
   height: 200px;
   background: var(--fire-glow);
   filter: blur(80px);
-  border-radius: 50%;
 }
 
 /* --- 3. MANTRA (TERMINAL) --- */

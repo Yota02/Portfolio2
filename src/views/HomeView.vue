@@ -24,7 +24,7 @@
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
               </svg>
             </a>
-            <a :href="`${import.meta.env.BASE_URL}pdf/cv.pdf`" download class="social-icon" title="mon cv">
+            <a href="../../public/pdf/cv.pdf" download class="social-icon" title="mon cv">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16h-4v-4h-4l6-6v4h4v6z"/>
               </svg>
@@ -46,19 +46,19 @@
         </div>
         <div class="hero-visual">
           <RouterLink :to="{ name: 'project-detail', params: { id: 'project-7' } }" class="floating-card card-1" title="Voir le projet Victoria">
-            <img :src="`${import.meta.env.BASE_URL}projet/Victoria/logo.png`" alt="Image de code">
+            <img src="/projet/Victoria/logo.png" alt="Image de code">
           </RouterLink>
           <RouterLink :to="{ name: 'project-detail', params: { id: 'project-4' } }" class="floating-card card-2" title="Voir le projet Star Guardian">
-            <img :src="`${import.meta.env.BASE_URL}projet/starGuardian/logo.png`" alt="Image de développement web">
+            <img src="/projet/starGuardian/logo.png" alt="Image de développement web">
           </RouterLink>
           <RouterLink :to="{ name: 'project-detail', params: { id: 'project-8' } }" class="floating-card card-3" title="Voir le projet World of Chan">
-            <img :src="`${import.meta.env.BASE_URL}projet/WorldOfChan/logo.png`" alt="Image de technologie">
+            <img src="/projet/WorldOfChan/logo.png" alt="Image de technologie">
           </RouterLink>
           <RouterLink :to="{ name: 'project-detail', params: { id: 'project-1' } }" class="floating-card card-4" title="Voir le projet CodeTonFutur">
-            <img :src="`${import.meta.env.BASE_URL}projet/CodeTonFutur/logo.png`" alt="Image de projet supplémentaire">
+            <img src="/projet/CodeTonFutur/logo.png" alt="Image de projet supplémentaire">
           </RouterLink>
           <RouterLink :to="{ name: 'project-detail', params: { id: 'project-3' } }" class="floating-card card-5" title="Voir le projet Capital Wars">
-            <img :src="`${import.meta.env.BASE_URL}projet/CapitalWars/logo.png`" alt="Image de projet supplémentaire">
+            <img src="/projet/CapitalWars/logo.png" alt="Image de projet supplémentaire">
           </RouterLink>
         </div>
       </div>

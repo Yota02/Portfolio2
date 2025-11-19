@@ -136,8 +136,8 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
       <div class="blob blob-2"></div>
     </div>
 
-    <RouterLink :to="{ name: 'project-detail', params: { id: 'project-8' } }" class="worldofchan-button" title="Voir le projet WorldOfChan">
-      <img :src="`${import.meta.env.BASE_URL}projet/WorldOfChan/logo.png`" alt="WorldOfChan" class="worldofchan-icon" />
+    <RouterLink to="/project/project-8" class="worldofchan-button" title="Voir le projet WorldOfChan">
+      <img src="/projet/WorldOfChan/logo.png" alt="WorldOfChan" class="worldofchan-icon" />
     </RouterLink>
 
     <div class="container">

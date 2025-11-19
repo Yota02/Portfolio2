@@ -28,7 +28,7 @@ const project = computed(() => {
 // Ajout: Propriété calculée pour construire les chemins complets des images
 const fullImages = computed(() => {
   return project.value.images.map(img => 
-    img.startsWith('http') ? img : `/Portfolio2/projet/${project.value.folder}/${img}`
+    img.startsWith('http') ? img : `/projet/${project.value.folder}/${img}`
   )
 })
 
@@ -124,7 +124,7 @@ const getTechIcon = (tech: string): string => {
             <h3>Technologies</h3>
             <div class="tech-list">
               <span v-for="tech in project.tags" :key="tech" class="tech-icon" :title="tech">
-                <img v-if="getTechIcon(tech)" :src="`/Portfolio2/icone/${getTechIcon(tech)}`" :alt="tech" width="24" height="24" />
+                <img v-if="getTechIcon(tech)" :src="`/icone/${getTechIcon(tech)}`" :alt="tech" width="24" height="24" />
               </span>
             </div>
           </div>
@@ -181,7 +181,7 @@ const getTechIcon = (tech: string): string => {
                 </RouterLink>
                 <p>{{ sub.description }}</p>
                 <div v-if="sub.images.length > 0" class="sub-images">
-                  <img v-for="img in sub.images" :key="img" :src="`/Portfolio2/projet/${project.folder}/${img}`" :alt="sub.name" class="sub-image" />
+                  <img v-for="img in sub.images" :key="img" :src="`/projet/${project.folder}/${img}`" :alt="sub.name" class="sub-image" />
                 </div>
               </div>
             </div>

@@ -23,7 +23,7 @@
                 <div :class="`flex gap-4 mb-3 ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'}`">
                     <img
                         v-if="project.logo"
-                        :src="project.logo.startsWith('http') ? project.logo : `/Portfolio2/projet/${project.folder}/${project.logo}`"
+                        :src="project.logo.startsWith('http') ? project.logo : `/projet/${project.folder}/${project.logo}`"
                         :alt="`Logo de ${project.name}`"
                         :class="`w-16 h-16 rounded-lg shadow-md border border-gray-200 object-cover flex-shrink-0 project-logo ${index % 2 === 0 ? 'ml-4' : 'mr-4'}`"
                     />
@@ -51,7 +51,7 @@
                   >
                     <img
                       v-if="techIconMap[tech]"
-                      :src="`/Portfolio2/icone/${techIconMap[tech]}.png`"
+                      :src="`/icone/${techIconMap[tech]}.png`"
                       :alt="tech"
                       class="w-4 h-4"
                     />
@@ -88,7 +88,7 @@
                   >
                     <img
                       v-if="techIconMap[tech]"
-                      :src="`/Portfolio2/icone/${techIconMap[tech]}.png`"
+                      :src="`/icone/${techIconMap[tech]}.png`"
                       :alt="tech"
                       class="w-4 h-4"
                     />
