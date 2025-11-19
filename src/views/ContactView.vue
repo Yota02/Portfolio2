@@ -8,18 +8,18 @@
 
       <div class="contact-content">
         <div class="contact-form">
-          <form @submit.prevent="handleSubmit">
+          <form action="https://formspree.io/f/xzzoeyeq" method="POST">
             <div class="form-group">
               <label for="name">Nom</label>
-              <input type="text" id="name" v-model="form.name" required>
+              <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" v-model="form.email" required>
+              <label for="email">Votre email :</label>
+              <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" v-model="form.message" rows="5" required></textarea>
+              <label for="message">Votre message :</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Envoyer</button>
           </form>
@@ -52,19 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const form = ref({
-  name: '',
-  email: '',
-  message: ''
-})
-
-const handleSubmit = () => {
-  // Handle form submission (e.g., send email or API call)
-  alert('Message envoyé !')
-  form.value = { name: '', email: '', message: '' }
-}
+// Suppress the script section as it's no longer needed
 </script>
 
 <style scoped>
