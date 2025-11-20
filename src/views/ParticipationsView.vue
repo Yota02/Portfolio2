@@ -123,7 +123,7 @@ const parseDate = (dateStr: string): Date => {
 
 // Propriété calculée pour trier par date
 const participations = computed(() => {
-  return [...participationsData.value].sort((a, b) => parseDate(a.date).getTime() - parseDate(b.date).getTime())
+  return [...participationsData.value].sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime())
 })
 
 // Fonction pour choisir une icône basée sur le type
