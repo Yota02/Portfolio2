@@ -88,7 +88,7 @@
                   >
                     <img
                       v-if="techIconMap[tech]"
-                      :src="`/icone/${techIconMap[tech]}.png`"
+                      :src="`icone/${techIconMap[tech]}.png`"
                       :alt="tech"
                       class="w-4 h-4"
                     />
