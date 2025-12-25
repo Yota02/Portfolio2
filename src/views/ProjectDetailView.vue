@@ -29,8 +29,8 @@ const project = computed(() => {
 
 // Ajout: Propriété calculée pour construire les chemins complets des images
 const fullImages = computed(() => {
-  return project.value.images.map(img => 
-    img.startsWith('http') ? img : `${baseUrl}public/projet/${project.value.folder}/${img}`
+  return project.value.images.map(img =>
+    img.startsWith('http') ? img : `${baseUrl}projet/${project.value.folder}/${img}`
   )
 })
 
@@ -53,14 +53,14 @@ const techIcons = ref<Record<string, string>>({})
 
 onMounted(() => {
   const icons: Record<string, string> = {}
-  
+
   for (const tech of project.value.tags) {
     const iconFileName = techIconMap[tech]
     if (iconFileName) {
       icons[tech] = `${iconFileName}.png`
     }
   }
-  
+
   techIcons.value = icons
 })
 
@@ -183,7 +183,7 @@ const getTechIcon = (tech: string): string => {
                 </RouterLink>
                 <p>{{ sub.description }}</p>
                 <div v-if="sub.images.length > 0" class="sub-images">
-                  <img v-for="img in sub.images" :key="img" :src="`${baseUrl}public/projet/${project.folder}/${img}`" :alt="sub.name" class="sub-image" />
+                  <img v-for="img in sub.images" :key="img" :src="`${baseUrl}projet/${project.folder}/${img}`" :alt="sub.name" class="sub-image" />
                 </div>
               </div>
             </div>

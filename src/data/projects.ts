@@ -70,7 +70,7 @@ export const techIconMap: Record<string, string> = {
   'Reinforcement Learning': 'reinforcement_learning',
   'Jeux': 'jeux',
   'Twig': 'twig',
-  'JUnit': 'junit', 
+  'JUnit': 'junit',
   'Tkinter': 'Tkinter',
   'CustomTkinter': 'CustomTkinter',
   'Watchdog': 'Watchdog',
@@ -115,7 +115,7 @@ export const projects: Project[] = [
     longDescription: 'Break The Code est une plateforme interactive pour les défis Capture The Flag (CTF) en cybersécurité, développée dans le cadre d\'un projet associatif à l\'IUT. Elle permet aux participants de tester leurs compétences en sécurité informatique de manière ludique et pédagogique.',
     tags: ['Python', 'Flask', 'JavaScript', 'HTML5', 'CSS3', 'Docker', 'Scrum', 'MySQL', 'SSH'],
     images: ['affichage_challenge.png', 'breakthecode1.png', 'challenge.png', 'ssh.png', 'rainbow_jumper.gif', 'cristal_malicieux.gif'],  // Changé pour ne contenir que le nom du fichier
-    logo: 'logo.png', 
+    logo: 'logo.png',
     category: 'Dev Web',
     purpose: 'Éducation',
     features: [
@@ -200,7 +200,7 @@ export const projects: Project[] = [
     endDate: 'Avril 2025',
     isOngoing: false,
     newTech: ['Pandas'],  // Nouvelles
-  }, 
+  },
   {
     id: 'project-5',
     name: 'Trains',
@@ -224,15 +224,15 @@ export const projects: Project[] = [
     endDate: 'Juin 2024',
     isOngoing: false,
     newTech: ['JavaFX', 'JUnit'],  // Toutes apprises
-  }, 
+  },
   {
     id: 'project-6',
     name: 'Img Classifier',
     description: 'Un logiciel basé sur un model d\'Intéligence Artificielle pour trié des images',
     longDescription: 'L\'idée de ce projet personnel est née d\'une problématique liée au tri des images dans une bibliothèque. Le processus consistant à classer les images par catégorie tout en les renommant s\'avérait long et fastidieux. Je me suis alors dit : pourquoi ne pas créer une IA capable de réaliser cette tâche à ma place ? \n Cela m\'a conduit à explorer ce sujet, en me lançant dans la réalisation de ce projet. J\'ai ainsi découvert des outils comme PyTorch, les réseaux de convolution et le deep learning.',
     tags: ['Python', 'Tkinter', 'Pytorch'],
-    images: ['res_lumine.png', 'cnn.png','convolution.gif', 'entrainement.png'],  
-    logo: 'logo.png',  
+    images: ['res_lumine.png', 'cnn.png','convolution.gif', 'entrainement.png'],
+    logo: 'logo.png',
     category: 'IA',
     purpose: 'Personnel',
     features: [
@@ -249,14 +249,14 @@ export const projects: Project[] = [
     endDate: 'Juin 2024',
     isOngoing: false,
     newTech: ['Pytorch'],  // Nouvelles
-  }, 
+  },
   {
     id: 'project-7',
     name: 'Victoria',
     description: 'Victoria est une application de bureau utilisant une intelligence artificielle locale.',
     longDescription: 'Elle a était conçue pour assister les utilisateurs dans diverses tâches quotidiennes grâce à une interface conviviale. Elle est complétement modulaire et personnalisable. Il est possible d\'ajouter des plugins pour étendre ses fonctionnalités de manière simple et efficace.',
     tags: ['Python', 'CustomTkinter', 'Watchdog', 'ChromaDb', 'Ollama'],
-    images: ['main.png', 'rss.png','issue_maker.png', 'logo.png'],  
+    images: ['main.png', 'rss.png','issue_maker.png', 'logo.png'],
     logo: 'logo.png',
     logo_recadrer: 'logo_recadrer.png',
     category: 'IA',
@@ -291,15 +291,15 @@ export const projects: Project[] = [
         features: ['Intégration GitHub', 'Génération automatique']
       }
     ]
-  }, 
+  },
   {
     id: 'project-8',
     name: 'World of chan',
     description: '',
     longDescription: 'World of Chan est une application web conçue pour aider les utilisateurs à apprendre de nouvelles langues de manière ludique et efficace. En utilisant des quiz interactifs et des fiches de révision, l\'application vise à faciliter l\'apprentissage quotidien de 10 mots dans une langue étrangère choisie par l\'utilisateur.',
     tags: ['Symfony', 'Twig', 'Firebase', 'MySQL', 'CSS3', 'HTML5', 'JavaScript'],
-    images: ['main.png', 'shiru.png','main_langue.png', 'shiruchan-liste.png', 'shiruchan-quiz.png'],  
-    logo: 'logo.png',  
+    images: ['main.png', 'shiru.png','main_langue.png', 'shiruchan-liste.png', 'shiruchan-quiz.png'],
+    logo: 'logo.png',
     category: 'Dev Web',
     purpose: 'Personnel',
     features: [
@@ -390,36 +390,13 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 'project-9',
-    name: 'EarthToSpace',
-    description: '',
-    longDescription: '',
-    tags: ['Symfony', 'Twig','MySQL', 'CSS3', 'HTML5', 'JavaScript'],
-    images: ['res_lumine.png', 'cnn.png','convolution.gif', 'entrainement.png'],  
-    logo: 'logo.png',  
-    category: 'Dev Web',
-    purpose: 'Personnel',
-    features: [
-      '',
-    ],
-    links: {
-      demo: 'https://yota02.github.io/WorldOfChan/',
-      github: '#'
-    },
-    folder: 'EarthToSpace',
-    startDate: 'Novembre 2025',
-    endDate: undefined,
-    isOngoing: true,
-    newTech: [],  // Aucune nouvelle
-  }, 
-  {
     id: 'project-10',
     name: 'Anakomi',
     description: 'Ce site permet de noté des jeux vidéo, anime et manga afin de partagé son avis avec la communauté.',
     longDescription: '',
     tags: ['Flask', 'MySQL', 'CSS3', 'HTML5', 'JavaScript'],
-    images: ['main_anime.png', 'main_jv.png','top_anime.png'],  
-    logo: 'logo.png',  
+    images: ['main_anime.png', 'main_jv.png','top_anime.png'],
+    logo: 'logo.png',
     category: 'Dev Web',
     purpose: 'Personnel',
     features: [
@@ -436,8 +413,8 @@ export const projects: Project[] = [
     endDate: 'Septembre 2025',
     isOngoing: false,
     newTech: [],  // Aucune nouvelle
-  }, 
-] 
+  },
+]
 
 // Fonction helper pour récupérer un projet par son ID
 export const getProjectById = (id: string): Project | undefined => {
