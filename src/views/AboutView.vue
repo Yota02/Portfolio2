@@ -107,7 +107,7 @@
               <h3>Collaborons</h3>
               <p>Prêt à relever des défis techniques ?</p>
             </div>
-            <a href="/pdf/cv.pdf" class="btn-download" download>
+            <a href="https://yota02.github.io/Portfolio2/pdf/cv.pdf" target="_blank" rel="noopener" class="btn-download">
               <span>Télécharger CV</span>
               <div class="icon-circle">
                 <i class="fas fa-arrow-down"></i>
