@@ -23,7 +23,8 @@ const project = computed(() => {
     startDate: undefined,
     endDate: undefined,
     isOngoing: undefined,
-    subProjects: []
+    subProjects: [],
+    competencies: [] // Ajout de la propriété manquante
   }
 })
 
@@ -78,8 +79,8 @@ const categoryColors: Record<string, string> = {
 
 // Fonction utilitaire pour la couleur de fond légère (hex + opacité)
 const getBgColor = (category: string) => {
-  const color = categoryColors[category] || '#ccc';
-  return `${color}15`; // Ajoute ~10% d'opacité au code hex
+  const color = categoryColors[category] || '#ccc'
+  return `${color}15`
 }
 
 const isVideo = (src: string): boolean => {

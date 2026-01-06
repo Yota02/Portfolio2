@@ -38,7 +38,7 @@ export interface Project {
   isOngoing?: boolean
   newTech: string[]
   subProjects?: SubProject[]
-  competencies?: Competency[]
+  competencies?: Competency[] // Déjà optionnel, mais s'assurer qu'il est bien défini
 }
 
 export const techIconMap: Record<string, string> = {
