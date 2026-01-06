@@ -65,6 +65,13 @@ const getTechIcon = (tech: string): string => {
   return techIcons.value[tech] || ''
 }
 
+// Fonction pour obtenir le chemin de l'image du projet avec vérification
+const getProjectImage = (imagePath: string): string => {
+  if (!imagePath) return ''
+  if (imagePath.startsWith('http')) return imagePath
+  return `${baseUrl}projet/${project.value.folder || ''}/${imagePath}`
+}
+
 // État pour la modale de compétences
 const showCompetencies = ref(false)
 
@@ -216,7 +223,7 @@ const isVideo = (src: string): boolean => {
                 </RouterLink>
                 <p>{{ sub.description }}</p>
                 <div v-if="sub.images.length > 0" class="sub-images">
-                  <img v-for="img in sub.images" :key="img" :src="`${baseUrl}projet/${project.folder}/${img}`" :alt="sub.name" class="sub-image" />
+                  <img v-for="img in sub.images" :key="img" :src="getProjectImage(img)" :alt="sub.name" class="sub-image" />
                 </div>
               </div>
             </div>

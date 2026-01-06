@@ -81,7 +81,7 @@ const getProjectLogo = (project: Project) => {
         <div
           v-for="category in categoryOrder"
           :key="category"
-          v-show="competenciesByCategory[category]"
+          v-show="competenciesByCategory[category] && competenciesByCategory[category].length > 0"
           class="category-section"
         >
           <div class="category-header" :style="{ borderLeftColor: categoryColors[category] }">
@@ -95,7 +95,7 @@ const getProjectLogo = (project: Project) => {
 
           <div class="competencies-grid">
             <div
-              v-for="(comp, index) in competenciesByCategory[category]"
+              v-for="(comp, index) in (competenciesByCategory[category] || [])"
               :key="index"
               class="competency-card"
               :style="{ borderTopColor: categoryColors[category] }"
