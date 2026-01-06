@@ -9,15 +9,22 @@ export interface SubProject {
   features: string[]
 }
 
+// Interface stricte basée sur le PN du BUT Informatique
+export interface Competency {
+  category: 'Réaliser' | 'Optimiser' | 'Administrer' | 'Gérer' | 'Conduire' | 'Collaborer'
+  level: 'Niveau 1' | 'Niveau 2' | 'Niveau 3'
+  items: string[] // Liste des AC (Apprentissages Critiques)
+}
+
 export interface Project {
   id: string
   name: string
   description: string
   longDescription: string
   tags: string[]
-  images: string[]  // Maintenant, contient seulement les noms de fichiers ou URLs externes
-  logo: string  // Maintenant, nom de fichier ou URL externe
-  logo_recadrer?: string  // Nouveau champ optionnel pour une version recadrée du logo
+  images: string[]
+  logo: string
+  logo_recadrer?: string
   category: ProjectCategory
   purpose: ProjectPurpose
   features: string[]
@@ -25,15 +32,15 @@ export interface Project {
     demo: string
     github: string
   }
-  folder: string  // Nouveau champ pour le dossier du projet
+  folder: string
   startDate?: string
   endDate?: string
   isOngoing?: boolean
-  newTech: string[]      // Nouvelles technologies apprises pendant/après le projet
-  subProjects?: SubProject[]  // Nouveau champ pour les sous-projets
+  newTech: string[]
+  subProjects?: SubProject[]
+  competencies?: Competency[]
 }
 
-// Mapping des noms de technologies vers les noms de fichiers d'icônes
 export const techIconMap: Record<string, string> = {
   'Python': 'python',
   'Flask': 'flask',
@@ -79,68 +86,117 @@ export const techIconMap: Record<string, string> = {
   'Ollama': 'ollama',
 }
 
-// Ordre d'affichage des catégories
 export const categoryOrder: ProjectCategory[] = ['Dev Web', 'IA', 'Jeux Vidéo', 'Logiciel']
 
-// LISTE DE TOUS LES PROJETS - AJOUTEZ VOS NOUVEAUX PROJETS ICI
+// LISTE DES PROJETS AVEC LES VRAIS AC DU BUT INFO
 export const projects: Project[] = [
   {
     id: 'project-1',
     name: 'CodeTonFutur',
-    description: 'CodeTonFutur est un site de vulgarisation scientifique axé sur l\'informatique, montrant comment celle-ci peut s\'intégrer dans divers domaines scientifiques. Le site propose de nombreux défis interactifs couvrant une variété de thèmes scientifiques.',
+    description: 'CodeTonFutur est un site de vulgarisation scientifique axé sur l\'informatique.',
     longDescription: 'Ce projet est une application web complète qui démontre l\'utilisation des technologies modernes comme Vue.js, TypeScript et Vite. L\'application offre une expérience utilisateur fluide et performante.',
-    tags: ['Flask', 'Python', 'MySQL','JavaScript', 'HTML5', 'CSS3',],  // Gardé pour compatibilité, mais non utilisé dans l'affichage
-    images: ['main.png', 'chatbot.png', 'Exercice1.png', 'progression.png'],  // Gardé tel quel pour les URLs externes
-    logo: 'logo.png',  // Gardé tel quel pour les URLs externes
+    tags: ['Flask', 'Python', 'MySQL','JavaScript', 'HTML5', 'CSS3'],
+    images: ['main.png', 'chatbot.png', 'Exercice1.png', 'progression.png'],
+    logo: 'logo.png',
     category: 'Dev Web',
     purpose: 'Personnel',
     features: [
-      'Un chatbot intelligent basé sur GPT pour répondre aux questions des étudiants et les guider dans leur apprentissage.',
-      'Des exercices pratiques avec correction automatique et feedback personnalisé pour progresser à son rythme.'
+      'Chatbot intelligent basé sur GPT',
+      'Exercices pratiques avec correction automatique'
     ],
-    links: {
-      demo: '#',
-      github: '#'
-    },
+    links: { demo: '#', github: '#' },
     folder: 'CodeTonFutur',
     startDate: 'Avril 2025',
     endDate: undefined,
     isOngoing: true,
-    newTech: [],  // Apprises pendant le projet
+    newTech: [],
+    competencies: [
+      {
+        category: 'Réaliser',
+        level: 'Niveau 3',
+        items: [
+          'AC31.01 | Choisir et implémenter les architectures adaptées (Architecture Web Vue.js/Flask)',
+          'AC31.03 | Intégrer des solutions dans un environnement de production'
+        ]
+      },
+      {
+        category: 'Conduire',
+        level: 'Niveau 2',
+        items: [
+          'AC25.02 | Formaliser les besoins du client et de l\'utilisateur'
+        ]
+      },
+      {
+        category: 'Gérer',
+        level: 'Niveau 2',
+        items: [
+          'AC24.03 | Organiser la restitution de données à travers la programmation et la visualisation (Tableaux de bord)'
+        ]
+      }
+    ]
   },
   {
     id: 'project-2',
     name: 'Break The Code',
-    description: 'Plateforme dédiée aux défis Capture The Flag. Lors de ma deuxième année à l\'IUT informatique, j\'ai travaillé pour l\'association Yggame sur un événement CTF en cybersécurité.',
-    longDescription: 'Break The Code est une plateforme interactive pour les défis Capture The Flag (CTF) en cybersécurité, développée dans le cadre d\'un projet associatif à l\'IUT. Elle permet aux participants de tester leurs compétences en sécurité informatique de manière ludique et pédagogique.',
+    description: 'Plateforme dédiée aux défis Capture The Flag (CTF) en cybersécurité.',
+    longDescription: 'Break The Code est une plateforme interactive pour les défis Capture The Flag (CTF) en cybersécurité, développée dans le cadre d\'un projet associatif à l\'IUT.',
     tags: ['Python', 'Flask', 'JavaScript', 'HTML5', 'CSS3', 'Docker', 'Scrum', 'MySQL', 'SSH'],
-    images: ['affichage_challenge.png', 'breakthecode1.png', 'challenge.png', 'ssh.png', 'rainbow_jumper.gif', 'cristal_malicieux.gif'],  // Changé pour ne contenir que le nom du fichier
+    images: ['affichage_challenge.png', 'breakthecode1.png', 'challenge.png', 'ssh.png', 'rainbow_jumper.gif', 'cristal_malicieux.gif'],
     logo: 'logo.png',
     category: 'Dev Web',
     purpose: 'Éducation',
     features: [
       'Défis exploitant des vulnérabilités SSH',
-
       'Jeu "Rainbow Jumper" pour obtenir le flag',
-      'Interface web responsive',
       'Déploiement conteneurisé avec Docker'
     ],
-    links: {
-      demo: '#',
-      github: '#'
-    },
+    links: { demo: '#', github: '#' },
     folder: 'CTF',
     startDate: 'September 2024',
     endDate: 'Janvier 2025',
     isOngoing: false,
-    newTech: ['Docker', 'Scrum', 'SSH', 'Flask'],  // Nouvelles apprises
+    newTech: ['Docker', 'Scrum', 'SSH', 'Flask'],
+    competencies: [
+      {
+        category: 'Réaliser',
+        level: 'Niveau 2',
+        items: [
+          'AC21.01 | Élaborer et implémenter les spécifications fonctionnelles et non fonctionnelles à partir des exigences',
+          'AC21.04 | Vérifier et valider la qualité de l’application par les tests'
+        ]
+      },
+      {
+        category: 'Administrer',
+        level: 'Niveau 2',
+        items: [
+          'AC23.01 | Concevoir et développer des applications communicantes',
+          'AC23.02 | Utiliser des serveurs et des services réseaux virtualisés (Docker)',
+          'AC23.03 | Sécuriser les services et données d’un système (SSH)'
+        ]
+      },
+      {
+        category: 'Conduire',
+        level: 'Niveau 2',
+        items: [
+          'AC25.04 | Définir et mettre en œuvre une démarche de suivi de projet (Scrum/Agile)'
+        ]
+      },
+      {
+        category: 'Collaborer',
+        level: 'Niveau 2',
+        items: [
+          'AC26.03 | Mobiliser les compétences interpersonnelles pour travailler dans une équipe informatique',
+          'AC26.04 | Rendre compte de son activité professionnelle'
+        ]
+      }
+    ],
     subProjects: [
       {
         id: 'sub-1',
         name: 'Défi SSH',
         description: 'Défi basé sur des vulnérabilités SSH.',
         images: ['ssh.png'],
-        features: ['Exploitation de failles SSH', 'Obtention de flag via connexion sécurisée']
+        features: ['Exploitation de failles SSH', 'Obtention de flag']
       },
       {
         id: 'sub-2',
@@ -154,107 +210,189 @@ export const projects: Project[] = [
   {
     id: 'project-3',
     name: 'Capital Wars',
-    description: 'Application Web de jeu vidéo qui permet aux utilisateurs de s\'affronter dans la simulation d\'entreprise.',
+    description: 'Application Web de jeu vidéo de simulation d\'entreprise.',
     longDescription: 'Application Web de jeu vidéo qui permet aux utilisateurs de s\'affronter dans la simulation d\'entreprise.',
     tags: ['Symfony', 'Twig', 'CSS3', 'HTML5', 'JavaScript', 'MySQL'],
-    images: ['https://picsum.photo/seed/project3/600/400'],  // Gardé tel quel pour les URLs externes
-    logo: 'logo.png',  // Gardé tel quel pour les URLs externes
+    images: ['https://picsum.photo/seed/project3/600/400'],
+    logo: 'logo.png',
     category: 'Dev Web',
     purpose: 'Éducation',
     features: [
       'Mécaniques de jeu interactives',
-      'Graphismes optimisés',
-      'Système de niveaux progressifs',
-      'Support multiplateforme'
+      'Système de niveaux progressifs'
     ],
-    links: {
-      demo: 'https://dev.capitalwars.rlbrt.fr/accueil',
-      github: '#'
-    },
+    links: { demo: 'https://dev.capitalwars.rlbrt.fr/accueil', github: '#' },
     folder: 'CapitalWars',
     startDate: 'Septembre 2025',
     endDate: undefined,
     isOngoing: true,
-    newTech: ['Symfony', 'Twig'],  // Toutes apprises
+    newTech: ['Symfony', 'Twig'],
+    competencies: [
+      {
+        category: 'Réaliser',
+        level: 'Niveau 2',
+        items: [
+          'AC21.03 | Adopter de bonnes pratiques de conception et de programmation (MVC Symfony)',
+          'AC21.02 | Appliquer des principes d’accessibilité et d’ergonomie'
+        ]
+      },
+      {
+        category: 'Gérer',
+        level: 'Niveau 2',
+        items: [
+          'AC24.01 | Optimiser les modèles de données de l’entreprise'
+        ]
+      },
+      {
+        category: 'Collaborer',
+        level: 'Niveau 2',
+        items: [
+          'AC26.01 | Comprendre la diversité, la structure et la dimension de l’informatique dans une organisation'
+        ]
+      }
+    ]
   },
   {
     id: 'project-4',
     name: 'Star Guardian',
-    description: 'Outils d\'analyse de données Statistiques d\'alerte collision satellites',
+    description: 'Outils d\'analyse de données statistiques d\'alerte collision satellites.',
     longDescription: 'Star Guardian est un logiciel conçu pour effectuer des analyses statistiques avancées sur les alertes de collision impliquant des satellites en orbite.',
     tags: ['Python', 'Pandas', 'Excel'],
-    images: ['main.png', 'starguardian_complet.png', 'execl_star_guardian.png'],  // Gardé tel quel pour les URLs externes
-    logo: 'logo.png',  // Gardé tel quel pour les URLs externes
+    images: ['main.png', 'starguardian_complet.png', 'execl_star_guardian.png'],
+    logo: 'logo.png',
     category: 'Logiciel',
     purpose: 'Éducation',
     features: [
-      'Une interface intuitive permettant de visualiser les données et les alertes de collision de manière claire et efficace.',
-      'Ce fichier regroupe toutes les analyses statistiques, telles que les probabilités de collision et les distances qui les séparaient. ',
+      'Interface intuitive de visualisation des données',
+      'Analyses statistiques de probabilités de collision'
     ],
-    links: {
-      demo: '#',
-      github: '#'
-    },
+    links: { demo: '#', github: '#' },
     folder: 'starGuardian',
     startDate: 'Janvier 2025',
     endDate: 'Avril 2025',
     isOngoing: false,
-    newTech: ['Pandas'],  // Nouvelles
+    newTech: ['Pandas'],
+    competencies: [
+      {
+        category: 'Réaliser',
+        level: 'Niveau 1',
+        items: [
+          'AC11.01 | Implémenter des conceptions simples',
+          'AC11.04 | Développer des interfaces utilisateurs'
+        ]
+      },
+      {
+        category: 'Optimiser',
+        level: 'Niveau 2',
+        items: [
+          'AC22.01 | Choisir des structures de données complexes adaptées au problème (Dataframes Pandas)'
+        ]
+      },
+      {
+        category: 'Gérer',
+        level: 'Niveau 2',
+        items: [
+          'AC24.04 | Manipuler des données hétérogènes (Excel, CSV, API)'
+        ]
+      },
+      {
+        category: 'Conduire',
+        level: 'Niveau 1',
+        items: [
+          'AC15.01 | Appréhender les besoins du client et de l\'utilisateur'
+        ]
+      }
+    ]
   },
   {
     id: 'project-5',
     name: 'Trains',
-    description: 'Adaptation du jeu de société Trains en jeu vidéo',
-    longDescription: 'Lors de ma première année, j\'ai dû développer une application en Java. Ce projet consistait à recréer le jeu de société japonais Trains en Java, en commençant par le back-end, puis en abordant dans un second temps l\'interface graphique avec JavaFX.',
+    description: 'Adaptation du jeu de société Trains en jeu vidéo Java.',
+    longDescription: 'Projet consistant à recréer le jeu de société japonais Trains en Java, avec une interface graphique JavaFX et une approche TDD.',
     tags: ['Java', 'JavaFX', 'JUnit'],
-    images: ['Trains_IHM.png', 'jeux_en_cours (1).gif', 'test_train.png', 'page_accueil.gif'],  // Gardé tel quel pour les URLs externes
-    logo: 'logo.png',  // Gardé tel quel pour les URLs externes
+    images: ['Trains_IHM.png', 'jeux_en_cours (1).gif', 'test_train.png', 'page_accueil.gif'],
+    logo: 'logo.png',
     category: 'Jeux Vidéo',
     purpose: 'Éducation',
     features: [
-      'Interface graphique développée avec JavaFX, permettant une expérience utilisateur intuitive.',
-      'Développement piloté par les tests (TDD) avec JUnit pour garantir la fiabilité du code. Mise en place d\'une couverture de tests complète validant la logique du jeu, les règles, le système de points et les conditions de victoire. Ces tests ont été reconnus par l\'équipe pédagogique et intégrés à leur suite de tests de référence pour noté le projet.',
+      'Interface graphique développée avec JavaFX',
+      'Développement piloté par les tests (TDD) avec JUnit'
     ],
-    links: {
-      demo: '#',
-      github: '#'
-    },
+    links: { demo: '#', github: '#' },
     folder: 'trains',
     startDate: 'Mars 2024',
     endDate: 'Juin 2024',
     isOngoing: false,
-    newTech: ['JavaFX', 'JUnit'],  // Toutes apprises
+    newTech: ['JavaFX', 'JUnit'],
+    competencies: [
+      {
+        category: 'Réaliser',
+        level: 'Niveau 1',
+        items: [
+          'AC11.03 | Faire des essais et évaluer leurs résultats en regard des spécifications (TDD/JUnit)',
+          'AC11.04 | Développer des interfaces utilisateurs (JavaFX)'
+        ]
+      },
+      {
+        category: 'Optimiser',
+        level: 'Niveau 1',
+        items: [
+          'AC12.01 | Analyser un problème avec méthode (découpage en éléments algorithmiques simples)',
+          'AC12.02 | Comparer des algorithmes pour des problèmes classiques (Dijkstra)'
+        ]
+      },
+      {
+        category: 'Optimiser',
+        level: 'Niveau 2',
+        items: [
+          'AC22.01 | Choisir des structures de données complexes adaptées au problème (Graphes)'
+        ]
+      }
+    ]
   },
   {
     id: 'project-6',
     name: 'Img Classifier',
-    description: 'Un logiciel basé sur un model d\'Intéligence Artificielle pour trié des images',
-    longDescription: 'L\'idée de ce projet personnel est née d\'une problématique liée au tri des images dans une bibliothèque. Le processus consistant à classer les images par catégorie tout en les renommant s\'avérait long et fastidieux. Je me suis alors dit : pourquoi ne pas créer une IA capable de réaliser cette tâche à ma place ? \n Cela m\'a conduit à explorer ce sujet, en me lançant dans la réalisation de ce projet. J\'ai ainsi découvert des outils comme PyTorch, les réseaux de convolution et le deep learning.',
+    description: 'Logiciel basé sur une IA pour trier des images.',
+    longDescription: 'Création d\'une IA capable de classer les images par catégorie. Utilisation de PyTorch et des réseaux de convolution.',
     tags: ['Python', 'Tkinter', 'Pytorch'],
     images: ['res_lumine.png', 'cnn.png','convolution.gif', 'entrainement.png'],
     logo: 'logo.png',
     category: 'IA',
     purpose: 'Personnel',
     features: [
-      'L\'image a été détectée avec une précision de 98 % lors des tests.',
-      'La convolution extrait des caractéristiques importantes des images en appliquant des filtres pour détecter des motifs comme les bords, les textures et les formes.',
-      'Un tableau de bord permettant de visualiser sa progression et d\'identifier les points à améliorer.',
+      'Détection avec précision de 98%',
+      'Réseaux de convolution (CNN)',
+      'Tableau de bord de progression'
     ],
-    links: {
-      demo: '#',
-      github: '#'
-    },
+    links: { demo: '#', github: '#' },
     folder: 'IA_Kiana',
     startDate: 'Juin 2023',
     endDate: 'Juin 2024',
     isOngoing: false,
-    newTech: ['Pytorch'],  // Nouvelles
+    newTech: ['Pytorch'],
+    competencies: [
+      {
+        category: 'Réaliser',
+        level: 'Niveau 2',
+        items: [
+          'AC21.03 | Adopter de bonnes pratiques de conception et de programmation'
+        ]
+      },
+      {
+        category: 'Optimiser',
+        level: 'Niveau 2',
+        items: [
+          'AC22.02 | Utiliser des techniques algorithmiques adaptées pour des problèmes complexes (Intelligence Artificielle)'
+        ]
+      }
+    ]
   },
   {
     id: 'project-7',
     name: 'Victoria',
-    description: 'Victoria est une application de bureau utilisant une intelligence artificielle locale.',
-    longDescription: 'Elle a était conçue pour assister les utilisateurs dans diverses tâches quotidiennes grâce à une interface conviviale. Elle est complétement modulaire et personnalisable. Il est possible d\'ajouter des plugins pour étendre ses fonctionnalités de manière simple et efficace.',
+    description: 'Assistant de bureau modulaire avec IA locale.',
+    longDescription: 'Victoria est une application de bureau utilisant une intelligence artificielle locale (Ollama), extensible via des plugins.',
     tags: ['Python', 'CustomTkinter', 'Watchdog', 'ChromaDb', 'Ollama'],
     images: ['main.png', 'rss.png','issue_maker.png', 'logo.png'],
     logo: 'logo.png',
@@ -262,19 +400,40 @@ export const projects: Project[] = [
     category: 'IA',
     purpose: 'Personnel',
     features: [
-      'Interface utilisateur moderne et intuitive avec CustomTkinter.',
-      'Système de plugins pour ajouter facilement de nouvelles fonctionnalités.',
-      'Intégration de ChromaDb pour la gestion de la mémoire du model',
+      'Interface CustomTkinter moderne',
+      'Système de plugins',
+      'Intégration RAG (ChromaDb)'
     ],
-    links: {
-      demo: '#',
-      github: 'https://github.com/Yota02/Victoria_v3'
-    },
+    links: { demo: '#', github: 'https://github.com/Yota02/Victoria_v3' },
     folder: 'Victoria',
     startDate: 'Mai 2025',
     endDate: undefined,
     isOngoing: true,
-    newTech: ['CustomTkinter', 'Watchdog'],  // Nouvelles
+    newTech: ['CustomTkinter', 'Watchdog'],
+    competencies: [
+      {
+        category: 'Réaliser',
+        level: 'Niveau 3',
+        items: [
+          'AC31.02 | Faire évoluer une application existante (Système de Plugins)',
+          'AC31.01 | Choisir et implémenter les architectures adaptées (Modulaire)'
+        ]
+      },
+      {
+        category: 'Optimiser',
+        level: 'Niveau 2',
+        items: [
+          'AC22.02 | Utiliser des techniques algorithmiques adaptées pour des problèmes complexes (IA, RAG)'
+        ]
+      },
+      {
+        category: 'Administrer',
+        level: 'Niveau 1',
+        items: [
+          'AC13.01 | Identifier les différents composants (matériels et logiciels) d’un système numérique'
+        ]
+      }
+    ],
     subProjects: [
       {
         id: 'sub-victoria-1',
@@ -295,104 +454,56 @@ export const projects: Project[] = [
   {
     id: 'project-8',
     name: 'World of chan',
-    description: '',
-    longDescription: 'World of Chan est une application web conçue pour aider les utilisateurs à apprendre de nouvelles langues de manière ludique et efficace. En utilisant des quiz interactifs et des fiches de révision, l\'application vise à faciliter l\'apprentissage quotidien de 10 mots dans une langue étrangère choisie par l\'utilisateur.',
+    description: 'Application d\'apprentissage de langues par la gamification.',
+    longDescription: 'Application web pour apprendre 10 mots par jour via des quiz et des fiches de révision.',
     tags: ['Symfony', 'Twig', 'Firebase', 'MySQL', 'CSS3', 'HTML5', 'JavaScript'],
     images: ['main.png', 'shiru.png','main_langue.png', 'shiruchan-liste.png', 'shiruchan-quiz.png'],
     logo: 'logo.png',
     category: 'Dev Web',
     purpose: 'Personnel',
     features: [
-      'Permet d\'apprendre 10 mots d\'une langue étrangère par jour à travers des quiz et des fiches de révision.',
-      'Système de rappel intelligent pour renforcer la mémorisation des mots appris.',
-      'Avec 10 langues proposées, les utilisateurs peuvent choisir celle qu\'ils souhaitent apprendre.',
+      'Apprentissage quotidien gamifié',
+      'Système de rappel intelligent',
+      'Support de 10 langues'
     ],
-    links: {
-      demo: 'https://yota02.github.io/WorldOfChan/',
-      github: '#'
-    },
+    links: { demo: 'https://yota02.github.io/WorldOfChan/', github: '#' },
     folder: 'WorldOfChan',
     startDate: 'Septembre 2025',
     endDate: undefined,
     isOngoing: true,
-    newTech: ['Firebase'],  // Nouvelle
-    subProjects: [
+    newTech: ['Firebase'],
+    competencies: [
       {
-        id: 'sub-worldofchan-english',
-        name: 'Anglais',
-        description: 'Apprenez l\'anglais avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
-        images: [],
-        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
+        category: 'Réaliser',
+        level: 'Niveau 3',
+        items: [
+          'AC31.01 | Choisir et implémenter les architectures adaptées (Mobile/PWA)'
+        ]
       },
       {
-        id: 'sub-worldofchan-spanish',
-        name: 'Espagnol',
-        description: 'Apprenez l\'espagnol avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
-        images: [],
-        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
+        category: 'Administrer',
+        level: 'Niveau 2',
+        items: [
+          'AC23.01 | Concevoir et développer des applications communicantes (Firebase)'
+        ]
       },
       {
-        id: 'sub-worldofchan-french',
-        name: 'Français',
-        description: 'Apprenez le français avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
-        images: [],
-        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
-      },
-      {
-        id: 'sub-worldofchan-german',
-        name: 'Allemand',
-        description: 'Apprenez l\'allemand avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
-        images: [],
-        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
-      },
-      {
-        id: 'sub-worldofchan-italian',
-        name: 'Italien',
-        description: 'Apprenez l\'italien avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
-        images: [],
-        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
-      },
-      {
-        id: 'sub-worldofchan-japanese',
-        name: 'Japonais',
-        description: 'Apprenez le japonais avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
-        images: [],
-        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
-      },
-      {
-        id: 'sub-worldofchan-chinese',
-        name: 'Chinois',
-        description: 'Apprenez le chinois avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
-        images: [],
-        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
-      },
-      {
-        id: 'sub-worldofchan-korean',
-        name: 'Coréen',
-        description: 'Apprenez le coréen avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
-        images: [],
-        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
-      },
-      {
-        id: 'sub-worldofchan-arabic',
-        name: 'Arabe',
-        description: 'Apprenez l\'arabe avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
-        images: [],
-        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
-      },
-      {
-        id: 'sub-worldofchan-russian',
-        name: 'Russe',
-        description: 'Apprenez le russe avec des quiz quotidiens et des fiches de révision pour maîtriser 10 mots par jour.',
-        images: [],
-        features: ['Quiz interactifs', 'Fiches de révision', 'Rappels intelligents']
+        category: 'Gérer',
+        level: 'Niveau 1',
+        items: [
+          'AC14.01 | Mettre à jour et interroger une base de données relationnelle (MySQL)'
+        ]
       }
+    ],
+    subProjects: [
+        { id: 'sub-worldofchan-english', name: 'Anglais', description: 'Apprentissage de l\'anglais', images: [], features: [] },
+        { id: 'sub-worldofchan-spanish', name: 'Espagnol', description: 'Apprentissage de l\'espagnol', images: [], features: [] },
     ]
   },
   {
     id: 'project-10',
     name: 'Anakomi',
-    description: 'Ce site permet de noté des jeux vidéo, anime et manga afin de partagé son avis avec la communauté.',
+    description: 'Site communautaire de notation de jeux vidéo, anime et manga.',
     longDescription: '',
     tags: ['Flask', 'MySQL', 'CSS3', 'HTML5', 'JavaScript'],
     images: ['main_anime.png', 'main_jv.png','top_anime.png'],
@@ -400,28 +511,86 @@ export const projects: Project[] = [
     category: 'Dev Web',
     purpose: 'Personnel',
     features: [
-      'Créer des animés / manga / jeux vidéo afin de les notés',
-      'Noté les animés / manga / jeux vidéo des autres utilisateurs et ajouter un commentaires',
-      'Voir les top animés / manga / jeux vidéo des autres utilisateurs de la communauté',
+      'Notation et commentaires',
+      'Classements communautaires'
     ],
-    links: {
-      demo: 'https://anakomi.onrender.com/',
-      github: '#'
-    },
+    links: { demo: 'https://anakomi.onrender.com/', github: '#' },
     folder: 'Anakomi',
     startDate: 'Septembre 2025',
     endDate: 'Septembre 2025',
     isOngoing: false,
-    newTech: [],  // Aucune nouvelle
+    newTech: [],
+    competencies: [
+      {
+        category: 'Réaliser',
+        level: 'Niveau 1',
+        items: [
+          'AC11.01 | Implémenter des conceptions simples',
+          'AC11.04 | Développer des interfaces utilisateurs'
+        ]
+      },
+      {
+        category: 'Gérer',
+        level: 'Niveau 1',
+        items: [
+          'AC14.03 | Concevoir une base de données relationnelle à partir d’un cahier des charges'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'project-11',
+    name: "Nuit de l'Info 2025",
+    description: "Défi national de développement web en équipe sur une nuit entière.",
+    longDescription: "Projet réalisé dans le cadre de la Nuit de l'Info. Le défi consistait à collaborer en équipe pour développer une application web fonctionnelle du coucher au lever du soleil. Ce projet a nécessité une gestion stricte du temps, une répartition efficace des tâches et une adaptation rapide aux contraintes du thème imposé.",
+    tags: ['Vue.js', 'JavaScript', 'HTML5', 'CSS3', 'Git'],
+    images: ['main.png', 'BD_presentation.png', 'BD.png', 'texte.png', 'tux_animation.webm'], // Pensez à mettre vos propres noms d'images
+    logo: 'tux.png',
+    category: 'Dev Web',
+    purpose: 'Éducation',
+    features: [
+      'Développement intensif en temps limité (Hackathon)',
+      'Travail collaboratif et répartition des tâches',
+      'Respect d\'un thème et de contraintes techniques'
+    ],
+    links: { demo: 'https://yota02.github.io/Ndi-2026/#/', github: 'https://github.com/Yota02/Ndi-2026' },
+    folder: 'Ndi2025',
+    startDate: 'Décembre 2025',
+    endDate: 'Décembre 2025',
+    isOngoing: false,
+    newTech: [],
+    competencies: [
+      {
+        category: 'Collaborer',
+        level: 'Niveau 2',
+        items: [
+          'AC26.03 | Mobiliser les compétences interpersonnelles pour travailler dans une équipe informatique',
+          'AC26.01 | Comprendre la diversité et la dynamique d’une équipe informatique'
+        ]
+      },
+      {
+        category: 'Conduire',
+        level: 'Niveau 2',
+        items: [
+          'AC25.01 | Organiser le travail d\'une équipe (Répartition des tâches)',
+          'AC25.03 | Identifier les critères de faisabilité (Gestion du temps court)'
+        ]
+      },
+      {
+        category: 'Réaliser',
+        level: 'Niveau 2',
+        items: [
+          'AC21.03 | Adopter de bonnes pratiques de conception et de programmation (Code collaboratif)'
+        ]
+      }
+    ]
   },
 ]
 
-// Fonction helper pour récupérer un projet par son ID
 export const getProjectById = (id: string): Project | undefined => {
   return projects.find(project => project.id === id)
 }
 
-// Fonction helper pour grouper les projets par catégorie
 export const getProjectsByCategory = (): Record<ProjectCategory, Project[]> => {
   return projects.reduce((groups, project) => {
     const category = project.category

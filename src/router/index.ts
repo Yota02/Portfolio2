@@ -68,6 +68,11 @@ const routes = [
       component: SubProjectDetailView,
       props: true
     },
+    {
+      path: '/competencies',
+      name: 'competencies',
+      component: () => import('../views/CompetenciesView.vue')
+    },
   ]
 
 const router = createRouter({

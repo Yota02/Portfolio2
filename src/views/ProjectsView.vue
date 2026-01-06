@@ -59,7 +59,6 @@ const toggleTech = (tech: string) => {
 <template>
   <div class="projects-page">
     <div class="layout-container">
-      <!-- Sidebar gauche pour les icônes des technologies -->
       <aside class="tech-sidebar" :class="{ collapsed: isCollapsed }">
         <div class="sidebar-header">
           <h3 v-if="!isCollapsed" class="sidebar-title">Technologies</h3>
@@ -87,24 +86,29 @@ const toggleTech = (tech: string) => {
           </div>
         </div>
       </aside>
-      
-      <!-- Contenu principal existant -->
+
       <main class="main-content">
         <div class="container">
           <div class="header">
             <h1 class="page-title">Mes Projets ({{ totalProjects }})</h1>
+            <RouterLink to="/competencies" class="competencies-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              Voir les compétences
+            </RouterLink>
           </div>
 
-          <div 
-            v-for="category in categoryOrder" 
-            :key="category" 
+          <div
+            v-for="category in categoryOrder"
+            :key="category"
             class="category-section"
           >
             <template v-if="groupedProjects[category] && groupedProjects[category].length > 0">
               <h2 class="category-title">{{ category }} ({{ groupedProjects[category].length }})</h2>
-              
+
               <div class="projects-grid">
-                <RouterLink 
+                <RouterLink
                   v-for="project in groupedProjects[category]" :key="project.id"
                   :to="{ name: 'project-detail', params: { id: project.id } }"
                   class="project-card"
@@ -117,23 +121,23 @@ const toggleTech = (tech: string) => {
                       loading="lazy"
                     />
                   </div>
-                  
+
                   <div class="card-info-badges">
                     <span class="badge purpose-badge">{{ project.purpose }}</span>
                   </div>
-                  
+
                   <h2 class="card-title">{{ project.name }}</h2>
-                  
+
                   <div class="card-tags">
-                    <span 
-                      v-for="tag in getDisplayedTags(project.tags).displayed" 
-                      :key="tag" 
+                    <span
+                      v-for="tag in getDisplayedTags(project.tags).displayed"
+                      :key="tag"
                       class="tag"
                     >
                       {{ tag }}
                     </span>
-                    <span 
-                      v-if="getDisplayedTags(project.tags).remaining > 0" 
+                    <span
+                      v-if="getDisplayedTags(project.tags).remaining > 0"
                       class="tag tag-more"
                     >
                       +{{ getDisplayedTags(project.tags).remaining }}
@@ -142,7 +146,7 @@ const toggleTech = (tech: string) => {
                       Sous-projets: {{ project.subProjects.length }}
                     </span>
                   </div>
-                  
+
                   <div class="card-footer">
                     <span class="link-text">Voir le projet →</span>
                   </div>
@@ -168,10 +172,15 @@ const toggleTech = (tech: string) => {
   margin: 0 auto;
 }
 
+/* --- MODIFICATION ICI : Header en relatif pour positionner le bouton --- */
 .header {
+  position: relative;
   text-align: center;
   margin-bottom: 4rem;
   animation: fadeInUp 0.6s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes fadeInUp {
@@ -202,9 +211,44 @@ const toggleTech = (tech: string) => {
   opacity: 0.7;
 }
 
+/* --- MODIFICATION ICI : Bouton en absolu --- */
+.competencies-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
+  margin-top: 0;
+  z-index: 10;
+}
+
+.competencies-btn:hover {
+  transform: translateY(calc(-50% - 2px)); /* Ajustement pour garder le centrage + l'effet hover */
+  box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.4);
+}
+
+.competencies-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.competencies-btn:hover svg {
+  transform: scale(1.1);
+}
+
 /* --- NOUVEAUX STYLES POUR LES SECTIONS --- */
 
-/* AJOUT: Conteneur pour une zone de catégorie (Titre + Grille) */
 .category-section {
   margin-bottom: 5rem;
   animation: fadeInUp 0.8s ease-out backwards;
@@ -214,7 +258,6 @@ const toggleTech = (tech: string) => {
 .category-section:nth-child(2) { animation-delay: 0.2s; }
 .category-section:nth-child(3) { animation-delay: 0.3s; }
 
-/* AJOUT: Titre de la catégorie (ex: "Dev Web", "IA") */
 .category-title {
   font-size: 2.2rem;
   font-weight: 700;
@@ -472,7 +515,6 @@ const toggleTech = (tech: string) => {
   color: var(--accent);
 }
 
-/* Nouveaux styles pour le layout */
 .layout-container {
   display: flex;
   min-height: 80vh;
@@ -486,10 +528,10 @@ const toggleTech = (tech: string) => {
   position: sticky;
   margin-top: 10rem;
   height: auto;
-  max-height: 80vh; /* Limiter la hauteur maximale */
+  max-height: 80vh;
   overflow-y: auto;
   animation: fadeInLeft 0.6s ease-out;
-  border-radius: 15px; /* Bordures arrondies */
+  border-radius: 15px;
   margin-right: 1rem;
   transition: width 0.3s ease, padding 0.3s ease;
 }
@@ -601,7 +643,26 @@ const toggleTech = (tech: string) => {
   .page-title {
     font-size: 2rem;
   }
-  
+
+  /* --- MODIFICATION ICI : Gestion du header et bouton sur mobile --- */
+  .header {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .competencies-btn {
+    position: static;
+    transform: none;
+    margin-top: 1.5rem;
+    width: auto;
+    font-size: 0.8rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .competencies-btn:hover {
+    transform: translateY(-2px);
+  }
+
   .category-title {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
@@ -611,55 +672,50 @@ const toggleTech = (tech: string) => {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
- 
+
   .project-card {
     border-radius: 16px;
   }
-  
+
   .card-image-container {
     border-radius: 16px 16px 0 0;
   }
-  
+
   .card-info-badges {
     top: 0.75rem;
     right: 0.75rem;
   }
-  
+
   .purpose-badge {
     font-size: 0.65rem;
     padding: 0.2rem 0.4rem;
   }
-  
+
   .card-title,
   .card-description,
   .card-tags {
     margin-left: 1.5rem;
     margin-right: 1.5rem;
   }
-  
+
   .card-footer {
     padding: 1rem 1.5rem;
   }
-  
-  .layout-container {
-    flex-direction: column;
-  }
-  
+
   .tech-sidebar {
-    width: 100%;
-    height: auto;
-    position: static;
-    border-right: none;
-    border-bottom: 1px solid var(--color-border);
+    padding: 1rem 1.5rem;
     border-radius: 10px;
+    border-bottom: 1px solid var(--color-border);
+    border-right: none;
+    position: static;
+    height: auto;
+    width: 100%;
+  }
+
+  .tech-sidebar.collapsed {
     margin-bottom: 2rem;
   }
-  
-  .tech-sidebar.collapsed {
-    width: 100%;
-    padding: 1rem;
-  }
-  
+
   .main-content {
     padding-left: 0;
     padding-top: 2rem;
