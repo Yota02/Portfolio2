@@ -121,12 +121,12 @@ const isVideo = (src: string): boolean => {
         <div class="main-section">
           <div class="carousel-container">
             <div class="carousel">
-              <div v-if="fullImages.length > 0 && isVideo(fullImages[currentImageIndex])" class="carousel-video">
-                <video :src="fullImages[currentImageIndex]" controls autoplay muted loop class="video-element">
+              <div v-if="fullImages.length > 0 && isVideo(fullImages[currentImageIndex]!)" class="carousel-video">
+                <video :src="fullImages[currentImageIndex]!" controls autoplay muted loop class="video-element">
                   Votre navigateur ne supporte pas la lecture de vidéos.
                 </video>
               </div>
-              <img v-else-if="fullImages.length > 0" :src="fullImages[currentImageIndex]" alt="Image du projet" class="carousel-image" />
+              <img v-else-if="fullImages.length > 0" :src="fullImages[currentImageIndex]!" alt="Image du projet" class="carousel-image" />
               <div v-else class="image-placeholder">
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>

@@ -25,14 +25,10 @@ const competenciesByCategory = computed(() => {
     if (!project.competencies) return
 
     project.competencies.forEach(comp => {
-      const key = `${comp.category}-${comp.level}`
-
-      if (!grouped[comp.category]) {
-        grouped[comp.category] = []
-      }
+      grouped[comp.category] = grouped[comp.category] || []
 
       // Chercher si cette compétence existe déjà
-      let existingComp = grouped[comp.category].find(
+      let existingComp = grouped[comp.category]!.find(
         c => c.level === comp.level && JSON.stringify(c.items) === JSON.stringify(comp.items)
       )
 
@@ -41,7 +37,7 @@ const competenciesByCategory = computed(() => {
           ...comp,
           projects: []
         }
-        grouped[comp.category].push(existingComp)
+        grouped[comp.category]!.push(existingComp)
       }
 
       // Ajouter le projet si pas déjà présent
