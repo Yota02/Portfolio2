@@ -43,7 +43,7 @@ function toggleParcoursDropdown() {
 
         <div class="nav-links" :class="{ open: isOpen }">
           <RouterLink to="/" class="nav-link" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Accueil</RouterLink>
-          
+
           <!-- Dropdown pour Projets -->
           <div class="nav-dropdown">
             <button class="nav-link dropdown-toggle" @click="toggleProjectsDropdown" :class="{ active: isDropdownOpen }">
@@ -57,11 +57,11 @@ function toggleParcoursDropdown() {
               <RouterLink to="/projects-timeline" class="dropdown-item" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Timeline des projets</RouterLink>
             </div>
           </div>
-          
+
           <RouterLink to="/certifications" class="nav-link" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Certifications</RouterLink>
           <RouterLink to="/languages" class="nav-link" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Langues</RouterLink>
           <RouterLink to="/victoria" class="nav-link" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Victoria</RouterLink>
-          
+
           <!-- Dropdown pour Mon parcours -->
           <div class="nav-dropdown">
             <button class="nav-link dropdown-toggle" @click="toggleParcoursDropdown" :class="{ active: isParcoursDropdownOpen }">
@@ -75,7 +75,7 @@ function toggleParcoursDropdown() {
               <RouterLink to="/participations" class="dropdown-item" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Participations</RouterLink>
             </div>
           </div>
-          
+
           <RouterLink to="/contact" class="nav-link" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Contact</RouterLink>
         </div>
       </nav>
