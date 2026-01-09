@@ -16,6 +16,8 @@ interface CompetencyWithProjects extends Competency {
   projects: Project[]
 }
 
+const getACList = (items: string[]) => items.map(item => item.split(' | ')[0])
+
 // Regrouper toutes les compétences par catégorie
 const competenciesByCategory = computed(() => {
   const grouped: Record<string, CompetencyWithProjects[]> = {}
@@ -27,9 +29,9 @@ const competenciesByCategory = computed(() => {
     project.competencies.forEach(comp => {
       grouped[comp.category] = grouped[comp.category] || []
 
-      // Chercher si cette compétence existe déjà
+      // Chercher si cette compétence existe déjà (en comparant les codes AC uniquement)
       let existingComp = grouped[comp.category]!.find(
-        c => c.level === comp.level && JSON.stringify(c.items) === JSON.stringify(comp.items)
+        c => c.level === comp.level && getACList(c.items).sort().join(',') === getACList(comp.items).sort().join(',')
       )
 
       if (!existingComp) {
