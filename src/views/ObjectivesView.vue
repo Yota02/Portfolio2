@@ -34,8 +34,17 @@
 
             <!-- Point central avec icône -->
             <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-              <div :class="`${getTypeColor(item)} w-16 h-16 rounded-full flex items-center justify-center shadow-lg border-4 border-white z-10`">
-                <component :is="item.icon" class="w-8 h-8 text-white" />
+              <div class="relative z-10 flex items-center justify-center">
+                <!-- Anneau décoratif (léger, derrière l'icône) -->
+                <div :class="`timeline-icon-ring ${item.isCurrent ? 'ring-current' : ''}`" aria-hidden="true"></div>
+
+                <!-- Cercle intérieur contenant l'icône -->
+                <div :class="`timeline-icon-inner flex items-center justify-center ${getTypeColor(item)}`" :aria-current="item.isCurrent ? 'true' : 'false'">
+                  <component :is="item.icon" class="timeline-icon-svg" />
+                </div>
+
+                <!-- Badge "En cours" -->
+                <div v-if="item.isCurrent" class="current-badge" title="En cours">En cours</div>
               </div>
             </div>
 
@@ -57,7 +66,7 @@ const items = ref([
     id: 1,
     year: '2020-2023',
     type: 'diplome',
-    title: 'Baccalauréat',
+    title: 'Baccalauréat Math / NSI / SVT',
     description: 'Lycée Jean Jaurès',
     icon: GraduationCap,
     logo: '/Portfolio2/icone/jeanJaurès.jpeg'
@@ -94,16 +103,25 @@ const items = ref([
     id: 6,
     year: '2026-2028',
     type: 'diplome',
-    title: 'Master en IA',
+    title: 'Master en Bio informatique',
     description: 'IAE de Montpellier',
     icon: Target,
-    logo: '/Portfolio2/icone/iae.png'
+    logo: '/Portfolio2/icone/fds.png'
+  },
+  {
+    id: 9,
+    year: 'Avril 2026 - Juillet 2026',
+    type: 'experience',
+    title: 'Stage au Centre Spatial',
+    description: 'Stage au Centre Spatial Universitaire de Montpellier (Avril - Juillet 2026)',
+    icon: Briefcase,
+    logo: '/Portfolio2/icone/csum.jpg'
   },
   {
     id: 7,
     year: '2028-2031',
     type: 'objectif',
-    title: 'Thèse sur l\'Intelligence Artificielle et la sociologie',
+    title: 'Thèse dans la Bio Informatique',
     description: 'Réalisation d\'une thèse doctorale sur l\'IA et son impact sociétal',
     icon: Target,
     logo: ''
@@ -116,17 +134,44 @@ const items = ref([
     description: 'être enseignant-chercheur et enseigner dans des universités à travers le monde (Japon, Chine, Royaume-Uni, Allemagne, etc...)',
     icon: Target,
     logo: ''
-  }, 
+  },
 ])
 
-// Fonction pour extraire l'année de début
-const getSortKey = (year: string) => {
-  const match = year.match(/\d{4}/);
-  return match ? parseInt(match[0]) : 0;
+// Fonction pour extraire une clé de tri (année et mois) depuis la chaîne year.
+// Si un mois est présent (en français) il est utilisé, sinon on choisit un mois par défaut
+// en fonction du type (ex: diplome -> septembre pour refléter la rentrée).
+const getSortKey = (item: any) => {
+  const yearStr: string = item.year || ''
+  const monthNames: Record<string, number> = {
+    'janvier': 1, 'février': 2, 'fevrier': 2, 'mars': 3, 'avril': 4, 'mai': 5,
+    'juin': 6, 'juillet': 7, 'août': 8, 'aout': 8, 'septembre': 9, 'octobre': 10,
+    'novembre': 11, 'décembre': 12, 'decembre': 12
+  }
+
+  // Cherche un couple "mois année" (ex: "Avril 2026")
+  const monthMatch = yearStr.match(/(janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre)\s+(\d{4})/i)
+  if (monthMatch) {
+    const monthName = monthMatch[1].toLowerCase()
+    const year = parseInt(monthMatch[2], 10)
+    const month = monthNames[monthName] || 1
+    return year * 100 + month
+  }
+
+  // Sinon récupère la première année trouvée
+  const yearMatch = yearStr.match(/(\d{4})/)
+  if (yearMatch) {
+    const year = parseInt(yearMatch[1], 10)
+    // Par défaut, pour les diplômes on considère la rentrée (septembre) afin de placer
+    // les stages de l'année (ex: avril) avant le début du diplôme.
+    const defaultMonth = item.type === 'diplome' ? 9 : 1
+    return year * 100 + defaultMonth
+  }
+
+  return 0
 }
 
-// Trier les items par année croissante (chronologique)
-items.value.sort((a, b) => getSortKey(a.year) - getSortKey(b.year))
+// Trier les items par année+mois croissante (chronologique plus fin)
+items.value.sort((a, b) => getSortKey(a) - getSortKey(b))
 
 const getTypeColor = (item: any) => {
   if (item.isCurrent) return 'bg-green-500'
@@ -507,5 +552,68 @@ const getTypeLabel = (type: string) => {
 
 .text-blue-900 {
   color: #1e3a8a;
+}
+
+.timeline-icon-ring {
+  position: absolute;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(34,197,94,0.12));
+  filter: blur(6px);
+  z-index: 8;
+}
+
+/* optionnel : anneau un peu plus chaud pour l'élément courant */
+.ring-current {
+  background: linear-gradient(135deg, rgba(34,197,94,0.16), rgba(16,185,129,0.12));
+}
+
+/* Cercle intérieur (couleur dynamique via getTypeColor qui renvoie classes bg-...) */
+.timeline-icon-inner {
+  width: 4rem; /* 64px */
+  height: 4rem;
+  border-radius: 9999px;
+  box-shadow: 0 8px 20px rgba(2,6,23,0.15);
+  border: 4px solid #ffffff;
+  z-index: 10;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+/* légère mise en avant au survol */
+.timeline-icon-inner:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(2,6,23,0.2);
+}
+
+/* icône SVG taille/couleur */
+.timeline-icon-svg {
+  width: 1.4rem; /* ~22px */
+  height: 1.4rem;
+  color: #ffffff;
+}
+
+/* badge pour l'élément courant */
+.current-badge {
+  position: absolute;
+  top: -0.6rem;
+  right: -1.1rem;
+  background: #10b981; /* vert */
+  color: white;
+  font-size: 0.65rem;
+  padding: 0.18rem 0.45rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 12px rgba(16,185,129,0.12);
+  z-index: 11;
+}
+
+/* animation pulse pour l'élément courant (appliquée éventuellement via la classe getTypeColor ou en complément) */
+@keyframes pulse-soft {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.06); opacity: 0.92; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.timeline-icon-inner[aria-current="true"] {
+  animation: pulse-soft 2.2s ease-in-out infinite;
 }
 </style>

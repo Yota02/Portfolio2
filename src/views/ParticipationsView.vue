@@ -17,22 +17,22 @@
           >
             <div :class="`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`">
               <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-blue-500 hover:shadow-xl transition-shadow duration-300">
-                
+
                 <div :class="`flex items-center gap-2 mb-2 ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'}`">
-                  <Calendar class="w-4 h-4 text-blue-700" /> 
+                  <Calendar class="w-4 h-4 text-blue-700" />
                   <span class="text-blue-900 font-bold text-lg flex items-center gap-1">
                     {{ participation.date }}
                   </span>
                 </div>
 
                 <div :class="`flex items-center gap-2 mb-2 ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'}`">
-                  <img v-if="participation.logo" :src="participation.logo" alt="Logo de l'événement" class="w-6 h-6 rounded-full" /> 
+                  <img v-if="participation.logo" :src="participation.logo" alt="Logo de l'événement" class="w-6 h-6 rounded-full" />
                   <h3 class="text-2xl font-bold text-blue-900">{{ participation.title }}</h3>
                 </div>
 
                 <p class="text-blue-800 font-semibold mb-3">{{ participation.description }}</p>
                 <p class="text-sm text-gray-600 mb-4">Type : {{ participation.type }}{{ participation.result ? ' | Résultat : ' + participation.result : '' }}</p>
-                
+
                 <a
                   v-if="participation.link"
                   :href="participation.link"
@@ -45,8 +45,8 @@
             </div>
 
             <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-              <div class="bg-blue-500 w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-4 border-white z-10"> 
-                <component :is="getParticipationIcon(participation.type)" class="w-6 h-6 text-white" /> 
+              <div class="bg-blue-500 w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-4 border-white z-10">
+                <component :is="getParticipationIcon(participation.type)" class="w-6 h-6 text-white" />
               </div>
             </div>
 
@@ -81,7 +81,7 @@ const participationsData = ref([
     description: 'Participation à une game jam de codage pour développer un jeu en équipe.',
     result: '',
     link: 'https://codegamejam.extragames.fr/',
-    logo: '/Portfolio2/icone/codegamejam.png' 
+    logo: '/Portfolio2/icone/codegamejam.png'
   },
   {
     id: 3,
@@ -91,7 +91,7 @@ const participationsData = ref([
     description: 'Hackathon organisé par ActInSpace pour innover dans le domaine spatial.',
     result: '',
     link: 'https://www.connectbycnes.fr/actinspace',
-    logo: '/Portfolio2/icone/actinspace.png' 
+    logo: '/Portfolio2/icone/actinspace.png'
   },
   {
     id: 4,
@@ -101,23 +101,45 @@ const participationsData = ref([
     description: 'Participation à la Nuit de l\'Info, un marathon de développement de 24h pour créer une application web sur un thème donné.',
     result: '',
     link: 'https://www.nuitdelinfo.com/',
-    logo: '/Portfolio2/icone/ndi.png' 
+    logo: '/Portfolio2/icone/ndi.png'
   },
 ])
 
 // Fonction pour analyser les dates
 const parseDate = (dateStr: string): Date => {
-  if (dateStr.includes('décembre')) {
-    const parts = dateStr.split(' ')
-    const year = parts[2]
-    return new Date(`${year}-12-05`)
-  } else if (dateStr.includes('janvier')) {
-    const parts = dateStr.split(' ')
-    const year = parts[2]
-    return new Date(`${year}-01-30`)
-  } else if (/^\d{4}$/.test(dateStr)) {
-    return new Date(`${dateStr}-01-01`)
+  const monthMap: Record<string, number> = {
+    'janvier': 1, 'fevrier': 2, 'février': 2, 'mars': 3, 'avril': 4, 'mai': 5, 'juin': 6,
+    'juillet': 7, 'aout': 8, 'août': 8, 'septembre': 9, 'octobre': 10, 'novembre': 11, 'decembre': 12, 'décembre': 12
   }
+
+  const s = dateStr.trim().toLowerCase()
+
+  // Cas "2026"
+  if (/^\d{4}$/.test(s)) {
+    return new Date(`${s}-01-01`)
+  }
+
+  // Cas "22-24 janvier 2026" ou "30-31 janvier 2026" -> on prend le premier jour (22, 30)
+  const rangeMatch = s.match(/^(\d{1,2})(?:-(\d{1,2}))?\s+([a-zàâäéèêëîïôöûüçæœ'-]+)\s+(\d{4})$/i)
+  if (rangeMatch) {
+    const dayStart = parseInt(rangeMatch[1], 10)
+    const monthName = rangeMatch[3]
+    const year = parseInt(rangeMatch[4], 10)
+    const month = monthMap[monthName] ?? 1
+    return new Date(year, month - 1, dayStart)
+  }
+
+  // Cas "5 décembre 2024"
+  const simpleMatch = s.match(/^(\d{1,2})\s+([a-zàâäéèêëîïôöûüçæœ'-]+)\s+(\d{4})$/i)
+  if (simpleMatch) {
+    const day = parseInt(simpleMatch[1], 10)
+    const monthName = simpleMatch[2]
+    const year = parseInt(simpleMatch[3], 10)
+    const month = monthMap[monthName] ?? 1
+    return new Date(year, month - 1, day)
+  }
+
+  // fallback
   return new Date(dateStr) // fallback
 }
 

@@ -60,7 +60,7 @@ function toggleParcoursDropdown() {
 
           <RouterLink to="/certifications" class="nav-link" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Certifications</RouterLink>
           <RouterLink to="/languages" class="nav-link" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Langues</RouterLink>
-          <RouterLink to="/victoria" class="nav-link" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Victoria</RouterLink>
+          <!-- <RouterLink to="/victoria" class="nav-link" @click="isOpen = false; isDropdownOpen = false; isParcoursDropdownOpen = false">Victoria</RouterLink>-->
 
           <!-- Dropdown pour Mon parcours -->
           <div class="nav-dropdown">

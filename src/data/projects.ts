@@ -211,15 +211,18 @@ export const projects: Project[] = [
     id: 'project-3',
     name: 'Capital Wars',
     description: 'Application Web de jeu vidéo de simulation d\'entreprise.',
-    longDescription: 'Application Web de jeu vidéo qui permet aux utilisateurs de s\'affronter dans la simulation d\'entreprise.',
+    longDescription: 'Application Web de jeu vidéo qui permet aux utilisateurs de s\'affronter dans la simulation d\'entreprise. Les joueurs gèrent des ressources, prennent des décisions stratégiques et rivalisent pour dominer le marché virtuel. Le projet met en œuvre des mécaniques de jeu interactives et un système de niveaux progressifs pour offrir une expérience engageante.',
     tags: ['Symfony', 'Twig', 'CSS3', 'HTML5', 'JavaScript', 'MySQL'],
-    images: ['https://picsum.photo/seed/project3/600/400'],
+    images: ['capital-wars.png', 'capital-wars2.png','capital-wars3.png'],
     logo: 'logo.png',
-    category: 'Dev Web',
+    category: 'Jeux Vidéo',
     purpose: 'Éducation',
     features: [
       'Mécaniques de jeu interactives',
-      'Système de niveaux progressifs'
+      'Système de niveaux progressifs',
+      'Compétition entre joueurs',
+      'Gestion des ressources en temps réel',
+      'Redaction de Bilan, Compte de résultat'
     ],
     links: { demo: 'https://dev.capitalwars.rlbrt.fr/accueil', github: '#' },
     folder: 'CapitalWars',
@@ -496,8 +499,8 @@ export const projects: Project[] = [
       }
     ],
     subProjects: [
-        { id: 'sub-worldofchan-english', name: 'Anglais', description: 'Apprentissage de l\'anglais', images: [], features: [] },
-        { id: 'sub-worldofchan-spanish', name: 'Espagnol', description: 'Apprentissage de l\'espagnol', images: [], features: [] },
+        // { id: 'sub-worldofchan-english', name: 'Anglais', description: 'Apprentissage de l\'anglais', images: [], features: [] },
+        // { id: 'sub-worldofchan-spanish', name: 'Espagnol', description: 'Apprentissage de l\'espagnol', images: [], features: [] },
     ]
   },
   {
