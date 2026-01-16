@@ -151,8 +151,8 @@ const getSortKey = (item: any) => {
   // Cherche un couple "mois année" (ex: "Avril 2026")
   const monthMatch = yearStr.match(/(janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre)\s+(\d{4})/i)
   if (monthMatch) {
-    const monthName = monthMatch[1].toLowerCase()
-    const year = parseInt(monthMatch[2], 10)
+    const monthName = monthMatch[1]!.toLowerCase()
+    const year = parseInt(monthMatch[2]!, 10)
     const month = monthNames[monthName] || 1
     return year * 100 + month
   }
@@ -160,7 +160,7 @@ const getSortKey = (item: any) => {
   // Sinon récupère la première année trouvée
   const yearMatch = yearStr.match(/(\d{4})/)
   if (yearMatch) {
-    const year = parseInt(yearMatch[1], 10)
+    const year = parseInt(yearMatch[1]!, 10)
     // Par défaut, pour les diplômes on considère la rentrée (septembre) afin de placer
     // les stages de l'année (ex: avril) avant le début du diplôme.
     const defaultMonth = item.type === 'diplome' ? 9 : 1

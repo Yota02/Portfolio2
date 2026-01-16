@@ -122,9 +122,9 @@ const parseDate = (dateStr: string): Date => {
   // Cas "22-24 janvier 2026" ou "30-31 janvier 2026" -> on prend le premier jour (22, 30)
   const rangeMatch = s.match(/^(\d{1,2})(?:-(\d{1,2}))?\s+([a-zàâäéèêëîïôöûüçæœ'-]+)\s+(\d{4})$/i)
   if (rangeMatch) {
-    const dayStart = parseInt(rangeMatch[1], 10)
-    const monthName = rangeMatch[3]
-    const year = parseInt(rangeMatch[4], 10)
+    const dayStart = parseInt(rangeMatch[1]!, 10)
+    const monthName = rangeMatch[3]!
+    const year = parseInt(rangeMatch[4]!, 10)
     const month = monthMap[monthName] ?? 1
     return new Date(year, month - 1, dayStart)
   }
@@ -132,9 +132,9 @@ const parseDate = (dateStr: string): Date => {
   // Cas "5 décembre 2024"
   const simpleMatch = s.match(/^(\d{1,2})\s+([a-zàâäéèêëîïôöûüçæœ'-]+)\s+(\d{4})$/i)
   if (simpleMatch) {
-    const day = parseInt(simpleMatch[1], 10)
-    const monthName = simpleMatch[2]
-    const year = parseInt(simpleMatch[3], 10)
+    const day = parseInt(simpleMatch[1]!, 10)
+    const monthName = simpleMatch[2]!
+    const year = parseInt(simpleMatch[3]!, 10)
     const month = monthMap[monthName] ?? 1
     return new Date(year, month - 1, day)
   }
