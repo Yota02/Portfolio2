@@ -1,55 +1,62 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 p-8">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-blue-900 mb-3">Mon Parcours</h1>
-        <p class="text-blue-600 text-lg">Diplômes, Expériences & Objectifs</p>
-      </div>
+  <div class="parcours-container">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <!-- En-tête centré -->
+      <header class="header-section">
+        <h1 class="title">Mon Parcours</h1>
+        <p class="subtitle">Diplômes, Expériences & Objectifs</p>
+        <div class="title-underline"></div>
+      </header>
 
-      <div class="relative">
+      <div class="timeline-wrapper">
         <!-- Ligne verticale centrale -->
-        <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-300 via-blue-400 to-blue-300"></div>
+        <div class="timeline-line"></div>
 
         <!-- Items de la timeline -->
-        <div class="space-y-12">
+        <div class="timeline-items">
           <div
-            v-for="(item, index) in items"
+            v-for="(item, index) in sortedItems"
             :key="item.id"
-            :class="`relative flex items-center ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'}`"
+            class="timeline-row"
+            :class="index % 2 === 0 ? 'row-left' : 'row-right'"
           >
-            <!-- Contenu -->
-            <div :class="`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`">
-              <div :class="`${item.isCurrent ? 'bg-green-50' : 'bg-white'} rounded-lg shadow-lg p-6 border-l-4 ${item.isCurrent ? 'border-green-500' : 'border-blue-500'} hover:shadow-xl transition-shadow duration-300`">
-                <div :class="`flex items-center gap-2 mb-2 ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'}`">
-                  <Calendar class="w-4 h-4" />
-                  {{ item.year }}
+            <!-- Contenu de la carte (Bulle) -->
+            <div class="timeline-content">
+              <div class="timeline-card" :class="{ 'current-card': item.isCurrent }">
+                <div class="card-header">
+                  <div class="date-badge">
+                    <Calendar class="w-3.5 h-3.5" />
+                    <span>{{ item.year }}</span>
+                  </div>
+                  <span v-if="item.isCurrent" class="status-badge">En cours</span>
                 </div>
-                <div :class="`flex items-center gap-1 mb-2 ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'}`">
-                  <img v-if="item.logo" :src="item.logo" alt="Logo de l'élément" class="w-10 h-4 rounded-full" />
-                  <h3 class="text-2xl font-bold text-blue-900 mb-2">{{ item.title }}</h3>
+
+                <div class="card-body">
+                  <div v-if="item.logo" class="logo-container">
+                    <img :src="baseUrl + item.logo" :alt="`Logo ${item.title}`" class="institution-logo" />
+                  </div>
+                  <div class="text-content">
+                    <h3 class="item-title">{{ item.title }}</h3>
+                    <p class="item-description">{{ item.description }}</p>
+                  </div>
                 </div>
-                <p class="text-blue-800 font-semibold">{{ item.description }}</p>
+                
+                <div class="card-footer">
+                  <span class="type-tag" :class="item.type">{{ getTypeLabel(item.type) }}</span>
+                </div>
               </div>
             </div>
 
-            <!-- Point central avec icône -->
-            <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-              <div class="relative z-10 flex items-center justify-center">
-                <!-- Anneau décoratif (léger, derrière l'icône) -->
-                <div :class="`timeline-icon-ring ${item.isCurrent ? 'ring-current' : ''}`" aria-hidden="true"></div>
-
-                <!-- Cercle intérieur contenant l'icône -->
-                <div :class="`timeline-icon-inner flex items-center justify-center ${getTypeColor(item)}`" :aria-current="item.isCurrent ? 'true' : 'false'">
-                  <component :is="item.icon" class="timeline-icon-svg" />
-                </div>
-
-                <!-- Badge "En cours" -->
-                <div v-if="item.isCurrent" class="current-badge" title="En cours">En cours</div>
+            <!-- Point central -->
+            <div class="timeline-dot-wrapper">
+              <div class="dot-ring" :class="{ 'ring-pulse': item.isCurrent }"></div>
+              <div class="dot-inner" :class="[getTypeColor(item), { 'current-dot': item.isCurrent }]">
+                <component :is="item.icon" class="dot-icon" />
               </div>
             </div>
 
-            <!-- Espace vide de l'autre côté -->
-            <div class="w-5/12"></div>
+            <!-- Espace vide pour l'équilibre -->
+            <div class="timeline-spacer"></div>
           </div>
         </div>
       </div>
@@ -58,10 +65,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { GraduationCap, Briefcase, Target, Calendar, ArrowLeft } from 'lucide-vue-next'
+import { computed } from 'vue'
+import { GraduationCap, Briefcase, Target, Calendar } from 'lucide-vue-next'
 
-const items = ref([
+const baseUrl = import.meta.env.BASE_URL
+
+const items = [
   {
     id: 1,
     year: '2020-2023',
@@ -69,7 +78,7 @@ const items = ref([
     title: 'Baccalauréat Math / NSI / SVT',
     description: 'Lycée Jean Jaurès',
     icon: GraduationCap,
-    logo: '/Portfolio2/icone/jeanJaurès.jpeg'
+    logo: 'icone/jeanJaurès.jpeg'
   },
   {
     id: 2,
@@ -78,16 +87,16 @@ const items = ref([
     title: 'BUT Informatique',
     description: "IUT de Montpellier",
     icon: GraduationCap,
-    logo: '/Portfolio2/icone/IUT-Montpellier.png'
+    logo: 'icone/IUT-Montpellier.png'
   },
-    {
+  {
     id: 4,
     year: 'Janvier 2025 - Avril 2025',
     type: 'experience',
     title: 'Stage au CSUM',
-    description: 'Centre Spatial Universitaire de Montpellier',
+    description: 'Centre Spatial Universitaire de Montpellier - Développement logiciel embarqué',
     icon: Briefcase,
-    logo: '/Portfolio2/icone/csum.jpg'
+    logo: 'icone/csum.jpg'
   },
   {
     id: 5,
@@ -97,7 +106,7 @@ const items = ref([
     description: 'IAE de Montpellier',
     icon: GraduationCap,
     isCurrent: true,
-    logo: '/Portfolio2/icone/iae.png'
+    logo: 'icone/iae.png'
   },
   {
     id: 6,
@@ -105,8 +114,8 @@ const items = ref([
     type: 'diplome',
     title: 'Master en Bio informatique',
     description: 'IAE de Montpellier',
-    icon: Target,
-    logo: '/Portfolio2/icone/fds.png'
+    icon: GraduationCap,
+    logo: 'icone/fds.png'
   },
   {
     id: 9,
@@ -115,7 +124,7 @@ const items = ref([
     title: 'Stage au Centre Spatial',
     description: 'Stage au Centre Spatial Universitaire de Montpellier (Avril - Juillet 2026)',
     icon: Briefcase,
-    logo: '/Portfolio2/icone/csum.jpg'
+    logo: 'icone/csum.jpg'
   },
   {
     id: 7,
@@ -130,16 +139,13 @@ const items = ref([
     id: 8,
     year: '2031-...',
     type: 'objectif',
-    title: 'Travaillé dans plusieurs universités internationales ',
-    description: 'être enseignant-chercheur et enseigner dans des universités à travers le monde (Japon, Chine, Royaume-Uni, Allemagne, etc...)',
+    title: 'Enseignant-chercheur international',
+    description: 'Enseigner et mener des recherches dans des universités à travers le monde (Japon, Chine, Royaume-Uni, Allemagne, etc.)',
     icon: Target,
     logo: ''
   },
-])
+]
 
-// Fonction pour extraire une clé de tri (année et mois) depuis la chaîne year.
-// Si un mois est présent (en français) il est utilisé, sinon on choisit un mois par défaut
-// en fonction du type (ex: diplome -> septembre pour refléter la rentrée).
 const getSortKey = (item: any) => {
   const yearStr: string = item.year || ''
   const monthNames: Record<string, number> = {
@@ -148,21 +154,16 @@ const getSortKey = (item: any) => {
     'novembre': 11, 'décembre': 12, 'decembre': 12
   }
 
-  // Cherche un couple "mois année" (ex: "Avril 2026")
   const monthMatch = yearStr.match(/(janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre)\s+(\d{4})/i)
   if (monthMatch) {
     const monthName = monthMatch[1]!.toLowerCase()
     const year = parseInt(monthMatch[2]!, 10)
-    const month = monthNames[monthName] || 1
-    return year * 100 + month
+    return year * 100 + (monthNames[monthName] || 1)
   }
 
-  // Sinon récupère la première année trouvée
   const yearMatch = yearStr.match(/(\d{4})/)
   if (yearMatch) {
     const year = parseInt(yearMatch[1]!, 10)
-    // Par défaut, pour les diplômes on considère la rentrée (septembre) afin de placer
-    // les stages de l'année (ex: avril) avant le début du diplôme.
     const defaultMonth = item.type === 'diplome' ? 9 : 1
     return year * 100 + defaultMonth
   }
@@ -170,16 +171,17 @@ const getSortKey = (item: any) => {
   return 0
 }
 
-// Trier les items par année+mois croissante (chronologique plus fin)
-items.value.sort((a, b) => getSortKey(a) - getSortKey(b))
+const sortedItems = computed(() => {
+  return [...items].sort((a, b) => getSortKey(a) - getSortKey(b))
+})
 
 const getTypeColor = (item: any) => {
-  if (item.isCurrent) return 'bg-green-500'
+  if (item.isCurrent) return 'bg-current'
   switch (item.type) {
-    case 'diplome': return 'bg-blue-500'
-    case 'experience': return 'bg-blue-500'
-    case 'objectif': return 'bg-blue-500'
-    default: return 'bg-blue-500'
+    case 'diplome': return 'bg-diplome'
+    case 'experience': return 'bg-experience'
+    case 'objectif': return 'bg-objectif'
+    default: return 'bg-default'
   }
 }
 
@@ -194,426 +196,276 @@ const getTypeLabel = (type: string) => {
 </script>
 
 <style scoped>
-
-.bg-blue-600 {
-  background-color: #2563eb;
-}
-
-.text-blue-900 {
-  color: #1e3a8a;
-}
-
-.bg-green-50 {
-  background-color: #f0fdf4;
-}
-
-.border-green-500 {
-  border-color: #22c55e;
-}
-
-.bg-green-500 {
-  background-color: #22c55e;
-}
-
-.min-h-screen {
+.parcours-container {
   min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  color: #1e293b;
 }
 
-.bg-gradient-to-br {
-  background: linear-gradient(to bottom right, var(--tw-gradient-stops));
-}
-
-.from-blue-50 {
-  --tw-gradient-from: #eff6ff;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(239, 246, 255, 0));
-}
-
-.via-white {
-  --tw-gradient-center: #ffffff;
-}
-
-.to-blue-50 {
-  --tw-gradient-to: #eff6ff;
-}
-
-.p-8 {
-  padding: 2rem;
-}
-
-.max-w-5xl {
-  max-width: 80rem;
-}
-
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.text-center {
+.header-section {
   text-align: center;
+  margin-bottom: 4rem;
 }
 
-.mb-12 {
-  margin-bottom: 3rem;
-}
-
-.text-4xl {
-  font-size: 2.25rem;
-}
-
-.font-bold {
-  font-weight: 700;
-}
-
-.text-blue-900 {
+.title {
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 800;
   color: #1e3a8a;
-}
-
-.mb-3 {
-  margin-bottom: 0.75rem;
-}
-
-.text-blue-600 {
-  color: #2563eb;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-}
-
-.relative {
-  position: relative;
-}
-
-.absolute {
-  position: absolute;
-}
-
-.left-1\/2 {
-  left: 50%;
-}
-
-.transform {
-  transform: translateX(-50%);
-}
-
-.w-1 {
-  width: 0.25rem;
-}
-
-.h-full {
-  height: 100%;
-}
-
-.bg-gradient-to-b {
-  background: linear-gradient(to bottom, var(--tw-gradient-stops));
-}
-
-.from-blue-300 {
-  --tw-gradient-from: #93c5fd;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(147, 197, 253, 0));
-}
-
-.via-blue-400 {
-  --tw-gradient-center: #60a5fa;
-}
-
-.to-blue-300 {
-  --tw-gradient-to: #93c5fd;
-}
-
-.space-y-12 > :not(template) ~ :not(template) {
-  margin-top: 3rem;
-}
-
-.flex {
-  display: flex;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.flex-row-reverse {
-  flex-direction: row-reverse;
-}
-
-.w-5\/12 {
-  width: 41.666667%;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.pr-8 {
-  padding-right: 2rem;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.pl-8 {
-  padding-left: 2rem;
-}
-
-.bg-white {
-  background-color: #ffffff;
-}
-
-.rounded-lg {
-  border-radius: 0.5rem;
-}
-
-.shadow-lg {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-.p-6 {
-  padding: 1.5rem;
-}
-
-.border-l-4 {
-  border-left-width: 4px;
-}
-
-.border-blue-500 {
-  border-color: #3b82f6;
-}
-
-.hover\:shadow-xl:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-}
-
-.transition-shadow {
-  transition-property: box-shadow;
-}
-
-.duration-300 {
-  transition-duration: 300ms;
-}
-
-.gap-2 {
-  gap: 0.5rem;
-}
-
-.mb-2 {
   margin-bottom: 0.5rem;
 }
 
-.text-xs {
-  font-size: 0.75rem;
+.subtitle {
+  font-size: 1.1rem;
+  color: #64748b;
+  font-weight: 500;
 }
 
-.font-semibold {
-  font-weight: 600;
+.title-underline {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  margin: 1.25rem auto 0;
+  border-radius: 999px;
 }
 
-.text-white {
-  color: #ffffff;
+/* Timeline Layout */
+.timeline-wrapper {
+  position: relative;
+  padding: 1rem 0;
 }
 
-.flex-row {
-  flex-direction: row;
-}
-
-.absolute {
+.timeline-line {
   position: absolute;
-}
-
-.left-1\/2 {
   left: 50%;
-}
-
-.transform {
+  top: 0;
+  bottom: 0;
   transform: translateX(-50%);
+  width: 3px;
+  background: rgba(59, 130, 246, 0.2);
 }
 
-.flex {
+.timeline-items {
   display: flex;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.w-16 {
-  width: 4rem;
-}
-
-.h-16 {
-  height: 4rem;
-}
-
-.rounded-full {
-  border-radius: 9999px;
-}
-
-.shadow-lg {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-.border-4 {
-  border-width: 4px;
-}
-
-.border-white {
-  border-color: #ffffff;
-}
-
-.z-10 {
-  z-index: 10;
-}
-
-.mt-16 {
-  margin-top: 4rem;
-}
-
-.bg-white {
-  background-color: #ffffff;
-}
-
-.rounded-lg {
-  border-radius: 0.5rem;
-}
-
-.shadow-lg {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-.p-6 {
-  padding: 1.5rem;
-}
-
-.border-t-4 {
-  border-top-width: 4px;
-}
-
-.text-xl {
-  font-size: 1.25rem;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.flex {
-  display: flex;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.gap-8 {
+  flex-direction: column;
   gap: 2rem;
 }
 
-.flex-wrap {
-  flex-wrap: wrap;
+.timeline-row {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
 }
 
-.items-center {
+.timeline-content {
+  width: 50%;
+  padding: 0 2.5rem;
+  display: flex;
+}
+
+.timeline-spacer {
+  width: 50%;
+}
+
+/* Alternance */
+.row-left {
+  flex-direction: row;
+}
+
+.row-left .timeline-content {
+  justify-content: flex-end;
+}
+
+.row-right {
+  flex-direction: row-reverse;
+}
+
+.row-right .timeline-content {
+  justify-content: flex-start;
+}
+
+.timeline-dot-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+/* Bulles plus petites */
+.timeline-card {
+  background: white;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.07);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  max-width: 380px;
+  width: 100%;
+}
+
+.timeline-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+.current-card {
+  border: 2px solid #22c55e;
+  background: linear-gradient(to bottom right, #ffffff, #f0fdf4);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.date-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status-badge {
+  background: #22c55e;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.card-body {
+  display: flex;
+  gap: 1rem;
   align-items: center;
 }
 
-.w-4 {
-  width: 1rem;
+.logo-container {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e8f0;
 }
 
-.h-4 {
-  height: 1rem;
+.institution-logo {
+  width: 85%;
+  height: 80%;
+  object-fit: contain;
 }
 
-.rounded-full {
-  border-radius: 9999px;
+.text-content {
+  flex: 1;
 }
 
-.bg-blue-500 {
-  background-color: #3b82f6;
-}
-
-.bg-blue-400 {
-  background-color: #60a5fa;
-}
-
-.bg-blue-600 {
-  background-color: #2563eb;
-}
-
-.text-blue-900 {
+.item-title {
+  font-size: 1.1rem;
+  font-weight: 800;
   color: #1e3a8a;
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
 }
 
-.timeline-icon-ring {
+.item-description {
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.card-footer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.type-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.type-tag.diplome { background: #dbeafe; color: #1e40af; }
+.type-tag.experience { background: #fef3c7; color: #92400e; }
+.type-tag.objectif { background: #f3e8ff; color: #6b21a8; }
+
+/* Points */
+.dot-ring {
   position: absolute;
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 9999px;
-  background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(34,197,94,0.12));
-  filter: blur(6px);
-  z-index: 8;
+  background: rgba(59, 130, 246, 0.1);
 }
 
-/* optionnel : anneau un peu plus chaud pour l'élément courant */
-.ring-current {
-  background: linear-gradient(135deg, rgba(34,197,94,0.16), rgba(16,185,129,0.12));
+.ring-pulse {
+  animation: pulse-ring 2s infinite;
 }
 
-/* Cercle intérieur (couleur dynamique via getTypeColor qui renvoie classes bg-...) */
-.timeline-icon-inner {
-  width: 4rem; /* 64px */
-  height: 4rem;
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+.dot-inner {
+  width: 2rem;
+  height: 2rem;
   border-radius: 9999px;
-  box-shadow: 0 8px 20px rgba(2,6,23,0.15);
-  border: 4px solid #ffffff;
-  z-index: 10;
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* légère mise en avant au survol */
-.timeline-icon-inner:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 12px 28px rgba(2,6,23,0.2);
-}
-
-/* icône SVG taille/couleur */
-.timeline-icon-svg {
-  width: 1.4rem; /* ~22px */
-  height: 1.4rem;
-  color: #ffffff;
-}
-
-/* badge pour l'élément courant */
-.current-badge {
-  position: absolute;
-  top: -0.6rem;
-  right: -1.1rem;
-  background: #10b981; /* vert */
+.dot-icon {
+  width: 1rem;
+  height: 1rem;
   color: white;
-  font-size: 0.65rem;
-  padding: 0.18rem 0.45rem;
-  border-radius: 999px;
-  box-shadow: 0 6px 12px rgba(16,185,129,0.12);
-  z-index: 11;
 }
 
-/* animation pulse pour l'élément courant (appliquée éventuellement via la classe getTypeColor ou en complément) */
-@keyframes pulse-soft {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.06); opacity: 0.92; }
-  100% { transform: scale(1); opacity: 1; }
+.bg-diplome { background-color: #3b82f6; }
+.bg-experience { background-color: #f59e0b; }
+.bg-objectif { background-color: #8b5cf6; }
+.bg-current { background-color: #22c55e; }
+.bg-default { background-color: #94a3b8; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timeline-line { left: 20px; }
+  .timeline-row { flex-direction: row !important; padding-left: 45px; }
+  .timeline-content { width: 100% !important; justify-content: flex-start !important; padding: 0 !important; }
+  .timeline-spacer { display: none; }
+  .timeline-dot-wrapper { left: 20px; }
+  .timeline-card { max-width: none; }
 }
-.timeline-icon-inner[aria-current="true"] {
-  animation: pulse-soft 2.2s ease-in-out infinite;
+
+@media (prefers-color-scheme: dark) {
+  .parcours-container { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f1f5f9; }
+  .title { color: #f1f5f9; }
+  .timeline-card { background: #1e293b; border-color: #334155; }
+  .item-title { color: #f1f5f9; }
+  .item-description { color: #cbd5e1; }
+  .date-badge { background: #334155; color: #cbd5e1; }
+  .logo-container { background: #334155; border-color: #475569; }
 }
 </style>

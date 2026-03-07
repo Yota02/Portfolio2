@@ -1,29 +1,78 @@
 <script setup lang="ts">
 // Interface pour une certification
 interface Certification {
-  id: string
-  name: string
-  issuer: string
-  date: string
-  description: string
-  link: string
-  logo: string
+  id: string;
+  name: string;
+  issuer: string;
+  date: string;
+  description: string;
+  link: string;
+  logo: string;
 }
 
 // Liste d'exemple de certifications (à personnaliser)
 const certifications: Certification[] = [
-{
-    id: 'cert-2',
-    name: 'Brevet d’Initiation Aéronautique (BIA)',
-    issuer: 'Ministère de l’Éducation nationale',
-    date: '2021',
-    description: 'Diplôme attestant des connaissances fondamentales en aéronautique et en espace.',
-    link: 'https://eduscol.education.fr/sti/aeronautique/bia',
-    logo: 'bia.gif'
-},
-  
+  {
+    id: "cert-2",
+    name: "Brevet d’Initiation Aéronautique (BIA)",
+    issuer: "Ministère de l’Éducation nationale",
+    date: "2021",
+    description: "Diplôme attestant des connaissances fondamentales en aéronautique et en espace.",
+    link: "https://eduscol.education.fr/sti/aeronautique/bia",
+    logo: "bia.gif",
+  },
+  {
+    id: "cert-1",
+    name: "Data From Space",
+    issuer: "CNES",
+    date: "2026",
+    description: "Formation sur l'utilisation des données spatiales",
+    link: "https://datafromspace.fr/",
+    logo: "datafromspace.png",
+  },
+  {
+    id: "cert-3",
+    name: "Mooc Aéronautique et Espace",
+    issuer: "CNES / FUN-MOOC",
+    date: "2026",
+    description:
+      "Il s'agit d'un cours introductif aux activités, métiers, enjeux et technologies du secteur spatial.",
+    link: "https://www.fun-mooc.fr/fr/cours/mooc-espace/",
+    logo: "funmooc.svg",
+  },
+  {
+    id: "cert-3",
+    name: "Viral Outbreaks and Pandemics, a One Health Approach",
+    issuer: "Institut Pasteur / FUN-MOOC",
+    date: "2026",
+    description:
+      "Ce cours explore les origines, la transmission et la prévention des épidémies virales, en adoptant une approche globale de santé publique.",
+    link: "https://lms.fun-mooc.fr/courses/course-v1%3Apasteur%2B96025%2Bsession02/",
+    logo: "funmooc.svg",
+  },
+  {
+    id: "cert-3",
+    name: "Viruses and human cancers",
+    issuer: "Institut Pasteur / FUN-MOOC",
+    date: "2026",
+    description:
+      "Ce cours explore les liens entre les virus et le développement de certains cancers, en mettant en lumière les mécanismes biologiques et les implications pour la prévention et le traitement.",
+    link: "https://lms.fun-mooc.fr/courses/course-v1:pasteur+96012+session04/info",
+    logo: "funmooc.svg",
+  },
+  {
+    id: "cert-4",
+    name: "Modeling of Infectious Diseases",
+    issuer: "Institut Pasteur / FUN-MOOC",
+    date: "2026",
+    description:
+      "Ce cours explore les méthodes de modélisation des maladies infectieuses, en mettant l'accent sur les approches mathématiques et statistiques pour comprendre la propagation des épidémies.",
+    link: "https://lms.fun-mooc.fr/courses/course-v1:pasteur+96020+session03/info",
+    logo: "funmooc.svg",
+  },
+
   // Ajoutez d'autres certifications ici
-]
+];
 </script>
 
 <template>
@@ -31,17 +80,20 @@ const certifications: Certification[] = [
     <div class="container">
       <div class="header">
         <h1 class="page-title">Mes Certifications</h1>
-        <p class="page-subtitle">Découvrez les certifications que j'ai obtenues pour renforcer mes compétences.</p>
+        <p class="page-subtitle">
+          Découvrez les certifications que j'ai obtenues pour renforcer mes compétences.
+        </p>
       </div>
 
       <div class="certifications-grid">
         <div v-for="cert in certifications" :key="cert.id" class="certification-card">
-          <img :src="cert.logo.startsWith('http') ? cert.logo : `/Portfolio2/icone/${cert.logo}`" 
-              :alt="`Logo de la certification`"
-              class="cert-logo"
-              loading="lazy"
-           />
-          
+          <img
+            :src="cert.logo.startsWith('http') ? cert.logo : `/Portfolio2/icone/${cert.logo}`"
+            :alt="`Logo de la certification`"
+            class="cert-logo"
+            loading="lazy"
+          />
+
           <h2 class="cert-title">{{ cert.name }}</h2>
           <p class="cert-issuer">Émis par : {{ cert.issuer }}</p>
           <p class="cert-date">Date : {{ cert.date }}</p>
@@ -104,7 +156,11 @@ const certifications: Certification[] = [
 }
 
 .certification-card {
-  background: linear-gradient(135deg, var(--color-background) 0%, rgba(var(--primary-rgb, 59, 130, 246), 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-background) 0%,
+    rgba(var(--primary-rgb, 59, 130, 246), 0.05) 100%
+  );
   border: 2px solid transparent;
   border-radius: 20px;
   padding: 2.5rem;
@@ -116,7 +172,7 @@ const certifications: Certification[] = [
 }
 
 .certification-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -125,8 +181,12 @@ const certifications: Certification[] = [
   background: linear-gradient(90deg, var(--primary), var(--accent));
 }
 
-.certification-card:nth-child(1) { animation-delay: 0.1s; }
-.certification-card:nth-child(2) { animation-delay: 0.2s; }
+.certification-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.certification-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
 
 .certification-card:hover {
   transform: translateY(-10px) scale(1.02);
