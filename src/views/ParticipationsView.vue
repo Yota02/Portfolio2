@@ -1,7 +1,7 @@
 <template>
   <div class="parcours-container">
-    <div class="max-w-5xl mx-auto px-4 py-12">
-      <header class="text-center mb-16">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <header class="header-section">
         <h1 class="title">Mes Participations</h1>
         <p class="subtitle">Événements et compétitions auxquels j'ai participé</p>
         <div class="title-underline"></div>
@@ -14,39 +14,34 @@
           <div
             v-for="(participation, index) in participations"
             :key="participation.id"
-            class="timeline-item"
-            :class="{ 
-              'flex-row-reverse': index % 2 === 0,
-              'flex-row': index % 2 !== 0
-            }"
+            class="timeline-row"
+            :class="index % 2 === 0 ? 'row-left' : 'row-right'"
           >
             <!-- Contenu de la carte -->
-            <div class="timeline-content-wrapper" :class="index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'">
+            <div class="timeline-content">
               <div class="timeline-card">
-                <div class="card-header" :class="index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'">
+                <div class="card-header">
                   <div class="date-badge">
-                    <Calendar class="w-4 h-4" />
+                    <Calendar class="w-3.5 h-3.5" />
                     <span>{{ participation.date }}</span>
                   </div>
+                  <span v-if="participation.result" class="result-tag">
+                    <Trophy class="w-3 h-3" />
+                    {{ participation.result }}
+                  </span>
                 </div>
 
-                <div class="card-body" :class="index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'">
+                <div class="card-body">
                   <div v-if="participation.logo" class="logo-container">
                     <img :src="baseUrl + participation.logo" :alt="`Logo ${participation.title}`" class="institution-logo" />
                   </div>
                   <div class="text-content">
                     <h3 class="item-title">{{ participation.title }}</h3>
                     <p class="item-description">{{ participation.description }}</p>
-                    <div class="item-meta" :class="index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'">
-                      <span v-if="participation.result" class="result-tag">
-                        <Trophy class="w-3 h-3" />
-                        {{ participation.result }}
-                      </span>
-                    </div>
                   </div>
                 </div>
                 
-                <div class="card-footer" :class="index % 2 === 0 ? 'justify-start' : 'justify-end'">
+                <div class="card-footer">
                   <div class="footer-actions">
                     <span class="type-tag" :class="participation.type">{{ participation.type }}</span>
                     <a
@@ -184,71 +179,89 @@ const getParticipationColor = (type: string) => {
 .parcours-container {
   min-height: 100vh;
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  color: var(--color-text);
+  color: #1e293b;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 4rem;
 }
 
 .title {
-  font-size: 3rem;
+  font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 800;
   color: #1e3a8a;
   margin-bottom: 0.5rem;
-  letter-spacing: -0.025em;
 }
 
 .subtitle {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: #64748b;
   font-weight: 500;
 }
 
 .title-underline {
-  width: 80px;
+  width: 60px;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  margin: 1.5rem auto 0;
-  border-radius: 2px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  margin: 1.25rem auto 0;
+  border-radius: 999px;
 }
 
+/* Timeline Layout */
 .timeline-wrapper {
   position: relative;
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 .timeline-line {
   position: absolute;
   left: 50%;
+  top: 0;
+  bottom: 0;
   transform: translateX(-50%);
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(to bottom, 
-    rgba(59, 130, 246, 0) 0%, 
-    rgba(59, 130, 246, 0.4) 10%, 
-    rgba(59, 130, 246, 0.4) 90%, 
-    rgba(59, 130, 246, 0) 100%
-  );
-  border-radius: 2px;
+  width: 3px;
+  background: rgba(59, 130, 246, 0.2);
 }
 
 .timeline-items {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 2rem;
 }
 
-.timeline-item {
+.timeline-row {
   display: flex;
   align-items: center;
   position: relative;
   width: 100%;
 }
 
-.timeline-content-wrapper {
-  width: 45%;
-  z-index: 10;
+.timeline-content {
+  width: 50%;
+  padding: 0 2.5rem;
+  display: flex;
 }
 
 .timeline-spacer {
-  width: 45%;
+  width: 50%;
+}
+
+/* Alternance */
+.row-left {
+  flex-direction: row;
+}
+
+.row-left .timeline-content {
+  justify-content: flex-end;
+}
+
+.row-right {
+  flex-direction: row-reverse;
+}
+
+.row-right .timeline-content {
+  justify-content: flex-start;
 }
 
 .timeline-dot-wrapper {
@@ -261,77 +274,66 @@ const getParticipationColor = (type: string) => {
   z-index: 20;
 }
 
-.dot-ring {
-  position: absolute;
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 9999px;
-  background: rgba(59, 130, 246, 0.1);
-}
-
-.dot-inner {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 3px solid white;
-  box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
-}
-
-.dot-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: white;
-}
-
+/* Bulles plus petites */
 .timeline-card {
   background: white;
   border-radius: 1.25rem;
-  padding: 1.5rem;
-  box-shadow: var(--shadow-lg);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 1.25rem;
+  box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.07);
+  transition: all 0.3s ease;
   border: 1px solid rgba(226, 232, 240, 0.8);
+  max-width: 450px;
+  width: 100%;
 }
 
 .timeline-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
-  border-color: var(--primary);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
 }
 
 .card-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .date-badge {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   background: #f1f5f9;
   color: #475569;
-  padding: 0.4rem 0.8rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 999px;
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.result-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #059669;
+  background: #ecfdf5;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
 }
 
 .card-body {
   display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
+  gap: 1rem;
+  align-items: center;
 }
 
 .logo-container {
   flex-shrink: 0;
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 0.75rem;
   overflow: hidden;
   background: #f8fafc;
   display: flex;
@@ -341,10 +343,9 @@ const getParticipationColor = (type: string) => {
 }
 
 .institution-logo {
-  width: 100%;
-  height: 100%;
+  width: 85%;
+  height: 80%;
   object-fit: contain;
-  padding: 4px;
 }
 
 .text-content {
@@ -352,40 +353,23 @@ const getParticipationColor = (type: string) => {
 }
 
 .item-title {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 800;
   color: #1e3a8a;
-  margin-bottom: 0.25rem;
-  line-height: 1.3;
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
 }
 
 .item-description {
-  color: #475569;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin-bottom: 0.5rem;
-}
-
-.item-meta {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.result-tag {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #059669;
-  background: #ecfdf5;
-  padding: 0.1rem 0.5rem;
-  border-radius: 4px;
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .card-footer {
-  margin-top: 1.25rem;
+  margin-top: 1rem;
   display: flex;
+  justify-content: flex-end;
 }
 
 .footer-actions {
@@ -395,7 +379,7 @@ const getParticipationColor = (type: string) => {
 }
 
 .type-tag {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
@@ -406,86 +390,66 @@ const getParticipationColor = (type: string) => {
 .type-tag.hackathon { background: #e0f2fe; color: #0369a1; }
 
 .btn-link {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #3b82f6;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
 .btn-link:hover {
-  color: var(--primary-dark);
+  color: #1d4ed8;
   text-decoration: underline;
 }
 
-/* Couleurs des points */
+/* Points */
+.dot-ring {
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.dot-inner {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dot-icon {
+  width: 1rem;
+  height: 1rem;
+  color: white;
+}
+
 .bg-concours { background-color: #ef4444; }
 .bg-hackathon { background-color: #0ea5e9; }
 .bg-default { background-color: #94a3b8; }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .timeline-line {
-    left: 2rem;
-  }
-
-  .timeline-item {
-    flex-direction: row !important;
-    padding-left: 4rem;
-  }
-
-  .timeline-content-wrapper {
-    width: 100%;
-    text-align: left !important;
-    padding: 0 !important;
-  }
-
-  .timeline-spacer {
-    display: none;
-  }
-
-  .timeline-dot-wrapper {
-    left: 2rem;
-  }
-
-  .card-header, .card-body, .item-meta {
-    flex-direction: row !important;
-  }
-
-  .title {
-    font-size: 2.25rem;
-  }
+  .timeline-line { left: 20px; }
+  .timeline-row { flex-direction: row !important; padding-left: 45px; }
+  .timeline-content { width: 100% !important; justify-content: flex-start !important; padding: 0 !important; }
+  .timeline-spacer { display: none; }
+  .timeline-dot-wrapper { left: 20px; }
+  .timeline-card { max-width: none; }
 }
 
 @media (prefers-color-scheme: dark) {
-  .parcours-container {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  }
-  
+  .parcours-container { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f1f5f9; }
   .title { color: #f1f5f9; }
   .subtitle { color: #94a3b8; }
-  
-  .timeline-card {
-    background: #1e293b;
-    border-color: #334155;
-  }
-  
+  .timeline-card { background: #1e293b; border-color: #334155; }
   .item-title { color: #f1f5f9; }
   .item-description { color: #cbd5e1; }
-  
-  .date-badge {
-    background: #334155;
-    color: #cbd5e1;
-  }
-  
-  .logo-container {
-    background: #334155;
-    border-color: #475569;
-  }
-  
-  .result-tag {
-    background: #064e3b;
-    color: #6ee7b7;
-  }
+  .date-badge { background: #334155; color: #cbd5e1; }
+  .logo-container { background: #334155; border-color: #475569; }
 }
 </style>
