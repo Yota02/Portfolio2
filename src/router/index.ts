@@ -64,6 +64,11 @@ const routes = [
       component: () => import('../views/ParticipationsView.vue')
     },
     {
+      path: '/blog',
+      name: 'blog',
+      component: () => import('../views/BlogView.vue')
+    },
+    {
       path: '/projects-timeline',
       name: 'projects-timeline',
       component: () => import('../views/ProjectsTimelineView.vue')
@@ -83,7 +88,14 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  }
 })
 
 // Gestion des redirections depuis 404.html

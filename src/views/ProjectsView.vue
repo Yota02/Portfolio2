@@ -36,10 +36,12 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
   return { displayed, remaining }
 }
 
+const baseUrl = import.meta.env.BASE_URL;
+
 // Fonction pour obtenir la source de l'image du logo (priorise logo_recadrer si disponible)
 const getLogoSrc = (project: Project) => {
   const logo = project.logo_recadrer || project.logo
-  return logo.startsWith('http') ? logo : `/Portfolio2/projet/${project.folder}/${logo}`
+  return logo.startsWith('http') ? logo : `${baseUrl}projet/${project.folder}/${logo}`
 }
 
 // Nouvelle propriété calculée pour le nombre total de projets
@@ -78,7 +80,7 @@ const toggleTech = (tech: string) => {
             :title="tech"
           >
             <img
-              :src="`/Portfolio2/icone/${techIconMap[tech]}.png`"
+              :src="`${baseUrl}icone/${techIconMap[tech]}.png`"
               :alt="`Icône de ${tech}`"
               class="tech-icon"
               loading="lazy"
@@ -306,7 +308,7 @@ const toggleTech = (tech: string) => {
   border: 1px solid var(--color-border);
   border-radius: 20px;
   padding: 0;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   text-decoration: none;
   color: var(--color-text);
   display: flex;
@@ -315,6 +317,28 @@ const toggleTech = (tech: string) => {
   animation: fadeInUp 0.6s ease-out backwards;
   overflow: hidden;
   position: relative;
+}
+
+/* Effet de brillance (Shine) */
+.project-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transition: left 0.8s ease;
+  z-index: 2;
+}
+
+.project-card:hover::after {
+  left: 150%;
 }
 
 .project-card::before {
@@ -344,9 +368,9 @@ const toggleTech = (tech: string) => {
 .project-card:nth-child(6) { animation-delay: 0.35s; }
 
 .project-card:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  border-color: transparent;
+  transform: translateY(-15px);
+  box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.3);
+  border-color: var(--primary);
 }
 
 .project-card:hover::before {
@@ -383,12 +407,12 @@ const toggleTech = (tech: string) => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
 .project-card:hover .card-image {
-  transform: scale(1.08);
+  transform: scale(1.2) translateY(-10px);
 }
 
 .card-info-badges {

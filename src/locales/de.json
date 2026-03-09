@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "projects": "Projekte",
+    "certifications": "Zertifizierungen",
+    "languages": "Sprachen",
+    "parcours": "Mein Werdegang",
+    "diplomas": "Diplome",
+    "participations": "Teilnahmen",
+    "contact": "Kontakt",
+    "blog": "Blog"
+  },
+  "home": {
+    "greeting": "Hallo, ich bin",
+    "subtitle": "Studentin der Informatik",
+    "description": "Ich bin leidenschaftlich an KI, Webentwicklung und neuen Technologien interessiert. Jeden Tag lerne und erkunde ich neue Idee, um Lehrerin-Forscherin zu werden.",
+    "view_projects": "Meine Projekte ansehen",
+    "learn_more": "Mehr erfahren"
+  }
+}

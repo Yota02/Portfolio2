@@ -36,7 +36,7 @@
                   <div class="logo-wrapper">
                     <img
                       v-if="project.logo"
-                      :src="project.logo.startsWith('http') ? project.logo : `projet/${project.folder}/${project.logo}`"
+                      :src="project.logo.startsWith('http') ? project.logo : `${baseUrl}projet/${project.folder}/${project.logo}`"
                       :alt="`Logo de ${project.name}`"
                       class="project-logo"
                     />
@@ -59,7 +59,7 @@
                     >
                       <img
                         v-if="techIconMap[tech]"
-                        :src="`icone/${techIconMap[tech]}.png`"
+                        :src="`${baseUrl}icone/${techIconMap[tech]}.png`"
                         :alt="tech"
                         class="tech-icon"
                       />
@@ -78,7 +78,7 @@
                     >
                       <img
                         v-if="techIconMap[tech]"
-                        :src="`icone/${techIconMap[tech]}.png`"
+                        :src="`${baseUrl}icone/${techIconMap[tech]}.png`"
                         :alt="tech"
                         class="tech-icon"
                       />
@@ -119,8 +119,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { projects, techIconMap } from '@/data/projects'
 import { GraduationCap, Briefcase, Target, Calendar, Code, Gamepad2, Cpu } from 'lucide-vue-next'
+
+const { t } = useI18n()
+
+const baseUrl = import.meta.env.BASE_URL
 
 // Mapping des mois français pour le tri
 const monthMap: Record<string, number> = {
@@ -172,8 +177,9 @@ const getCategoryClass = (category: string) => {
 <style scoped>
 .timeline-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  color: #1e293b;
+  background: var(--color-background);
+  color: var(--color-text);
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
 .header-section {
@@ -184,13 +190,14 @@ const getCategoryClass = (category: string) => {
 .title {
   font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 800;
-  color: #1e3a8a;
+  color: var(--color-heading);
   margin-bottom: 0.5rem;
 }
 
 .subtitle {
   font-size: 1.1rem;
-  color: #64748b;
+  color: var(--color-text);
+  opacity: 0.7;
   font-weight: 500;
 }
 
@@ -260,25 +267,25 @@ const getCategoryClass = (category: string) => {
 
 /* Cartes */
 .project-card {
-  background: white;
+  background: var(--color-background-soft);
   border-radius: 1.5rem;
   padding: 1.5rem;
-  box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.07);
+  box-shadow: var(--shadow-md);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  border: 1px solid var(--color-border);
   max-width: 500px;
   width: 100%;
 }
 
 .project-card:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  border-color: #3b82f6;
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
 }
 
 .ongoing-card {
   border: 2px solid #22c55e;
-  background: linear-gradient(to bottom right, #ffffff, #f0fdf4);
+  background: linear-gradient(to bottom right, var(--color-background-soft), rgba(34, 197, 94, 0.05));
 }
 
 .card-header {
@@ -342,7 +349,7 @@ const getCategoryClass = (category: string) => {
 .project-name {
   font-size: 1.3rem;
   font-weight: 800;
-  color: #1e3a8a;
+  color: var(--color-heading);
   margin-bottom: 0.1rem;
   line-height: 1.2;
 }
@@ -350,14 +357,15 @@ const getCategoryClass = (category: string) => {
 .project-category {
   font-size: 0.8rem;
   font-weight: 700;
-  color: #60a5fa;
+  color: var(--primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
 }
 
 .project-description {
-  color: #475569;
+  color: var(--color-text);
+  opacity: 0.8;
   font-size: 0.95rem;
   line-height: 1.5;
 }
@@ -458,48 +466,9 @@ const getCategoryClass = (category: string) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 4px solid white;
+  border: 4px solid var(--color-background);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   color: white;
   z-index: 2;
-}
-
-.dot-icon { width: 1.25rem; height: 1.25rem; }
-
-.cat-web { background: #3b82f6; }
-.cat-ia { background: #8b5cf6; }
-.cat-game { background: #ec4899; }
-.cat-software { background: #f59e0b; }
-.cat-default { background: #64748b; }
-
-/* Responsive */
-@media (max-width: 992px) {
-  .timeline-line { left: 30px; transform: none; }
-  .timeline-row { flex-direction: row !important; padding-left: 60px; }
-  .timeline-content { width: 100% !important; justify-content: flex-start !important; padding: 0 !important; }
-  .timeline-spacer { display: none; }
-  .timeline-dot-wrapper { left: 30px; transform: translateX(-50%); }
-  .project-card { max-width: none; }
-}
-
-@media (max-width: 640px) {
-  .card-body { flex-direction: column; align-items: center; text-align: center; }
-  .logo-wrapper { margin-bottom: 0.5rem; }
-}
-
-@media (prefers-color-scheme: dark) {
-  .timeline-container { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f1f5f9; }
-  .title { color: #f1f5f9; }
-  .project-card { background: #1e293b; border-color: #334155; }
-  .project-name { color: #f1f5f9; }
-  .project-description { color: #cbd5e1; }
-  .date-badge { background: #1e3a8a; color: #bfdbfe; }
-  .logo-wrapper { background: #334155; border-color: #475569; }
-  .tech-tag { background: #334155; color: #cbd5e1; border-color: #475569; }
-  .new-tech { background: #1e3a8a; color: #bfdbfe; border-color: #1d4ed8; }
-  .new-tech-section { background: rgba(30, 58, 138, 0.3); border-left-color: #3b82f6; }
-  .section-label { color: #60a5fa; }
-  .card-footer { border-top-color: #334155; }
-  .timeline-line { opacity: 0.2; }
 }
 </style>

@@ -129,6 +129,8 @@
   width: 100%;
   padding: 0.75rem;
   border: 1px solid var(--color-border);
+  background: var(--color-background-soft);
+  color: var(--color-text);
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.3s ease;

@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "certifications": "Certificaciones",
+    "languages": "Idiomas",
+    "parcours": "Mi trayectoria",
+    "diplomas": "Diplomas",
+    "participations": "Participaciones",
+    "contact": "Contacto",
+    "blog": "Blog"
+  }
+}

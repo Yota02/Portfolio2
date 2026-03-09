@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Progetti",
+    "certifications": "Certificazioni",
+    "languages": "Lingue",
+    "parcours": "Il mio percorso",
+    "diplomas": "Diplomi",
+    "participations": "Partecipazioni",
+    "contact": "Contatto",
+    "blog": "Blog"
+  },
+  "home": {
+    "greeting": "Ciao, sono",
+    "subtitle": "Studentessa di Informatica",
+    "description": "Sono appassionata di IA, sviluppo web e tecnologie emergenti. Ogni giorno imparo e esploro nuove idee per diventare insegnante-ricercatrice.",
+    "view_projects": "Vedi i miei progetti",
+    "learn_more": "Scopri di più"
+  }
+}

@@ -6,10 +6,12 @@ import { projects, techIconMap } from '@/data/projects'
 // Récupérer les données de Victoria depuis projects.ts
 const victoriaProject = computed(() => projects.find(p => p.id === 'project-7'))
 
+const baseUrl = import.meta.env.BASE_URL;
+
 // Propriété calculée pour construire les chemins complets des images
 const fullImages = computed(() => {
   return victoriaProject.value?.images.map(img => 
-    img.startsWith('http') ? img : `/Portfolio2/projet/${victoriaProject.value?.folder}/${img}`
+    img.startsWith('http') ? img : `${baseUrl}projet/${victoriaProject.value?.folder}/${img}`
   ) || []
 })
 
@@ -122,7 +124,7 @@ const getTechIcon = (tech: string): string => techIcons.value[tech] || ''
         <h2>Technologies Utilisées</h2>
         <div class="tech-list">
           <span v-for="tech in victoriaProject?.tags" :key="tech" class="tech-icon" :title="tech">
-            <img v-if="getTechIcon(tech)" :src="`/icone/${getTechIcon(tech)}`" :alt="tech" width="32" height="32" />
+            <img v-if="getTechIcon(tech)" :src="`${baseUrl}icone/${getTechIcon(tech)}`" :alt="tech" width="32" height="32" />
             <span v-else>{{ tech }}</span>
           </span>
         </div>
@@ -142,7 +144,7 @@ const getTechIcon = (tech: string): string => techIcons.value[tech] || ''
               <li v-for="feature in sub.features" :key="feature">{{ feature }}</li>
             </ul>
             <div v-if="sub.images.length > 0" class="sub-images">
-              <img v-for="img in sub.images" :key="img" :src="`/Portfolio2/projet/${victoriaProject.folder}/${img}`" :alt="sub.name" class="sub-image" />
+              <img v-for="img in sub.images" :key="img" :src="`${baseUrl}projet/${victoriaProject.folder}/${img}`" :alt="sub.name" class="sub-image" />
             </div>
           </div>
         </div>

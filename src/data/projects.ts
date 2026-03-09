@@ -605,7 +605,7 @@ export const projects: Project[] = [
     images: ["titre.png", "agario.png", "nv1.png"],
     logo: "titre.png",
     category: "Jeux Vidéo",
-    purpose: "Éducation",
+    purpose: "Personnel",
     features: [
       "Sensibilisation aux dangers de la vie miroir",
       "Interaction éducative",
@@ -613,6 +613,29 @@ export const projects: Project[] = [
     ],
     links: { demo: "https://yota02.github.io/CHIRAL/", github: "https://github.com/Yota02/CHIRAL" },
     folder: "CHIRAL",
+    startDate: "Janvier 2026",
+    endDate: "",
+    isOngoing: true,
+    newTech: [],
+    competencies: [],
+  },
+  {
+    id: "project-13",
+    name: "Loom",
+    description:
+      "",
+    longDescription:
+      "",
+    tags: ["Python", "TensorFlow", "Git", "Flask", "HTML5", "CSS3", "JavaScript"],
+    images: ["execution.png", "pipeline.png"],
+    logo: "logo.png",
+    category: "IA",
+    purpose: "Personnel",
+    features: [
+
+    ],
+    links: { demo: "https://yota02.github.io/KyoLoom/", github: "https://github.com/Yota02/KyoLoom" },
+    folder: "KyoLoom",
     startDate: "Janvier 2026",
     endDate: "",
     isOngoing: true,

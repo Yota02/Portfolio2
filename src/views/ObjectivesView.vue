@@ -198,8 +198,9 @@ const getTypeLabel = (type: string) => {
 <style scoped>
 .parcours-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  color: #1e293b;
+  background: var(--color-background);
+  color: var(--color-text);
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
 .header-section {
@@ -210,13 +211,14 @@ const getTypeLabel = (type: string) => {
 .title {
   font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 800;
-  color: #1e3a8a;
+  color: var(--color-heading);
   margin-bottom: 0.5rem;
 }
 
 .subtitle {
   font-size: 1.1rem;
-  color: #64748b;
+  color: var(--color-text);
+  opacity: 0.7;
   font-weight: 500;
 }
 
@@ -296,25 +298,25 @@ const getTypeLabel = (type: string) => {
 
 /* Bulles plus petites */
 .timeline-card {
-  background: white;
+  background: var(--color-background-soft);
   border-radius: 1.25rem;
   padding: 1.25rem;
-  box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.07);
+  box-shadow: var(--shadow-md);
   transition: all 0.3s ease;
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  border: 1px solid var(--color-border);
   max-width: 380px;
   width: 100%;
 }
 
 .timeline-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
-  border-color: #3b82f6;
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
 }
 
 .current-card {
   border: 2px solid #22c55e;
-  background: linear-gradient(to bottom right, #ffffff, #f0fdf4);
+  background: linear-gradient(to bottom right, var(--color-background-soft), rgba(34, 197, 94, 0.05));
 }
 
 .card-header {
@@ -378,7 +380,7 @@ const getTypeLabel = (type: string) => {
 .item-title {
   font-size: 1.1rem;
   font-weight: 800;
-  color: #1e3a8a;
+  color: var(--color-heading);
   margin-bottom: 0.2rem;
   line-height: 1.2;
 }
@@ -433,39 +435,7 @@ const getTypeLabel = (type: string) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid white;
+  border: 3px solid var(--color-background);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.dot-icon {
-  width: 1rem;
-  height: 1rem;
-  color: white;
-}
-
-.bg-diplome { background-color: #3b82f6; }
-.bg-experience { background-color: #f59e0b; }
-.bg-objectif { background-color: #8b5cf6; }
-.bg-current { background-color: #22c55e; }
-.bg-default { background-color: #94a3b8; }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .timeline-line { left: 20px; }
-  .timeline-row { flex-direction: row !important; padding-left: 45px; }
-  .timeline-content { width: 100% !important; justify-content: flex-start !important; padding: 0 !important; }
-  .timeline-spacer { display: none; }
-  .timeline-dot-wrapper { left: 20px; }
-  .timeline-card { max-width: none; }
-}
-
-@media (prefers-color-scheme: dark) {
-  .parcours-container { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f1f5f9; }
-  .title { color: #f1f5f9; }
-  .timeline-card { background: #1e293b; border-color: #334155; }
-  .item-title { color: #f1f5f9; }
-  .item-description { color: #cbd5e1; }
-  .date-badge { background: #334155; color: #cbd5e1; }
-  .logo-container { background: #334155; border-color: #475569; }
 }
 </style>

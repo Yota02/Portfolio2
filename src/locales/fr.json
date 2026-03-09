@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "certifications": "Certifications",
+    "languages": "Langues",
+    "parcours": "Mon parcours",
+    "diplomas": "Diplômes & Expériences",
+    "participations": "Participations",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
+  "home": {
+    "greeting": "Bonjour, je suis",
+    "subtitle": "Étudiant en BUT Informatique",
+    "description": "Je suis passionné par l'IA, le développement web et les technologies émergentes. Chaque jour, j'apprends et j'explore de nouvelles idées pour devenir enseignant-chercheur.",
+    "view_projects": "Voir mes projets",
+    "learn_more": "En savoir plus"
+  }
+}

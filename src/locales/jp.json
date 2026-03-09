@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "projects": "プロジェクト",
+    "certifications": "資格",
+    "languages": "言語",
+    "parcours": "私の経歴",
+    "diplomas": "学位",
+    "participations": "参加",
+    "contact": "お問い合わせ",
+    "blog": "ブログ"
+  },
+  "home": {
+    "greeting": "こんにちは、私は",
+    "subtitle": "コンピュータサイエンス学生",
+    "description": "AI、Web開発、新技術に情熱を注いでいます。毎日、新しいアイデアを学び、研究者になるために探索しています。",
+    "view_projects": "プロジェクトを見る",
+    "learn_more": "詳しく見る"
+  }
+}

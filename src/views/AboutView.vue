@@ -74,10 +74,18 @@
                   Apprendre les langues pour <strong>enseigner à travers le monde</strong>. L'échange interculturel est le moteur de ma recherche.
                 </p>
                 <div class="tags-row">
-                  <span class="lang-badge">🇬🇧 Anglais</span>
-                  <span class="lang-badge">🇩🇪 Allemand</span>
-                  <span class="lang-badge">🇯🇵 Japonais</span>
-                  <span class="lang-badge">🇨🇳 Madarin</span>
+                  <span class="lang-badge">
+                    <img :src="`${baseUrl}drapeau/en.svg`" alt="Anglais" class="badge-flag" /> Anglais
+                  </span>
+                  <span class="lang-badge">
+                    <img :src="`${baseUrl}drapeau/de.svg`" alt="Allemand" class="badge-flag" /> Allemand
+                  </span>
+                  <span class="lang-badge">
+                    <img :src="`${baseUrl}drapeau/jp.svg`" alt="Japonais" class="badge-flag" /> Japonais
+                  </span>
+                  <span class="lang-badge">
+                    <img :src="`${baseUrl}drapeau/zh.svg`" alt="Mandarin" class="badge-flag" /> Mandarin
+                  </span>
                   <span class="lang-badge dashed">
                     <i class="fas fa-plus mr-2"></i>Suivant ?
                   </span>
@@ -130,6 +138,8 @@
 </template>
 
 <script setup lang="ts">
+const baseUrl = import.meta.env.BASE_URL;
+
 const hobbies = [
   { icon: '🌍', label: 'Géopolitique', tagline: '', color: '#2563eb' },
   { icon: '🧪', label: 'Sciences', tagline: '', color: '#10b981' },
@@ -150,18 +160,17 @@ const hobbies = [
 
 /* --- 2. LAYOUT & CENTRAGE (Votre demande principale) --- */
 .page-wrapper {
-  /* Ces 3 lignes assurent le centrage parfait au milieu de l'écran */
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-
   width: 100%;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: linear-gradient(135deg, var(--color-background-soft) 0%, var(--color-background-mute) 100%);
   font-family: 'Plus Jakarta Sans', sans-serif;
-  color: #1e293b;
+  color: var(--color-text);
   position: relative;
   overflow-x: hidden;
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
 .main-card {
@@ -242,7 +251,7 @@ const hobbies = [
 .hero-title {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #0f172a;
+  color: var(--color-heading);
   line-height: 1.1;
   letter-spacing: -0.025em;
   margin-top: 0;
@@ -296,7 +305,7 @@ const hobbies = [
 .section-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--color-heading);
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
@@ -304,7 +313,7 @@ const hobbies = [
 }
 
 .icon-indigo { color: #6366f1; }
-.text-body { color: #334155; font-size: 1.125rem; line-height: 1.75; }
+.text-body { color: var(--color-text); font-size: 1.125rem; line-height: 1.75; }
 .text-blue { color: #2563eb; font-weight: 600; }
 .text-emerald { color: #059669; font-weight: 600; }
 
@@ -344,6 +353,7 @@ const hobbies = [
 .lang-badge {
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.15);
@@ -353,6 +363,13 @@ const hobbies = [
   font-weight: 600;
   color: white;
   cursor: default;
+}
+
+.badge-flag {
+  width: 1.25rem;
+  height: 0.875rem;
+  object-fit: cover;
+  border-radius: 2px;
 }
 
 .lang-badge.dashed {
@@ -394,8 +411,8 @@ const hobbies = [
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  background: white;
-  border: 1px solid #e2e8f0;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
   border-radius: 1rem;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -403,14 +420,15 @@ const hobbies = [
 
 .hobby-card:hover {
   border-color: var(--accent-color);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  background: var(--color-background-soft);
+  box-shadow: var(--shadow-md);
   transform: translateX(4px);
 }
 
 .hobby-icon {
   width: 2.5rem; height: 2.5rem;
   display: flex; align-items: center; justify-content: center;
-  background: #f8fafc;
+  background: var(--color-background-soft);
   border-radius: 0.5rem;
   font-size: 1.5rem;
   transition: transform 0.3s;
@@ -421,7 +439,7 @@ const hobbies = [
 .hobby-label {
   font-size: 1rem;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--color-heading);
   margin: 0;
   transition: color 0.3s;
 }

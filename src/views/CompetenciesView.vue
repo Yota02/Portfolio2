@@ -59,9 +59,11 @@ const getBgColor = (category: string) => {
   return `${color}15`
 }
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const getProjectLogo = (project: Project) => {
   const logo = project.logo_recadrer || project.logo
-  return logo.startsWith('http') ? logo : `/Portfolio2/projet/${project.folder}/${logo}`
+  return logo.startsWith('http') ? logo : `${baseUrl}projet/${project.folder}/${logo}`
 }
 </script>
 

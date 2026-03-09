@@ -18,6 +18,8 @@ interface Language {
   proficiency?: number
 }
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const languages: Language[] = [
   // --- ACQUIS ---
   {
@@ -27,7 +29,7 @@ const languages: Language[] = [
     greeting: 'Bonjour',
     level: 'Maîtrisé (C2)',
     description: 'Langue maternelle, utilisée quotidiennement pour la communication.',
-    flag: '🇫🇷',
+    flag: `${baseUrl}drapeau/fr.svg`,
     color: '#10b981',
     status: 'mastered',
     year: 'Naissance',
@@ -41,7 +43,7 @@ const languages: Language[] = [
     greeting: 'Hello',
     level: 'Avancé (C1)',
     description: 'Langue de travail et de veille technologique. Communication fluide.',
-    flag: '🇬🇧',
+    flag: `${baseUrl}drapeau/en.svg`,
     color: '#3b82f6',
     status: 'learning',
     year: '2015',
@@ -54,7 +56,7 @@ const languages: Language[] = [
     greeting: 'Hallo',
     level: 'Intermédiaire (B1)',
     description: 'Capacité à comprendre l\'essentiel et à discuter de sujets familiers.',
-    flag: '🇩🇪',
+    flag: `${baseUrl}drapeau/de.svg`,
     color: '#6b7280',
     status: 'learning',
     year: '2024',
@@ -67,7 +69,7 @@ const languages: Language[] = [
     greeting: 'Nǐ hǎo',
     level: 'Débutant (A1)',
     description: 'Apprentissage des tons et des premiers caractères (Hanzi).',
-    flag: '🇨🇳',
+    flag: `${baseUrl}drapeau/zh.svg`,
     color: '#ef4444',
     status: 'learning',
     year: '2024',
@@ -80,7 +82,7 @@ const languages: Language[] = [
     greeting: 'Konnichiwa',
     level: 'Débutant (A1)',
     description: 'Apprentissage des Hiragana/Katakana et phrases de survie.',
-    flag: '🇯🇵',
+    flag: `${baseUrl}drapeau/jp.svg`,
     color: '#f59e0b',
     status: 'learning',
     year: '2024',
@@ -94,7 +96,7 @@ const languages: Language[] = [
     greeting: 'Privet',
     level: 'Objectif A1',
     description: 'Découverte de l\'alphabet cyrillique.',
-    flag: '🇷🇺',
+    flag: `${baseUrl}drapeau/ru.svg`,
     color: '#8b5cf6',
     status: 'planned',
     year: '2025'
@@ -106,7 +108,7 @@ const languages: Language[] = [
     greeting: 'Ciao',
     level: 'Curiosité',
     description: 'Attiré par la musique et la cuisine italienne.',
-    flag: '🇮🇹',
+    flag: `${baseUrl}drapeau/it.svg`,
     color: '#06b6d4',
     status: 'planned'
   },
@@ -117,7 +119,7 @@ const languages: Language[] = [
     greeting: 'Hola',
     level: 'Objectif A1',
     description: 'Préparation pour des voyages en Amérique Latine.',
-    flag: '🇪🇸',
+    flag: `${baseUrl}drapeau/es.svg`,
     color: '#eab308',
     status: 'planned',
     year: '2025'
@@ -137,7 +139,7 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
     </div>
 
     <RouterLink to="/project/project-8" class="worldofchan-button" title="Voir le projet WorldOfChan">
-      <img src="/projet/WorldOfChan/logo.png" alt="WorldOfChan" class="worldofchan-icon" />
+      <img :src="`${baseUrl}projet/WorldOfChan/logo.png`" alt="WorldOfChan" class="worldofchan-icon" />
     </RouterLink>
 
     <div class="container">
@@ -166,7 +168,7 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
               <div class="card-shine"></div>
               <div class="card-content">
                 <div class="flag-wrapper">
-                  <div class="flag">{{ lang.flag }}</div>
+                  <img :src="lang.flag" :alt="lang.name" class="flag" />
                 </div>
                 <div class="info">
                   <h3 class="lang-name">{{ lang.name }} <span class="year" v-if="lang.year">depuis {{ lang.year }}</span></h3>
@@ -194,7 +196,7 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
               
               <div class="card-content">
                 <div class="flag-wrapper">
-                  <div class="flag">{{ lang.flag }}</div>
+                  <img :src="lang.flag" :alt="lang.name" class="flag" />
                 </div>
                 <div class="info">
                   <h3 class="lang-name">{{ lang.name }} <span class="native">{{ lang.nativeName }}</span></h3>
@@ -236,7 +238,7 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
             >
               <div class="card-content">
                 <div class="flag-wrapper">
-                  <div class="flag grayscale">{{ lang.flag }}</div>
+                  <img :src="lang.flag" :alt="lang.name" class="flag grayscale" />
                 </div>
                 <div class="info">
                   <h3 class="lang-name">{{ lang.name }}</h3>
@@ -257,20 +259,21 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
 
 :root {
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-  --bg-color: #f8fafc;
-  --line-color: #cbd5e1;
+  --text-main: var(--color-text);
+  --text-muted: var(--vt-c-text-light-2);
+  --bg-color: var(--color-background);
+  --line-color: var(--color-border);
 }
 
 .timeline-page {
   min-height: 100vh;
   padding: 4rem 1rem;
-  background-color: var(--bg-color);
+  background-color: var(--color-background);
   font-family: 'Inter', sans-serif;
-  color: var(--text-main);
+  color: var(--color-text);
   position: relative;
   overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* --- BLOBS D'AMBIANCE --- */
@@ -308,7 +311,7 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
 /* --- HEADER --- */
 .header { text-align: center; margin-bottom: 4rem; }
 .subtitle-caps { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 3px; color: var(--text-muted); font-weight: 700; margin-bottom: 0.5rem; }
-.page-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; color: #0f172a; }
+.page-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--color-heading); }
 .page-subtitle { color: var(--text-muted); font-style: italic; }
 
 /* --- TIMELINE STRUCTURE --- */
@@ -351,14 +354,14 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
 
 /* --- CARTE PRINCIPALE --- */
 .timeline-card {
-  background: rgba(255,255,255,0.8);
+  background: var(--color-background-soft);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.6);
+  border: 1px solid var(--color-border);
   border-radius: 16px;
   padding: 1.5rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
   
   /* Transition fluide pour le hover */
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
@@ -367,9 +370,9 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
 /* Animation HOVER globale de la carte */
 .timeline-card:hover {
   transform: translateY(-5px) scale(1.01); /* Lévitation + Scale */
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
   border-color: var(--lang-color);
-  background: rgba(255,255,255,0.95);
+  background: var(--color-background-mute);
 }
 
 /* Effet de lumière traversante (Sheen) */
@@ -396,7 +399,10 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
 /* Drapeau animé */
 .flag-wrapper { perspective: 100px; }
 .flag {
-  font-size: 2.5rem; line-height: 1;
+  width: 48px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 4px;
   filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
   transition: transform 0.4s ease;
   display: inline-block;

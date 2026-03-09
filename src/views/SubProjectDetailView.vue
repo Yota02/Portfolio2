@@ -10,10 +10,12 @@ const subId = route.params.subId as string
 const project = computed(() => getProjectById(projectId))
 const subProject = computed(() => project.value?.subProjects?.find(sub => sub.id === subId))
 
+const baseUrl = import.meta.env.BASE_URL;
+
 // Propriété calculée pour construire les chemins complets des images du sous-projet
 const fullImages = computed(() => {
   return subProject.value?.images.map(img => 
-    img.startsWith('http') ? img : `/Portfolio2/projet/${project.value?.folder}/${img}`
+    img.startsWith('http') ? img : `${baseUrl}projet/${project.value?.folder}/${img}`
   ) || []
 })
 

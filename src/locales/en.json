@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "certifications": "Certifications",
+    "languages": "Languages",
+    "parcours": "My Journey",
+    "diplomas": "Diplomas & Experiences",
+    "participations": "Participations",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
+  "home": {
+    "greeting": "Hello, I am",
+    "subtitle": "Computer Science Student",
+    "description": "I am passionate about AI, web development and emerging technologies. Every day, I learn and explore new ideas to become a teacher-researcher.",
+    "view_projects": "View my projects",
+    "learn_more": "Learn more"
+  }
+}

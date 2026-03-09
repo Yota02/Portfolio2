@@ -10,6 +10,8 @@ interface Certification {
   logo: string;
 }
 
+const baseUrl = import.meta.env.BASE_URL;
+
 // Liste d'exemple de certifications (à personnaliser)
 const certifications: Certification[] = [
   {
@@ -70,8 +72,6 @@ const certifications: Certification[] = [
     link: "https://lms.fun-mooc.fr/courses/course-v1:pasteur+96020+session03/info",
     logo: "funmooc.svg",
   },
-
-  // Ajoutez d'autres certifications ici
 ];
 </script>
 
@@ -88,7 +88,7 @@ const certifications: Certification[] = [
       <div class="certifications-grid">
         <div v-for="cert in certifications" :key="cert.id" class="certification-card">
           <img
-            :src="cert.logo.startsWith('http') ? cert.logo : `/Portfolio2/icone/${cert.logo}`"
+            :src="cert.logo.startsWith('http') ? cert.logo : `${baseUrl}icone/${cert.logo}`"
             :alt="`Logo de la certification`"
             class="cert-logo"
             loading="lazy"
