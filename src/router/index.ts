@@ -5,12 +5,18 @@ import ProjectDetailView from '../views/ProjectDetailView.vue'
 import SubProjectDetailView from '../views/SubProjectDetailView.vue'
 import VictoriaView from '../views/VictoriaView.vue'
 import AboutView from '../views/AboutView.vue'
+import ResumeView from '../views/ResumeView.vue'
 
 const routes = [
     {
       path: '/',
       name: 'home',
       component: HomeView
+    },
+    {
+      path: '/resume',
+      name: 'resume',
+      component: ResumeView
     },
     {
       path: '/about',

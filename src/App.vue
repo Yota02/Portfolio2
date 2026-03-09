@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-import { ref } from "vue";
+import { RouterLink, RouterView, useRoute } from "vue-router";
+import { ref, computed } from "vue";
 
+const route = useRoute();
 const isOpen = ref(false);
 const isDropdownOpen = ref(false);
 const isParcoursDropdownOpen = ref(false);
+
+const isResumePage = computed(() => route.path === '/resume');
 
 function toggleMenu() {
   isOpen.value = !isOpen.value;
@@ -25,7 +28,7 @@ function toggleParcoursDropdown() {
 
 <template>
   <div class="app-container">
-    <header>
+    <header v-if="!isResumePage">
       <nav class="nav-container">
         <RouterLink
           to="/"
@@ -221,7 +224,7 @@ function toggleParcoursDropdown() {
       <RouterView />
     </main>
 
-    <footer class="footer">
+    <footer class="footer" v-if="!isResumePage">
       <p>&copy; 2026 Mon Portfolio. Tous droits réservés.</p>
     </footer>
   </div>
