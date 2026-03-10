@@ -496,21 +496,37 @@
   "certifications": {
     "title": "Mes Certifications",
     "subtitle": "Formations, Certifications et Diplômes",
+    "view_cert": "Voir le certificat",
     "items": {
       "cert-1": {
-        "title": "BIA",
-        "description": "Le Brevet d'Initiation Aéronautique (BIA) est un diplôme français qui atteste d'une culture générale dans le domaine de l'aéronautique et de l'espace.",
-        "institution": "Éducation Nationale / Armée de l'Air"
+        "title": "Brevet d'Initiation Aéronautique (BIA)",
+        "description": "Diplôme attestant des connaissances fondamentales en aéronautique et en espace.",
+        "institution": "Ministère de l'Éducation nationale"
       },
       "cert-2": {
-        "title": "Baccalauréat",
-        "description": "Diplôme de fin d'études secondaires avec spécialités Mathématiques et NSI (Numérique et Sciences Informatiques). Mention Très Bien.",
-        "institution": "Lycée Jean Jaurès"
+        "title": "Data From Space",
+        "description": "Formation sur l'utilisation des données spatiales",
+        "institution": "CNES"
       },
       "cert-3": {
-        "title": "BUT Informatique",
-        "description": "Bachelor Universitaire de Technologie en Informatique. Formation intensive de 3 ans couvrant le développement, les réseaux et l'IA.",
-        "institution": "IUT de Montpellier-Sète"
+        "title": "Mooc Aéronautique et Espace",
+        "description": "Il s'agit d'un cours introductif aux activités, métiers, enjeux et technologies du secteur spatial.",
+        "institution": "CNES / FUN-MOOC"
+      },
+      "cert-4": {
+        "title": "Viral Outbreaks and Pandemics, a One Health Approach",
+        "description": "Ce cours explore les origines, la transmission et la prévention des épidémies virales, en adoptant une approche globale de santé publique.",
+        "institution": "Institut Pasteur / FUN-MOOC"
+      },
+      "cert-5": {
+        "title": "Viruses and human cancers",
+        "description": "Ce cours explore les liens entre les virus et le développement de certains cancers, en mettant en lumière les mécanismes biologiques et les implications pour la prévention et le traitement.",
+        "institution": "Institut Pasteur / FUN-MOOC"
+      },
+      "cert-6": {
+        "title": "Modeling of Infectious Diseases",
+        "description": "Ce cours explore les méthodes de modélisation des maladies infectieuses, en mettant l'accent sur les approches mathématiques et statistiques pour comprendre la propagation des épidémies.",
+        "institution": "Institut Pasteur / FUN-MOOC"
       }
     }
   },

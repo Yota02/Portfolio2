@@ -496,21 +496,37 @@
   "certifications": {
     "title": "Le mie Certificazioni",
     "subtitle": "Formazioni, Certificazioni e Diplomi",
+    "view_cert": "Vedi certificato",
     "items": {
       "cert-1": {
-        "title": "BIA",
-        "description": "Il Brevet d'Initiation Aéronautique (BIA) è un diploma francese che attesta una cultura generale nel campo dell'aeronautica e dello spazio.",
-        "institution": "Istruzione Nazionale / Aeronautica Militare"
+        "title": "Brevet d'Initiation Aéronautique (BIA)",
+        "description": "Diploma che attesta conoscenze fondamentali in aeronautica e spazio.",
+        "institution": "Ministero dell'Istruzione Nazionale"
       },
       "cert-2": {
-        "title": "Baccalauréat",
-        "description": "Diploma di scuola superiore con specializzazioni in Matematica e Informatica. Lode.",
-        "institution": "Lycée Jean Jaurès"
+        "title": "Data From Space",
+        "description": "Formazione sull'utilizzo dei dati spaziali",
+        "institution": "CNES"
       },
       "cert-3": {
-        "title": "BUT Informatica",
-        "description": "Bachelor of Technology in Informatica. Formazione intensiva di 3 anni che copre sviluppo, reti e IA.",
-        "institution": "IUT di Montpellier-Sète"
+        "title": "Mooc Aéronautique et Espace",
+        "description": "Questo è un corso introduttivo alle attività, mestieri, sfide e tecnologie del settore spaziale.",
+        "institution": "CNES / FUN-MOOC"
+      },
+      "cert-4": {
+        "title": "Viral Outbreaks and Pandemics, a One Health Approach",
+        "description": "Questo corso esplora le origini, la trasmissione e la prevenzione delle epidemie virali, adottando un approccio globale alla salute pubblica.",
+        "institution": "Institut Pasteur / FUN-MOOC"
+      },
+      "cert-5": {
+        "title": "Viruses and human cancers",
+        "description": "Questo corso esplora i legami tra virus e lo sviluppo di alcuni tumori, evidenziando i meccanismi biologici e le implicazioni per la prevenzione e il trattamento.",
+        "institution": "Institut Pasteur / FUN-MOOC"
+      },
+      "cert-6": {
+        "title": "Modeling of Infectious Diseases",
+        "description": "Questo corso esplora i metodi di modellizzazione delle malattie infettive, concentrandosi su approcci matematici e statistici per comprendere la diffusione delle epidemie.",
+        "institution": "Institut Pasteur / FUN-MOOC"
       }
     }
   },

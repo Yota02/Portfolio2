@@ -138,9 +138,9 @@ const getTechIcon = (tech: string): string => techIcons.value[tech] || ''
             <RouterLink :to="{ name: 'sub-project-detail', params: { projectId: victoriaProject.id, subId: sub.id } }" class="sub-project-link">
               <h3>{{ sub.name }}</h3>
             </RouterLink>
-            <p>{{ sub.description }}</p>
+            <p>{{ t(sub.description) }}</p>
             <ul class="sub-features-list">
-              <li v-for="feature in sub.features" :key="feature">{{ feature }}</li>
+              <li v-for="feature in sub.features" :key="feature">{{ t(feature) }}</li>
             </ul>
             <div v-if="sub.images.length > 0" class="sub-images">
               <img v-for="img in sub.images" :key="img" :src="`${baseUrl}projet/${victoriaProject.folder}/${img}`" :alt="sub.name" class="sub-image" />

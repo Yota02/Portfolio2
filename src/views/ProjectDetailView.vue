@@ -139,7 +139,7 @@ const isVideo = (src: string): boolean => {
           {{ t('projects.but_competencies') }}
         </button>
         <h1 class="project-title">{{ project.name }}</h1>
-        <p class="project-subtitle">{{ project.description }}</p>
+        <p class="project-subtitle">{{ t(project.description) }}</p>
       </div>
 
       <div class="project-content">
@@ -170,7 +170,7 @@ const isVideo = (src: string): boolean => {
 
           <div class="description-section">
             <h2>{{ t('projects.description') }}</h2>
-            <p>{{ project.longDescription }}</p>
+            <p>{{ t(project.longDescription) }}</p>
           </div>
 
           <div class="features-section">
@@ -180,7 +180,7 @@ const isVideo = (src: string): boolean => {
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
-                {{ feature }}
+                {{ t(feature) }}
               </li>
             </ul>
           </div>
@@ -218,7 +218,7 @@ const isVideo = (src: string): boolean => {
                   <line x1="8" y1="2" x2="8" y2="6"></line>
                   <line x1="3" y1="10" x2="21" y2="10"></line>
                 </svg>
-                <strong>{{ t('projects.stats.start_date') }} :</strong> {{ project.startDate || t('projects.stats.unspecified') }}
+                <strong>{{ t('projects.stats.start_date') }} :</strong> {{ project.startDate ? t(project.startDate) : t('projects.stats.unspecified') }}
               </div>
               <div class="stat-item">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -227,7 +227,7 @@ const isVideo = (src: string): boolean => {
                   <line x1="8" y1="2" x2="8" y2="6"></line>
                   <line x1="3" y1="10" x2="21" y2="10"></line>
                 </svg>
-                <strong>{{ t('projects.stats.end_date') }} :</strong> {{ project.isOngoing ? t('projects.stats.ongoing') : (project.endDate || t('projects.stats.unspecified')) }}
+                <strong>{{ t('projects.stats.end_date') }} :</strong> {{ project.isOngoing ? t('projects.stats.ongoing') : (project.endDate ? t(project.endDate) : t('projects.stats.unspecified')) }}
               </div>
               <div class="stat-item">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -271,7 +271,7 @@ const isVideo = (src: string): boolean => {
                     <ul class="ac-list">
                       <li v-for="item in comp.items" :key="item">
                         <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" :style="{ color: categoryColors[comp.category] }"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>{{ item }}</span>
+                        <span>{{ t(item) }}</span>
                       </li>
                     </ul>
                   </div>

@@ -496,21 +496,37 @@
   "certifications": {
     "title": "我的证书",
     "subtitle": "培训、证书与学位",
+    "view_cert": "查看证书",
     "items": {
       "cert-1": {
-        "title": "BIA (航空入门证书)",
-        "description": "航空入门证书 (BIA) 是一项法国证书，证明在航空和航天领域的通用文化知识。",
-        "institution": "国家教育部 / 空军"
+        "title": "Brevet d'Initiation Aéronautique (BIA)",
+        "description": "证明航空和航天基础知识的证书。",
+        "institution": "国民教育部"
       },
       "cert-2": {
-        "title": "高中毕业证书",
-        "description": "高中毕业证书，主修数学和 NSI（数字与计算机科学）。优等成绩。",
-        "institution": "Jean Jaurès 中学"
+        "title": "Data From Space",
+        "description": "关于空间数据使用的培训",
+        "institution": "CNES"
       },
       "cert-3": {
-        "title": "BUT 计算机科学",
-        "description": "计算机科学技术学士。为期 3 年的强化培训，涵盖开发、网络和人工智能。",
-        "institution": "蒙彼利埃-塞特 IUT"
+        "title": "Mooc Aéronautique et Espace",
+        "description": "这是航天部门活动、职业、挑战和技术的入门课程。",
+        "institution": "CNES / FUN-MOOC"
+      },
+      "cert-4": {
+        "title": "Viral Outbreaks and Pandemics, a One Health Approach",
+        "description": "本课程从全球公共卫生角度探讨病毒爆发的起源、传播和预防。",
+        "institution": "巴斯德研究所 / FUN-MOOC"
+      },
+      "cert-5": {
+        "title": "Viruses and human cancers",
+        "description": "本课程探讨病毒与某些癌症发展之间的联系，揭示生物学机制以及对预防和治疗的意义。",
+        "institution": "巴斯德研究所 / FUN-MOOC"
+      },
+      "cert-6": {
+        "title": "Modeling of Infectious Diseases",
+        "description": "本课程探讨传染病建模方法，重点是数学和统计方法以了解疫情传播。",
+        "institution": "巴斯德研究所 / FUN-MOOC"
       }
     }
   },

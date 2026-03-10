@@ -496,21 +496,37 @@
   "certifications": {
     "title": "資格",
     "subtitle": "研修、資格、学位",
+    "view_cert": "証明書を見る",
     "items": {
       "cert-1": {
-        "title": "BIA (航空初級証明書)",
-        "description": "航空初級証明書 (BIA) は、航空宇宙分野における一般的な教養を証明するフランスの国家資格です。",
-        "institution": "国民教育省 / 空軍"
+        "title": "Brevet d'Initiation Aéronautique (BIA)",
+        "description": "航空宇宙に関する基礎知識を証明する資格。",
+        "institution": "国民教育省"
       },
       "cert-2": {
-        "title": "バカロレア (高校卒業資格)",
-        "description": "数学とNSI（デジタル・コンピュータサイエンス）を専門とする中等教育修了証。優秀成績。",
-        "institution": "ジャン・ジョレス高校"
+        "title": "Data From Space",
+        "description": "宇宙データ利用に関する研修",
+        "institution": "CNES"
       },
       "cert-3": {
-        "title": "BUT コンピュータサイエンス",
-        "description": "コンピュータサイエンス技術学士。開発、ネットワーク、AIを網羅する3年間の集中トレーニング。",
-        "institution": "モンペリエ・セットIUT"
+        "title": "Mooc Aéronautique et Espace",
+        "description": "宇宙分野の活動、職業、課題、技術を紹介する入門コース。",
+        "institution": "CNES / FUN-MOOC"
+      },
+      "cert-4": {
+        "title": "Viral Outbreaks and Pandemics, a One Health Approach",
+        "description": "このコースでは、ワンアプローチによるグローバルな公衆衛生の観点から、ウイルス性の集団発生の起源、伝播、予防を探ります。",
+        "institution": "パスツール研究所 / FUN-MOOC"
+      },
+      "cert-5": {
+        "title": "Viruses and human cancers",
+        "description": "このコースでは、ウイルスと特定のがんの開発との関連性を探り、生物学的なメカニズムと予防・治療への意味を明らかにします。",
+        "institution": "パスツール研究所 / FUN-MOOC"
+      },
+      "cert-6": {
+        "title": "Modeling of Infectious Diseases",
+        "description": "このコースでは、疫病の蔓延を理解するための数学的・統計的アプローチに焦点を当て、感染症のモデリング方法を探ります。",
+        "institution": "パスツール研究所 / FUN-MOOC"
       }
     }
   },

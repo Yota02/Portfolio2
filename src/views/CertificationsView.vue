@@ -6,47 +6,48 @@ const baseUrl = import.meta.env.BASE_URL;
 
 interface Certification {
   id: string;
-  titleKey: string;
-  descriptionKey: string;
-  institutionKey: string;
   date: string;
-  icon: string;
-  color: string;
   link?: string;
-  image?: string;
+  logo: string;
 }
 
 const certifications: Certification[] = [
   {
-    id: 'cert-1',
-    titleKey: 'cert-1.title',
-    descriptionKey: 'cert-1.description',
-    institutionKey: 'cert-1.institution',
-    date: '2022',
-    icon: '🚀',
-    color: '#3b82f6',
-    image: 'bia.gif'
+    id: "cert-1",
+    date: "2021",
+    link: "https://eduscol.education.fr/sti/aeronautique/bia",
+    logo: "bia.gif",
   },
   {
-    id: 'cert-2',
-    titleKey: 'cert-2.title',
-    descriptionKey: 'cert-2.description',
-    institutionKey: 'cert-2.institution',
-    date: '2023',
-    icon: '🎓',
-    color: '#10b981',
-    image: 'jeanJaurès.jpeg'
+    id: "cert-2",
+    date: "2026",
+    link: "https://datafromspace.fr/",
+    logo: "datafromspace.png",
   },
   {
-    id: 'cert-3',
-    titleKey: 'cert-3.title',
-    descriptionKey: 'cert-3.description',
-    institutionKey: 'cert-3.institution',
-    date: '2023 - 2026',
-    icon: '💻',
-    color: '#8b5cf6',
-    image: 'IUT-Montpellier.png'
-  }
+    id: "cert-3",
+    date: "2026",
+    link: "https://www.fun-mooc.fr/fr/cours/mooc-espace/",
+    logo: "funmooc.svg",
+  },
+  {
+    id: "cert-4",
+    date: "2026",
+    link: "https://lms.fun-mooc.fr/courses/course-v1%3Apasteur%2B96025%2Bsession02/",
+    logo: "funmooc.svg",
+  },
+  {
+    id: "cert-5",
+    date: "2026",
+    link: "https://lms.fun-mooc.fr/courses/course-v1:pasteur+96012+session04/info",
+    logo: "funmooc.svg",
+  },
+  {
+    id: "cert-6",
+    date: "2026",
+    link: "https://lms.fun-mooc.fr/courses/course-v1:pasteur+96020+session03/info",
+    logo: "funmooc.svg",
+  },
 ]
 </script>
 
@@ -63,21 +64,20 @@ const certifications: Certification[] = [
           v-for="(cert, index) in certifications"
           :key="cert.id"
           class="cert-card reveal"
-          :style="{ '--cert-color': cert.color, '--delay': index * 0.1 + 's' }"
+          :style="{ '--delay': index * 0.1 + 's' }"
         >
-          <div class="cert-image-container" v-if="cert.image">
-            <img :src="`${baseUrl}icone/${cert.image}`" :alt="t('certifications.items.' + cert.titleKey)" class="cert-image" />
+          <div class="cert-image-container" v-if="cert.logo">
+            <img :src="`${baseUrl}icone/${cert.logo}`" :alt="t('certifications.items.' + cert.id + '.title')" class="cert-image" />
           </div>
           <div class="cert-content">
             <div class="cert-header">
-              <span class="cert-icon">{{ cert.icon }}</span>
               <span class="cert-date">{{ cert.date }}</span>
             </div>
-            <h3 class="cert-title">{{ t('certifications.items.' + cert.titleKey) }}</h3>
-            <p class="cert-institution">{{ t('certifications.items.' + cert.institutionKey) }}</p>
-            <p class="cert-description">{{ t('certifications.items.' + cert.descriptionKey) }}</p>
+            <h3 class="cert-title">{{ t('certifications.items.' + cert.id + '.title') }}</h3>
+            <p class="cert-institution">{{ t('certifications.items.' + cert.id + '.institution') }}</p>
+            <p class="cert-description">{{ t('certifications.items.' + cert.id + '.description') }}</p>
             <a v-if="cert.link" :href="cert.link" target="_blank" class="cert-link">
-              Voir le certificat
+              {{ t('certifications.view_cert') }}
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                 <polyline points="15 3 21 3 21 8"></polyline>
@@ -145,7 +145,6 @@ const certifications: Certification[] = [
 .cert-card:hover {
   transform: translateY(-10px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--cert-color);
 }
 
 .cert-image-container {
@@ -176,13 +175,9 @@ const certifications: Certification[] = [
 
 .cert-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-bottom: 1rem;
-}
-
-.cert-icon {
-  font-size: 1.5rem;
 }
 
 .cert-date {

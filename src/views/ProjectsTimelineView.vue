@@ -35,7 +35,7 @@ const monthMap: Record<string, Record<string, number>> = {
 // Special case for Chinese and Japanese (YYYY年M月)
 const parseAsianDate = (dateStr: string) => {
   const match = dateStr.match(/(\d+)年(\d+)月/)
-  if (match) {
+  if (match && match[1] && match[2]) {
     return new Date(parseInt(match[1]), parseInt(match[2]) - 1)
   }
   return new Date(0)
@@ -45,17 +45,18 @@ const parseDate = (dateKey: string | undefined) => {
   if (!dateKey) return new Date(0)
   
   const translatedDate = t(dateKey)
-  const currentLocale = locale.value
+  const currentLocale = locale.value as string
 
   if (currentLocale === 'zh' || currentLocale === 'jp') {
     return parseAsianDate(translatedDate)
   }
 
   const parts = translatedDate.split(' ')
-  if (parts.length === 2) {
+  if (parts.length === 2 && parts[1] && parts[0]) {
     const monthName = parts[0]
     const year = parseInt(parts[1])
-    const month = monthMap[currentLocale]?.[monthName] ?? 0
+    const monthMapForLocale = monthMap[currentLocale]
+    const month = monthMapForLocale ? (monthMapForLocale[monthName] ?? 0) : 0
     return new Date(year, month)
   }
   

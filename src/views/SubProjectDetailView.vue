@@ -42,7 +42,7 @@ const prevImage = () => {
 
       <div v-if="subProject" class="sub-project-header">
         <h1 class="sub-project-title">{{ subProject.name }}</h1>
-        <p class="sub-project-subtitle">{{ subProject.description }}</p>
+        <p class="sub-project-subtitle">{{ t(subProject.description) }}</p>
       </div>
 
       <div v-if="subProject" class="sub-project-content">
@@ -75,7 +75,7 @@ const prevImage = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
-                {{ feature }}
+                {{ t(feature) }}
               </li>
             </ul>
           </div>
