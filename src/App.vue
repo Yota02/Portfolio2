@@ -379,7 +379,7 @@ watch(() => route.path, () => {
     </main>
 
     <footer class="footer" v-if="!isResumePage">
-      <p>&copy; 2026 Mon Portfolio. Tous droits réservés.</p>
+      <p>{{ t('footer.rights') }}</p>
     </footer>
   </div>
 </template>
