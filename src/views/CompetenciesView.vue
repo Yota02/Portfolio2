@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { projects, type Competency, type Project } from '@/data/projects'
+
+const { t } = useI18n()
 
 const categoryColors: Record<string, string> = {
   'Réaliser': '#3b82f6',
@@ -10,6 +13,15 @@ const categoryColors: Record<string, string> = {
   'Gérer': '#f59e0b',
   'Conduire': '#ef4444',
   'Collaborer': '#ec4899'
+}
+
+const categoryKeyMap: Record<string, string> = {
+  'Réaliser': 'realiser',
+  'Optimiser': 'optimiser',
+  'Administrer': 'administrer',
+  'Gérer': 'gerer',
+  'Conduire': 'conduire',
+  'Collaborer': 'collaborer'
 }
 
 interface CompetencyWithProjects extends Competency {
@@ -71,9 +83,9 @@ const getProjectLogo = (project: Project) => {
   <div class="competencies-page">
     <div class="container">
       <div class="header">
-        <h1 class="page-title">Compétences du BUT Informatique</h1>
+        <h1 class="page-title">{{ t('competencies.title') }}</h1>
         <p class="page-subtitle">
-          Découvrez toutes les compétences développées à travers mes projets
+          {{ t('competencies.subtitle') }}
         </p>
       </div>
 
@@ -86,10 +98,10 @@ const getProjectLogo = (project: Project) => {
         >
           <div class="category-header" :style="{ borderLeftColor: categoryColors[category] }">
             <h2 class="category-title" :style="{ color: categoryColors[category] }">
-              {{ category }}
+              {{ t('competencies.categories.' + categoryKeyMap[category]) }}
             </h2>
             <span class="competency-count">
-              {{ competenciesByCategory[category]?.length || 0 }} compétence(s)
+              {{ t('competencies.count', { count: competenciesByCategory[category]?.length || 0 }) }}
             </span>
           </div>
 
@@ -102,10 +114,10 @@ const getProjectLogo = (project: Project) => {
             >
               <div class="card-header" :style="{ backgroundColor: getBgColor(category) }">
                 <span class="comp-level" :style="{ color: categoryColors[category] }">
-                  {{ comp.level }}
+                  {{ t('competencies.levels.' + (comp.level === 'Niveau 1' ? 'n1' : comp.level === 'Niveau 2' ? 'n2' : 'n3')) }}
                 </span>
                 <span class="projects-badge">
-                  {{ comp.projects.length }} projet(s)
+                  {{ t('competencies.projects_count', { count: comp.projects.length }) }}
                 </span>
               </div>
 
@@ -132,7 +144,7 @@ const getProjectLogo = (project: Project) => {
                 </ul>
 
                 <div class="projects-section">
-                  <h4 class="projects-title">Projets associés :</h4>
+                  <h4 class="projects-title">{{ t('competencies.associated_projects') }}</h4>
                   <div class="projects-list">
                     <RouterLink
                       v-for="project in comp.projects"
@@ -161,7 +173,7 @@ const getProjectLogo = (project: Project) => {
           <path d="M19 12H5"></path>
           <path d="M12 19l-7-7 7-7"></path>
         </svg>
-        Projets
+        {{ t('competencies.back_to_projects') }}
       </RouterLink>
     </div>
   </div>

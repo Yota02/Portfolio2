@@ -4,17 +4,596 @@
     "projects": "プロジェクト",
     "certifications": "資格",
     "languages": "言語",
-    "parcours": "私の経歴",
-    "diplomas": "学位",
-    "participations": "参加",
+    "parcours": "経歴",
+    "diplomas": "学歴・経験",
+    "participations": "参加実績",
     "contact": "お問い合わせ",
-    "blog": "ブログ"
+    "blog": "ブログ",
+    "timeline": "タイムライン",
+    "toggle_theme": "テーマ切り替え",
+    "toggle_nav": "ナビゲーション切り替え"
   },
   "home": {
-    "greeting": "こんにちは、私は",
-    "subtitle": "コンピュータサイエンス学生",
-    "description": "AI、Web開発、新技術に情熱を注いでいます。毎日、新しいアイデアを学び、研究者になるために探索しています。",
+    "greeting": "こんにちは、",
+    "subtitle": "コンピュータサイエンス専攻学生",
+    "description": "私はAI、ウェブ開発、そして新技術に情熱を持っています。日々、教育研究者になるために新しいアイデアを学び、探求しています。",
     "view_projects": "プロジェクトを見る",
-    "learn_more": "詳しく見る"
+    "learn_more": "詳細を見る",
+    "view_project": "Victoriaプロジェクトを見る"
+  },
+  "about": {
+    "title": "コードを理解し、<br/> <span class=\"gradient-text\">世界を解読する。</span>",
+    "subtitle": "アルゴリズムと人文科学の架け橋を築きます。国際的な志を持つ<strong class=\"text-dark\">未来の教育研究者</strong>です。",
+    "vision": {
+      "title": "ビジョン",
+      "p1": "コンピュータサイエンスは冷たくバイナリなものと思われがちですが、私にとっては世界の複雑さを観察するための<strong>レンズ</strong>です。",
+      "p2": "<span class=\"text-blue\">社会学</span>がアルゴリズムの利用を照らし、<span class=\"text-emerald\">地政学</span>がデータフローを説明するような、学際的なアプローチを信じています。"
+    },
+    "parcours": {
+      "title": "経歴",
+      "p1": "現在、<strong class=\"text-dark\">モンペリエIUTのコンピュータサイエンス3年生</strong>で、アルゴリズムと複雑なシステムを専門としています。",
+      "p2": "将来の目標は<span class=\"text-blue\">バイオインフォマティクスの修士課程</span>に進み、コンピュータサイエンスと生命科学を組み合わせて生体データを分析することです。",
+      "p3": "並行して、機械学習とその実践的な応用を探求するために<span class=\"text-emerald\">個人用AI</span>を開発しています。"
+    },
+    "international": {
+      "title": "国際的な野心",
+      "description": "<strong>世界中で教える</strong>ために言語を学んでいます。異文化交流は私の研究の原動力です。",
+      "next": "次は？"
+    },
+    "quote": "人類は、蝋燭で遊ぶ子供のようにテクノロジーを使っている。大切なのは、いつ手を引くべきかを知ることだ。",
+    "hobbies": {
+      "title": "趣味・関心",
+      "geopolitics": "地政学",
+      "sciences": "科学",
+      "scifi": "SF",
+      "sociology": "社会学",
+      "cinema": "映画"
+    }
+  },
+  "projects": {
+    "title": "プロジェクト",
+    "view_competencies": "スキル・能力を見る",
+    "back_to_projects": "← プロジェクト一覧に戻る",
+    "description": "概要",
+    "features": "主な機能",
+    "technologies": "使用技術",
+    "links": "リンク",
+    "view_demo": "デモを見る",
+    "source_code": "ソースコード",
+    "stats": {
+      "title": "プロジェクト統計",
+      "start_date": "開始日",
+      "end_date": "終了日",
+      "status": "ステータス",
+      "ongoing": "進行中",
+      "finished": "完了",
+      "unspecified": "未指定"
+    },
+    "categories": {
+      "web": "ウェブ開発",
+      "ia": "AI",
+      "games": "ゲーム開発",
+      "software": "ソフトウェア"
+    },
+    "purposes": {
+      "education": "教育",
+      "personnel": "個人プロジェクト"
+    },
+    "subprojects": "サブプロジェクト",
+    "view_project_link": "プロジェクトを見る →",
+    "but_competencies": "BUT習得スキル",
+    "unknown_project": "不明なプロジェクト",
+    "project_not_found": "このプロジェクトは存在しません",
+    "unknown_subproject": "サブプロジェクトが見つかりません",
+    "subproject_not_found": "このサブプロジェクトは存在しません",
+    "video_not_supported": "お使いのブラウザはビデオタグをサポートしていません。",
+    "image_alt": "プロジェクト画像",
+    "items": {
+      "project-1": {
+        "description": "CodeTonFuturは、コンピュータサイエンスに焦点を当てた科学普及サイトです。",
+        "longDescription": "このプロジェクトは、Vue.js、TypeScript、Viteなどの最新技術の使用を実証する完全なウェブアプリケーションです。このアプリケーションは、スムーズで高性能なユーザーエクスペリエンスを提供します。",
+        "startDate": "2025年4月",
+        "features": {
+          "0": "GPTベースのインテリジェントチャットボット",
+          "1": "自動修正機能付きの実践演習"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC31.01 | 適切なアーキテクチャの選択と実装（Vue.js/Flaskウェブアーキテクチャ）",
+            "1": "AC31.03 | ソリューションを本番環境に統合する"
+          },
+          "1": {
+            "0": "AC25.02 | クライアントとユーザーのニーズを形式化する"
+          },
+          "2": {
+            "0": "AC24.03 | プログラミングと視覚化を通じてデータ提示を整理する（ダッシュボード）"
+          }
+        }
+      },
+      "project-2": {
+        "description": "サイバーセキュリティにおけるCapture The Flag（CTF）チャレンジ専用のプラットフォーム。",
+        "longDescription": "Break The Codeは、IUTの協会プロジェクトの一環として開発された、サイバーセキュリティのCapture The Flag（CTF）チャレンジのためのインタラクティブなプラットフォームです。",
+        "startDate": "2024年9月",
+        "endDate": "2025年1月",
+        "features": {
+          "0": "SSHの脆弱性を利用したチャレンジ",
+          "1": "フラグを取得するための「Rainbow Jumper」ゲーム",
+          "2": "Dockerによるコンテナ化されたデプロイメント"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC21.01 | 要件から機能的および非機能的仕様を策定し実装する",
+            "1": "AC21.04 | テストを通じてアプリケーションの品質を検証および妥当性確認する"
+          },
+          "1": {
+            "0": "AC23.01 | 通信アプリケーションを設計および開発する",
+            "1": "AC23.02 | 仮想化されたネットワークサーバーとサービスを使用する（Docker）",
+            "2": "AC23.03 | システムのサービスとデータを保護する（SSH）"
+          },
+          "2": {
+            "0": "AC25.04 | プロジェクト監視アプローチ（Scrum/Agile）を定義し実施する"
+          },
+          "3": {
+            "0": "AC26.03 | ITチームで働くために対人スキルを動員する",
+            "1": "AC26.04 | 職業活動について報告する"
+          }
+        },
+        "subProjects": {
+          "0": {
+            "name": "SSHチャレンジ",
+            "description": "SSHの脆弱性に基づいたチャレンジ。",
+            "features": {
+              "0": "SSHの欠陥の悪用",
+              "1": "フラグの取得"
+            }
+          },
+          "1": {
+            "name": "Rainbow Jumper",
+            "description": "フラグを取得するゲーム。",
+            "features": {
+              "0": "ジャンプメカニクス",
+              "1": "フラグ報酬"
+            }
+          }
+        }
+      },
+      "project-3": {
+        "description": "ビジネスシミュレーションビデオゲームのウェブアプリケーション。",
+        "longDescription": "ユーザーがビジネスシミュレーションで競い合うことができるビデオゲームのウェブアプリケーション。プレイヤーはリソースを管理し、戦略的な決定を下し、仮想市場での覇権を争います。",
+        "startDate": "2025年9月",
+        "features": {
+          "0": "インタラクティブなゲームメカニクス",
+          "1": "プログレッシブレベルシステム",
+          "2": "プレイヤー間の競争",
+          "3": "リアルタイムのリソース管理",
+          "4": "貸借対照表、損益計算書の作成"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC21.03 | 優れた設計とプログラミングの慣行を採用する（MVC Symfony）",
+            "1": "AC21.02 | アクセシビリティとエルゴノミクスの原則を適用する"
+          },
+          "1": {
+            "0": "AC24.01 | 企業のデータモデルを最適化する"
+          },
+          "2": {
+            "0": "AC26.01 | 組織におけるITの多様性、構造、および次元を理解する"
+          }
+        }
+      },
+      "project-4": {
+        "description": "衛星衝突警告統計データ分析ツール。",
+        "longDescription": "Star Guardianは、軌道上の衛星が関与する衝突アラートに対して高度な統計分析を実行するために設計されたソフトウェアです。",
+        "startDate": "2025年1月",
+        "endDate": "2025年4月",
+        "features": {
+          "0": "直感的なデータ視覚化インターフェース",
+          "1": "衝突確率の統計分析"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC11.01 | シンプルな設計を実装する",
+            "1": "AC11.04 | ユーザーインターフェースを開発する"
+          },
+          "1": {
+            "0": "AC22.01 | 問題に適した複雑なデータ構造を選択する（Pandas Dataframes）"
+          },
+          "2": {
+            "0": "AC24.04 | 異種データ（Excel、CSV、API）を操作する"
+          },
+          "3": {
+            "0": "AC15.01 | クライアントとユーザーのニーズを把握する"
+          }
+        }
+      },
+      "project-5": {
+        "description": "ボードゲーム「Trains」をJavaビデオゲームに移植。",
+        "longDescription": "日本のボードゲーム「Trains」をJavaで再現するプロジェクト。JavaFXグラフィカルインターフェースとTDDアプローチを備えています。",
+        "startDate": "2024年3月",
+        "endDate": "2024年6月",
+        "features": {
+          "0": "JavaFXで開発されたグラフィカルインターフェース",
+          "1": "JUnitを使用したテスト駆動開発（TDD）"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC11.03 | 試行を行い、仕様に照らして結果を評価する（TDD/JUnit）",
+            "1": "AC11.04 | ユーザーインターフェースを開発する（JavaFX）"
+          },
+          "1": {
+            "0": "AC12.01 | 問題を体系的に分析する（単純なアルゴリズム要素への分解）",
+            "1": "AC12.02 | 古典的な問題のアルゴリズムを比較する（Dijkstra）"
+          },
+          "2": {
+            "0": "AC22.01 | 問題に適した複雑なデータ構造を選択する（グラフ）"
+          }
+        }
+      },
+      "project-6": {
+        "description": "画像を分類するためのAIベースのソフトウェア。",
+        "longDescription": "画像をカテゴリ別に分類できるAIの作成。PyTorchと畳み込みネットワークを使用。",
+        "startDate": "2023年6月",
+        "endDate": "2024年6月",
+        "features": {
+          "0": "98%の精度での検出",
+          "1": "畳み込みニューラルネットワーク（CNN）",
+          "2": "進捗ダッシュボード"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC21.03 | 優れた設計とプログラミングの慣行を採用する"
+          },
+          "1": {
+            "0": "AC22.02 | 複雑な問題に対して適切なアルゴリズム技術（人工知能）を使用する"
+          }
+        }
+      },
+      "project-7": {
+        "description": "ローカルAIを備えたモジュール式デスクトップアシスタント。",
+        "longDescription": "Victoriaは、ローカル人工知能（Ollama）を使用したデスクトップアプリケーションで、プラグインを介して拡張可能です。",
+        "startDate": "2025年5月",
+        "features": {
+          "0": "モダンなCustomTkinterインターフェース",
+          "1": "プラグインシステム",
+          "2": "RAG統合（ChromaDb）"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC31.02 | 既存のアプリケーションを進化させる（プラグインシステム）",
+            "1": "AC31.01 | 適切なアーキテクチャの選択と実装（モジュール式）"
+          },
+          "1": {
+            "0": "AC22.02 | 複雑な問題に対して適切なアルゴリズム技術（AI、RAG）を使用する"
+          },
+          "2": {
+            "0": "AC13.01 | デジタルシステムのさまざまなコンポーネント（ハードウェアおよびソフトウェア）を識別する"
+          }
+        },
+        "subProjects": {
+          "0": {
+            "name": "RSSプラグイン",
+            "description": "RSSフィードを読み取るためのプラグイン。",
+            "features": {
+              "0": "自動読み取り",
+              "1": "記事のフィルタリング"
+            }
+          },
+          "1": {
+            "name": "Issue Maker",
+            "description": "GitHubのIssueを作成するためのプラグイン。",
+            "features": {
+              "0": "GitHub統合",
+              "1": "自動生成"
+            }
+          }
+        }
+      },
+      "project-8": {
+        "description": "ゲーミフィケーションによる言語学習アプリケーション。",
+        "longDescription": "クイズや復習カードを通じて1日10単語を学習するウェブアプリケーション。",
+        "startDate": "2025年9月",
+        "features": {
+          "0": "ゲーミフィケーションされた毎日の学習",
+          "1": "インテリジェントなリマインダーシステム",
+          "2": "10言語のサポート"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC31.01 | 適切なアーキテクチャの選択と実装（モバイル/PWA）"
+          },
+          "1": {
+            "0": "AC23.01 | 通信アプリケーションを設計および開発する（Firebase）"
+          },
+          "2": {
+            "0": "AC14.01 | リレーショナルデータベース（MySQL）を更新およびクエリする"
+          }
+        }
+      },
+      "project-10": {
+        "description": "ビデオゲーム、アニメ、漫画を評価するためのコミュニティサイト。",
+        "longDescription": "Anakomiは、ユーザーがお気に入りの作品を評価してコメントしたり、コミュニティのランキングを参照したりできるプラットフォームです。",
+        "startDate": "2025年9月",
+        "endDate": "2025年9月",
+        "features": {
+          "0": "評価とコメント",
+          "1": "コミュニティランキング"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC11.01 | シンプルな設計を実装する",
+            "1": "AC11.04 | ユーザーインターフェースを開発する"
+          },
+          "1": {
+            "0": "AC14.03 | 仕様からリレーショナルデータベースを設計する"
+          }
+        }
+      },
+      "project-11": {
+        "description": "一晩中チームで行われる全国的なウェブ開発チャレンジ。",
+        "longDescription": "Nuit de l'Infoの枠組みの中で実施されたプロジェクト。チャレンジは、日没から日の出までチームで協力して機能的なウェブアプリケーションを開発することでした。",
+        "startDate": "2025年12月",
+        "endDate": "2025年12月",
+        "features": {
+          "0": "限られた時間内での集中的な開発（ハッカソン）",
+          "1": "共同作業とタスク分担",
+          "2": "テーマと技術的制約の遵守"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC26.03 | ITチームで働くために対人スキルを動員する",
+            "1": "AC26.01 | ITチームの多様性とダイナミクスを理解する"
+          },
+          "1": {
+            "0": "AC25.01 | チームの作業を整理する（タスク分担）",
+            "1": "AC25.03 | 実現可能性の基準を特定する（短期的な時間管理）"
+          },
+          "2": {
+            "0": "AC21.03 | 優れた設計とプログラミングの慣行を採用する（共同コード）"
+          }
+        }
+      },
+      "project-12": {
+        "description": "CHIRALは、ミラーライフ作成の危険性に関する教育ビデオゲームです。",
+        "longDescription": "CHIRALは、ミラーライフ作成の危険性についてプレイヤーの意識を高めます。ゲームには急速に広がるミラーバクテリアが登場し、生態系のバランスを脅かします。",
+        "startDate": "2026年1月",
+        "features": {
+          "0": "ミラーライフの危険性に関する意識向上",
+          "1": "教育的な相互作用",
+          "2": "魅力的なゲームプレイ"
+        }
+      },
+      "project-13": {
+        "description": "機械学習のためのデータ処理パイプライン。",
+        "longDescription": "Loomは、収集からデプロイまで、AIモデルのデータワークフローを自動化することを目的としたプロジェクトです。",
+        "startDate": "2026年1月"
+      }
+    }
+  },
+  "victoria": {
+    "ai_precision": "AI 精度：",
+    "ai_precision_value": "テストで 98% を達成",
+    "description_title": "プロジェクト概要",
+    "description_text": "Victoria は、ローカル人工知能を使用したデスクトップ アプリケーションであり、可能な限りモジュール化され、パーソナライズできるようにすることを目的としています。主な目的は、ユーザーがシンプルかつ効率的な方式でプラグインを追加して機能を拡張できるようにすることです。 Victoria は、共有されるように設計された多用途プラットフォームであり、さまざまなニーズに適応し、モジュール型アーキテクチャのおかげで簡単に拡張可能です。",
+    "features_title": "主な機能",
+    "feature_customtkinter": "CustomTkinter を使用した最新のユーザー インターフェイスにより、スムーズなエクスペリエンスを提供します。",
+    "feature_watchdog": "Watchdog によるプラグイン フォルダーのリアルタイム監視。",
+    "tech_title": "使用技術",
+    "tech_description": "このプロジェクトでは、ロジックに Python、AI に PyTorch、インターフェイスに CustomTkinter を使用しています。 Watchdog により自動ファイル監視が可能になります。",
+    "plugins_title": "利用可能なプラグイン"
+  },
+  "competencies": {
+    "title": "BUTコンピュータサイエンス習得スキル",
+    "subtitle": "プロジェクトを通じて習得したすべてのスキルを紹介します",
+    "count": "{count} 個のスキル",
+    "projects_count": "{count} 個のプロジェクト",
+    "associated_projects": "関連プロジェクト：",
+    "back_to_projects": "プロジェクト",
+    "categories": {
+      "realiser": "実現",
+      "optimiser": "最適化",
+      "administrer": "管理",
+      "gerer": "経営",
+      "conduire": "指導",
+      "collaborer": "協力"
+    },
+    "levels": {
+      "n1": "レベル 1",
+      "n2": "レベル 2",
+      "n3": "レベル 3"
+    },
+    "modal_intro": "このプロジェクトでは、以下のスキルと重要な学習成果が検証されました："
+  },
+  "participations": {
+    "title": "参加実績",
+    "subtitle": "これまでに参加したイベントやコンテスト",
+    "learn_more": "詳細を見る →",
+    "types": {
+      "concours": "コンテスト",
+      "hackathon": "ハッカソン",
+      "formation": "研修",
+      "spatial": "宇宙"
+    },
+    "results": {
+      "challenge_met": "チャレンジ達成"
+    },
+    "items": {
+      "ndi2024": {
+        "title": "Nuit de l'Info 2024",
+        "description": "Nuit de l'Infoへの参加。与えられたテーマに基づいてウェブアプリケーションを作成する24時間の開発マラソン。",
+        "result": "チャレンジ達成"
+      },
+      "codegamejam2026": {
+        "title": "Code Game Jam 2026",
+        "description": "48時間以内にチームでゲームを開発するコーディングゲームジャムへの参加。",
+        "result": ""
+      },
+      "actinspace": {
+        "title": "Hackathon ActInSpace",
+        "description": "CNESとESAが主催する、宇宙技術に基づいた課題を解決する国際ハッカソン。",
+        "result": ""
+      },
+      "ndi2025": {
+        "title": "Nuit de l'Info 2025",
+        "description": "革新的なウェブアプリケーションを作成する24時間の開発マラソン、Nuit de l'Infoへの参加。",
+        "result": ""
+      }
+    }
+  },
+  "languages": {
+    "title": "情熱の年代記",
+    "subtitle_caps": "私の言語の旅",
+    "page_subtitle": "習得した言語から未踏の地へ。",
+    "sections": {
+      "mastered": "定着（習得済み）",
+      "learning": "冒険（学習中）",
+      "planned": "展望（将来）"
+    },
+    "since": "{year}年から",
+    "birth": "出生",
+    "items": {
+      "lang-1": {
+        "name": "フランス語",
+        "level": "習得済み (C2)",
+        "description": "母国語。日常的なコミュニケーションに使用。"
+      },
+      "lang-2": {
+        "name": "英語",
+        "level": "上級 (C1)",
+        "description": "仕事や技術動向の調査に使用。流暢なコミュニケーション。"
+      },
+      "lang-8": {
+        "name": "ドイツ語",
+        "level": "中級 (B1)",
+        "description": "要点を理解し、身近な話題について議論できる能力。"
+      },
+      "lang-3": {
+        "name": "中国語（普通話）",
+        "level": "初級 (A1)",
+        "description": "声調と最初の漢字（漢字）の学習。"
+      },
+      "lang-4": {
+        "name": "日本語",
+        "level": "初級 (A1)",
+        "description": "ひらがな・カタカナとサバイバル・フレーズの学習。"
+      },
+      "lang-5": {
+        "name": "ロシア語",
+        "level": "目標 A1",
+        "description": "キリル文字の習得。"
+      },
+      "lang-6": {
+        "name": "イタリア語",
+        "level": "興味あり",
+        "description": "イタリアの音楽と料理に惹かれて。"
+      },
+      "lang-7": {
+        "name": "スペイン語",
+        "level": "目標 A1",
+        "description": "中南米への旅行の準備。"
+      }
+    }
+  },
+  "certifications": {
+    "title": "資格",
+    "subtitle": "研修、資格、学位",
+    "items": {
+      "cert-1": {
+        "title": "BIA (航空初級証明書)",
+        "description": "航空初級証明書 (BIA) は、航空宇宙分野における一般的な教養を証明するフランスの国家資格です。",
+        "institution": "国民教育省 / 空軍"
+      },
+      "cert-2": {
+        "title": "バカロレア (高校卒業資格)",
+        "description": "数学とNSI（デジタル・コンピュータサイエンス）を専門とする中等教育修了証。優秀成績。",
+        "institution": "ジャン・ジョレス高校"
+      },
+      "cert-3": {
+        "title": "BUT コンピュータサイエンス",
+        "description": "コンピュータサイエンス技術学士。開発、ネットワーク、AIを網羅する3年間の集中トレーニング。",
+        "institution": "モンペリエ・セットIUT"
+      }
+    }
+  },
+  "objectives": {
+    "title": "学歴・経験",
+    "subtitle": "私の学術的・職業的歩み",
+    "today": "現在",
+    "types": {
+      "education": "教育",
+      "experience": "経験"
+    },
+    "items": {
+      "obj-1": {
+        "title": "BUT コンピュータサイエンス",
+        "institution": "モンペリエ・セットIUT",
+        "description": "コンピュータサイエンスの多才なトレーニング：ソフトウェア開発、ウェブ、データベース、ネットワーク、人工知能。"
+      },
+      "obj-2": {
+        "title": "普通バカロレア",
+        "institution": "ジャン・ジョレス高校",
+        "description": "数学とNSI（デジタル・コンピュータサイエンス）の専門。優秀成績。"
+      },
+      "obj-3": {
+        "title": "CTFプラットフォーム開発者・設計者",
+        "institution": "モンペリエIUT（プロジェクト）",
+        "description": "サイバーセキュリティ・チャレンジ・プラットフォームの設計と開発。Flask、Docker、アジャイル手法を使用。"
+      },
+      "obj-4": {
+        "title": "AI開発者・デスクトップアシスタント",
+        "institution": "個人プロジェクト (Victoria)",
+        "description": "ローカルAIを使用したモジュール式アシスタントの作成。LLMの統合とプラグインシステム。"
+      }
+    }
+  },
+  "blog": {
+    "subtitle": "コードと科学に関する私の考察。",
+    "search_placeholder": "記事を検索...",
+    "read_more": "続きを読む →",
+    "all_categories": "すべて",
+    "posts": {
+      "post-1": {
+        "title": "教育に役立つAI",
+        "excerpt": "言語モデルがコード学習をどのように変えるか。"
+      },
+      "post-2": {
+        "title": "Web開発の未来",
+        "excerpt": "新しいフロントエンドとバックエンドのアーキテクチャの探索。"
+      }
+    }
+  },
+  "contact": {
+    "title": "お問い合わせ",
+    "subtitle": "プロジェクトやコラボレーションに関するお問い合わせはお気軽にどうぞ。",
+    "form": {
+      "name": "お名前",
+      "email": "メールアドレス：",
+      "message": "メッセージ内容：",
+      "send": "送信"
+    },
+    "info_title": "連絡先情報"
+  },
+  "footer": {
+    "rights": "© 2026 My Portfolio. All rights reserved."
+  },
+  "resume": {
+    "generator_title": "PDFポートフォリオ作成",
+    "generator_subtitle": "これまでの実績をまとめたプロフェッショナルな履歴書を書き出します。",
+    "print_button": "印刷 / PDFとして保存",
+    "catalogue_title": "プロジェクトカタログ",
+    "present": "現在",
+    "generated_from": "オンラインポートフォリオより生成：",
+    "professional_profile": "プロフェッショナルプロフィール",
+    "experiences": {
+      "ctf": {
+        "detail_0": "サイバーセキュリティチャレンジプラットフォーム (Capture The Flag) の設計。",
+        "detail_1": "Flaskによるバックエンド開発と、チャレンジのためのDockerコンテナ管理。",
+        "detail_2": "プロジェクト管理のためのアジャイルスクラム手法の実施。"
+      },
+      "victoria": {
+        "detail_0": "ローカルLLM (Ollama) を使用したモジュール式アシスタントの作成。",
+        "detail_1": "機能拡張のためのプラグインシステムの実装。",
+        "detail_2": "CustomTkinterによるモダンなグラフィカルインターフェースの開発。"
+      }
+    }
   }
 }

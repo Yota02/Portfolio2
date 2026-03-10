@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { projects, techIconMap } from '@/data/projects'
+
+const { t } = useI18n()
 
 // Récupérer les données de Victoria depuis projects.ts
 const victoriaProject = computed(() => projects.find(p => p.id === 'project-7'))
@@ -30,7 +33,6 @@ const prevImage = () => {
 
 // Icônes des technologies
 const techIcons = ref<Record<string, string>>({})
-import { onMounted } from 'vue'
 onMounted(() => {
   const icons: Record<string, string> = {}
   for (const tech of victoriaProject.value?.tags || []) {
@@ -47,20 +49,20 @@ const getTechIcon = (tech: string): string => techIcons.value[tech] || ''
 <template>
   <div class="victoria-page">
     <div class="container">
-      <RouterLink to="/projects" class="back-link">← Retour aux projets</RouterLink>
+      <RouterLink to="/projects" class="back-link">{{ t('projects.back_to_projects') }}</RouterLink>
 
       <div class="hero-section">
         <h1 class="page-title">{{ victoriaProject?.name }}</h1>
         <p class="page-subtitle">{{ victoriaProject?.description }}</p>
         <div class="hero-stats">
           <div class="stat">
-            <strong>Précision IA :</strong> 98% sur les tests
+            <strong>{{ t('victoria.ai_precision') }}</strong> {{ t('victoria.ai_precision_value') }}
           </div>
           <div class="stat">
-            <strong>Technologies :</strong> {{ victoriaProject?.tags.join(', ') }}
+            <strong>{{ t('projects.technologies') }} :</strong> {{ victoriaProject?.tags.join(', ') }}
           </div>
           <div class="stat">
-            <strong>Statut :</strong> {{ victoriaProject?.isOngoing ? 'En cours' : 'Terminé' }}
+            <strong>{{ t('projects.stats.status') }} :</strong> {{ victoriaProject?.isOngoing ? t('projects.stats.ongoing') : t('projects.stats.finished') }}
           </div>
         </div>
       </div>
@@ -68,14 +70,14 @@ const getTechIcon = (tech: string): string => techIcons.value[tech] || ''
       <!-- Carrousel d'images -->
       <div class="carousel-container">
         <div class="carousel">
-          <img v-if="fullImages.length > 0" :src="fullImages[currentImageIndex]" alt="Image du projet Victoria" class="carousel-image" />
+          <img v-if="fullImages.length > 0" :src="fullImages[currentImageIndex]" :alt="t('projects.image_alt')" class="carousel-image" />
           <div v-else class="image-placeholder">
             <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
               <circle cx="8.5" cy="8.5" r="1.5"></circle>
               <polyline points="21 15 16 10 5 21"></polyline>
             </svg>
-            <p>Image du projet Victoria</p>
+            <p>{{ t('projects.image_alt') }}</p>
           </div>
         </div>
         <button v-if="fullImages.length > 1" @click="prevImage" class="carousel-btn prev">&lt;</button>
@@ -87,16 +89,13 @@ const getTechIcon = (tech: string): string => techIcons.value[tech] || ''
 
       <!-- Description détaillée -->
       <div class="description-section">
-        <h2>Description du Projet</h2>
-        <p>Victoria est une application de bureau utilisant une intelligence artificielle locale, et qui a pour but d'être le plus modulable et personnalisable possible. 
-          L'objectif principal est de permettre aux utilisateurs d'ajouter des plugins pour étendre ses fonctionnalités de manière simple et efficace. 
-          Victoria est une plateforme polyvalente conçue pour être partagé, adaptée à divers besoins et facilement extensible grâce à son architecture modulaire.
-        </p>
+        <h2>{{ t('victoria.description_title') }}</h2>
+        <p>{{ t('victoria.description_text') }}</p>
       </div>
 
       <!-- Fonctionnalités -->
       <div class="features-section">
-        <h2>Fonctionnalités Clés</h2>
+        <h2>{{ t('victoria.features_title') }}</h2>
         <ul class="features-list">
           <li v-for="feature in victoriaProject?.features" :key="feature">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -108,32 +107,32 @@ const getTechIcon = (tech: string): string => techIcons.value[tech] || ''
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            Interface utilisateur moderne avec CustomTkinter pour une expérience fluide.
+            {{ t('victoria.feature_customtkinter') }}
           </li>
           <li>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            Surveillance en temps réel des dossiers plugins avec Watchdog.
+            {{ t('victoria.feature_watchdog') }}
           </li>
         </ul>
       </div>
 
       <!-- Technologies -->
       <div class="tech-section">
-        <h2>Technologies Utilisées</h2>
+        <h2>{{ t('victoria.tech_title') }}</h2>
         <div class="tech-list">
           <span v-for="tech in victoriaProject?.tags" :key="tech" class="tech-icon" :title="tech">
             <img v-if="getTechIcon(tech)" :src="`${baseUrl}icone/${getTechIcon(tech)}`" :alt="tech" width="32" height="32" />
             <span v-else>{{ tech }}</span>
           </span>
         </div>
-        <p>Ce projet met en œuvre Python pour la logique, PyTorch pour l'IA, et CustomTkinter pour l'interface. Watchdog permet la surveillance automatique des fichiers.</p>
+        <p>{{ t('victoria.tech_description') }}</p>
       </div>
 
       <!-- Sous-projets (Plugins) -->
       <div v-if="victoriaProject?.subProjects && victoriaProject.subProjects.length > 0" class="sub-projects-section">
-        <h2>Plugins Disponibles</h2>
+        <h2>{{ t('victoria.plugins_title') }}</h2>
         <div class="sub-projects-grid">
           <div v-for="sub in victoriaProject.subProjects" :key="sub.id" class="sub-project-card">
             <RouterLink :to="{ name: 'sub-project-detail', params: { projectId: victoriaProject.id, subId: sub.id } }" class="sub-project-link">
@@ -174,6 +173,7 @@ const getTechIcon = (tech: string): string => techIcons.value[tech] || ''
   font-weight: 600;
   margin-bottom: 2rem;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .back-link:hover {

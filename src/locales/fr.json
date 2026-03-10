@@ -4,17 +4,596 @@
     "projects": "Projets",
     "certifications": "Certifications",
     "languages": "Langues",
-    "parcours": "Mon parcours",
+    "parcours": "Mon Parcours",
     "diplomas": "Diplômes & Expériences",
     "participations": "Participations",
     "contact": "Contact",
-    "blog": "Blog"
+    "blog": "Blog",
+    "timeline": "Timeline",
+    "toggle_theme": "Changer le thème",
+    "toggle_nav": "Basculer la navigation"
   },
   "home": {
     "greeting": "Bonjour, je suis",
     "subtitle": "Étudiant en BUT Informatique",
     "description": "Je suis passionné par l'IA, le développement web et les technologies émergentes. Chaque jour, j'apprends et j'explore de nouvelles idées pour devenir enseignant-chercheur.",
     "view_projects": "Voir mes projets",
-    "learn_more": "En savoir plus"
+    "learn_more": "En savoir plus",
+    "view_project": "Voir le projet Victoria"
+  },
+  "about": {
+    "title": "Comprendre le code. <br/> <span class=\"gradient-text\">Décrypter le monde.</span>",
+    "subtitle": "Je construis des ponts entre l'algorithmique et les sciences humaines. <strong class=\"text-dark\">Futur enseignant-chercheur</strong> avec une vocation internationale.",
+    "vision": {
+      "title": "Ma Vision",
+      "p1": "L'informatique est souvent perçue comme froide et binaire. Pour moi, elle est une <strong>lentille</strong> pour observer la complexité du monde.",
+      "p2": "Je crois en une approche interdisciplinaire où la <span class=\"text-blue\">sociologie</span> éclaire l'usage des algorithmes et où la <span class=\"text-emerald\">géopolitique</span> explique les flux de données."
+    },
+    "parcours": {
+      "title": "Mon Parcours",
+      "p1": "Actuellement en <strong class=\"text-dark\">3ème année de BUT Informatique à l'IUT de Montpellier</strong>, je me spécialise dans l'algorithmique et les systèmes complexes.",
+      "p2": "Mon objectif est de poursuivre en <span class=\"text-blue\">Master Bioinformatique</span>, où je pourrai allier informatique et sciences du vivant pour analyser des données biologiques.",
+      "p3": "En parallèle, je développe une <span class=\"text-emerald\">IA personnelle</span> pour explorer le machine learning et ses applications concrètes."
+    },
+    "international": {
+      "title": "Ambition Internationale",
+      "description": "Apprendre des langues pour <strong>enseigner à travers le monde</strong>. L'échange interculturel est le moteur de mes recherches.",
+      "next": "Et après ?"
+    },
+    "quote": "L'humanité utilise la technologie comme un enfant joue avec une bougie. Le jeu est de savoir quand retirer sa main.",
+    "hobbies": {
+      "title": "Quand je ne code pas",
+      "geopolitics": "Géopolitique",
+      "sciences": "Sciences",
+      "scifi": "Sci-Fi",
+      "sociology": "Sociologie",
+      "cinema": "Cinéma"
+    }
+  },
+  "projects": {
+    "title": "Mes Projets",
+    "view_competencies": "Voir les compétences",
+    "back_to_projects": "← Retour aux projets",
+    "description": "Description",
+    "features": "Fonctionnalités",
+    "technologies": "Technologies",
+    "links": "Liens",
+    "view_demo": "Voir la démo",
+    "source_code": "Code source",
+    "stats": {
+      "title": "Statistiques du Projet",
+      "start_date": "Date de début",
+      "end_date": "Date de fin",
+      "status": "Statut",
+      "ongoing": "En cours",
+      "finished": "Terminé",
+      "unspecified": "Non spécifiée"
+    },
+    "categories": {
+      "web": "Dev Web",
+      "ia": "IA",
+      "games": "Jeux Vidéo",
+      "software": "Logiciel"
+    },
+    "purposes": {
+      "education": "Éducation",
+      "personnel": "Personnel"
+    },
+    "subprojects": "Sous-projets",
+    "view_project_link": "Voir le projet →",
+    "but_competencies": "Compétences BUT",
+    "unknown_project": "Projet inconnu",
+    "project_not_found": "Ce projet n'existe pas",
+    "unknown_subproject": "Sous-projet non trouvé",
+    "subproject_not_found": "Ce sous-projet n'existe pas",
+    "video_not_supported": "Votre navigateur ne supporte pas la balise vidéo.",
+    "image_alt": "Image du projet",
+    "items": {
+      "project-1": {
+        "description": "CodeTonFutur est un site de vulgarisation scientifique axé sur l'informatique.",
+        "longDescription": "Ce projet est une application web complète démontrant l'utilisation de technologies modernes telles que Vue.js, TypeScript et Vite. L'application offre une expérience utilisateur fluide et performante.",
+        "startDate": "Avril 2025",
+        "features": {
+          "0": "Chatbot intelligent basé sur GPT",
+          "1": "Exercices pratiques avec correction automatique"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC31.01 | Choisir et implémenter les architectures adaptées (Architecture Web Vue.js/Flask)",
+            "1": "AC31.03 | Intégrer des solutions dans un environnement de production"
+          },
+          "1": {
+            "0": "AC25.02 | Formaliser les besoins client et utilisateur"
+          },
+          "2": {
+            "0": "AC24.03 | Organiser la restitution de données par de la programmation et de la visualisation (Dashboards)"
+          }
+        }
+      },
+      "project-2": {
+        "description": "Plateforme dédiée aux challenges Capture The Flag (CTF) en cybersécurité.",
+        "longDescription": "Break The Code est une plateforme interactive de challenges Capture The Flag (CTF) en cybersécurité, développée dans le cadre d'un projet associatif à l'IUT.",
+        "startDate": "Septembre 2024",
+        "endDate": "Janvier 2025",
+        "features": {
+          "0": "Challenges exploitant des vulnérabilités SSH",
+          "1": "Jeu \"Rainbow Jumper\" pour obtenir le flag",
+          "2": "Déploiement conteneurisé avec Docker"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC21.01 | Élaborer et implémenter des spécifications fonctionnelles et non fonctionnelles à partir des exigences",
+            "1": "AC21.04 | Vérifier et valider la qualité de l'application par des tests"
+          },
+          "1": {
+            "0": "AC23.01 | Concevoir et développer des applications communicantes",
+            "1": "AC23.02 | Utiliser des serveurs et des services réseau virtualisés (Docker)",
+            "2": "AC23.03 | Sécuriser les services et les données d'un système (SSH)"
+          },
+          "2": {
+            "0": "AC25.04 | Définir et mettre en œuvre une démarche de suivi de projet (Scrum/Agile)"
+          },
+          "3": {
+            "0": "AC26.03 | Mobiliser des compétences interpersonnelles pour travailler dans une équipe informatique",
+            "1": "AC26.04 | Rendre compte de son activité professionnelle"
+          }
+        },
+        "subProjects": {
+          "0": {
+            "name": "Challenge SSH",
+            "description": "Challenge basé sur des vulnérabilités SSH.",
+            "features": {
+              "0": "Exploitation de failles SSH",
+              "1": "Obtention du flag"
+            }
+          },
+          "1": {
+            "name": "Rainbow Jumper",
+            "description": "Jeu pour obtenir le flag.",
+            "features": {
+              "0": "Mécanique de saut",
+              "1": "Récompense en flag"
+            }
+          }
+        }
+      },
+      "project-3": {
+        "description": "Application Web de jeu vidéo de simulation d'entreprise.",
+        "longDescription": "Application Web de jeu vidéo permettant aux utilisateurs de s'affronter dans une simulation d'entreprise. Les joueurs gèrent des ressources, prennent des décisions stratégiques et rivalisent pour dominer le marché virtuel.",
+        "startDate": "Septembre 2025",
+        "features": {
+          "0": "Mécaniques de jeu interactives",
+          "1": "Système de niveaux progressifs",
+          "2": "Compétition entre joueurs",
+          "3": "Gestion des ressources en temps réel",
+          "4": "Rédaction de Bilans, Comptes de résultats"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC21.03 | Adopter de bonnes pratiques de conception et de programmation (MVC Symfony)",
+            "1": "AC21.02 | Appliquer les principes d'accessibilité et d'ergonomie"
+          },
+          "1": {
+            "0": "AC24.01 | Optimiser les modèles de données de l'entreprise"
+          },
+          "2": {
+            "0": "AC26.01 | Comprendre la diversité, la structure et la dimension de l'informatique dans une organisation"
+          }
+        }
+      },
+      "project-4": {
+        "description": "Outils d'analyse de données statistiques d'alertes de collisions satellites.",
+        "longDescription": "Star Guardian est un logiciel conçu pour effectuer des analyses statistiques avancées sur les alertes de collision impliquant des satellites en orbite.",
+        "startDate": "Janvier 2025",
+        "endDate": "Avril 2025",
+        "features": {
+          "0": "Interface de visualisation de données intuitive",
+          "1": "Analyse statistique des probabilités de collision"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC11.01 | Implémenter des conceptions simples",
+            "1": "AC11.04 | Développer des interfaces utilisateur"
+          },
+          "1": {
+            "0": "AC22.01 | Choisir des structures de données complexes adaptées au problème (Dataframes Pandas)"
+          },
+          "2": {
+            "0": "AC24.04 | Manipuler des données hétérogènes (Excel, CSV, API)"
+          },
+          "3": {
+            "0": "AC15.01 | Saisir les besoins client et utilisateur"
+          }
+        }
+      },
+      "project-5": {
+        "description": "Adaptation du jeu de société Trains en jeu vidéo Java.",
+        "longDescription": "Projet consistant à recréer le jeu de société japonais Trains en Java, avec une interface graphique JavaFX et une démarche TDD.",
+        "startDate": "Mars 2024",
+        "endDate": "Juin 2024",
+        "features": {
+          "0": "Interface graphique développée avec JavaFX",
+          "1": "Développement piloté par les tests (TDD) avec JUnit"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC11.03 | Réaliser des tests et évaluer leurs résultats par rapport aux spécifications (TDD/JUnit)",
+            "1": "AC11.04 | Développer des interfaces utilisateur (JavaFX)"
+          },
+          "1": {
+            "0": "AC12.01 | Analyser un problème avec méthode (décomposition en éléments algorithmiques simples)",
+            "1": "AC12.02 | Comparer des algorithmes pour des problèmes classiques (Dijkstra)"
+          },
+          "2": {
+            "0": "AC22.01 | Choisir des structures de données complexes adaptées au problème (Graphes)"
+          }
+        }
+      },
+      "project-6": {
+        "description": "Logiciel basé sur l'IA pour le tri d'images.",
+        "longDescription": "Création d'une IA capable de classer des images par catégorie. Utilisation de PyTorch et de réseaux convolutionnels.",
+        "startDate": "Juin 2023",
+        "endDate": "Juin 2024",
+        "features": {
+          "0": "Détection avec 98% de précision",
+          "1": "Réseaux de neurones convolutionnels (CNN)",
+          "2": "Dashboard de progression"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC21.03 | Adopter de bonnes pratiques de conception et de programmation"
+          },
+          "1": {
+            "0": "AC22.02 | Utiliser des techniques algorithmiques adaptées pour des problèmes complexes (Intelligence Artificielle)"
+          }
+        }
+      },
+      "project-7": {
+        "description": "Assistant de bureau modulaire avec IA locale.",
+        "longDescription": "Victoria est une application de bureau utilisant une intelligence artificielle locale (Ollama), extensible via des plugins.",
+        "startDate": "Mai 2025",
+        "features": {
+          "0": "Interface moderne CustomTkinter",
+          "1": "Système de plugins",
+          "2": "Intégration RAG (ChromaDb)"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC31.02 | Faire évoluer une application existante (Système de Plugins)",
+            "1": "AC31.01 | Choisir et implémenter les architectures adaptées (Modulaire)"
+          },
+          "1": {
+            "0": "AC22.02 | Utiliser des techniques algorithmiques adaptées pour des problèmes complexes (IA, RAG)"
+          },
+          "2": {
+            "0": "AC13.01 | Identifier les différents composants (matériels et logiciels) d'un système numérique"
+          }
+        },
+        "subProjects": {
+          "0": {
+            "name": "Plugin RSS",
+            "description": "Plugin pour lire des flux RSS.",
+            "features": {
+              "0": "Lecture automatique",
+              "1": "Filtrage des articles"
+            }
+          },
+          "1": {
+            "name": "Issue Maker",
+            "description": "Plugin pour créer des issues GitHub.",
+            "features": {
+              "0": "Intégration GitHub",
+              "1": "Génération automatique"
+            }
+          }
+        }
+      },
+      "project-8": {
+        "description": "Application d'apprentissage des langues par la gamification.",
+        "longDescription": "Application web pour apprendre 10 mots par jour via des quiz et des fiches de révision.",
+        "startDate": "Septembre 2025",
+        "features": {
+          "0": "Apprentissage quotidien gamifié",
+          "1": "Système de rappel intelligent",
+          "2": "Support de 10 langues"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC31.01 | Choisir et implémenter les architectures adaptées (Mobile/PWA)"
+          },
+          "1": {
+            "0": "AC23.01 | Concevoir et développer des applications communicantes (Firebase)"
+          },
+          "2": {
+            "0": "AC14.01 | Mettre à jour et interroger une base de données relationnelle (MySQL)"
+          }
+        }
+      },
+      "project-10": {
+        "description": "Site communautaire de notation de jeux vidéo, anime et manga.",
+        "longDescription": "Anakomi est une plateforme permettant aux utilisateurs de noter et commenter leurs œuvres préférées tout en consultant les classements de la communauté.",
+        "startDate": "Septembre 2025",
+        "endDate": "Septembre 2025",
+        "features": {
+          "0": "Notation et commentaires",
+          "1": "Classements communautaires"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC11.01 | Implémenter des conceptions simples",
+            "1": "AC11.04 | Développer des interfaces utilisateur"
+          },
+          "1": {
+            "0": "AC14.03 | Concevoir une base de données relationnelle à partir d'un cahier des charges"
+          }
+        }
+      },
+      "project-11": {
+        "description": "Défi national de développement web en équipe sur une nuit entière.",
+        "longDescription": "Projet réalisé dans le cadre de la Nuit de l'Info. Le défi était de collaborer en équipe pour développer une application web fonctionnelle du coucher au lever du soleil.",
+        "startDate": "Décembre 2025",
+        "endDate": "Décembre 2025",
+        "features": {
+          "0": "Développement intensif en temps limité (Hackathon)",
+          "1": "Travail collaboratif et répartition des tâches",
+          "2": "Respect d'un thème et de contraintes techniques"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC26.03 | Mobiliser des compétences interpersonnelles pour travailler dans une équipe informatique",
+            "1": "AC26.01 | Comprendre la diversité et la dynamique d'une équipe informatique"
+          },
+          "1": {
+            "0": "AC25.01 | Organiser le travail d'une équipe (Répartition des tâches)",
+            "1": "AC25.03 | Identifier des critères de faisabilité (Gestion temps court)"
+          },
+          "2": {
+            "0": "AC21.03 | Adopter de bonnes pratiques de conception et de programmation (Code collaboratif)"
+          }
+        }
+      },
+      "project-12": {
+        "description": "CHIRAL est un jeu vidéo à but éducatif sur les dangers de la vie miroir.",
+        "longDescription": "CHIRAL sensibilise les joueurs aux dangers de la création de la vie miroir. Le jeu met en scène une bactérie miroir qui se propage rapidement, mettant en danger l'équilibre écologique.",
+        "startDate": "Janvier 2026",
+        "features": {
+          "0": "Sensibilisation aux dangers de la vie miroir",
+          "1": "Interaction éducative",
+          "2": "Gameplay engageant"
+        }
+      },
+      "project-13": {
+        "description": "Pipeline de traitement de données pour le machine learning.",
+        "longDescription": "Loom est un projet visant à automatiser le workflow de données pour des modèles d'IA, de la collecte au déploiement.",
+        "startDate": "Janvier 2026"
+      }
+    }
+  },
+  "victoria": {
+    "ai_precision": "Précision de l'IA :",
+    "ai_precision_value": "98% sur les tests",
+    "description_title": "Description du Projet",
+    "description_text": "Victoria est une application de bureau utilisant une intelligence artificielle locale, qui vise à être aussi modulaire et personnalisable que possible. L'objectif principal est de permettre aux utilisateurs d'ajouter des plugins pour étendre ses fonctionnalités de manière simple et efficace. Victoria est une plateforme polyvalente conçue pour être partagée, adaptée à divers besoins et facilement extensible grâce à son architecture modulaire.",
+    "features_title": "Fonctionnalités Clés",
+    "feature_customtkinter": "Interface utilisateur moderne avec CustomTkinter pour une expérience fluide.",
+    "feature_watchdog": "Surveillance en temps réel des dossiers de plugins avec Watchdog.",
+    "tech_title": "Technologies Utilisées",
+    "tech_description": "Ce projet met en œuvre Python pour la logique, PyTorch pour l'IA et CustomTkinter pour l'interface. Watchdog permet une surveillance automatique des fichiers.",
+    "plugins_title": "Plugins Disponibles"
+  },
+  "competencies": {
+    "title": "Compétences du BUT Informatique",
+    "subtitle": "Découvrez toutes les compétences développées à travers mes projets",
+    "count": "{count} compétence(s)",
+    "projects_count": "{count} projet(s)",
+    "associated_projects": "Projets associés :",
+    "back_to_projects": "Projets",
+    "categories": {
+      "realiser": "Réaliser",
+      "optimiser": "Optimiser",
+      "administrer": "Administrer",
+      "gerer": "Gérer",
+      "conduire": "Conduire",
+      "collaborer": "Collaborer"
+    },
+    "levels": {
+      "n1": "Niveau 1",
+      "n2": "Niveau 2",
+      "n3": "Niveau 3"
+    },
+    "modal_intro": "Ce projet a permis de valider les compétences et apprentissages critiques suivants :"
+  },
+  "participations": {
+    "title": "Mes Participations",
+    "subtitle": "Événements et concours auxquels j'ai participé",
+    "learn_more": "En savoir plus →",
+    "types": {
+      "concours": "concours",
+      "hackathon": "hackathon",
+      "formation": "formation",
+      "spatial": "spatial"
+    },
+    "results": {
+      "challenge_met": "Défi relevé"
+    },
+    "items": {
+      "ndi2024": {
+        "title": "Nuit de l'Info 2024",
+        "description": "Participation à la Nuit de l'Info, un marathon de développement de 24h pour créer une application web sur un thème imposé.",
+        "result": "Défi relevé"
+      },
+      "codegamejam2026": {
+        "title": "Code Game Jam 2026",
+        "description": "Participation à une game jam de code pour développer un jeu en équipe en moins de 48h.",
+        "result": ""
+      },
+      "actinspace": {
+        "title": "Hackathon ActInSpace",
+        "description": "Hackathon international organisé par le CNES et l'ESA pour relever des défis basés sur les technologies spatiales.",
+        "result": ""
+      },
+      "ndi2025": {
+        "title": "Nuit de l'Info 2025",
+        "description": "Participation à la Nuit de l'Info, un marathon de développement de 24h pour créer une application web innovante.",
+        "result": ""
+      }
+    }
+  },
+  "languages": {
+    "title": "Chronologie d'une Passion",
+    "subtitle_caps": "Mon Voyage Linguistique",
+    "page_subtitle": "D'une langue maîtrisée vers des horizons inexplorés.",
+    "sections": {
+      "mastered": "L'Ancrage (Acquis)",
+      "learning": "L'Aventure (En cours)",
+      "planned": "L'Horizon (Futur)"
+    },
+    "since": "depuis {year}",
+    "birth": "Naissance",
+    "items": {
+      "lang-1": {
+        "name": "Français",
+        "level": "Maîtrisé (C2)",
+        "description": "Langue maternelle, utilisée quotidiennement pour la communication."
+      },
+      "lang-2": {
+        "name": "Anglais",
+        "level": "Avancé (C1)",
+        "description": "Langue de travail et de veille technologique. Communication fluide."
+      },
+      "lang-8": {
+        "name": "Allemand",
+        "level": "Intermédiaire (B1)",
+        "description": "Capacité à comprendre l'essentiel et discuter de sujets familiers."
+      },
+      "lang-3": {
+        "name": "Mandarin",
+        "level": "Débutant (A1)",
+        "description": "Apprentissage des tons et des premiers caractères (Hanzi)."
+      },
+      "lang-4": {
+        "name": "Japonais",
+        "level": "Débutant (A1)",
+        "description": "Apprentissage des Hiragana/Katakana et phrases de survie."
+      },
+      "lang-5": {
+        "name": "Russe",
+        "level": "Objectif A1",
+        "description": "Découverte de l'alphabet cyrillique."
+      },
+      "lang-6": {
+        "name": "Italien",
+        "level": "Curiosité",
+        "description": "Attiré par la musique et la cuisine italienne."
+      },
+      "lang-7": {
+        "name": "Espagnol",
+        "level": "Objectif A1",
+        "description": "Préparation pour des voyages en Amérique Latine."
+      }
+    }
+  },
+  "certifications": {
+    "title": "Mes Certifications",
+    "subtitle": "Formations, Certifications et Diplômes",
+    "items": {
+      "cert-1": {
+        "title": "BIA",
+        "description": "Le Brevet d'Initiation Aéronautique (BIA) est un diplôme français qui atteste d'une culture générale dans le domaine de l'aéronautique et de l'espace.",
+        "institution": "Éducation Nationale / Armée de l'Air"
+      },
+      "cert-2": {
+        "title": "Baccalauréat",
+        "description": "Diplôme de fin d'études secondaires avec spécialités Mathématiques et NSI (Numérique et Sciences Informatiques). Mention Très Bien.",
+        "institution": "Lycée Jean Jaurès"
+      },
+      "cert-3": {
+        "title": "BUT Informatique",
+        "description": "Bachelor Universitaire de Technologie en Informatique. Formation intensive de 3 ans couvrant le développement, les réseaux et l'IA.",
+        "institution": "IUT de Montpellier-Sète"
+      }
+    }
+  },
+  "objectives": {
+    "title": "Diplômes & Expériences",
+    "subtitle": "Mon parcours académique et professionnel",
+    "today": "Aujourd'hui",
+    "types": {
+      "education": "Éducation",
+      "experience": "Expérience"
+    },
+    "items": {
+      "obj-1": {
+        "title": "BUT Informatique",
+        "institution": "IUT de Montpellier-Sète",
+        "description": "Formation polyvalente en informatique : développement logiciel, web, bases de données, réseaux et intelligence artificielle."
+      },
+      "obj-2": {
+        "title": "Baccalauréat Général",
+        "institution": "Lycée Jean Jaurès",
+        "description": "Spécialités Mathématiques et NSI (Numérique et Sciences Informatiques). Mention Très Bien."
+      },
+      "obj-3": {
+        "title": "Développeur & Concepteur Plateforme CTF",
+        "institution": "IUT de Montpellier (Projet)",
+        "description": "Conception et développement d'une plateforme de challenges en cybersécurité. Utilisation de Flask, Docker et méthodologies Agile."
+      },
+      "obj-4": {
+        "title": "Développeur IA & Assistant de Bureau",
+        "institution": "Projet Personnel (Victoria)",
+        "description": "Création d'un assistant modulaire avec IA locale. Intégration de LLM et système de plugins."
+      }
+    }
+  },
+  "blog": {
+    "subtitle": "Mes réflexions sur le code et les sciences.",
+    "search_placeholder": "Rechercher un article...",
+    "read_more": "Lire la suite →",
+    "all_categories": "Tous",
+    "posts": {
+      "post-1": {
+        "title": "L'IA au service de l'éducation",
+        "excerpt": "Comment les modèles de langage transforment l'apprentissage du code."
+      },
+      "post-2": {
+        "title": "L'avenir du développement Web",
+        "excerpt": "Exploration des nouvelles architectures frontend et backend."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contactez-moi",
+    "subtitle": "N'hésitez pas à me contacter pour discuter de projets ou collaborations.",
+    "form": {
+      "name": "Nom",
+      "email": "Votre email :",
+      "message": "Votre message :",
+      "send": "Envoyer"
+    },
+    "info_title": "Informations de contact"
+  },
+  "footer": {
+    "rights": "© 2026 Mon Portfolio. Tous droits réservés."
+  },
+  "resume": {
+    "generator_title": "Générateur de Portfolio PDF",
+    "generator_subtitle": "Exportez un résumé professionnel de vos réalisations.",
+    "print_button": "Imprimer / Sauvegarder en PDF",
+    "catalogue_title": "Catalogue des Projets",
+    "present": "Présent",
+    "generated_from": "Généré depuis mon portfolio en ligne :",
+    "professional_profile": "PROFIL PROFESSIONNEL",
+    "experiences": {
+      "ctf": {
+        "detail_0": "Conception d'une plateforme de défis en cybersécurité (Capture The Flag).",
+        "detail_1": "Développement backend avec Flask et gestion de conteneurs Docker pour les défis.",
+        "detail_2": "Mise en œuvre de la méthodologie Agile Scrum pour le suivi de projet."
+      },
+      "victoria": {
+        "detail_0": "Création d'un assistant modulaire utilisant des LLM locaux (Ollama).",
+        "detail_1": "Implémentation d'un système de plugins pour l'extension des fonctionnalités.",
+        "detail_2": "Développement d'une interface graphique moderne avec CustomTkinter."
+      }
+    }
   }
 }

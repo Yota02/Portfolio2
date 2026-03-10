@@ -2,8 +2,8 @@
   <div class="parcours-container">
     <div class="max-w-6xl mx-auto px-4 py-16">
       <header class="header-section">
-        <h1 class="title">Mes Participations</h1>
-        <p class="subtitle">Événements et compétitions auxquels j'ai participé</p>
+        <h1 class="title">{{ t('participations.title') }}</h1>
+        <p class="subtitle">{{ t('participations.subtitle') }}</p>
         <div class="title-underline"></div>
       </header>
 
@@ -25,32 +25,32 @@
                     <Calendar class="w-3.5 h-3.5" />
                     <span>{{ participation.date }}</span>
                   </div>
-                  <span v-if="participation.result" class="result-tag">
+                  <span v-if="participation.resultKey && t('participations.items.' + participation.resultKey)" class="result-tag">
                     <Trophy class="w-3 h-3" />
-                    {{ participation.result }}
+                    {{ t('participations.items.' + participation.resultKey) }}
                   </span>
                 </div>
 
                 <div class="card-body">
                   <div v-if="participation.logo" class="logo-container">
-                    <img :src="baseUrl + participation.logo" :alt="`Logo ${participation.title}`" class="institution-logo" />
+                    <img :src="baseUrl + participation.logo" :alt="`Logo ${t('participations.items.' + participation.titleKey)}`" class="institution-logo" />
                   </div>
                   <div class="text-content">
-                    <h3 class="item-title">{{ participation.title }}</h3>
-                    <p class="item-description">{{ participation.description }}</p>
+                    <h3 class="item-title">{{ t('participations.items.' + participation.titleKey) }}</h3>
+                    <p class="item-description">{{ t('participations.items.' + participation.descriptionKey) }}</p>
                   </div>
                 </div>
                 
                 <div class="card-footer">
                   <div class="footer-actions">
-                    <span class="type-tag" :class="participation.type">{{ participation.type }}</span>
+                    <span class="type-tag" :class="participation.type">{{ t('participations.types.' + participation.type) }}</span>
                     <a
                       v-if="participation.link"
                       :href="participation.link"
                       target="_blank"
                       class="btn-link"
                     >
-                      En savoir plus →
+                      {{ t('participations.learn_more') }}
                     </a>
                   </div>
                 </div>
@@ -75,8 +75,10 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { GraduationCap, Target, Calendar, Trophy, Users, Rocket } from 'lucide-vue-next'
 
+const { t } = useI18n()
 const baseUrl = import.meta.env.BASE_URL
 
 const participationsData = [
@@ -84,9 +86,9 @@ const participationsData = [
     id: 1,
     date: '5 décembre 2024',
     type: 'concours',
-    title: 'Nuit de l\'Info 2024',
-    description: 'Participation à la Nuit de l\'Info, un marathon de développement de 24h pour créer une application web sur un thème donné.',
-    result: 'Défi relevé',
+    titleKey: 'ndi2024.title',
+    descriptionKey: 'ndi2024.description',
+    resultKey: 'ndi2024.result',
     link: 'https://www.nuitdelinfo.com/',
     logo: 'icone/ndi.png'
   },
@@ -94,9 +96,9 @@ const participationsData = [
     id: 2,
     date: '22-24 janvier 2026',
     type: 'hackathon',
-    title: 'Code Game Jam 2026',
-    description: 'Participation à une game jam de codage pour développer un jeu en équipe en moins de 48h.',
-    result: '',
+    titleKey: 'codegamejam2026.title',
+    descriptionKey: 'codegamejam2026.description',
+    resultKey: 'codegamejam2026.result',
     link: 'https://codegamejam.extragames.fr/',
     logo: 'icone/codegamejam.png'
   },
@@ -104,9 +106,9 @@ const participationsData = [
     id: 3,
     date: '30-31 janvier 2026',
     type: 'hackathon',
-    title: 'Hackathon ActInSpace',
-    description: 'Hackathon international organisé par le CNES et l\'ESA pour relever des défis basés sur des technologies spatiales.',
-    result: '',
+    titleKey: 'actinspace.title',
+    descriptionKey: 'actinspace.description',
+    resultKey: 'actinspace.result',
     link: 'https://www.connectbycnes.fr/actinspace',
     logo: 'icone/actinspace.png'
   },
@@ -114,9 +116,9 @@ const participationsData = [
     id: 4,
     date: '4-5 décembre 2025',
     type: 'concours',
-    title: 'Nuit de l\'Info 2025',
-    description: 'Participation à la Nuit de l\'Info, un marathon de développement de 24h pour créer une application web innovante.',
-    result: '',
+    titleKey: 'ndi2025.title',
+    descriptionKey: 'ndi2025.description',
+    resultKey: 'ndi2025.result',
     link: 'https://www.nuitdelinfo.com/',
     logo: 'icone/ndi.png'
   },

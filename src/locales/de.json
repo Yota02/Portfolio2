@@ -5,16 +5,595 @@
     "certifications": "Zertifizierungen",
     "languages": "Sprachen",
     "parcours": "Mein Werdegang",
-    "diplomas": "Diplome",
+    "diplomas": "Diplome & Erfahrungen",
     "participations": "Teilnahmen",
     "contact": "Kontakt",
-    "blog": "Blog"
+    "blog": "Blog",
+    "timeline": "Timeline",
+    "toggle_theme": "Thema wechseln",
+    "toggle_nav": "Navigation umschalten"
   },
   "home": {
     "greeting": "Hallo, ich bin",
-    "subtitle": "Studentin der Informatik",
-    "description": "Ich bin leidenschaftlich an KI, Webentwicklung und neuen Technologien interessiert. Jeden Tag lerne und erkunde ich neue Idee, um Lehrerin-Forscherin zu werden.",
+    "subtitle": "Informatikstudent",
+    "description": "Ich begeistere mich für KI, Webentwicklung und neue Technologien. Jeden Tag lerne und erforsche ich neue Ideen, um Dozent-Forscher zu werden.",
     "view_projects": "Meine Projekte ansehen",
-    "learn_more": "Mehr erfahren"
+    "learn_more": "Mehr erfahren",
+    "view_project": "Projekt Victoria ansehen"
+  },
+  "about": {
+    "title": "Den Code verstehen. <br/> <span class=\"gradient-text\">Die Welt entschlüsseln.</span>",
+    "subtitle": "Ich baue Brücken zwischen Algorithmik und Geisteswissenschaften. <strong class=\"text-dark\">Zukünftiger Dozent-Forscher</strong> mit internationaler Berufung.",
+    "vision": {
+      "title": "Meine Vision",
+      "p1": "Informatik wird oft als kalt und binär wahrgenommen. Für mich ist sie eine <strong>Linse</strong> um die Komplexität der Welt zu beobachten.",
+      "p2": "Ich glaube an einen interdisziplinären Ansatz, bei dem die <span class=\"text-blue\">Soziologie</span> den Einsatz von Algorithmen beleuchtet und die <span class=\"text-emerald\">Geopolitik</span> Datenströme erklärt."
+    },
+    "parcours": {
+      "title": "Mein Werdegang",
+      "p1": "Derzeit im <strong class=\"text-dark\">3. Jahr des Informatikstudiums am IUT Montpellier</strong>, spezialisiere ich mich auf Algorithmen und komplexe Systeme.",
+      "p2": "Mein Ziel ist ein <span class=\"text-blue\">Master in Bioinformatik</span>, bei dem ich Informatik und Biowissenschaften kombiniere, um biologische Daten zu analysieren.",
+      "p3": "Parallel dazu entwickle ich eine <span class=\"text-emerald\">persönliche KI</span>, um Machine Learning und seine praktischen Anwendungen zu erforschen."
+    },
+    "international": {
+      "title": "Internationale Ambition",
+      "description": "Sprachen lernen, um <strong>weltweit zu lehren</strong>. Interkultureller Austausch ist der Motor meiner Forschung.",
+      "next": "Und danach ?"
+    },
+    "quote": "Die Menschheit benutzt Technologie wie ein Kind, das mit einer Kerze spielt. Das Spiel besteht darin zu wissen, wann man die Hand wegziehen muss.",
+    "hobbies": {
+      "title": "Wenn ich nicht code",
+      "geopolitics": "Geopolitik",
+      "sciences": "Wissenschaften",
+      "scifi": "Sci-Fi",
+      "sociology": "Soziologie",
+      "cinema": "Kino"
+    }
+  },
+  "projects": {
+    "title": "Meine Projekte",
+    "view_competencies": "Kompetenzen ansehen",
+    "back_to_projects": "← Zurück zu den Projekten",
+    "description": "Beschreibung",
+    "features": "Funktionen",
+    "technologies": "Technologien",
+    "links": "Links",
+    "view_demo": "Demo ansehen",
+    "source_code": "Quellcode",
+    "stats": {
+      "title": "Projektstatistiken",
+      "start_date": "Startdatum",
+      "end_date": "Enddatum",
+      "status": "Status",
+      "ongoing": "Laufend",
+      "finished": "Abgeschlossen",
+      "unspecified": "Nicht angegeben"
+    },
+    "categories": {
+      "web": "Webentwicklung",
+      "ia": "KI",
+      "games": "Videospiele",
+      "software": "Software"
+    },
+    "purposes": {
+      "education": "Bildung",
+      "personnel": "Persönlich"
+    },
+    "subprojects": "Unterprojekte",
+    "view_project_link": "Projekt ansehen →",
+    "but_competencies": "BUT-Kompetenzen",
+    "unknown_project": "Unbekanntes Projekt",
+    "project_not_found": "Dieses Projekt existiert nicht",
+    "unknown_subproject": "Unterprojekt nicht gefunden",
+    "subproject_not_found": "Dieses Unterprojekt existiert nicht",
+    "video_not_supported": "Ihr Browser unterstützt das Video-Tag nicht.",
+    "image_alt": "Projektbild",
+    "items": {
+      "project-1": {
+        "description": "CodeTonFutur ist eine Website zur Popularisierung der Informatik.",
+        "longDescription": "Dieses Projekt ist eine vollständige Webanwendung, die den Einsatz moderner Technologien wie Vue.js, TypeScript und Vite demonstriert. Die Anwendung bietet eine reibungslose und leistungsstarke Benutzererfahrung.",
+        "startDate": "April 2025",
+        "features": {
+          "0": "Intelligenter Chatbot basierend auf GPT",
+          "1": "Praktische Übungen mit automatischer Korrektur"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC31.01 | Geeignete Architekturen wählen und implementieren (Web-Architektur Vue.js/Flask)",
+            "1": "AC31.03 | Lösungen in eine Produktionsumgebung integrieren"
+          },
+          "1": {
+            "0": "AC25.02 | Kunden- und Benutzerbedürfnisse formalisieren"
+          },
+          "2": {
+            "0": "AC24.03 | Datenwiedergabe durch Programmierung und Visualisierung organisieren (Dashboards)"
+          }
+        }
+      },
+      "project-2": {
+        "description": "Plattform für Capture The Flag (CTF) Herausforderungen in der Cybersicherheit.",
+        "longDescription": "Break The Code ist eine interaktive Plattform für Capture The Flag (CTF) Herausforderungen in der Cybersicherheit, entwickelt als Teil eines Vereinsprojekts am IUT.",
+        "startDate": "September 2024",
+        "endDate": "Januar 2025",
+        "features": {
+          "0": "Herausforderungen, die SSH-Schwachstellen ausnutzen",
+          "1": "\"Rainbow Jumper\" Spiel, um die Flagge zu erhalten",
+          "2": "Containerisierte Bereitstellung mit Docker"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC21.01 | Funktionale und nicht-funktionale Spezifikationen aus Anforderungen entwickeln und implementieren",
+            "1": "AC21.04 | Anwendungsqualität durch Tests verifizieren und validieren"
+          },
+          "1": {
+            "0": "AC23.01 | Kommunizierende Anwendungen entwerfen und entwickeln",
+            "1": "AC23.02 | Virtualisierte Netzwerkeserver und -dienste verwenden (Docker)",
+            "2": "AC23.03 | Dienste und Daten eines Systems sichern (SSH)"
+          },
+          "2": {
+            "0": "AC25.04 | Einen Projektüberwachungsansatz definieren und implementieren (Scrum/Agile)"
+          },
+          "3": {
+            "0": "AC26.03 | Zwischenmenschliche Fähigkeiten für die Arbeit in einem IT-Team mobilisieren",
+            "1": "AC26.04 | Über berufliche Tätigkeit berichten"
+          }
+        },
+        "subProjects": {
+          "0": {
+            "name": "SSH-Herausforderung",
+            "description": "Herausforderung basierend auf SSH-Schwachstellen.",
+            "features": {
+              "0": "Ausnutzung von SSH-Lücken",
+              "1": "Erhalt der Flagge"
+            }
+          },
+          "1": {
+            "name": "Rainbow Jumper",
+            "description": "Spiel zum Erhalt der Flagge.",
+            "features": {
+              "0": "Sprungmechanik",
+              "1": "Flaggen-Belohnung"
+            }
+          }
+        }
+      },
+      "project-3": {
+        "description": "Webanwendung für ein Wirtschaftssimulations-Videospiel.",
+        "longDescription": "Webanwendung für ein Videospiel, das es Benutzern ermöglicht, in einer Wirtschaftssimulation gegeneinander anzutreten. Spieler verwalten Ressourcen, treffen strategische Entscheidungen und konkurrieren um die Dominanz auf dem virtuellen Markt.",
+        "startDate": "September 2025",
+        "features": {
+          "0": "Interaktive Spielmechanik",
+          "1": "Progressives Levelsystem",
+          "2": "Wettbewerb zwischen Spielern",
+          "3": "Ressourcenmanagement in Echtzeit",
+          "4": "Erstellung von Bilanzen, Gewinn- und Verlustrechnungen"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC21.03 | Gute Design- und Programmierpraktiken übernehmen (MVC Symfony)",
+            "1": "AC21.02 | Prinzipien der Barrierefreiheit und Ergonomie anwenden"
+          },
+          "1": {
+            "0": "AC24.01 | Unternehmensdatenmodelle optimieren"
+          },
+          "2": {
+            "0": "AC26.01 | Vielfalt, Struktur und Dimension der Informatik in einer Organisation verstehen"
+          }
+        }
+      },
+      "project-4": {
+        "description": "Statistische Datenanalysetools für Satellitenkollisionswarnungen.",
+        "longDescription": "Star Guardian ist eine Software zur Durchführung fortgeschrittener statistischer Analysen von Kollisionswarnungen für Satelliten im Orbit.",
+        "startDate": "Januar 2025",
+        "endDate": "April 2025",
+        "features": {
+          "0": "Intuitive Datenvisualisierungsoberfläche",
+          "1": "Statistische Analyse von Kollisionswahrscheinlichkeiten"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC11.01 | Einfache Designs implementieren",
+            "1": "AC11.04 | Benutzerschnittstellen entwickeln"
+          },
+          "1": {
+            "0": "AC22.01 | Komplexe, an das Problem angepasste Datenstrukturen wählen (Pandas Dataframes)"
+          },
+          "2": {
+            "0": "AC24.04 | Heterogene Daten manipulieren (Excel, CSV, API)"
+          },
+          "3": {
+            "0": "AC15.01 | Kunden- und Benutzerbedürfnisse erfassen"
+          }
+        }
+      },
+      "project-5": {
+        "description": "Adaption des Brettspiels Trains als Java-Videospiel.",
+        "longDescription": "Projekt zur Neuerstellung des japanischen Brettspiels Trains in Java, mit einer JavaFX-Grafikoberfläche und einem TDD-Ansatz.",
+        "startDate": "März 2024",
+        "endDate": "Juni 2024",
+        "features": {
+          "0": "Mit JavaFX entwickelte Grafikoberfläche",
+          "1": "Testgetriebene Entwicklung (TDD) mit JUnit"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC11.03 | Tests durchführen und Ergebnisse gegen Spezifikationen evaluieren (TDD/JUnit)",
+            "1": "AC11.04 | Benutzerschnittstellen entwickeln (JavaFX)"
+          },
+          "1": {
+            "0": "AC12.01 | Ein Problem methodisch analysieren (Zerlegung in einfache algorithmische Elemente)",
+            "1": "AC12.02 | Algorithmen für klassische Probleme vergleichen (Dijkstra)"
+          },
+          "2": {
+            "0": "AC22.01 | Komplexe, an das Problem angepasste Datenstrukturen wählen (Graphen)"
+          }
+        }
+      },
+      "project-6": {
+        "description": "KI-basierte Software zur Sortierung von Bildern.",
+        "longDescription": "Erstellung einer KI, die Bilder nach Kategorien klassifizieren kann. Einsatz von PyTorch und faltungsneuronalen Netzwerken.",
+        "startDate": "Juni 2023",
+        "endDate": "Juni 2024",
+        "features": {
+          "0": "Erkennung mit 98% Genauigkeit",
+          "1": "Convolutional Neural Networks (CNN)",
+          "2": "Fortschritts-Dashboard"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC21.03 | Gute Design- und Programmierpraktiken übernehmen"
+          },
+          "1": {
+            "0": "AC22.02 | Angemessene algorithmische Techniken für komplexe Probleme verwenden (Künstliche Intelligenz)"
+          }
+        }
+      },
+      "project-7": {
+        "description": "Modularer Desktop-Assistent mit lokaler KI.",
+        "longDescription": "Victoria ist eine Desktop-Anwendung, die eine lokale künstliche Intelligenz (Ollama) nutzt und über Plugins erweiterbar ist.",
+        "startDate": "Mai 2025",
+        "features": {
+          "0": "Moderne CustomTkinter-Oberfläche",
+          "1": "Plugin-System",
+          "2": "RAG-Integration (ChromaDb)"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC31.02 | Eine bestehende Anwendung weiterentwickeln (Plugin-System)",
+            "1": "AC31.01 | Geeignete Architekturen wählen und implementieren (Modular)"
+          },
+          "1": {
+            "0": "AC22.02 | Angemessene algorithmische Techniken für komplexe Probleme verwenden (KI, RAG)"
+          },
+          "2": {
+            "0": "AC13.01 | Die verschiedenen Komponenten (Hardware und Software) eines digitalen Systems identifizieren"
+          }
+        },
+        "subProjects": {
+          "0": {
+            "name": "RSS-Plugin",
+            "description": "Plugin zum Lesen von RSS-Feeds.",
+            "features": {
+              "0": "Automatisches Lesen",
+              "1": "Artikelfilterung"
+            }
+          },
+          "1": {
+            "name": "Issue Maker",
+            "description": "Plugin zum Erstellen von GitHub-Issues.",
+            "features": {
+              "0": "GitHub-Integration",
+              "1": "Automatische Generierung"
+            }
+          }
+        }
+      },
+      "project-8": {
+        "description": "Sprachlern-Anwendung durch Gamifizierung.",
+        "longDescription": "Webanwendung zum Lernen von 10 Wörtern pro Tag über Quiz und Wiederholungsblätter.",
+        "startDate": "September 2025",
+        "features": {
+          "0": "Gamifiziertes tägliches Lernen",
+          "1": "Intelligentes Erinnerungssystem",
+          "2": "Unterstützung für 10 Sprachen"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC31.01 | Geeignete Architekturen wählen und implementieren (Mobil/PWA)"
+          },
+          "1": {
+            "0": "AC23.01 | Kommunizierende Anwendungen entwerfen und entwickeln (Firebase)"
+          },
+          "2": {
+            "0": "AC14.01 | Eine relationale Datenbank aktualisieren und abfragen (MySQL)"
+          }
+        }
+      },
+      "project-10": {
+        "description": "Community-Website zur Bewertung von Videospielen, Anime und Manga.",
+        "longDescription": "Anakomi ist eine Plattform, auf der Benutzer ihre Lieblingswerke bewerten und kommentieren sowie Community-Rankings einsehen können.",
+        "startDate": "September 2025",
+        "endDate": "September 2025",
+        "features": {
+          "0": "Bewertung und Kommentare",
+          "1": "Community-Rankings"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC11.01 | Einfache Designs implementieren",
+            "1": "AC11.04 | Benutzerschnittstellen entwickeln"
+          },
+          "1": {
+            "0": "AC14.03 | Eine relationale Datenbank nach Spezifikationen entwerfen"
+          }
+        }
+      },
+      "project-11": {
+        "description": "Nationale Webentwicklungs-Herausforderung in Teams über eine ganze Nacht.",
+        "longDescription": "Projekt im Rahmen der Nuit de l'Info. Die Herausforderung bestand darin, im Team eine funktionale Webanwendung von Sonnenuntergang bis Sonnenaufgang zu entwickeln.",
+        "startDate": "Dezember 2025",
+        "endDate": "Dezember 2025",
+        "features": {
+          "0": "Intensive Entwicklung in begrenzter Zeit (Hackathon)",
+          "1": "Kollaboratives Arbeiten und Aufgabenverteilung",
+          "2": "Einhaltung eines Themen und technischer Einschränkungen"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC26.03 | Zwischenmenschliche Fähigkeiten für die Arbeit in einem IT-Team mobilisieren",
+            "1": "AC26.01 | Vielfalt und Dynamik eines IT-Teams verstehen"
+          },
+          "1": {
+            "0": "AC25.01 | Die Arbeit eines Teams organisieren (Aufgabenverteilung)",
+            "1": "AC25.03 | Machbarkeitskriterien identifizieren (Kurzzeitmanagement)"
+          },
+          "2": {
+            "0": "AC21.03 | Gute Design- und Programmierpraktiken übernehmen (Kollaborativer Code)"
+          }
+        }
+      },
+      "project-12": {
+        "description": "CHIRAL ist ein Lernspiel über die Gefahren der Erschaffung von Spiegelleben.",
+        "longDescription": "CHIRAL sensibilisiert Spieler für die Gefahren der Erschaffung von Spiegelleben. Das Spiel zeigt ein Spiegelbakterium, das sich schnell ausbreitet und das ökologische Gleichgewicht gefährdet.",
+        "startDate": "Januar 2026",
+        "features": {
+          "0": "Bewusstsein für die Gefahren von Spiegelleben",
+          "1": "Pädagogische Interaktion",
+          "2": "Ansprechendes Gameplay"
+        }
+      },
+      "project-13": {
+        "description": "Datenverarbeitungspipeline für Machine Learning.",
+        "longDescription": "Loom ist ein Projekt zur Automatisierung des Daten-Workflows für KI-Modelle, von der Sammlung bis zur Bereitstellung.",
+        "startDate": "Janvier 2026"
+      }
+    }
+  },
+  "victoria": {
+    "ai_precision": "KI-Präzision:",
+    "ai_precision_value": "98% in Tests",
+    "description_title": "Projektbeschreibung",
+    "description_text": "Victoria ist eine Desktop-Anwendung mit lokaler künstlicher Intelligenz, die so modular und anpassbar wie möglich sein soll. Das Hauptziel ist es, Benutzern das Hinzufügen von Plugins zu ermöglichen, um deren Funktionalität auf einfache und effiziente Weise zu erweitern. Victoria ist eine vielseitige Plattform, die zum Teilen konzipiert ist, an verschiedene Bedürfnisse angepasst werden kann und dank ihrer modularen Architektur leicht erweiterbar ist.",
+    "features_title": "Hauptmerkmale",
+    "feature_customtkinter": "Moderne Benutzeroberfläche mit CustomTkinter für ein reibungsloses Erlebnis.",
+    "feature_watchdog": "Echtzeit-Überwachung von Plugin-Ordnern mit Watchdog.",
+    "tech_title": "Verwendete Technologien",
+    "tech_description": "Dieses Projekt implementiert Python für die Logik, PyTorch für die KI und CustomTkinter für die Oberfläche. Watchdog ermöglicht die automatische Dateiüberwachung.",
+    "plugins_title": "Verfügbare Plugins"
+  },
+  "competencies": {
+    "title": "BUT-Informatik-Kompetenzen",
+    "subtitle": "Entdecken Sie alle durch meine Projekte entwickelten Kompetenzen",
+    "count": "{count} Kompetenz(en)",
+    "projects_count": "{count} Projekt(e)",
+    "associated_projects": "Zugehörige Projekte:",
+    "back_to_projects": "Projekte",
+    "categories": {
+      "realiser": "Realisieren",
+      "optimiser": "Optimieren",
+      "administrer": "Administrieren",
+      "gerer": "Managen",
+      "conduire": "Leiten",
+      "collaborer": "Zusammenarbeiten"
+    },
+    "levels": {
+      "n1": "Stufe 1",
+      "n2": "Stufe 2",
+      "n3": "Stufe 3"
+    },
+    "modal_intro": "Dieses Projekt hat dazu beigetragen, die folgenden Kompetenzen und kritischen Lernerfahrungen zu validieren:"
+  },
+  "participations": {
+    "title": "Meine Teilnahmen",
+    "subtitle": "Veranstaltungen und Wettbewerbe, an denen ich teilgenommen habe",
+    "learn_more": "Mehr erfahren →",
+    "types": {
+      "concours": "Wettbewerb",
+      "hackathon": "Hackathon",
+      "formation": "Schulung",
+      "spatial": "Raumfahrt"
+    },
+    "results": {
+      "challenge_met": "Herausforderung angenommen"
+    },
+    "items": {
+      "ndi2024": {
+        "title": "Nuit de l'Info 2024",
+        "description": "Teilnahme an der Nuit de l'Info, einem 24-stündigen Entwicklungsmarathon zur Erstellung einer Webanwendung zu einem vorgegebenen Thema.",
+        "result": "Herausforderung angenommen"
+      },
+      "codegamejam2026": {
+        "title": "Code Game Jam 2026",
+        "description": "Teilnahme an einer Coding Game Jam, um in weniger als 48 Stunden ein Spiel im Team zu entwickeln.",
+        "result": ""
+      },
+      "actinspace": {
+        "title": "ActInSpace Hackathon",
+        "description": "Internationaler Hackathon, organisiert von CNES und ESA, um Herausforderungen basierend auf Weltraumtechnologien zu lösen.",
+        "result": ""
+      },
+      "ndi2025": {
+        "title": "Nuit de l'Info 2025",
+        "description": "Teilnahme an der Nuit de l'Info, einem 24-stündigen Entwicklungsmarathon zur Erstellung einer innovativen Webanwendung.",
+        "result": ""
+      }
+    }
+  },
+  "languages": {
+    "title": "Chronologie einer Leidenschaft",
+    "subtitle_caps": "Meine sprachliche Reise",
+    "page_subtitle": "Von einer beherrschten Sprache zu unerforschten Horizonten.",
+    "sections": {
+      "mastered": "Verankerung (Erworben)",
+      "learning": "Abenteuer (In Arbeit)",
+      "planned": "Der Horizont (Zukunft)"
+    },
+    "since": "seit {year}",
+    "birth": "Geburt",
+    "items": {
+      "lang-1": {
+        "name": "Französisch",
+        "level": "Beherrscht (C2)",
+        "description": "Muttersprache, täglich zur Kommunikation verwendet."
+      },
+      "lang-2": {
+        "name": "Englisch",
+        "level": "Fortgeschritten (C1)",
+        "description": "Sprache für Arbeit und technologisches Monitoring. Fließende Kommunikation."
+      },
+      "lang-8": {
+        "name": "Deutsch",
+        "level": "Mittelstufe (B1)",
+        "description": "Fähigkeit, das Wesentliche zu verstehen und vertraute Themen zu besprechen."
+      },
+      "lang-3": {
+        "name": "Mandarin",
+        "level": "Anfänger (A1)",
+        "description": "Lernen der Töne und der ersten Schriftzeichen (Hanzi)."
+      },
+      "lang-4": {
+        "name": "Japanisch",
+        "level": "Anfänger (A1)",
+        "description": "Lernen von Hiragana/Katakana und Überlebensphrasen."
+      },
+      "lang-5": {
+        "name": "Russisch",
+        "level": "Ziel A1",
+        "description": "Entdeckung des kyrillischen Alphabets."
+      },
+      "lang-6": {
+        "name": "Italienisch",
+        "level": "Neugier",
+        "description": "Angezogen von italienischer Musik und Küche."
+      },
+      "lang-7": {
+        "name": "Spanisch",
+        "level": "Ziel A1",
+        "description": "Vorbereitung auf Reisen nach Lateinamerika."
+      }
+    }
+  },
+  "certifications": {
+    "title": "Meine Zertifizierungen",
+    "subtitle": "Schulungen, Zertifizierungen und Diplome",
+    "items": {
+      "cert-1": {
+        "title": "BIA",
+        "description": "Das Brevet d'Initiation Aéronautique (BIA) ist ein französisches Diplom, das eine allgemeine Kultur im Bereich der Luft- und Raumfahrt bescheinigt.",
+        "institution": "Nationale Bildung / Luftwaffe"
+      },
+      "cert-2": {
+        "title": "Abitur",
+        "description": "Sekundarschulabschluss mit Schwerpunkt Mathematik und Informatik. Mit Auszeichnung.",
+        "institution": "Lycée Jean Jaurès"
+      },
+      "cert-3": {
+        "title": "BUT Informatik",
+        "description": "Bachelor of Technology in Informatik. Intensive 3-jährige Ausbildung in Entwicklung, Netzwerken und KI.",
+        "institution": "IUT von Montpellier-Sète"
+      }
+    }
+  },
+  "objectives": {
+    "title": "Diplome & Erfahrungen",
+    "subtitle": "Mein akademischer und beruflicher Werdegang",
+    "today": "Heute",
+    "types": {
+      "education": "Bildung",
+      "experience": "Erfahrung"
+    },
+    "items": {
+      "obj-1": {
+        "title": "BUT Informatik",
+        "institution": "IUT von Montpellier-Sète",
+        "description": "Vielseitige Ausbildung in Informatik: Softwareentwicklung, Web, Datenbanken, Netzwerke und künstliche Intelligenz."
+      },
+      "obj-2": {
+        "title": "Abitur",
+        "institution": "Lycée Jean Jaurès",
+        "description": "Schwerpunkte Mathematik und Informatik. Mit Auszeichnung."
+      },
+      "obj-3": {
+        "title": "CTF-Plattformentwickler & Designer",
+        "institution": "IUT von Montpellier (Projekt)",
+        "description": "Design und Entwicklung einer Plattform für Cybersicherheits-Herausforderungen. Einsatz von Flask, Docker und Agile-Methoden."
+      },
+      "obj-4": {
+        "title": "KI-Entwickler & Desktop-Assistent",
+        "institution": "Persönliches Projekt (Victoria)",
+        "description": "Erstellung eines modularen Assistenten mit lokaler KI. Integration von LLM und Plugin-System."
+      }
+    }
+  },
+  "blog": {
+    "subtitle": "Meine Überlegungen zu Code und Wissenschaft.",
+    "search_placeholder": "Einen Artikel suchen...",
+    "read_more": "Mehr lesen →",
+    "all_categories": "Alle",
+    "posts": {
+      "post-1": {
+        "title": "KI im Dienste der Bildung",
+        "excerpt": "Wie Sprachmodelle das Erlernen von Code transformieren."
+      },
+      "post-2": {
+        "title": "Die Zukunft der Webentwicklung",
+        "excerpt": "Erforschung neuer Frontend- und Backend-Architekturen."
+      }
+    }
+  },
+  "contact": {
+    "title": "Kontaktiere mich",
+    "subtitle": "Zögern Sie nicht, mich zu kontaktieren, um über Projekte oder Kooperationen zu sprechen.",
+    "form": {
+      "name": "Name",
+      "email": "Ihre E-Mail:",
+      "message": "Ihre Nachricht:",
+      "send": "Senden"
+    },
+    "info_title": "Kontaktinformationen"
+  },
+  "footer": {
+    "rights": "© 2026 Mein Portfolio. Alle Rechte vorbehalten."
+  },
+  "resume": {
+    "generator_title": "PDF Portfolio Generator",
+    "generator_subtitle": "Exportieren Sie eine professionelle Zusammenfassung Ihrer Leistungen.",
+    "print_button": "Drucken / Als PDF speichern",
+    "catalogue_title": "Projektkatalog",
+    "present": "Gegenwart",
+    "generated_from": "Generiert von meinem Online-Portfolio:",
+    "professional_profile": "BERUFSPROFIL",
+    "experiences": {
+      "ctf": {
+        "detail_0": "Design einer Cybersecurity-Challenge-Plattform (Capture The Flag).",
+        "detail_1": "Backend-Entwicklung mit Flask und Docker-Container-Management für Challenges.",
+        "detail_2": "Implementierung der Agile-Scrum-Methodik zur Projektverfolgung."
+      },
+      "victoria": {
+        "detail_0": "Erstellung eines modularen Assistenten unter Verwendung lokaler LLMs (Ollama).",
+        "detail_1": "Implementierung eines Plugin-Systems zur Funktionserweiterung.",
+        "detail_2": "Entwicklung einer modernen grafischen Oberfläche mit CustomTkinter."
+      }
+    }
   }
 }

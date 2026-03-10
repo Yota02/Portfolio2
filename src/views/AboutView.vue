@@ -14,17 +14,9 @@
 
         <header class="text-center mb-16">
 
-          <h1 class="hero-title mb-8">
-            Comprendre le code. <br/>
-            <span class="gradient-text">
-              Décrypter le monde.
-            </span>
-          </h1>
+          <h1 class="hero-title mb-8" v-html="t('about.title')"></h1>
 
-          <p class="hero-subtitle">
-            Je construis des ponts entre l'algorithmique et les sciences humaines.
-            <strong class="text-dark">Futur enseignant-chercheur</strong> avec une vocation internationale.
-          </p>
+          <p class="hero-subtitle" v-html="t('about.subtitle')"></p>
         </header>
 
         <div class="bento-grid">
@@ -33,32 +25,22 @@
 
             <section class="vision-section">
               <h2 class="section-title">
-                <i class="fas fa-eye icon-indigo"></i> Ma Vision
+                <i class="fas fa-eye icon-indigo"></i> {{ t('about.vision.title') }}
               </h2>
               <div class="text-body space-y-4">
-                <p>
-                  L'informatique est souvent perçue comme froide et binaire. Pour moi, elle est une <strong>lentille</strong> pour observer la complexité du monde.
-                </p>
-                <p>
-                  Je crois en une approche interdisciplinaire où la <span class="text-blue">sociologie</span> éclaire l'usage des algorithmes et où la <span class="text-emerald">géopolitique</span> explique les flux de données.
-                </p>
+                <p v-html="t('about.vision.p1')"></p>
+                <p v-html="t('about.vision.p2')"></p>
               </div>
             </section>
 
             <section class="parcours-section">
               <h2 class="section-title">
-                <i class="fas fa-graduation-cap icon-indigo"></i> Mon Parcours
+                <i class="fas fa-graduation-cap icon-indigo"></i> {{ t('about.parcours.title') }}
               </h2>
               <div class="text-body space-y-4">
-                <p>
-                  Actuellement en <strong class="text-dark">3e année d'informatique à l'IUT de Montpellier</strong>, je me spécialise dans les algorithmes et les systèmes complexes.
-                </p>
-                <p>
-                  Mon objectif est de poursuivre avec un <span class="text-blue">Master en Bioinformatique</span>, où je combinerai l'informatique et les sciences de la vie pour analyser des données biologiques.
-                </p>
-                <p>
-                  En parallèle, je développe une <span class="text-emerald">IA personnelle</span> pour explorer l'apprentissage automatique et ses applications pratiques.
-                </p>
+                <p v-html="t('about.parcours.p1')"></p>
+                <p v-html="t('about.parcours.p2')"></p>
+                <p v-html="t('about.parcours.p3')"></p>
               </div>
             </section>
 
@@ -68,26 +50,24 @@
               <div class="relative z-10">
                 <div class="flex items-center gap-3 mb-4">
                   <i class="fas fa-globe-americas text-blue-200 text-xl"></i>
-                  <h3 class="card-title text-white">Ambition Internationale</h3>
+                  <h3 class="card-title text-white">{{ t('about.international.title') }}</h3>
                 </div>
-                <p class="text-blue-100 mb-6 font-light">
-                  Apprendre les langues pour <strong>enseigner à travers le monde</strong>. L'échange interculturel est le moteur de ma recherche.
-                </p>
+                <p class="text-blue-100 mb-6 font-light" v-html="t('about.international.description')"></p>
                 <div class="tags-row">
                   <span class="lang-badge">
-                    <img :src="`${baseUrl}drapeau/en.svg`" alt="Anglais" class="badge-flag" /> Anglais
+                    <img :src="`${baseUrl}drapeau/en.svg`" alt="Anglais" class="badge-flag" /> {{ t('nav.languages_list.en') || 'English' }}
                   </span>
                   <span class="lang-badge">
-                    <img :src="`${baseUrl}drapeau/de.svg`" alt="Allemand" class="badge-flag" /> Allemand
+                    <img :src="`${baseUrl}drapeau/de.svg`" alt="Allemand" class="badge-flag" /> {{ t('nav.languages_list.de') || 'Deutsch' }}
                   </span>
                   <span class="lang-badge">
-                    <img :src="`${baseUrl}drapeau/jp.svg`" alt="Japonais" class="badge-flag" /> Japonais
+                    <img :src="`${baseUrl}drapeau/jp.svg`" alt="Japonais" class="badge-flag" /> {{ t('nav.languages_list.jp') || '日本語' }}
                   </span>
                   <span class="lang-badge">
-                    <img :src="`${baseUrl}drapeau/zh.svg`" alt="Mandarin" class="badge-flag" /> Mandarin
+                    <img :src="`${baseUrl}drapeau/zh.svg`" alt="Mandarin" class="badge-flag" /> {{ t('nav.languages_list.zh') || '中文' }}
                   </span>
                   <span class="lang-badge dashed">
-                    <i class="fas fa-plus mr-2"></i>Suivant ?
+                    <i class="fas fa-plus mr-2"></i>{{ t('about.international.next') }}
                   </span>
                 </div>
               </div>
@@ -95,14 +75,14 @@
 
              <div class="quote-container">
               <blockquote class="quote-text">
-                "L'humanité utilise la technologie comme un enfant jouant avec une bougie. Le jeu est de savoir quand retirer sa main."
+                "{{ t('about.quote') }}"
               </blockquote>
             </div>
           </div>
 
           <div class="col-right">
             <h2 class="section-title mb-6">
-              <i class="fas fa-fingerprint icon-indigo"></i> Quand je ne code pas
+              <i class="fas fa-fingerprint icon-indigo"></i> {{ t('about.hobbies.title') }}
             </h2>
             <div class="hobbies-list">
               <div
@@ -117,7 +97,7 @@
                   </span>
                   <div>
                     <h3 class="hobby-label">
-                      {{ hobby.label }}
+                      {{ t('about.hobbies.' + hobby.key) }}
                     </h3>
                     <p class="hobby-tagline">
                       {{ hobby.tagline }}
@@ -138,16 +118,19 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const baseUrl = import.meta.env.BASE_URL;
 
 const hobbies = [
-  { icon: '🌍', label: 'Géopolitique', tagline: '', color: '#2563eb' },
-  { icon: '🧪', label: 'Sciences', tagline: '', color: '#10b981' },
-  { icon: '🚀', label: 'Sci-Fi', tagline: '', color: '#8b5cf6' },
-  { icon: '👥', label: 'Sociologie', tagline: '', color: '#f59e0b' },
-  { icon: '🎥', label: 'Cinéma', tagline: '', color: '#ef4444' }
+  { icon: '🌍', key: 'geopolitics', tagline: '', color: '#2563eb' },
+  { icon: '🧪', key: 'sciences', tagline: '', color: '#10b981' },
+  { icon: '🚀', key: 'scifi', tagline: '', color: '#8b5cf6' },
+  { icon: '👥', key: 'sociology', tagline: '', color: '#f59e0b' },
+  { icon: '🎥', key: 'cinema', tagline: '', color: '#ef4444' }
 ]
 </script>
+
 
 <style scoped>
 /* --- 1. IMPORTS & RESET --- */

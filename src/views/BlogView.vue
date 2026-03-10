@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { blogPosts, type BlogPost } from '@/data/blog'
+import { blogPosts } from '@/data/blog'
 
 const { locale, t } = useI18n()
 const searchQuery = ref('')
@@ -11,7 +11,7 @@ const categories = ['All', ...new Set(blogPosts.map(post => post.category))]
 
 const filteredPosts = computed(() => {
   return blogPosts.filter(post => {
-    const title = post.title[locale.value as 'fr' | 'en']
+    const title = t(post.title)
     const matchesSearch = title.toLowerCase().includes(searchQuery.value.toLowerCase())
     const matchesCategory = selectedCategory.value === 'All' || post.category === selectedCategory.value
     return matchesSearch && matchesCategory
@@ -32,13 +32,13 @@ const formatDate = (dateString: string) => {
     <div class="container">
       <header class="blog-header">
         <h1 class="page-title">{{ t('nav.blog') }}</h1>
-        <p class="page-subtitle">Mes réflexions sur le code et les sciences.</p>
+        <p class="page-subtitle">{{ t('blog.subtitle') }}</p>
         
         <div class="filters">
           <input 
             type="text" 
             v-model="searchQuery" 
-            placeholder="Rechercher un article..." 
+            :placeholder="t('blog.search_placeholder')" 
             class="search-input"
           />
           <div class="category-filters">
@@ -49,7 +49,7 @@ const formatDate = (dateString: string) => {
               :class="{ active: selectedCategory === cat }"
               class="category-btn"
             >
-              {{ cat }}
+              {{ cat === 'All' ? t('blog.all_categories') : cat }}
             </button>
           </div>
         </div>
@@ -58,19 +58,19 @@ const formatDate = (dateString: string) => {
       <div class="blog-grid">
         <article v-for="post in filteredPosts" :key="post.id" class="post-card">
           <div class="post-image" v-if="post.image">
-            <img :src="post.image" :alt="post.title[locale as 'fr' | 'en']" />
+            <img :src="post.image" :alt="t(post.title)" />
           </div>
           <div class="post-content">
             <div class="post-meta">
               <span class="post-category">{{ post.category }}</span>
               <span class="post-date">{{ formatDate(post.date) }}</span>
             </div>
-            <h2 class="post-title">{{ post.title[locale as 'fr' | 'en'] }}</h2>
-            <p class="post-excerpt">{{ post.excerpt[locale as 'fr' | 'en'] }}</p>
+            <h2 class="post-title">{{ t(post.title) }}</h2>
+            <p class="post-excerpt">{{ t(post.excerpt) }}</p>
             <div class="post-tags">
               <span v-for="tag in post.tags" :key="tag" class="tag">#{{ tag }}</span>
             </div>
-            <button class="read-more">Lire la suite →</button>
+            <button class="read-more">{{ t('blog.read_more') }}</button>
           </div>
         </article>
       </div>

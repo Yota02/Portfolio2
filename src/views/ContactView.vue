@@ -2,31 +2,31 @@
   <div class="contact-page">
     <div class="container">
       <div class="header">
-        <h1 class="page-title">Contactez-moi</h1>
-        <p class="page-subtitle">N'hésitez pas à me contacter pour discuter de projets ou collaborations.</p>
+        <h1 class="page-title">{{ t('contact.title') }}</h1>
+        <p class="page-subtitle">{{ t('contact.subtitle') }}</p>
       </div>
 
       <div class="contact-content">
         <div class="contact-form">
           <form action="https://formspree.io/f/xzzoeyeq" method="POST">
             <div class="form-group">
-              <label for="name">Nom</label>
+              <label for="name">{{ t('contact.form.name') }}</label>
               <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
-              <label for="email">Votre email :</label>
+              <label for="email">{{ t('contact.form.email') }}</label>
               <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
-              <label for="message">Votre message :</label>
+              <label for="message">{{ t('contact.form.message') }}</label>
               <textarea id="message" name="message" rows="5" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Envoyer</button>
+            <button type="submit" class="btn btn-primary">{{ t('contact.form.send') }}</button>
           </form>
         </div>
 
         <div class="contact-info">
-          <h2>Informations de contact</h2>
+          <h2>{{ t('contact.info_title') }}</h2>
           <div class="info-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
               <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
@@ -52,7 +52,8 @@
 </template>
 
 <script setup lang="ts">
-// Suppress the script section as it's no longer needed
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 </script>
 
 <style scoped>

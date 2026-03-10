@@ -2,19 +2,598 @@
   "nav": {
     "home": "首页",
     "projects": "项目",
-    "certifications": "认证",
+    "certifications": "证书",
     "languages": "语言",
     "parcours": "我的历程",
-    "diplomas": "文凭",
+    "diplomas": "文凭与经验",
     "participations": "参与",
-    "contact": "联系",
-    "blog": "博客"
+    "contact": "联系方式",
+    "blog": "博客",
+    "timeline": "时间线",
+    "toggle_theme": "切换主题",
+    "toggle_nav": "切换导航"
   },
   "home": {
     "greeting": "你好，我是",
-    "subtitle": "计算机科学学生",
-    "description": "我对人工智能、Web开发和新兴技术充满热情。每天我都在学习探索新知识，希望成为研究者。",
+    "subtitle": "计算机科学系学生",
+    "description": "我热衷于人工智能、Web 开发和新兴技术。每天，我都在学习和探索新想法，立志成为一名教师研究员。",
     "view_projects": "查看我的项目",
-    "learn_more": "了解更多"
+    "learn_more": "了解更多",
+    "view_project": "查看 Victoria 项目"
+  },
+  "about": {
+    "title": "理解代码。<br/> <span class=\"gradient-text\">解读世界。</span>",
+    "subtitle": "我在算法与人文学科之间架起桥梁。<strong class=\"text-dark\">未来的教师研究员</strong>，具有国际视野。",
+    "vision": {
+      "title": "我的愿景",
+      "p1": "计算机科学常被认为是冰冷且二进制的。对我而言，它是观察世界复杂性的<strong>镜头</strong>。",
+      "p2": "我信奉跨学科方法，通过<span class=\"text-blue\">社会学</span>启发算法的使用，通过<span class=\"text-emerald\">地缘政治</span>解释数据流。"
+    },
+    "parcours": {
+      "title": "我的历程",
+      "p1": "目前在<strong class=\"text-dark\">蒙彼利埃 IUT 攻读计算机科学三年级</strong>，专注于算法和复杂系统。",
+      "p2": "我的目标是攻读<span class=\"text-blue\">生物信息学硕士</span>，结合计算机科学和生命科学来分析生物数据。",
+      "p3": "与此同时，我正在开发一个<span class=\"text-emerald\">个人 AI</span>，以探索机器学习及其实际应用。"
+    },
+    "international": {
+      "title": "国际抱负",
+      "description": "学习语言是为了在<strong>全球范围内教学</strong>。跨文化交流是我研究的动力。",
+      "next": "下一个？"
+    },
+    "quote": "人类使用技术就像孩子玩蜡烛。游戏的意义在于知道何时收手。",
+    "hobbies": {
+      "title": "工作之余",
+      "geopolitics": "地缘政治",
+      "sciences": "科学",
+      "scifi": "科幻",
+      "sociology": "社会学",
+      "cinema": "电影"
+    }
+  },
+  "projects": {
+    "title": "我的项目",
+    "view_competencies": "查看能力",
+    "back_to_projects": "← 返回项目",
+    "description": "描述",
+    "features": "功能",
+    "technologies": "技术",
+    "links": "链接",
+    "view_demo": "查看演示",
+    "source_code": "源码",
+    "stats": {
+      "title": "项目统计",
+      "start_date": "开始日期",
+      "end_date": "结束日期",
+      "status": "状态",
+      "ongoing": "进行中",
+      "finished": "已完成",
+      "unspecified": "未指定"
+    },
+    "categories": {
+      "web": "Web 开发",
+      "ia": "人工智能",
+      "games": "视频游戏",
+      "software": "软件"
+    },
+    "purposes": {
+      "education": "教育",
+      "personnel": "个人"
+    },
+    "subprojects": "子项目",
+    "view_project_link": "查看项目 →",
+    "but_competencies": "BUT 能力",
+    "unknown_project": "未知项目",
+    "project_not_found": "该项目不存在",
+    "unknown_subproject": "未找到子项目",
+    "subproject_not_found": "该子项目不存在",
+    "video_not_supported": "您的浏览器不支持 video 标签。",
+    "image_alt": "项目图片",
+    "items": {
+      "project-1": {
+        "description": "CodeTonFutur 是一个专注于计算机科学的科学普及网站。",
+        "longDescription": "该项目是一个完整的 Web 应用程序，展示了 Vue.js、TypeScript 和 Vite 等现代技术的使用。该应用程序提供流畅且高性能的用户体验。",
+        "startDate": "2025年4月",
+        "features": {
+          "0": "基于 GPT 的智能聊天机器人",
+          "1": "带自动纠错功能的实践练习"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC31.01 | 选择并实现合适的架构（Vue.js/Flask Web 架构）",
+            "1": "AC31.03 | 将解决方案集成到生产环境中"
+          },
+          "1": {
+            "0": "AC25.02 | 正式确定客户和用户需求"
+          },
+          "2": {
+            "0": "AC24.03 | 通过编程和可视化组织数据呈现（仪表板）"
+          }
+        }
+      },
+      "project-2": {
+        "description": "致力于网络安全中夺旗赛 (CTF) 挑战的平台。",
+        "longDescription": "Break The Code 是一个用于网络安全夺旗赛 (CTF) 挑战的互动平台，是作为 IUT 协会项目的一部分开发的。",
+        "startDate": "2024年9月",
+        "endDate": "2025年1月",
+        "features": {
+          "0": "利用 SSH 漏洞的挑战",
+          "1": "获取旗帜的“Rainbow Jumper”游戏",
+          "2": "使用 Docker 进行容器化部署"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC21.01 | 根据需求制定并实现功能和非功能规范",
+            "1": "AC21.04 | 通过测试验证应用程序质量"
+          },
+          "1": {
+            "0": "AC23.01 | 设计并开发通信应用程序",
+            "1": "AC23.02 | 使用虚拟化网络服务器和服务 (Docker)",
+            "2": "AC23.03 | 保护系统的服务和数据 (SSH)"
+          },
+          "2": {
+            "0": "AC25.04 | 定义并实施项目监控方法 (Scrum/Agile)"
+          },
+          "3": {
+            "0": "AC26.03 | 调动人际交往能力在 IT 团队中工作",
+            "1": "AC26.04 | 汇报职业活动"
+          }
+        },
+        "subProjects": {
+          "0": {
+            "name": "SSH 挑战",
+            "description": "基于 SSH 漏洞的挑战。",
+            "features": {
+              "0": "利用 SSH 漏洞",
+              "1": "获取旗帜"
+            }
+          },
+          "1": {
+            "name": "Rainbow Jumper",
+            "description": "获取旗帜的游戏。",
+            "features": {
+              "0": "跳跃机制",
+              "1": "旗帜奖励"
+            }
+          }
+        }
+      },
+      "project-3": {
+        "description": "商业模拟视频游戏的 Web 应用程序。",
+        "longDescription": "该视频游戏 Web 应用程序允许用户在商业模拟中相互竞争。玩家管理资源，做出战略决策，并争夺虚拟市场的统治地位。",
+        "startDate": "2025年9月",
+        "features": {
+          "0": "互动游戏机制",
+          "1": "渐进式等级系统",
+          "2": "玩家间的竞争",
+          "3": "实时资源管理",
+          "4": "编制资产负债表、损益表"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC21.03 | 采用良好的设计和编程实践 (MVC Symfony)",
+            "1": "AC21.02 | 应用可访问性和人体工程学原则"
+          },
+          "1": {
+            "0": "AC24.01 | 优化公司数据模型"
+          },
+          "2": {
+            "0": "AC26.01 | 了解组织中 IT 的多样性、结构和维度"
+          }
+        }
+      },
+      "project-4": {
+        "description": "卫星碰撞警告统计数据分析工具。",
+        "longDescription": "Star Guardian 是一款旨在对涉及轨道卫星的碰撞警报进行高级统计分析的软件。",
+        "startDate": "2025年1月",
+        "endDate": "2025年4月",
+        "features": {
+          "0": "直观的数据可视化界面",
+          "1": "碰撞概率的统计分析"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC11.01 | 实现简单设计",
+            "1": "AC11.04 | 开发用户界面"
+          },
+          "1": {
+            "0": "AC22.01 | 选择适合问题的复杂数据结构 (Pandas Dataframes)"
+          },
+          "2": {
+            "0": "AC24.04 | 处理异构数据 (Excel, CSV, API)"
+          },
+          "3": {
+            "0": "AC15.01 | 掌握客户和用户需求"
+          }
+        }
+      },
+      "project-5": {
+        "description": "将棋盘游戏 Trains 改编为 Java 视频游戏。",
+        "longDescription": "该项目包含使用 Java 重新创建日本棋盘游戏 Trains，具有 JavaFX 图形界面并采用 TDD 方法。",
+        "startDate": "2024年3月",
+        "endDate": "2024年6月",
+        "features": {
+          "0": "使用 JavaFX 开发的图形界面",
+          "1": "使用 JUnit 进行测试驱动开发 (TDD)"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC11.03 | 根据规范进行测试并评估其结果 (TDD/JUnit)",
+            "1": "AC11.04 | 开发用户界面 (JavaFX)"
+          },
+          "1": {
+            "0": "AC12.01 | 有方法地分析问题（将其分解为简单的算法元素）",
+            "1": "AC12.02 | 比较经典问题的算法 (Dijkstra)"
+          },
+          "2": {
+            "0": "AC22.01 | 选择适合问题的复杂数据结构（图）"
+          }
+        }
+      },
+      "project-6": {
+        "description": "基于 AI 的图像分类软件。",
+        "longDescription": "创建能够按类别对图像进行分类的 AI。使用 PyTorch 和卷积网络。",
+        "startDate": "2023年6月",
+        "endDate": "2024年6月",
+        "features": {
+          "0": "检测准确率达 98%",
+          "1": "卷积神经网络 (CNN)",
+          "2": "进度仪表板"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC21.03 | 采用良好的设计和编程实践"
+          },
+          "1": {
+            "0": "AC22.02 | 针对复杂问题使用适当算法技术（人工智能）"
+          }
+        }
+      },
+      "project-7": {
+        "description": "具有本地 AI 的模块化桌面助手。",
+        "longDescription": "Victoria 是一款使用本地人工智能 (Ollama) 的桌面应用程序，可通过插件扩展。",
+        "startDate": "2025年5月",
+        "features": {
+          "0": "现代 CustomTkinter 界面",
+          "1": "插件系统",
+          "2": "RAG 集成 (ChromaDb)"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC31.02 | 改进现有应用程序（插件系统）",
+            "1": "AC31.01 | 选择并实现合适的架构（模块化）"
+          },
+          "1": {
+            "0": "AC22.02 | 针对复杂问题使用适当算法技术 (AI, RAG)"
+          },
+          "2": {
+            "0": "AC13.01 | 识别数字系统的不同组件（硬件和软件）"
+          }
+        },
+        "subProjects": {
+          "0": {
+            "name": "RSS 插件",
+            "description": "读取 RSS 提要的插件。",
+            "features": {
+              "0": "自动读取",
+              "1": "文章过滤"
+            }
+          },
+          "1": {
+            "name": "Issue Maker",
+            "description": "创建 GitHub issue 的插件。",
+            "features": {
+              "0": "GitHub 集成",
+              "1": "自动生成"
+            }
+          }
+        }
+      },
+      "project-8": {
+        "description": "通过游戏化进行语言学习的应用程序。",
+        "longDescription": "该 Web 应用程序通过测验和复习卡每天学习 10 个单词。",
+        "startDate": "2025年9月",
+        "features": {
+          "0": "游戏化每日学习",
+          "1": "智能提醒系统",
+          "2": "支持 10 种语言"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC31.01 | 选择并实现合适的架构 (Mobile/PWA)"
+          },
+          "1": {
+            "0": "AC23.01 | 设计并开发通信应用程序 (Firebase)"
+          },
+          "2": {
+            "0": "AC14.01 | 更新和查询关系数据库 (MySQL)"
+          }
+        }
+      },
+      "project-10": {
+        "description": "用于对视频游戏、动漫和漫画进行评分的社区网站。",
+        "longDescription": "Anakomi 是一个平台，允许用户对他们喜欢的作品进行评分和评论，同时查阅社区排名。",
+        "startDate": "2025年9月",
+        "endDate": "2025年9月",
+        "features": {
+          "0": "评分和评论",
+          "1": "社区排名"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC11.01 | 实现简单设计",
+            "1": "AC11.04 | 开发用户界面"
+          },
+          "1": {
+            "0": "AC14.03 | 根据规范设计关系数据库"
+          }
+        }
+      },
+      "project-11": {
+        "description": "彻夜进行的团队国家 Web 开发挑战赛。",
+        "longDescription": "在 Nuit de l'Info 框架内实现的项目。挑战在于团队合作，从日落到日出开发一个功能性 Web 应用程序。",
+        "startDate": "2025年12月",
+        "endDate": "2025年12月",
+        "features": {
+          "0": "限时高强度开发（黑客松）",
+          "1": "协作工作和任务分配",
+          "2": "遵守主题和技术限制"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC26.03 | 调动人际交往能力在 IT 团队中工作",
+            "1": "AC26.01 | 了解 IT 团队的多样性和动态"
+          },
+          "1": {
+            "0": "AC25.01 | 组织团队工作（任务分配）",
+            "1": "AC25.03 | 确定可行性标准（短期时间管理）"
+          },
+          "2": {
+            "0": "AC21.03 | 采用良好的设计和编程实践（协作代码）"
+          }
+        }
+      },
+      "project-12": {
+        "description": "CHIRAL 是一款关于创建镜像生命危险的教育视频游戏。",
+        "longDescription": "CHIRAL 提高玩家对创建镜像生命危险的认识。游戏展示了一种镜像细菌，它迅速传播，危及生态平衡。",
+        "startDate": "2026年1月",
+        "features": {
+          "0": "镜像生命危险意识",
+          "1": "教育互动",
+          "2": "引人入胜的游戏玩法"
+        }
+      },
+      "project-13": {
+        "description": "用于机器学习的数据处理流水线。",
+        "longDescription": "Loom 是一个旨在自动化 AI 模型数据工作流的项目，从收集到部署。",
+        "startDate": "2026年1月"
+      }
+    }
+  },
+  "victoria": {
+    "ai_precision": "AI 精度：",
+    "ai_precision_value": "测试中达到 98%",
+    "description_title": "项目描述",
+    "description_text": "Victoria 是一款使用本地人工智能的桌面应用程序，旨在尽可能实现模块化和个性化。主要目标是允许用户以简单有效的方式添加插件来扩展其功能。Victoria 是一个专为共享而设计的通用平台，适应各种需求，并由于其模块化架构而易于扩展。",
+    "features_title": "核心功能",
+    "feature_customtkinter": "使用 CustomTkinter 的现代用户界面，提供流畅体验。",
+    "feature_watchdog": "使用 Watchdog 实时监控插件文件夹。",
+    "tech_title": "使用的技术",
+    "tech_description": "该项目使用 Python 进行逻辑处理，PyTorch 用于 AI，CustomTkinter 用于界面。Watchdog 实现自动文件监控。",
+    "plugins_title": "可用插件"
+  },
+  "competencies": {
+    "title": "BUT 计算机科学能力",
+    "subtitle": "发现通过我的项目培养的所有能力",
+    "count": "{count} 项能力",
+    "projects_count": "{count} 个项目",
+    "associated_projects": "相关项目：",
+    "back_to_projects": "项目",
+    "categories": {
+      "realiser": "实现",
+      "optimiser": "优化",
+      "administrer": "管理",
+      "gerer": "经营",
+      "conduire": "引导",
+      "collaborer": "协作"
+    },
+    "levels": {
+      "n1": "级别 1",
+      "n2": "级别 2",
+      "n3": "级别 3"
+    },
+    "modal_intro": "该项目验证了以下能力和关键学习成果："
+  },
+  "participations": {
+    "title": "我的参与",
+    "subtitle": "我参加过的活动和竞赛",
+    "learn_more": "了解更多 →",
+    "types": {
+      "concours": "竞赛",
+      "hackathon": "黑客松",
+      "formation": "培训",
+      "spatial": "航天"
+    },
+    "results": {
+      "challenge_met": "迎接挑战"
+    },
+    "items": {
+      "ndi2024": {
+        "title": "2024 资讯之夜 (Nuit de l'Info)",
+        "description": "参加资讯之夜，这是一个 24 小时开发马拉松，旨在根据给定主题创建 Web 应用程序。",
+        "result": "迎接挑战"
+      },
+      "codegamejam2026": {
+        "title": "2026 Code Game Jam",
+        "description": "参加编程游戏果酱，在不到 48 小时内团队开发一款游戏。",
+        "result": ""
+      },
+      "actinspace": {
+        "title": "ActInSpace 黑客松",
+        "description": "由 CNES 和 ESA 组织的国际黑客松，旨在应对基于空间技术的挑战。",
+        "result": ""
+      },
+      "ndi2025": {
+        "title": "2025 资讯之夜 (Nuit de l'Info)",
+        "description": "参加资讯之夜，这是一个 24 小时开发马拉松，旨在创建一个创新的 Web 应用程序。",
+        "result": ""
+      }
+    }
+  },
+  "languages": {
+    "title": "热情的编年史",
+    "subtitle_caps": "我的语言之旅",
+    "page_subtitle": "从精通的语言到未知的领域。",
+    "sections": {
+      "mastered": "基石（已掌握）",
+      "learning": "冒险（进行中）",
+      "planned": "远景（计划中）"
+    },
+    "since": "自 {year} 年",
+    "birth": "出生",
+    "items": {
+      "lang-1": {
+        "name": "法语",
+        "level": "精通 (C2)",
+        "description": "母语，日常交流使用。"
+      },
+      "lang-2": {
+        "name": "英语",
+        "level": "高级 (C1)",
+        "description": "工作和技术监测语言。交流流利。"
+      },
+      "lang-8": {
+        "name": "德语",
+        "level": "中级 (B1)",
+        "description": "能够理解基本要点并讨论熟悉的主题。"
+      },
+      "lang-3": {
+        "name": "普通话",
+        "level": "初学者 (A1)",
+        "description": "学习声调和首批汉字 (Hanzi)。"
+      },
+      "lang-4": {
+        "name": "日语",
+        "level": "初学者 (A1)",
+        "description": "学习平假名/片假名和生存短语。"
+      },
+      "lang-5": {
+        "name": "俄语",
+        "level": "目标 A1",
+        "description": "探索西里尔字母。"
+      },
+      "lang-6": {
+        "name": "意大利语",
+        "level": "好奇",
+        "description": "被意大利音乐和美食所吸引。"
+      },
+      "lang-7": {
+        "name": "西班牙语",
+        "level": "目标 A1",
+        "description": "为拉美之旅做准备。"
+      }
+    }
+  },
+  "certifications": {
+    "title": "我的证书",
+    "subtitle": "培训、证书与学位",
+    "items": {
+      "cert-1": {
+        "title": "BIA (航空入门证书)",
+        "description": "航空入门证书 (BIA) 是一项法国证书，证明在航空和航天领域的通用文化知识。",
+        "institution": "国家教育部 / 空军"
+      },
+      "cert-2": {
+        "title": "高中毕业证书",
+        "description": "高中毕业证书，主修数学和 NSI（数字与计算机科学）。优等成绩。",
+        "institution": "Jean Jaurès 中学"
+      },
+      "cert-3": {
+        "title": "BUT 计算机科学",
+        "description": "计算机科学技术学士。为期 3 年的强化培训，涵盖开发、网络和人工智能。",
+        "institution": "蒙彼利埃-塞特 IUT"
+      }
+    }
+  },
+  "objectives": {
+    "title": "文凭与经验",
+    "subtitle": "我的学术和职业历程",
+    "today": "至今",
+    "types": {
+      "education": "教育",
+      "experience": "经验"
+    },
+    "items": {
+      "obj-1": {
+        "title": "BUT 计算机科学",
+        "institution": "蒙彼利埃-塞特 IUT",
+        "description": "计算机科学全方位培训：软件开发、Web、数据库、网络和人工智能。"
+      },
+      "obj-2": {
+        "title": "普通高中毕业证",
+        "institution": "Jean Jaurès 中学",
+        "description": "主修数学和 NSI（数字与计算机科学）。优等成绩。"
+      },
+      "obj-3": {
+        "title": "CTF 平台开发与设计者",
+        "institution": "蒙彼利埃 IUT (项目)",
+        "description": "设计并开发一个网络安全挑战平台。使用 Flask、Docker 和敏捷方法。"
+      },
+      "obj-4": {
+        "title": "人工智能开发者与桌面助手",
+        "institution": "个人项目 (Victoria)",
+        "description": "使用本地 AI 创建模块化助手。集成 LLM 和插件系统。"
+      }
+    }
+  },
+  "blog": {
+    "subtitle": "我对代码和科学的思考。",
+    "search_placeholder": "搜索文章...",
+    "read_more": "阅读更多 →",
+    "all_categories": "全部",
+    "posts": {
+      "post-1": {
+        "title": "AI 助力教育",
+        "excerpt": "语言模型如何改变代码学习。"
+      },
+      "post-2": {
+        "title": "Web 开发的未来",
+        "excerpt": "探索新的前端和后端架构。"
+      }
+    }
+  },
+  "contact": {
+    "title": "联系我",
+    "subtitle": "欢迎联系我讨论项目或合作事宜。",
+    "form": {
+      "name": "姓名",
+      "email": "您的邮箱：",
+      "message": "您的留言：",
+      "send": "发送"
+    },
+    "info_title": "联系信息"
+  },
+  "footer": {
+    "rights": "© 2026 我的作品集。保留所有权利。"
+  },
+  "resume": {
+    "generator_title": "PDF 作品集生成器",
+    "generator_subtitle": "导出您成就的专业摘要。",
+    "print_button": "打印 / 保存为 PDF",
+    "catalogue_title": "项目目录",
+    "present": "至今",
+    "generated_from": "生成自我的在线作品集：",
+    "professional_profile": "职业概况",
+    "experiences": {
+      "ctf": {
+        "detail_0": "设计网络安全挑战平台 (Capture The Flag)。",
+        "detail_1": "使用 Flask 进行后端开发并管理挑战的 Docker 容器。",
+        "detail_2": "实施敏捷 Scrum 方法进行项目跟踪。"
+      },
+      "victoria": {
+        "detail_0": "创建使用本地 LLM (Ollama) 的模块化助手。",
+        "detail_1": "实施插件系统以进行功能扩展。",
+        "detail_2": "使用 CustomTkinter 开发现代图形界面。"
+      }
+    }
   }
 }

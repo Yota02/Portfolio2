@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useRoute, RouterLink } from 'vue-router'
 import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { getProjectById } from '@/data/projects'
 
+const { t } = useI18n()
 const route = useRoute()
 const projectId = route.params.projectId as string
 const subId = route.params.subId as string
@@ -36,7 +38,7 @@ const prevImage = () => {
 <template>
   <div class="sub-project-detail">
     <div class="container">
-      <RouterLink to="/projects" class="back-link">← Retour aux projets</RouterLink>
+      <RouterLink to="/projects" class="back-link">{{ t('projects.back_to_projects') }}</RouterLink>
 
       <div v-if="subProject" class="sub-project-header">
         <h1 class="sub-project-title">{{ subProject.name }}</h1>
@@ -48,14 +50,14 @@ const prevImage = () => {
           <!-- Carrousel d'images -->
           <div class="carousel-container">
             <div class="carousel">
-              <img v-if="fullImages.length > 0" :src="fullImages[currentImageIndex]" alt="Image du sous-projet" class="carousel-image" />
+              <img v-if="fullImages.length > 0" :src="fullImages[currentImageIndex]" :alt="t('projects.image_alt')" class="carousel-image" />
               <div v-else class="image-placeholder">
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                   <circle cx="8.5" cy="8.5" r="1.5"></circle>
                   <polyline points="21 15 16 10 5 21"></polyline>
                 </svg>
-                <p>Image du sous-projet</p>
+                <p>{{ t('projects.image_alt') }}</p>
               </div>
             </div>
             <button v-if="fullImages.length > 1" @click="prevImage" class="carousel-btn prev">&lt;</button>
@@ -67,7 +69,7 @@ const prevImage = () => {
 
           <!-- Fonctionnalités -->
           <div class="features-section">
-            <h2>Fonctionnalités</h2>
+            <h2>{{ t('projects.features') }}</h2>
             <ul class="features-list">
               <li v-for="feature in subProject.features" :key="feature">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -81,7 +83,7 @@ const prevImage = () => {
       </div>
 
       <div v-else class="error">
-        <p>Sous-projet introuvable.</p>
+        <p>{{ t('projects.subproject_not_found') }}</p>
       </div>
     </div>
   </div>
@@ -106,6 +108,7 @@ const prevImage = () => {
   font-weight: 600;
   margin-bottom: 2rem;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .back-link:hover {

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useRoute, RouterLink } from 'vue-router'
 import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { getProjectById, techIconMap } from '@/data/projects'
 
+const { t } = useI18n()
 const baseUrl = import.meta.env.BASE_URL
 
 const route = useRoute()
@@ -20,8 +22,8 @@ const project = computed(() => {
   const found = getProjectById(projectId)
   return found || {
     id: projectId,
-    name: 'Projet Inconnu',
-    description: 'Ce projet n\'existe pas',
+    name: t('projects.unknown_project'),
+    description: t('projects.project_not_found'),
     longDescription: '',
     tags: [],
     images: [],
@@ -87,12 +89,21 @@ const getProjectImage = (imagePath: string): string => {
 const showCompetencies = ref(false)
 
 const categoryColors: Record<string, string> = {
-  'Développer': '#3b82f6',
+  'Réaliser': '#3b82f6',
   'Optimiser': '#8b5cf6',
   'Administrer': '#10b981',
   'Gérer': '#f59e0b',
   'Conduire': '#ef4444',
   'Collaborer': '#ec4899'
+}
+
+const categoryKeyMap: Record<string, string> = {
+  'Réaliser': 'realiser',
+  'Optimiser': 'optimiser',
+  'Administrer': 'administrer',
+  'Gérer': 'gerer',
+  'Conduire': 'conduire',
+  'Collaborer': 'collaborer'
 }
 
 const getBgColor = (category: string) => {
@@ -114,7 +125,7 @@ const isVideo = (src: string): boolean => {
 
     <div class="container">
       <RouterLink to="/projects" class="back-link reveal">
-        ← Retour aux projets
+        {{ t('projects.back_to_projects') }}
       </RouterLink>
 
       <div class="project-header reveal-up">
@@ -122,10 +133,10 @@ const isVideo = (src: string): boolean => {
           v-if="project.competencies && project.competencies.length > 0"
           @click="showCompetencies = true"
           class="but-badge-btn"
-          title="Voir les compétences validées"
+          :title="t('projects.view_competencies')"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-2 5l9-9l-9 9l2-5"></path><path d="M2 12l5 5l10 -10"></path></svg>
-          Compétences BUT
+          {{ t('projects.but_competencies') }}
         </button>
         <h1 class="project-title">{{ project.name }}</h1>
         <p class="project-subtitle">{{ project.description }}</p>
@@ -137,17 +148,17 @@ const isVideo = (src: string): boolean => {
             <div class="carousel">
               <div v-if="fullImages.length > 0 && isVideo(fullImages[currentImageIndex]!)" class="carousel-video">
                 <video :src="fullImages[currentImageIndex]!" controls autoplay muted loop class="video-element">
-                  Votre navigateur ne supporte pas la lecture de vidéos.
+                  {{ t('projects.video_not_supported') }}
                 </video>
               </div>
-              <img v-else-if="fullImages.length > 0" :src="fullImages[currentImageIndex]!" alt="Image du projet" class="carousel-image" />
+              <img v-else-if="fullImages.length > 0" :src="fullImages[currentImageIndex]!" :alt="t('projects.image_alt')" class="carousel-image" />
               <div v-else class="image-placeholder">
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                   <circle cx="8.5" cy="8.5" r="1.5"></circle>
                   <polyline points="21 15 16 10 5 21"></polyline>
                 </svg>
-                <p>Image du projet</p>
+                <p>{{ t('projects.image_alt') }}</p>
               </div>
             </div>
             <button v-if="fullImages.length > 1" @click="prevImage" class="carousel-btn prev">&lt;</button>
@@ -158,12 +169,12 @@ const isVideo = (src: string): boolean => {
           </div>
 
           <div class="description-section">
-            <h2>Description</h2>
+            <h2>{{ t('projects.description') }}</h2>
             <p>{{ project.longDescription }}</p>
           </div>
 
           <div class="features-section">
-            <h2>Fonctionnalités</h2>
+            <h2>{{ t('projects.features') }}</h2>
             <ul class="features-list">
               <li v-for="feature in project.features" :key="feature" class="reveal">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -177,7 +188,7 @@ const isVideo = (src: string): boolean => {
 
         <aside class="sidebar reveal-right">
           <div class="info-card">
-            <h3>Technologies</h3>
+            <h3>{{ t('projects.technologies') }}</h3>
             <div class="tech-list">
               <span v-for="tech in project.tags" :key="tech" class="tech-icon" :title="tech">
                 <img v-if="getTechIcon(tech)" :src="`${baseUrl}icone/${getTechIcon(tech)}`" :alt="tech" width="24" height="24" />
@@ -186,19 +197,19 @@ const isVideo = (src: string): boolean => {
           </div>
 
           <div v-if="(project.links.demo && project.links.demo !== '#') || (project.links.github && project.links.github !== '#')" class="info-card">
-            <h3>Liens</h3>
+            <h3>{{ t('projects.links') }}</h3>
             <div class="links">
               <a v-if="project.links.demo && project.links.demo !== '#'" :href="project.links.demo" class="btn btn-primary" target="_blank">
-                Voir la démo
+                {{ t('projects.view_demo') }}
               </a>
               <a v-if="project.links.github && project.links.github !== '#'" :href="project.links.github" class="btn btn-secondary" target="_blank">
-                Code source
+                {{ t('projects.source_code') }}
               </a>
             </div>
           </div>
 
           <div class="info-card">
-            <h3>Statistiques du Projet</h3>
+            <h3>{{ t('projects.stats.title') }}</h3>
             <div class="stats-list">
               <div class="stat-item">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -207,7 +218,7 @@ const isVideo = (src: string): boolean => {
                   <line x1="8" y1="2" x2="8" y2="6"></line>
                   <line x1="3" y1="10" x2="21" y2="10"></line>
                 </svg>
-                <strong>Date de début :</strong> {{ project.startDate || 'Non spécifiée' }}
+                <strong>{{ t('projects.stats.start_date') }} :</strong> {{ project.startDate || t('projects.stats.unspecified') }}
               </div>
               <div class="stat-item">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -216,14 +227,14 @@ const isVideo = (src: string): boolean => {
                   <line x1="8" y1="2" x2="8" y2="6"></line>
                   <line x1="3" y1="10" x2="21" y2="10"></line>
                 </svg>
-                <strong>Date de fin :</strong> {{ project.endDate || 'En cours' }}
+                <strong>{{ t('projects.stats.end_date') }} :</strong> {{ project.isOngoing ? t('projects.stats.ongoing') : (project.endDate || t('projects.stats.unspecified')) }}
               </div>
               <div class="stat-item">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="12" cy="12" r="10"></circle>
                   <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
-                <strong>Statut :</strong> {{ project.isOngoing ? 'En cours' : 'Terminé' }}
+                <strong>{{ t('projects.stats.status') }} :</strong> {{ project.isOngoing ? t('projects.stats.ongoing') : t('projects.stats.finished') }}
               </div>
             </div>
           </div>
@@ -236,12 +247,12 @@ const isVideo = (src: string): boolean => {
         <div v-if="showCompetencies" class="modal-overlay" @click="showCompetencies = false">
           <div class="modal-content" @click.stop>
             <div class="modal-header">
-              <h2>Compétences du BUT Informatique</h2>
+              <h2>{{ t('competencies.title') }}</h2>
               <button class="close-btn" @click="showCompetencies = false">×</button>
             </div>
 
             <div class="modal-body">
-              <p class="modal-intro">Ce projet a permis de valider les compétences et apprentissages critiques suivants :</p>
+              <p class="modal-intro">{{ t('competencies.modal_intro') }}</p>
 
               <div class="competencies-grid">
                 <div
@@ -252,9 +263,9 @@ const isVideo = (src: string): boolean => {
                 >
                   <div class="card-header" :style="{ backgroundColor: getBgColor(comp.category) }">
                     <span class="comp-category" :style="{ color: categoryColors[comp.category] || '#333' }">
-                      {{ comp.category }}
+                      {{ t('competencies.categories.' + categoryKeyMap[comp.category]) }}
                     </span>
-                    <span class="comp-level">{{ comp.level }}</span>
+                    <span class="comp-level">{{ t('competencies.levels.' + (comp.level === 'Niveau 1' ? 'n1' : comp.level === 'Niveau 2' ? 'n2' : 'n3')) }}</span>
                   </div>
                   <div class="card-body">
                     <ul class="ac-list">

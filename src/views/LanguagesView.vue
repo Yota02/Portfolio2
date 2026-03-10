@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 type LanguageStatus = 'mastered' | 'learning' | 'planned'
 
@@ -32,7 +35,7 @@ const languages: Language[] = [
     flag: `${baseUrl}drapeau/fr.svg`,
     color: '#10b981',
     status: 'mastered',
-    year: 'Naissance',
+    year: 'birth',
     proficiency: 100
   },
   // --- EN COURS ---
@@ -129,6 +132,12 @@ const languages: Language[] = [
 const masteredLangs = computed(() => languages.filter(l => l.status === 'mastered'))
 const learningLangs = computed(() => languages.filter(l => l.status === 'learning'))
 const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'))
+
+const getYearText = (year?: string) => {
+  if (!year) return ''
+  if (year === 'birth') return t('languages.birth')
+  return t('languages.since', { year })
+}
 </script>
 
 <template>
@@ -144,9 +153,9 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
 
     <div class="container">
       <header class="header">
-        <div class="subtitle-caps">Mon Voyage Linguistique</div>
-        <h1 class="page-title">Chronologie d'une Passion</h1>
-        <p class="page-subtitle">D'une langue maîtrisée aux horizons inexplorés.</p>
+        <div class="subtitle-caps">{{ t('languages.subtitle_caps') }}</div>
+        <h1 class="page-title">{{ t('languages.title') }}</h1>
+        <p class="page-subtitle">{{ t('languages.page_subtitle') }}</p>
       </header>
 
       <div class="timeline">
@@ -156,7 +165,7 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
           <div class="section-marker mastered-marker">
             <span class="icon">✓</span>
           </div>
-          <h2 class="section-title">L'Ancrage (Acquis)</h2>
+          <h2 class="section-title">{{ t('languages.sections.mastered') }}</h2>
           
           <div class="cards-list">
             <div 
@@ -168,11 +177,11 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
               <div class="card-shine"></div>
               <div class="card-content">
                 <div class="flag-wrapper">
-                  <img :src="lang.flag" :alt="lang.name" class="flag" />
+                  <img :src="lang.flag" :alt="t('languages.items.' + lang.id + '.name')" class="flag" />
                 </div>
                 <div class="info">
-                  <h3 class="lang-name">{{ lang.name }} <span class="year" v-if="lang.year">depuis {{ lang.year }}</span></h3>
-                  <p class="lang-desc">{{ lang.description }}</p>
+                  <h3 class="lang-name">{{ t('languages.items.' + lang.id + '.name') }} <span class="year" v-if="lang.year">{{ getYearText(lang.year) }}</span></h3>
+                  <p class="lang-desc">{{ t('languages.items.' + lang.id + '.description') }}</p>
                 </div>
                 <div class="badge">C2</div>
               </div>
@@ -183,7 +192,7 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
         <div class="timeline-section active-section">
           <div class="section-marker learning-marker">
             <span class="icon">✎</span> </div>
-          <h2 class="section-title">L'Aventure (En cours)</h2>
+          <h2 class="section-title">{{ t('languages.sections.learning') }}</h2>
 
           <div class="cards-list">
             <div 
@@ -196,10 +205,10 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
               
               <div class="card-content">
                 <div class="flag-wrapper">
-                  <img :src="lang.flag" :alt="lang.name" class="flag" />
+                  <img :src="lang.flag" :alt="t('languages.items.' + lang.id + '.name')" class="flag" />
                 </div>
                 <div class="info">
-                  <h3 class="lang-name">{{ lang.name }} <span class="native">{{ lang.nativeName }}</span></h3>
+                  <h3 class="lang-name">{{ t('languages.items.' + lang.id + '.name') }} <span class="native">{{ lang.nativeName }}</span></h3>
                   
                   <div class="progress-wrapper">
                     <div class="progress-bar">
@@ -213,10 +222,10 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
                         <div class="shimmer-bar"></div>
                       </div> 
                     </div>
-                    <span class="level-text" :style="{ color: lang.color }">{{ lang.level }}</span>
+                    <span class="level-text" :style="{ color: lang.color }">{{ t('languages.items.' + lang.id + '.level') }}</span>
                   </div>
 
-                  <p class="lang-desc">{{ lang.description }}</p>
+                  <p class="lang-desc">{{ t('languages.items.' + lang.id + '.description') }}</p>
                 </div>
               </div>
             </div>
@@ -227,7 +236,7 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
           <div class="section-marker planned-marker">
             <span class="icon">🔭</span>
           </div>
-          <h2 class="section-title">L'Horizon (Futur)</h2>
+          <h2 class="section-title">{{ t('languages.sections.planned') }}</h2>
 
           <div class="cards-list">
             <div 
@@ -238,11 +247,11 @@ const plannedLangs = computed(() => languages.filter(l => l.status === 'planned'
             >
               <div class="card-content">
                 <div class="flag-wrapper">
-                  <img :src="lang.flag" :alt="lang.name" class="flag grayscale" />
+                  <img :src="lang.flag" :alt="t('languages.items.' + lang.id + '.name')" class="flag grayscale" />
                 </div>
                 <div class="info">
-                  <h3 class="lang-name">{{ lang.name }}</h3>
-                  <p class="lang-desc">{{ lang.description }}</p>
+                  <h3 class="lang-name">{{ t('languages.items.' + lang.id + '.name') }}</h3>
+                  <p class="lang-desc">{{ t('languages.items.' + lang.id + '.description') }}</p>
                 </div>
                 <div class="arrow">➔</div>
               </div>

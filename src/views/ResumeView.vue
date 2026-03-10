@@ -1,426 +1,539 @@
 <script setup lang="ts">
 import { projects } from '@/data/projects';
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const getImagePath = (folder: string, imageName: string) => {
   const baseUrl = import.meta.env.BASE_URL.endsWith('/') 
     ? import.meta.env.BASE_URL.slice(0, -1) 
     : import.meta.env.BASE_URL;
-  return `${baseUrl}/projet/${folder}/${encodeURIComponent(imageName)}`;
+  return `${baseUrl}/projet/${folder}/${imageName}`;
 };
 
-const printPage = () => {
+const printResume = () => {
   window.print();
-};
-
-const personalInfo = {
-  name: "Alexis Michaux-Kinet",
-  title: "Étudiant en 3e année d'Informatique",
-  specialization: "Algorithmique & Systèmes Complexes",
-  email: "alexis.michaux-kinet@etu.montpellier.fr",
-  linkedin: "linkedin.com/in/alexis-michaux-kinet-89062b2b4/",
-  github: "github.com/Yota02",
-  website: "yota02.github.io/Portfolio2/"
 };
 </script>
 
 <template>
-  <div class="resume-wrapper">
-    <!-- UI Header (Hidden on Print) -->
-    <header class="no-print ui-header">
-      <div class="ui-container">
-        <div class="ui-info">
-          <h1>Générateur de Portfolio PDF</h1>
-          <p>Exportez un résumé professionnel de vos réalisations.</p>
-        </div>
-        <button @click="printPage" class="print-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-          Imprimer / Sauvegarder en PDF
+  <div class="resume-container">
+    <!-- UI Controls (Hidden on print) -->
+    <div class="resume-controls no-print">
+      <div class="controls-content">
+        <h1 class="controls-title">{{ t('resume.generator_title') }}</h1>
+        <p class="controls-subtitle">{{ t('resume.generator_subtitle') }}</p>
+        <button @click="printResume" class="print-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          {{ t('resume.print_button') }}
         </button>
       </div>
-    </header>
+    </div>
 
-    <!-- Document Content -->
-    <div class="document-container">
-      <!-- Document Header -->
-      <header class="doc-header">
-        <div class="header-main">
-          <h1 class="name">{{ personalInfo.name }}</h1>
-          <p class="title">{{ personalInfo.title }}</p>
-          <p class="specialization">{{ personalInfo.specialization }}</p>
+    <!-- The actual Resume Document -->
+    <div class="resume-document shadow-2xl">
+      <!-- Sidebar / Left Column -->
+      <aside class="resume-sidebar">
+        <div class="profile-section">
+          <div class="profile-image-container">
+            <div class="profile-placeholder">AMK</div>
+          </div>
+          <h1 class="profile-name">Alexis Michaux-Kinet</h1>
+          <p class="profile-title">{{ t('home.subtitle') }}</p>
         </div>
-        <div class="header-contact">
-          <div class="contact-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            {{ personalInfo.email }}
-          </div>
-          <div class="contact-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            {{ personalInfo.linkedin }}
-          </div>
-          <div class="contact-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-            {{ personalInfo.github }}
-          </div>
-        </div>
-      </header>
 
-      <section class="doc-section">
-        <h2 class="section-title">Catalogue des Projets</h2>
-        
-        <div class="projects-grid">
-          <article v-for="project in projects" :key="project.id" class="project-card">
-            <div class="card-header">
-              <div class="title-area">
-                <h3 class="project-name">{{ project.name }}</h3>
-                <span class="category">{{ project.category }}</span>
+        <div class="sidebar-section">
+          <h2 class="sidebar-heading">{{ t('contact.title').toUpperCase() }}</h2>
+          <ul class="contact-list">
+            <li>
+              <span class="icon">📧</span>
+              <span>alexis.michaux-kinet@etu.montpellier.fr</span>
+            </li>
+            <li>
+              <span class="icon">🔗</span>
+              <span>linkedin.com/in/alexis-michaux-kinet</span>
+            </li>
+            <li>
+              <span class="icon">💻</span>
+              <span>github.com/Yota02</span>
+            </li>
+            <li>
+              <span class="icon">📍</span>
+              <span>Montpellier, France</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h2 class="sidebar-heading">{{ t('nav.parcours').toUpperCase() }}</h2>
+          <div class="skill-group">
+            <h3>Backend & IA</h3>
+            <div class="skill-tags">
+              <span>Python</span><span>Flask</span><span>Pytorch</span><span>Ollama</span><span>MySQL</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Frontend</h3>
+            <div class="skill-tags">
+              <span>Vue.js</span><span>TypeScript</span><span>JavaScript</span><span>HTML5/CSS3</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Outils & Méthodes</h3>
+            <div class="skill-tags">
+              <span>Git</span><span>Docker</span><span>Scrum</span><span>Linux</span><span>VS Code</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <h2 class="sidebar-heading">{{ t('nav.languages').toUpperCase() }}</h2>
+          <ul class="language-list">
+            <li><strong>{{ t('languages.items.lang-1.name') }}:</strong> {{ t('languages.items.lang-1.level') }}</li>
+            <li><strong>{{ t('languages.items.lang-2.name') }}:</strong> {{ t('languages.items.lang-2.level') }}</li>
+            <li><strong>{{ t('languages.items.lang-7.name') }}:</strong> {{ t('languages.items.lang-7.level') }}</li>
+            <li><strong>{{ t('languages.items.lang-4.name') }}:</strong> {{ t('languages.items.lang-4.level') }}</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h2 class="sidebar-heading">{{ t('about.hobbies.title').toUpperCase() }}</h2>
+          <div class="interest-icons">
+            <div class="interest-item"><span class="i-icon">🌍</span><span>{{ t('about.hobbies.geopolitics') }}</span></div>
+            <div class="interest-item"><span class="i-icon">🚀</span><span>{{ t('about.hobbies.scifi') }}</span></div>
+            <div class="interest-item"><span class="i-icon">👥</span><span>{{ t('about.hobbies.sociology') }}</span></div>
+            <div class="interest-item"><span class="i-icon">🎥</span><span>{{ t('about.hobbies.cinema') }}</span></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content / Right Column -->
+      <main class="resume-main">
+        <section class="main-section">
+          <h2 class="main-heading">{{ t('resume.professional_profile').toUpperCase() }}</h2>
+          <p class="profile-summary">
+            {{ t('home.description') }}
+          </p>
+        </section>
+
+        <section class="main-section">
+          <h2 class="main-heading">{{ t('objectives.types.experience').toUpperCase() }}</h2>
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <h3 class="item-title">{{ t('objectives.items.obj-3.title') }}</h3>
+              <span class="item-date">{{ t('projects.items.project-2.startDate') }} - {{ t('projects.items.project-2.endDate') }}</span>
+            </div>
+            <p class="item-subtitle">{{ t('objectives.items.obj-3.institution') }}</p>
+            <ul class="item-details">
+              <li v-for="i in [0,1,2]" :key="i">{{ t(`resume.experiences.ctf.detail_${i}`) }}</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <h3 class="item-title">{{ t('objectives.items.obj-4.title') }}</h3>
+              <span class="item-date">{{ t('projects.items.project-7.startDate') }} - {{ t('resume.present') }}</span>
+            </div>
+            <p class="item-subtitle">{{ t('objectives.items.obj-4.institution') }}</p>
+            <ul class="item-details">
+              <li v-for="i in [0,1,2]" :key="i">{{ t(`resume.experiences.victoria.detail_${i}`) }}</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="main-section">
+          <h2 class="main-heading">{{ t('objectives.types.education').toUpperCase() }}</h2>
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <h3 class="item-title">{{ t('objectives.items.obj-1.title') }}</h3>
+              <span class="item-date">2023 - 2026</span>
+            </div>
+            <p class="item-subtitle">{{ t('objectives.items.obj-1.institution') }}</p>
+            <p class="item-desc">{{ t('objectives.items.obj-1.description') }}</p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <h3 class="item-title">{{ t('objectives.items.obj-2.title') }}</h3>
+              <span class="item-date">2023</span>
+            </div>
+            <p class="item-subtitle">{{ t('objectives.items.obj-2.institution') }}</p>
+            <p class="item-desc">{{ t('objectives.items.obj-2.description') }}</p>
+          </div>
+        </section>
+
+        <section class="main-section projects-section">
+          <h2 class="main-heading">{{ t('resume.catalogue_title').toUpperCase() }}</h2>
+          <div class="projects-grid-mini">
+            <div v-for="project in projects.slice(0, 6)" :key="project.id" class="project-mini-card">
+              <div class="mini-card-header">
+                <img :src="getImagePath(project.folder, project.logo)" :alt="project.name" class="mini-logo">
+                <h4 class="mini-name">{{ project.name }}</h4>
               </div>
-              <div class="date-area">
-                {{ project.startDate }} — {{ project.isOngoing ? 'Présent' : project.endDate }}
+              <p class="mini-desc">{{ t(project.description) }}</p>
+              <div class="mini-tags">
+                <span v-for="tag in project.tags.slice(0, 3)" :key="tag">{{ tag }}</span>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div class="card-body">
-              <div class="text-content">
-                <p class="project-desc">{{ project.description }}</p>
-                
-                <div class="sub-section">
-                  <h4>Réalisations & Fonctionnalités</h4>
-                  <ul class="features-list">
-                    <li v-for="feature in project.features" :key="feature">{{ feature }}</li>
-                  </ul>
-                </div>
-
-                <div class="sub-section">
-                  <h4>Technologies</h4>
-                  <div class="tech-tags">
-                    <span v-for="tag in project.tags" :key="tag" class="tech-tag">{{ tag }}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="visual-content">
-                <div class="image-list">
-                  <div v-for="(img, idx) in project.images" :key="idx" class="img-box">
-                    <img :src="getImagePath(project.folder, img)" :alt="project.name" loading="lazy" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-      
-      <footer class="doc-footer">
-        <p>Généré depuis mon portfolio en ligne : {{ personalInfo.website }}</p>
-      </footer>
+        <footer class="resume-footer">
+          <p>{{ t('resume.generated_from') }} <strong>alexis-michaux-kinet.com</strong></p>
+        </footer>
+      </main>
     </div>
   </div>
 </template>
 
 <style scoped>
-/* --- UI STYLES (Screen only) --- */
-.resume-wrapper {
-  background: #f4f7f6;
+.resume-container {
   min-height: 100vh;
-  padding-bottom: 50px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.ui-header {
-  background: #fff;
-  border-bottom: 1px solid #ddd;
-  padding: 1.5rem 0;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.ui-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
+  background-color: var(--color-background-soft);
+  padding: 40px 20px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
 }
 
-.ui-info h1 {
+.resume-controls {
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.controls-content {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.controls-title {
   font-size: 1.5rem;
-  color: #2c3e50;
-  margin: 0;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 8px;
 }
 
-.ui-info p {
-  margin: 5px 0 0;
-  color: #666;
-  font-size: 0.9rem;
+.controls-subtitle {
+  color: #64748b;
+  margin-bottom: 20px;
 }
 
-.print-button {
-  background: #42b883;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
+.print-btn {
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: all 0.2s;
-}
-
-.print-button:hover {
-  background: #33a06f;
-  transform: translateY(-1px);
-}
-
-/* --- DOCUMENT STYLES (Print & Preview) --- */
-.document-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  background: white;
-  padding: 40px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-/* Document Header */
-.doc-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  border-bottom: 3px solid #42b883;
-  padding-bottom: 25px;
-  margin-bottom: 40px;
-}
-
-.header-main .name {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #1a1a1a;
-  margin: 0;
-  letter-spacing: -1px;
-}
-
-.header-main .title {
-  font-size: 1.2rem;
-  color: #42b883;
+  background: #3b82f6;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
   font-weight: 600;
-  margin: 5px 0;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-.header-main .specialization {
-  color: #666;
-  font-style: italic;
-  margin: 0;
+.print-btn:hover {
+  background: #2563eb;
 }
 
-.header-contact {
-  text-align: right;
+/* Document Styles */
+.resume-document {
+  background: white;
+  width: 210mm; /* A4 Width */
+  min-height: 297mm; /* A4 Height */
+  display: flex;
+  color: #1e293b;
+  font-family: 'Inter', sans-serif;
+}
+
+.resume-sidebar {
+  width: 30%;
+  background: #1e293b;
+  color: white;
+  padding: 40px 20px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding-top: 10px;
+  gap: 30px;
 }
 
-.contact-item {
+.profile-section {
+  text-align: center;
+}
+
+.profile-image-container {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 15px;
+  background: #3b82f6;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
+  justify-content: center;
+}
+
+.profile-placeholder {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.profile-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+
+.profile-title {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.sidebar-heading {
   font-size: 0.9rem;
-  color: #444;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  border-bottom: 2px solid #3b82f6;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  color: white;
 }
 
-.contact-item svg {
-  color: #42b883;
-}
-
-/* Projects Section */
-.section-title {
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #2c3e50;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
-  margin-bottom: 30px;
-  display: block;
-}
-
-.projects-grid {
+.contact-list {
+  list-style: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 10px;
 }
 
-.project-card {
-  border-left: 4px solid #f0f0f0;
-  padding-left: 20px;
-  margin-bottom: 20px;
-}
-
-.card-header {
+.contact-list li {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 20px;
-  page-break-after: avoid;
+  gap: 10px;
+  font-size: 0.75rem;
+  align-items: center;
 }
 
-.project-name {
-  font-size: 1.6rem;
-  color: #1a1a1a;
-  margin: 0;
-  display: inline-block;
-  margin-right: 15px;
+.icon {
+  width: 20px;
+  text-align: center;
 }
 
-.category {
-  font-size: 0.8rem;
-  background: #f0fdf4;
-  color: #166534;
-  padding: 2px 10px;
-  border-radius: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.date-area {
-  font-weight: 600;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-.project-desc {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: #333;
+.skill-group {
   margin-bottom: 15px;
 }
 
-.sub-section h4 {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  color: #777;
-  margin: 0 0 10px;
-  letter-spacing: 1px;
+.skill-group h3 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #94a3b8;
 }
 
-.features-list {
-  padding-left: 18px;
-  margin-bottom: 20px;
-}
-
-.features-list li {
-  margin-bottom: 5px;
-  color: #444;
-}
-
-.tech-tags {
+.skill-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
 
-.tech-tag {
-  font-size: 0.8rem;
-  border: 1px solid #e2e8f0;
+.skill-tags span {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
   padding: 2px 8px;
   border-radius: 4px;
-  background: #f8fafc;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.language-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.75rem;
+}
+
+.interest-icons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.interest-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+}
+
+.resume-main {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.main-heading {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.main-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.profile-summary {
+  font-size: 0.9rem;
+  line-height: 1.6;
   color: #475569;
 }
 
-/* Visual Content / Images */
-.image-list {
+.timeline-item {
+  margin-bottom: 20px;
+}
+
+.timeline-header {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
 }
 
-.img-box {
-  width: 100%;
-  overflow: hidden;
-  border-radius: 8px;
-  border: 1px solid #eee;
-  page-break-inside: avoid;
-  background: #fafafa;
+.item-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
 }
 
-.img-box img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.doc-footer {
-  margin-top: 50px;
-  border-top: 1px solid #eee;
-  padding-top: 20px;
-  text-align: center;
-  color: #999;
+.item-date {
   font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 600;
 }
 
-/* --- PRINT RULES --- */
+.item-subtitle {
+  font-size: 0.85rem;
+  color: #3b82f6;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.item-details {
+  list-style: disc;
+  padding-left: 20px;
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.item-desc {
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.projects-grid-mini {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.project-mini-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.mini-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.mini-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.mini-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.mini-desc {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mini-tags {
+  display: flex;
+  gap: 5px;
+}
+
+.mini-tags span {
+  font-size: 0.65rem;
+  color: #3b82f6;
+  background: #eff6ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.resume-footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  padding-top: 20px;
+}
+
 @media print {
-  @page {
-    margin: 1.5cm;
-    size: A4;
-  }
-
-  body {
-    background: white !important;
-  }
-
-  .resume-wrapper {
-    background: white;
-    padding: 0;
-  }
-
   .no-print {
     display: none !important;
   }
-
-  .document-container {
-    box-shadow: none;
+  .resume-container {
     padding: 0;
-    width: 100%;
-    max-width: none;
+    background: white;
   }
-
-  .project-card {
-    border-left: 2px solid #eee; 
-    margin-bottom: 60px;
-  }
-
-  .img-box {
-    border: 1px solid #ddd;
+  .resume-document {
     box-shadow: none;
-  }
-
-  .section-title {
-    margin-top: 40px;
+    width: 100%;
   }
 }
 
 @media (max-width: 850px) {
-  .document-container {
-    padding: 20px;
-  }
-  .doc-header {
+  .resume-document {
+    width: 100%;
     flex-direction: column;
-    gap: 20px;
   }
-  .header-contact {
-    text-align: left;
-    align-items: flex-start;
+  .resume-sidebar {
+    width: 100%;
   }
 }
 </style>

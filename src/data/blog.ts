@@ -1,13 +1,7 @@
 export interface BlogPost {
   id: string
-  title: {
-    fr: string
-    en: string
-  }
-  excerpt: {
-    fr: string
-    en: string
-  }
+  title: string // i18n key
+  excerpt: string // i18n key
   date: string
   category: string
   tags: string[]
@@ -17,32 +11,20 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: 'post-1',
-    title: {
-      fr: 'Exploration de la Bioinformatique',
-      en: 'Exploring Bioinformatics'
-    },
-    excerpt: {
-      fr: 'Comment l\'informatique révolutionne notre compréhension du génome humain.',
-      en: 'How computer science is revolutionizing our understanding of the human genome.'
-    },
+    title: 'blog.posts.post-1.title',
+    excerpt: 'blog.posts.post-1.excerpt',
     date: '2026-03-01',
-    category: 'Bioinfo',
-    tags: ['Génomique', 'Algorithmique'],
+    category: 'IA',
+    tags: ['Education', 'LLM'],
     image: '/icone/deeplearning.png'
   },
   {
     id: 'post-2',
-    title: {
-      fr: 'Les enjeux de l\'IA en 2026',
-      en: 'AI Challenges in 2026'
-    },
-    excerpt: {
-      fr: 'Analyse des tendances actuelles et futures de l\'intelligence artificielle.',
-      en: 'Analysis of current and future trends in artificial intelligence.'
-    },
+    title: 'blog.posts.post-2.title',
+    excerpt: 'blog.posts.post-2.excerpt',
     date: '2026-02-15',
-    category: 'IA',
-    tags: ['Machine Learning', 'Ethique'],
-    image: '/icone/ollama.png'
+    category: 'Web',
+    tags: ['Architecture', 'Frontend'],
+    image: '/icone/vuejs.png'
   }
 ]

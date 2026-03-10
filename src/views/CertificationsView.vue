@@ -1,104 +1,90 @@
 <script setup lang="ts">
-// Interface pour une certification
-interface Certification {
-  id: string;
-  name: string;
-  issuer: string;
-  date: string;
-  description: string;
-  link: string;
-  logo: string;
-}
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const baseUrl = import.meta.env.BASE_URL;
 
-// Liste d'exemple de certifications (à personnaliser)
+interface Certification {
+  id: string;
+  titleKey: string;
+  descriptionKey: string;
+  institutionKey: string;
+  date: string;
+  icon: string;
+  color: string;
+  link?: string;
+  image?: string;
+}
+
 const certifications: Certification[] = [
   {
-    id: "cert-2",
-    name: "Brevet d’Initiation Aéronautique (BIA)",
-    issuer: "Ministère de l’Éducation nationale",
-    date: "2021",
-    description: "Diplôme attestant des connaissances fondamentales en aéronautique et en espace.",
-    link: "https://eduscol.education.fr/sti/aeronautique/bia",
-    logo: "bia.gif",
+    id: 'cert-1',
+    titleKey: 'cert-1.title',
+    descriptionKey: 'cert-1.description',
+    institutionKey: 'cert-1.institution',
+    date: '2022',
+    icon: '🚀',
+    color: '#3b82f6',
+    image: 'bia.gif'
   },
   {
-    id: "cert-1",
-    name: "Data From Space",
-    issuer: "CNES",
-    date: "2026",
-    description: "Formation sur l'utilisation des données spatiales",
-    link: "https://datafromspace.fr/",
-    logo: "datafromspace.png",
+    id: 'cert-2',
+    titleKey: 'cert-2.title',
+    descriptionKey: 'cert-2.description',
+    institutionKey: 'cert-2.institution',
+    date: '2023',
+    icon: '🎓',
+    color: '#10b981',
+    image: 'jeanJaurès.jpeg'
   },
   {
-    id: "cert-3",
-    name: "Mooc Aéronautique et Espace",
-    issuer: "CNES / FUN-MOOC",
-    date: "2026",
-    description:
-      "Il s'agit d'un cours introductif aux activités, métiers, enjeux et technologies du secteur spatial.",
-    link: "https://www.fun-mooc.fr/fr/cours/mooc-espace/",
-    logo: "funmooc.svg",
-  },
-  {
-    id: "cert-3",
-    name: "Viral Outbreaks and Pandemics, a One Health Approach",
-    issuer: "Institut Pasteur / FUN-MOOC",
-    date: "2026",
-    description:
-      "Ce cours explore les origines, la transmission et la prévention des épidémies virales, en adoptant une approche globale de santé publique.",
-    link: "https://lms.fun-mooc.fr/courses/course-v1%3Apasteur%2B96025%2Bsession02/",
-    logo: "funmooc.svg",
-  },
-  {
-    id: "cert-3",
-    name: "Viruses and human cancers",
-    issuer: "Institut Pasteur / FUN-MOOC",
-    date: "2026",
-    description:
-      "Ce cours explore les liens entre les virus et le développement de certains cancers, en mettant en lumière les mécanismes biologiques et les implications pour la prévention et le traitement.",
-    link: "https://lms.fun-mooc.fr/courses/course-v1:pasteur+96012+session04/info",
-    logo: "funmooc.svg",
-  },
-  {
-    id: "cert-4",
-    name: "Modeling of Infectious Diseases",
-    issuer: "Institut Pasteur / FUN-MOOC",
-    date: "2026",
-    description:
-      "Ce cours explore les méthodes de modélisation des maladies infectieuses, en mettant l'accent sur les approches mathématiques et statistiques pour comprendre la propagation des épidémies.",
-    link: "https://lms.fun-mooc.fr/courses/course-v1:pasteur+96020+session03/info",
-    logo: "funmooc.svg",
-  },
-];
+    id: 'cert-3',
+    titleKey: 'cert-3.title',
+    descriptionKey: 'cert-3.description',
+    institutionKey: 'cert-3.institution',
+    date: '2023 - 2026',
+    icon: '💻',
+    color: '#8b5cf6',
+    image: 'IUT-Montpellier.png'
+  }
+]
 </script>
 
 <template>
   <div class="certifications-page">
     <div class="container">
-      <div class="header">
-        <h1 class="page-title">Mes Certifications</h1>
-        <p class="page-subtitle">
-          Découvrez les certifications que j'ai obtenues pour renforcer mes compétences.
-        </p>
-      </div>
+      <header class="header reveal-up">
+        <h1 class="page-title">{{ t('certifications.title') }}</h1>
+        <p class="page-subtitle">{{ t('certifications.subtitle') }}</p>
+      </header>
 
       <div class="certifications-grid">
-        <div v-for="cert in certifications" :key="cert.id" class="certification-card">
-          <img
-            :src="cert.logo.startsWith('http') ? cert.logo : `${baseUrl}icone/${cert.logo}`"
-            :alt="`Logo de la certification`"
-            class="cert-logo"
-            loading="lazy"
-          />
-
-          <h2 class="cert-title">{{ cert.name }}</h2>
-          <p class="cert-issuer">Émis par : {{ cert.issuer }}</p>
-          <p class="cert-date">Date : {{ cert.date }}</p>
-          <p class="cert-description">{{ cert.description }}</p>
-          <a :href="cert.link" target="_blank" class="cert-link">Voir le certificat →</a>
+        <div
+          v-for="(cert, index) in certifications"
+          :key="cert.id"
+          class="cert-card reveal"
+          :style="{ '--cert-color': cert.color, '--delay': index * 0.1 + 's' }"
+        >
+          <div class="cert-image-container" v-if="cert.image">
+            <img :src="`${baseUrl}icone/${cert.image}`" :alt="t('certifications.items.' + cert.titleKey)" class="cert-image" />
+          </div>
+          <div class="cert-content">
+            <div class="cert-header">
+              <span class="cert-icon">{{ cert.icon }}</span>
+              <span class="cert-date">{{ cert.date }}</span>
+            </div>
+            <h3 class="cert-title">{{ t('certifications.items.' + cert.titleKey) }}</h3>
+            <p class="cert-institution">{{ t('certifications.items.' + cert.institutionKey) }}</p>
+            <p class="cert-description">{{ t('certifications.items.' + cert.descriptionKey) }}</p>
+            <a v-if="cert.link" :href="cert.link" target="_blank" class="cert-link">
+              Voir le certificat
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 8"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -109,6 +95,7 @@ const certifications: Certification[] = [
 .certifications-page {
   min-height: 80vh;
   padding: 4rem 2rem;
+  background: linear-gradient(180deg, transparent 0%, var(--color-background-mute) 100%);
 }
 
 .container {
@@ -119,18 +106,6 @@ const certifications: Certification[] = [
 .header {
   text-align: center;
   margin-bottom: 4rem;
-  animation: fadeInUp 0.6s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .page-title {
@@ -155,103 +130,116 @@ const certifications: Certification[] = [
   gap: 2rem;
 }
 
-.certification-card {
-  background: linear-gradient(
-    135deg,
-    var(--color-background) 0%,
-    rgba(var(--primary-rgb, 59, 130, 246), 0.05) 100%
-  );
-  border: 2px solid transparent;
+.cert-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  padding: 2.5rem;
-  transition: all 0.4s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  animation: fadeInUp 0.6s ease-out backwards;
-  position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  animation-delay: var(--delay);
 }
 
-.certification-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
+.cert-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--cert-color);
 }
 
-.certification-card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.certification-card:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.certification-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-  border-color: var(--primary);
+.cert-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: var(--color-background-soft);
 }
 
-.cert-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-heading);
-  margin-bottom: 0.5rem;
+.cert-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1rem;
+  transition: transform 0.5s ease;
 }
 
-.cert-issuer,
-.cert-date {
-  color: var(--color-text);
-  opacity: 0.7;
-  margin-bottom: 0.5rem;
+.cert-card:hover .cert-image {
+  transform: scale(1.05);
 }
 
-.cert-description {
-  color: var(--color-text);
-  opacity: 0.8;
-  line-height: 1.6;
+.cert-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
+.cert-icon {
+  font-size: 1.5rem;
+}
+
+.cert-date {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text);
+  opacity: 0.6;
+  background: var(--color-background-soft);
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+}
+
+.cert-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--color-heading);
+}
+
+.cert-institution {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.cert-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
 .cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   color: var(--primary);
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  margin-top: auto;
 }
 
 .cert-link:hover {
-  transform: translateX(5px);
   color: var(--accent);
-}
-
-.cert-logo {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin-bottom: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  gap: 0.75rem;
 }
 
 @media (max-width: 768px) {
-  .certifications-page {
-    padding: 2rem 1rem;
-  }
-
   .page-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
-
   .certifications-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .certification-card {
-    padding: 1.5rem;
   }
 }
 </style>

@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import { projects, categoryOrder, getProjectsByCategory, type ProjectCategory, type Project, techIconMap } from '@/data/projects'
+import { useI18n } from 'vue-i18n'
+import { projects, categoryOrder, getProjectsByCategory, type ProjectCategory, type Project, techIconMap, categoryMap, purposeMap } from '@/data/projects'
+
+const { t } = useI18n()
 
 const groupedProjects = computed(() => {
   const allProjects = getProjectsByCategory()
@@ -63,7 +66,7 @@ const toggleTech = (tech: string) => {
     <div class="layout-container">
       <aside class="tech-sidebar" :class="{ collapsed: isCollapsed }">
         <div class="sidebar-header">
-          <h3 v-if="!isCollapsed" class="sidebar-title">Technologies</h3>
+          <h3 v-if="!isCollapsed" class="sidebar-title">{{ t('projects.technologies') }}</h3>
           <button @click="isCollapsed = !isCollapsed" class="collapse-btn">
             <svg class="arrow" :class="{ rotated: isCollapsed }" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -92,12 +95,12 @@ const toggleTech = (tech: string) => {
       <main class="main-content">
         <div class="container">
           <div class="header">
-            <h1 class="page-title">Mes Projets ({{ totalProjects }})</h1>
+            <h1 class="page-title">{{ t('projects.title') }} ({{ totalProjects }})</h1>
             <RouterLink to="/competencies" class="competencies-btn">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
               </svg>
-              Voir les compétences
+              {{ t('projects.view_competencies') }}
             </RouterLink>
           </div>
 
@@ -107,7 +110,7 @@ const toggleTech = (tech: string) => {
             class="category-section"
           >
             <template v-if="groupedProjects[category] && groupedProjects[category].length > 0">
-              <h2 class="category-title">{{ category }} ({{ groupedProjects[category].length }})</h2>
+              <h2 class="category-title">{{ t('projects.categories.' + categoryMap[category]) }} ({{ groupedProjects[category].length }})</h2>
 
               <div class="projects-grid">
                 <RouterLink
@@ -125,7 +128,7 @@ const toggleTech = (tech: string) => {
                   </div>
 
                   <div class="card-info-badges">
-                    <span class="badge purpose-badge">{{ project.purpose }}</span>
+                    <span class="badge purpose-badge">{{ t('projects.purposes.' + purposeMap[project.purpose]) }}</span>
                   </div>
 
                   <h2 class="card-title">{{ project.name }}</h2>
@@ -145,12 +148,12 @@ const toggleTech = (tech: string) => {
                       +{{ getDisplayedTags(project.tags).remaining }}
                     </span>
                     <span v-if="project.subProjects && project.subProjects.length > 0" class="tag tag-sub">
-                      Sous-projets: {{ project.subProjects.length }}
+                      {{ t('projects.subprojects') }}: {{ project.subProjects.length }}
                     </span>
                   </div>
 
                   <div class="card-footer">
-                    <span class="link-text">Voir le projet →</span>
+                    <span class="link-text">{{ t('projects.view_project_link') }}</span>
                   </div>
                 </RouterLink>
               </div>
@@ -161,6 +164,7 @@ const toggleTech = (tech: string) => {
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .projects-page {

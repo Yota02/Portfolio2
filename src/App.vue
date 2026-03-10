@@ -152,7 +152,7 @@ watch(() => route.path, () => {
               </button>
             </div>
           </div>
-          <button @click="toggleTheme" class="theme-toggle" aria-label="Changer le thème">
+          <button @click="toggleTheme" class="theme-toggle" :aria-label="t('nav.toggle_theme')">
             <span v-if="isDark">☀️</span>
             <span v-else>🌙</span>
           </button>
@@ -160,7 +160,7 @@ watch(() => route.path, () => {
             class="menu-toggle"
             @click="toggleMenu"
             :aria-expanded="isOpen"
-            aria-label="Toggle navigation"
+            :aria-label="t('nav.toggle_nav')"
           >
             <svg
               v-if="!isOpen"
@@ -244,7 +244,7 @@ watch(() => route.path, () => {
                   isDropdownOpen = false;
                   isParcoursDropdownOpen = false;
                 "
-                >Timeline</RouterLink
+                >{{ t('nav.timeline') }}</RouterLink
               >
             </div>
           </div>
