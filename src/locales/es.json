@@ -387,6 +387,7 @@
     "count": "{count} competencia(s)",
     "projects_count": "{count} proyecto(s)",
     "associated_projects": "Proyectos asociados:",
+    "context_label": "Contexto:",
     "back_to_projects": "Proyectos",
     "categories": {
       "realiser": "Realizar",

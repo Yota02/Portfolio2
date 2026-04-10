@@ -387,6 +387,7 @@
     "count": "{count} 個のスキル",
     "projects_count": "{count} 個のプロジェクト",
     "associated_projects": "関連プロジェクト：",
+    "context_label": "コンテキスト:",
     "back_to_projects": "プロジェクト",
     "categories": {
       "realiser": "実現",

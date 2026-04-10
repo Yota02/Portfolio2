@@ -387,6 +387,7 @@
     "count": "{count} 项能力",
     "projects_count": "{count} 个项目",
     "associated_projects": "相关项目：",
+    "context_label": "背景：",
     "back_to_projects": "项目",
     "categories": {
       "realiser": "实现",

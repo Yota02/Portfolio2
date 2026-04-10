@@ -30,6 +30,23 @@ interface CompetencyWithProjects extends Competency {
 
 const getACList = (items: string[]) => items.map(item => item.split(' | ')[0])
 
+const parseAC = (translatedItem: string) => {
+  const parts = translatedItem.split(' | ')
+  if (parts.length < 2) return { code: '', title: translatedItem, context: '' }
+  
+  const code = parts[0]
+  let rest = parts[1]
+  
+  let context = ''
+  const contextMatch = rest.match(/\(([^)]+)\)$/)
+  if (contextMatch) {
+    context = contextMatch[1]
+    rest = rest.replace(/\s*\([^)]+\)$/, '')
+  }
+  
+  return { code, title: rest, context }
+}
+
 // Regrouper toutes les compétences par catégorie
 const competenciesByCategory = computed(() => {
   const grouped: Record<string, CompetencyWithProjects[]> = {}
@@ -139,7 +156,18 @@ const getProjectLogo = (project: Project) => {
                     >
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
-                    <span>{{ item }}</span>
+                    <div class="ac-item">
+                      <div v-if="parseAC(t(item)).code" class="ac-header-info">
+                        <span class="ac-code" :style="{ backgroundColor: getBgColor(category), color: categoryColors[category] }">
+                          {{ parseAC(t(item)).code }}
+                        </span>
+                        <span class="ac-title">{{ parseAC(t(item)).title }}</span>
+                      </div>
+                      <span v-else class="ac-full">{{ t(item) }}</span>
+                      <div v-if="parseAC(t(item)).context" class="ac-context">
+                        <span class="context-label">{{ t('competencies.context_label') }}</span> {{ parseAC(t(item)).context }}
+                      </div>
+                    </div>
                   </li>
                 </ul>
 
@@ -310,7 +338,7 @@ const getProjectLogo = (project: Project) => {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--color-text);
@@ -321,8 +349,59 @@ const getProjectLogo = (project: Project) => {
 }
 
 .check-icon {
-  margin-top: 3px;
+  margin-top: 6px;
   flex-shrink: 0;
+}
+
+.ac-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.ac-header-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ac-code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.ac-title {
+  font-weight: 600;
+  color: var(--color-heading);
+  line-height: 1.3;
+}
+
+.ac-context {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  opacity: 0.8;
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--color-border);
+  font-style: italic;
+}
+
+.context-label {
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+
+.ac-full {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  line-height: 1.4;
 }
 
 .projects-section {

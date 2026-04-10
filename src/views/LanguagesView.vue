@@ -148,7 +148,7 @@ const getYearText = (year?: string) => {
     </div>
 
     <RouterLink to="/project/project-8" class="worldofchan-button" title="Voir le projet WorldOfChan">
-      <img :src="`${baseUrl}projet/WorldOfChan/logo.png`" alt="WorldOfChan" class="worldofchan-icon" />
+      <img :src="`${baseUrl}projet/WorldOfChan/logo.webp`" alt="WorldOfChan" class="worldofchan-icon" />
     </RouterLink>
 
     <div class="container">

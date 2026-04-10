@@ -387,6 +387,7 @@
     "count": "Компетенций: {count}",
     "projects_count": "Проектов: {count}",
     "associated_projects": "Связанные проекты:",
+    "context_label": "Контекст:",
     "back_to_projects": "Проекты",
     "categories": {
       "realiser": "Реализация",

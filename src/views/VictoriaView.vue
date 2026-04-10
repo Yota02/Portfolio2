@@ -38,7 +38,7 @@ onMounted(() => {
   for (const tech of victoriaProject.value?.tags || []) {
     const iconFileName = techIconMap[tech]
     if (iconFileName) {
-      icons[tech] = `${iconFileName}.png`
+      icons[tech] = `${iconFileName}.webp`
     }
   }
   techIcons.value = icons

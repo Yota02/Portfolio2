@@ -75,11 +75,11 @@ const mouseX = ref(0)
 const mouseY = ref(0)
 
 const floatingCards = [
-  { projectId: 'project-7', title: t('home.view_project'), image: `${baseUrl}projet/Victoria/logo.png` },
-  { projectId: 'project-4', title: t('home.view_project'), image: `${baseUrl}projet/starGuardian/logo.png` },
-  { projectId: 'project-8', title: t('home.view_project'), image: `${baseUrl}projet/WorldOfChan/logo.png` },
-  { projectId: 'project-1', title: t('home.view_project'), image: `${baseUrl}projet/CodeTonFutur/logo.png` },
-  { projectId: 'project-3', title: t('home.view_project'), image: `${baseUrl}projet/CapitalWars/logo.png` }
+  { projectId: 'project-7', title: t('home.view_project'), image: `${baseUrl}projet/Victoria/logo.webp` },
+  { projectId: 'project-4', title: t('home.view_project'), image: `${baseUrl}projet/starGuardian/logo.webp` },
+  { projectId: 'project-8', title: t('home.view_project'), image: `${baseUrl}projet/WorldOfChan/logo.webp` },
+  { projectId: 'project-1', title: t('home.view_project'), image: `${baseUrl}projet/CodeTonFutur/logo.webp` },
+  { projectId: 'project-3', title: t('home.view_project'), image: `${baseUrl}projet/CapitalWars/logo.webp` }
 ]
 
 const handleParallax = (e: MouseEvent) => {

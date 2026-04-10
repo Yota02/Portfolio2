@@ -90,7 +90,7 @@ const participationsData = [
     descriptionKey: 'ndi2024.description',
     resultKey: 'ndi2024.result',
     link: 'https://www.nuitdelinfo.com/',
-    logo: 'icone/ndi.png'
+    logo: 'icone/ndi.webp'
   },
   {
     id: 2,
@@ -100,7 +100,7 @@ const participationsData = [
     descriptionKey: 'codegamejam2026.description',
     resultKey: 'codegamejam2026.result',
     link: 'https://codegamejam.extragames.fr/',
-    logo: 'icone/codegamejam.png'
+    logo: 'icone/codegamejam.webp'
   },
   {
     id: 3,
@@ -110,7 +110,7 @@ const participationsData = [
     descriptionKey: 'actinspace.description',
     resultKey: 'actinspace.result',
     link: 'https://www.connectbycnes.fr/actinspace',
-    logo: 'icone/actinspace.png'
+    logo: 'icone/actinspace.webp'
   },
   {
     id: 4,
@@ -120,7 +120,7 @@ const participationsData = [
     descriptionKey: 'ndi2025.description',
     resultKey: 'ndi2025.result',
     link: 'https://www.nuitdelinfo.com/',
-    logo: 'icone/ndi.png'
+    logo: 'icone/ndi.webp'
   },
 ]
 

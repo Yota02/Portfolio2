@@ -83,7 +83,7 @@ const toggleTech = (tech: string) => {
             :title="tech"
           >
             <img
-              :src="`${baseUrl}icone/${techIconMap[tech]}.png`"
+              :src="`${baseUrl}icone/${techIconMap[tech]}.webp`"
               :alt="`Icône de ${tech}`"
               class="tech-icon"
               loading="lazy"

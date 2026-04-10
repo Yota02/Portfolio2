@@ -387,6 +387,7 @@
     "count": "{count} Kompetenz(en)",
     "projects_count": "{count} Projekt(e)",
     "associated_projects": "Zugehörige Projekte:",
+    "context_label": "Kontext:",
     "back_to_projects": "Projekte",
     "categories": {
       "realiser": "Realisieren",

@@ -22,7 +22,7 @@ const certifications: Certification[] = [
     id: "cert-2",
     date: "2026",
     link: "https://datafromspace.fr/",
-    logo: "datafromspace.png",
+    logo: "datafromspace.webp",
   },
   {
     id: "cert-3",

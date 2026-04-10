@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-03-01',
     category: 'IA',
     tags: ['Education', 'LLM'],
-    image: '/icone/deeplearning.png'
+    image: '/icone/deeplearning.webp'
   },
   {
     id: 'post-2',
@@ -25,6 +25,6 @@ export const blogPosts: BlogPost[] = [
     date: '2026-02-15',
     category: 'Web',
     tags: ['Architecture', 'Frontend'],
-    image: '/icone/vuejs.png'
+    image: '/icone/vuejs.webp'
   }
 ]
