@@ -77,8 +77,10 @@
       "software": "Software"
     },
     "purposes": {
-      "education": "Education",
-      "personnel": "Personal"
+      "education": "Academic Project",
+      "education_desc": "This project was carried out as part of my BUT Computer Science curriculum. It meets specific educational objectives and was evaluated by teachers.",
+      "personnel": "Personal Project",
+      "personnel_desc": "This project was carried out in my free time out of pure passion. It allows me to explore new technologies and push my limits outside the school framework."
     },
     "subprojects": "Sub-projects",
     "view_project_link": "View project →",
@@ -100,14 +102,14 @@
         },
         "competencies": {
           "0": {
-            "0": "AC31.01 | Choose and implement appropriate architectures (Web Architecture Vue.js/Flask)",
-            "1": "AC31.03 | Integrate solutions into a production environment"
+            "0": "AC31.01 :: Choose and implement appropriate architectures (Web Architecture Vue.js/Flask)",
+            "1": "AC31.03 :: Integrate solutions into a production environment"
           },
           "1": {
-            "0": "AC25.02 | Formalize client and user needs"
+            "0": "AC25.02 :: Formalize client and user needs"
           },
           "2": {
-            "0": "AC24.03 | Organize data restitution through programming and visualization (Dashboards)"
+            "0": "AC24.03 :: Organize data restitution through programming and visualization (Dashboards)"
           }
         }
       },
@@ -123,20 +125,20 @@
         },
         "competencies": {
           "0": {
-            "0": "AC21.01 | Develop and implement functional and non-functional specifications from requirements",
-            "1": "AC21.04 | Verify and validate application quality through testing"
+            "0": "AC21.01 :: Develop and implement functional and non-functional specifications from requirements",
+            "1": "AC21.04 :: Verify and validate application quality through testing"
           },
           "1": {
-            "0": "AC23.01 | Design and develop communicating applications",
-            "1": "AC23.02 | Use virtualized network servers and services (Docker)",
-            "2": "AC23.03 | Secure a system's services and data (SSH)"
+            "0": "AC23.01 :: Design and develop communicating applications",
+            "1": "AC23.02 :: Use virtualized network servers and services (Docker)",
+            "2": "AC23.03 :: Secure a system's services and data (SSH)"
           },
           "2": {
-            "0": "AC25.04 | Define and implement a project monitoring approach (Scrum/Agile)"
+            "0": "AC25.04 :: Define and implement a project monitoring approach (Scrum/Agile)"
           },
           "3": {
-            "0": "AC26.03 | Mobilize interpersonal skills to work in an IT team",
-            "1": "AC26.04 | Report on professional activity"
+            "0": "AC26.03 :: Mobilize interpersonal skills to work in an IT team",
+            "1": "AC26.04 :: Report on professional activity"
           }
         },
         "subProjects": {
@@ -171,14 +173,14 @@
         },
         "competencies": {
           "0": {
-            "0": "AC21.03 | Adopt good design and programming practices (MVC Symfony)",
-            "1": "AC21.02 | Apply principles of accessibility and ergonomics"
+            "0": "AC21.03 :: Adopt good design and programming practices (MVC Symfony)",
+            "1": "AC21.02 :: Apply principles of accessibility and ergonomics"
           },
           "1": {
-            "0": "AC24.01 | Optimize company data models"
+            "0": "AC24.01 :: Optimize company data models"
           },
           "2": {
-            "0": "AC26.01 | Understand the diversity, structure, and dimension of computing in an organization"
+            "0": "AC26.01 :: Understand the diversity, structure, and dimension of computing in an organization"
           }
         }
       },
@@ -193,17 +195,17 @@
         },
         "competencies": {
           "0": {
-            "0": "AC11.01 | Implement simple designs",
-            "1": "AC11.04 | Develop user interfaces"
+            "0": "AC11.01 :: Implement simple designs",
+            "1": "AC11.04 :: Develop user interfaces"
           },
           "1": {
-            "0": "AC22.01 | Choose complex data structures adapted to the problem (Pandas Dataframes)"
+            "0": "AC22.01 :: Choose complex data structures adapted to the problem (Pandas Dataframes)"
           },
           "2": {
-            "0": "AC24.04 | Manipulate heterogeneous data (Excel, CSV, API)"
+            "0": "AC24.04 :: Manipulate heterogeneous data (Excel, CSV, API)"
           },
           "3": {
-            "0": "AC15.01 | Grasp client and user needs"
+            "0": "AC15.01 :: Grasp client and user needs"
           }
         }
       },
@@ -218,15 +220,15 @@
         },
         "competencies": {
           "0": {
-            "0": "AC11.03 | Perform tests and evaluate their results against specifications (TDD/JUnit)",
-            "1": "AC11.04 | Develop user interfaces (JavaFX)"
+            "0": "AC11.03 :: Perform tests and evaluate their results against specifications (TDD/JUnit)",
+            "1": "AC11.04 :: Develop user interfaces (JavaFX)"
           },
           "1": {
-            "0": "AC12.01 | Analyze a problem methodically (breaking it down into simple algorithmic elements)",
-            "1": "AC12.02 | Compare algorithms for classic problems (Dijkstra)"
+            "0": "AC12.01 :: Analyze a problem methodically (breaking it down into simple algorithmic elements)",
+            "1": "AC12.02 :: Compare algorithms for classic problems (Dijkstra)"
           },
           "2": {
-            "0": "AC22.01 | Choose complex data structures adapted to the problem (Graphs)"
+            "0": "AC22.01 :: Choose complex data structures adapted to the problem (Graphs)"
           }
         }
       },
@@ -242,10 +244,10 @@
         },
         "competencies": {
           "0": {
-            "0": "AC21.03 | Adopt good design and programming practices"
+            "0": "AC21.03 :: Adopt good design and programming practices"
           },
           "1": {
-            "0": "AC22.02 | Use appropriate algorithmic techniques for complex problems (Artificial Intelligence)"
+            "0": "AC22.02 :: Use appropriate algorithmic techniques for complex problems (Artificial Intelligence)"
           }
         }
       },
@@ -260,14 +262,14 @@
         },
         "competencies": {
           "0": {
-            "0": "AC31.02 | Evolve an existing application (Plugin System)",
-            "1": "AC31.01 | Choose and implement appropriate architectures (Modular)"
+            "0": "AC31.02 :: Evolve an existing application (Plugin System)",
+            "1": "AC31.01 :: Choose and implement appropriate architectures (Modular)"
           },
           "1": {
-            "0": "AC22.02 | Use appropriate algorithmic techniques for complex problems (AI, RAG)"
+            "0": "AC22.02 :: Use appropriate algorithmic techniques for complex problems (AI, RAG)"
           },
           "2": {
-            "0": "AC13.01 | Identify the different components (hardware and software) of a digital system"
+            "0": "AC13.01 :: Identify the different components (hardware and software) of a digital system"
           }
         },
         "subProjects": {
@@ -300,13 +302,13 @@
         },
         "competencies": {
           "0": {
-            "0": "AC31.01 | Choose and implement appropriate architectures (Mobile/PWA)"
+            "0": "AC31.01 :: Choose and implement appropriate architectures (Mobile/PWA)"
           },
           "1": {
-            "0": "AC23.01 | Design and develop communicating applications (Firebase)"
+            "0": "AC23.01 :: Design and develop communicating applications (Firebase)"
           },
           "2": {
-            "0": "AC14.01 | Update and query a relational database (MySQL)"
+            "0": "AC14.01 :: Update and query a relational database (MySQL)"
           }
         }
       },
@@ -321,11 +323,11 @@
         },
         "competencies": {
           "0": {
-            "0": "AC11.01 | Implement simple designs",
-            "1": "AC11.04 | Develop user interfaces"
+            "0": "AC11.01 :: Implement simple designs",
+            "1": "AC11.04 :: Develop user interfaces"
           },
           "1": {
-            "0": "AC14.03 | Design a relational database from specifications"
+            "0": "AC14.03 :: Design a relational database from specifications"
           }
         }
       },
@@ -341,15 +343,15 @@
         },
         "competencies": {
           "0": {
-            "0": "AC26.03 | Mobilize interpersonal skills to work in an IT team",
-            "1": "AC26.01 | Understand the diversity and dynamics of an IT team"
+            "0": "AC26.03 :: Mobilize interpersonal skills to work in an IT team",
+            "1": "AC26.01 :: Understand the diversity and dynamics of an IT team"
           },
           "1": {
-            "0": "AC25.01 | Organize a team's work (Task distribution)",
-            "1": "AC25.03 | Identify feasibility criteria (Short time management)"
+            "0": "AC25.01 :: Organize a team's work (Task distribution)",
+            "1": "AC25.03 :: Identify feasibility criteria (Short time management)"
           },
           "2": {
-            "0": "AC21.03 | Adopt good design and programming practices (Collaborative code)"
+            "0": "AC21.03 :: Adopt good design and programming practices (Collaborative code)"
           }
         }
       },
@@ -366,7 +368,66 @@
       "project-13": {
         "description": "Data processing pipeline for machine learning.",
         "longDescription": "Loom is a project aimed at automating the data workflow for AI models, from collection to deployment.",
-        "startDate": "January 2026"
+        "startDate": "January 2026",
+        "features": {
+          "0": "Complete ML lifecycle automation (MLOps)",
+          "1": "Scalable preprocessing pipeline for massive datasets",
+          "2": "Automatic model deployment via Flask/Docker API"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC31.03 :: Integrate solutions into a production environment (AI CI/CD)"
+          },
+          "1": {
+            "0": "AC32.01 :: Use mathematical and statistical models to solve complex problems"
+          }
+        }
+      },
+      "project-14": {
+        "description": "Big Data analysis platform for genomics.",
+        "longDescription": "Bio-Data Analyzer is a solution for massive DNA sequence analysis using distributed architectures (Spark/Hadoop). The project integrates Deep Learning models for protein structure prediction and large-scale biological data clustering.",
+        "startDate": "January 2026",
+        "endDate": "June 2026",
+        "features": {
+          "0": "Distributed processing of FASTQ/BAM files via Spark",
+          "1": "Sequence classification by deep neural networks",
+          "2": "Interactive visualization of multidimensional data clusters"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC32.01 :: Use mathematical and statistical models to solve complex problems",
+            "1": "AC32.02 :: Design and implement advanced AI techniques"
+          },
+          "1": {
+            "0": "AC34.01 :: Design and exploit data warehouses (Big Data)",
+            "1": "AC34.02 :: Extract knowledge from complex data"
+          }
+        }
+      },
+      "project-15": {
+        "description": "Cloud monitoring and secure orchestration system.",
+        "longDescription": "Cloud Sentinel is a complete infrastructure for monitoring cloud services using Kubernetes and Terraform. The project includes an automated CI/CD chain, an AI-based intrusion detection system, and a steering interface for incident management.",
+        "startDate": "September 2025",
+        "endDate": "March 2026",
+        "features": {
+          "0": "Micro-services orchestration with Kubernetes",
+          "1": "Automated deployment (CI/CD) with GitHub Actions and Terraform",
+          "2": "Real-time monitoring with Prometheus and Grafana"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC33.01 :: Design and manage hybrid or cloud infrastructures",
+            "1": "AC33.02 :: Automate deployment and maintenance of a complex infrastructure"
+          },
+          "1": {
+            "0": "AC35.01 :: Lead a complex project involving multiple stakeholders",
+            "1": "AC35.02 :: Guarantee quality and security throughout the project lifecycle"
+          },
+          "2": {
+            "0": "AC36.01 :: Manage an IT team or coordinate experts",
+            "1": "AC36.02 :: Perform strategic technology watch"
+          }
+        }
       }
     }
   },

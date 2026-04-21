@@ -100,14 +100,14 @@
         },
         "competencies": {
           "0": {
-            "0": "AC31.01 | Scegliere e implementare le architetture appropriate (Architettura Web Vue.js/Flask)",
-            "1": "AC31.03 | Integrare soluzioni in un ambiente di produzione"
+            "0": "AC31.01 :: Scegliere e implementare le architetture appropriate (Architettura Web Vue.js/Flask)",
+            "1": "AC31.03 :: Integrare soluzioni in un ambiente di produzione"
           },
           "1": {
-            "0": "AC25.02 | Formalizzare le esigenze del cliente e dell'utente"
+            "0": "AC25.02 :: Formalizzare le esigenze del cliente e dell'utente"
           },
           "2": {
-            "0": "AC24.03 | Organizzare la restituzione dei dati attraverso la programmazione e la visualizzazione (Dashboard)"
+            "0": "AC24.03 :: Organizzare la restituzione dei dati attraverso la programmazione e la visualizzazione (Dashboard)"
           }
         }
       },
@@ -123,20 +123,20 @@
         },
         "competencies": {
           "0": {
-            "0": "AC21.01 | Elaborare e implementare specifiche funzionali e non funzionali a partire dai requisiti",
-            "1": "AC21.04 | Verificare e convalidare la qualità dell'applicazione tramite test"
+            "0": "AC21.01 :: Elaborare e implementare specifiche funzionali e non funzionali a partire dai requisiti",
+            "1": "AC21.04 :: Verificare e convalidare la qualità dell'applicazione tramite test"
           },
           "1": {
-            "0": "AC23.01 | Progettare e sviluppare applicazioni comunicanti",
-            "1": "AC23.02 | Utilizzare server e servizi di rete virtualizzati (Docker)",
-            "2": "AC23.03 | Mettere in sicurezza i servizi e i dati di un sistema (SSH)"
+            "0": "AC23.01 :: Progettare e sviluppare applicazioni comunicanti",
+            "1": "AC23.02 :: Utilizzare server e servizi di rete virtualizzati (Docker)",
+            "2": "AC23.03 :: Mettere in sicurezza i servizi e i dati di un sistema (SSH)"
           },
           "2": {
-            "0": "AC25.04 | Definire e implementare un approccio di monitoraggio del progetto (Scrum/Agile)"
+            "0": "AC25.04 :: Definire e implementare un approccio di monitoraggio del progetto (Scrum/Agile)"
           },
           "3": {
-            "0": "AC26.03 | Mobilitare le competenze interpersonali per lavorare in un team IT",
-            "1": "AC26.04 | Rendicontare la propria attività professionale"
+            "0": "AC26.03 :: Mobilitare le competenze interpersonali per lavorare in un team IT",
+            "1": "AC26.04 :: Rendicontare la propria attività professionale"
           }
         },
         "subProjects": {
@@ -171,14 +171,14 @@
         },
         "competencies": {
           "0": {
-            "0": "AC21.03 | Adottare buone pratiche di progettazione e programmazione (MVC Symfony)",
-            "1": "AC21.02 | Applicare i principi di accessibilità ed ergonomia"
+            "0": "AC21.03 :: Adottare buone pratiche di progettazione e programmazione (MVC Symfony)",
+            "1": "AC21.02 :: Applicare i principi di accessibilità ed ergonomia"
           },
           "1": {
-            "0": "AC24.01 | Ottimizzare i modelli di dati aziendali"
+            "0": "AC24.01 :: Ottimizzare i modelli di dati aziendali"
           },
           "2": {
-            "0": "AC26.01 | Comprendere la diversità, la struttura e la dimensione dell'informatica in un'organizzazione"
+            "0": "AC26.01 :: Comprendere la diversità, la struttura e la dimensione dell'informatica in un'organizzazione"
           }
         }
       },
@@ -193,17 +193,17 @@
         },
         "competencies": {
           "0": {
-            "0": "AC11.01 | Implementare progetti semplici",
-            "1": "AC11.04 | Sviluppare interfacce utente"
+            "0": "AC11.01 :: Implementare progetti semplici",
+            "1": "AC11.04 :: Sviluppare interfacce utente"
           },
           "1": {
-            "0": "AC22.01 | Scegliere strutture dati complesse adatte al problema (Pandas Dataframes)"
+            "0": "AC22.01 :: Scegliere strutture dati complesse adatte al problema (Pandas Dataframes)"
           },
           "2": {
-            "0": "AC24.04 | Manipolare dati eterogenei (Excel, CSV, API)"
+            "0": "AC24.04 :: Manipolare dati eterogenei (Excel, CSV, API)"
           },
           "3": {
-            "0": "AC15.01 | Comprendere le esigenze del cliente e dell'utente"
+            "0": "AC15.01 :: Comprendere le esigenze del cliente e dell'utente"
           }
         }
       },
@@ -218,15 +218,15 @@
         },
         "competencies": {
           "0": {
-            "0": "AC11.03 | Effettuare prove e valutarne i risultati rispetto alle specifiche (TDD/JUnit)",
-            "1": "AC11.04 | Sviluppare interfacce utente (JavaFX)"
+            "0": "AC11.03 :: Effettuare prove e valutarne i risultati rispetto alle specifiche (TDD/JUnit)",
+            "1": "AC11.04 :: Sviluppare interfacce utente (JavaFX)"
           },
           "1": {
-            "0": "AC12.01 | Analizzare un problema con metodo (scomposizione in elementi algoritmici semplici)",
-            "1": "AC12.02 | Confrontare algoritmi per problemi classici (Dijkstra)"
+            "0": "AC12.01 :: Analizzare un problema con metodo (scomposizione in elementi algoritmici semplici)",
+            "1": "AC12.02 :: Confrontare algoritmi per problemi classici (Dijkstra)"
           },
           "2": {
-            "0": "AC22.01 | Scegliere strutture dati complesse adatte al problema (Grafi)"
+            "0": "AC22.01 :: Scegliere strutture dati complesse adatte al problema (Grafi)"
           }
         }
       },
@@ -242,10 +242,10 @@
         },
         "competencies": {
           "0": {
-            "0": "AC21.03 | Adottare buone pratiche di progettazione e programmazione"
+            "0": "AC21.03 :: Adottare buone pratiche di progettazione e programmazione"
           },
           "1": {
-            "0": "AC22.02 | Utilizzare tecniche algoritmiche appropriate per problemi complessi (Intelligenza Artificiale)"
+            "0": "AC22.02 :: Utilizzare tecniche algoritmiche appropriate per problemi complessi (Intelligenza Artificiale)"
           }
         }
       },
@@ -260,14 +260,14 @@
         },
         "competencies": {
           "0": {
-            "0": "AC31.02 | Far evolvere un'applicazione esistente (Sistema di plugin)",
-            "1": "AC31.01 | Scegliere e implementare le architetture appropriate (Modulare)"
+            "0": "AC31.02 :: Far evolvere un'applicazione esistente (Sistema di plugin)",
+            "1": "AC31.01 :: Scegliere e implementare le architetture appropriate (Modulare)"
           },
           "1": {
-            "0": "AC22.02 | Utilizzare tecniche algoritmiche appropriate per problemi complessi (IA, RAG)"
+            "0": "AC22.02 :: Utilizzare tecniche algoritmiche appropriate per problemi complessi (IA, RAG)"
           },
           "2": {
-            "0": "AC13.01 | Identificare i diversi componenti (hardware e software) di un sistema digitale"
+            "0": "AC13.01 :: Identificare i diversi componenti (hardware e software) di un sistema digitale"
           }
         },
         "subProjects": {
@@ -300,13 +300,13 @@
         },
         "competencies": {
           "0": {
-            "0": "AC31.01 | Scegliere e implementare le architetture appropriate (Mobile/PWA)"
+            "0": "AC31.01 :: Scegliere e implementare le architetture appropriate (Mobile/PWA)"
           },
           "1": {
-            "0": "AC23.01 | Progettare e sviluppare applicazioni comunicanti (Firebase)"
+            "0": "AC23.01 :: Progettare e sviluppare applicazioni comunicanti (Firebase)"
           },
           "2": {
-            "0": "AC14.01 | Aggiornare e interrogare un database relazionale (MySQL)"
+            "0": "AC14.01 :: Aggiornare e interrogare un database relazionale (MySQL)"
           }
         }
       },
@@ -321,11 +321,11 @@
         },
         "competencies": {
           "0": {
-            "0": "AC11.01 | Implementare progetti semplici",
-            "1": "AC11.04 | Sviluppare interfacce utente"
+            "0": "AC11.01 :: Implementare progetti semplici",
+            "1": "AC11.04 :: Sviluppare interfacce utente"
           },
           "1": {
-            "0": "AC14.03 | Progettare un database relazionale a partire dalle specifiche"
+            "0": "AC14.03 :: Progettare un database relazionale a partire dalle specifiche"
           }
         }
       },
@@ -341,15 +341,15 @@
         },
         "competencies": {
           "0": {
-            "0": "AC26.03 | Mobilitare le competenze interpersonali per lavorare in un team IT",
-            "1": "AC26.01 | Comprendere la diversità e la dinamica di un team IT"
+            "0": "AC26.03 :: Mobilitare le competenze interpersonali per lavorare in un team IT",
+            "1": "AC26.01 :: Comprendere la diversità e la dinamica di un team IT"
           },
           "1": {
-            "0": "AC25.01 | Organizzare il lavoro di un team (Distribuzione dei compiti)",
-            "1": "AC25.03 | Identificare i criteri di fattibilità (Gestione del tempo a breve termine)"
+            "0": "AC25.01 :: Organizzare il lavoro di un team (Distribuzione dei compiti)",
+            "1": "AC25.03 :: Identificare i criteri di fattibilità (Gestione del tempo a breve termine)"
           },
           "2": {
-            "0": "AC21.03 | Adottare buone pratiche di progettazione e programmazione (Codice collaborativo)"
+            "0": "AC21.03 :: Adottare buone pratiche di progettazione e programmazione (Codice collaborativo)"
           }
         }
       },

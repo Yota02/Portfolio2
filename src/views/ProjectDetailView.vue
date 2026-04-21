@@ -2,7 +2,7 @@
 import { useRoute, RouterLink } from 'vue-router'
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getProjectById, techIconMap } from '@/data/projects'
+import { getProjectById, techIconMap, purposeMap } from '@/data/projects'
 
 const { t } = useI18n()
 const baseUrl = import.meta.env.BASE_URL
@@ -34,7 +34,9 @@ const project = computed(() => {
     endDate: undefined,
     isOngoing: undefined,
     subProjects: [],
-    competencies: []
+    competencies: [],
+    category: 'Logiciel',
+    purpose: 'Personnel'
   }
 })
 
@@ -108,11 +110,53 @@ const categoryKeyMap: Record<string, string> = {
 
 const getBgColor = (category: string) => {
   const color = categoryColors[category] || '#ccc'
-  return `${color}15`
+  return `${color}25`
 }
 
 const isVideo = (src: string): boolean => {
   return src.endsWith('.webm') || src.endsWith('.mp4') || src.endsWith('.avi')
+}
+
+const parseAC = (acString: string) => {
+  if (!acString || typeof acString !== 'string') return { id: '', name: '' }
+  
+  // Cas avec "::" (nouveau séparateur pour éviter le conflit avec la pluralisation i18n)
+  if (acString.includes('::')) {
+    const [id, ...nameParts] = acString.split('::')
+    return { 
+      id: id.trim(), 
+      name: nameParts.join('::').trim() 
+    }
+  }
+
+  // Cas simple : "ID | Nom" (fallback si encore présent)
+  if (acString.includes('|')) {
+    const [id, ...nameParts] = acString.split('|')
+    return { 
+      id: id.trim(), 
+      name: nameParts.join('|').trim() 
+    }
+  }
+  
+  // Cas avec ":" : "ID : Nom"
+  if (acString.includes(':')) {
+    const [id, ...nameParts] = acString.split(':')
+    return { 
+      id: id.trim(), 
+      name: nameParts.join(':').trim() 
+    }
+  }
+
+  // Fallback regex pour "ACxxxx.xx Nom"
+  const acMatch = acString.match(/^(AC\s*\d+\.\d+)(.*)$/i)
+  if (acMatch && acMatch[2].trim()) {
+    return {
+      id: acMatch[1].trim(),
+      name: acMatch[2].trim()
+    }
+  }
+  
+  return { id: '', name: acString }
 }
 </script>
 
@@ -138,7 +182,14 @@ const isVideo = (src: string): boolean => {
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-2 5l9-9l-9 9l2-5"></path><path d="M2 12l5 5l10 -10"></path></svg>
           {{ t('projects.but_competencies') }}
         </button>
-        <h1 class="project-title">{{ project.name }}</h1>
+        <div class="title-wrapper">
+          <h1 class="project-title">{{ project.name }}</h1>
+          <span :class="['purpose-badge', purposeMap[project.purpose]]">
+            <svg v-if="project.purpose === 'Éducation'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+            <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            {{ t('projects.purposes.' + purposeMap[project.purpose]) }}
+          </span>
+        </div>
         <p class="project-subtitle">{{ t(project.description) }}</p>
       </div>
 
@@ -173,6 +224,16 @@ const isVideo = (src: string): boolean => {
             <p>{{ t(project.longDescription) }}</p>
           </div>
 
+          <div v-if="project.context" class="description-section">
+            <h2>{{ t('projects.context') }}</h2>
+            <p>{{ t(project.context) }}</p>
+          </div>
+
+          <div v-if="project.personalContribution" class="description-section">
+            <h2>{{ t('projects.personalContribution') }}</h2>
+            <p>{{ t(project.personalContribution) }}</p>
+          </div>
+
           <div class="features-section">
             <h2>{{ t('projects.features') }}</h2>
             <ul class="features-list">
@@ -193,6 +254,22 @@ const isVideo = (src: string): boolean => {
               <span v-for="tech in project.tags" :key="tech" class="tech-icon" :title="tech">
                 <img v-if="getTechIcon(tech)" :src="`${baseUrl}icone/${getTechIcon(tech)}`" :alt="tech" width="24" height="24" />
               </span>
+            </div>
+          </div>
+
+          <div v-if="project.duration" class="info-card">
+            <h3>{{ t('projects.duration') }}</h3>
+            <p>{{ t(project.duration) }}</p>
+          </div>
+
+          <div class="info-card purpose-card" :class="purposeMap[project.purpose]">
+            <div class="card-icon">
+              <svg v-if="project.purpose === 'Éducation'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+              <svg v-else xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <div class="card-content">
+              <h3>{{ t('projects.purposes.' + purposeMap[project.purpose]) }}</h3>
+              <p>{{ t('projects.purposes.' + purposeMap[project.purpose] + '_desc') }}</p>
             </div>
           </div>
 
@@ -271,7 +348,12 @@ const isVideo = (src: string): boolean => {
                     <ul class="ac-list">
                       <li v-for="item in comp.items" :key="item">
                         <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" :style="{ color: categoryColors[comp.category] }"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>{{ t(item) }}</span>
+                        <div class="ac-content">
+                          <span v-if="parseAC(t(item)).id" class="ac-id-badge" :style="{ backgroundColor: getBgColor(comp.category), color: categoryColors[comp.category] }">
+                            {{ parseAC(t(item)).id }}
+                          </span>
+                          <span class="ac-label">{{ parseAC(t(item)).name }}</span>
+                        </div>
                       </li>
                     </ul>
                   </div>
@@ -364,12 +446,43 @@ const isVideo = (src: string): boolean => {
 .project-title {
   font-size: 3rem;
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  padding-right: 150px;
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.purpose-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.purpose-badge.education {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.purpose-badge.personnel {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 .project-subtitle {
@@ -409,6 +522,56 @@ const isVideo = (src: string): boolean => {
 .tech-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--color-background); border-radius: 8px; border: 1px solid var(--color-border); transition: all 0.3s ease; }
 .tech-icon:hover { background: var(--primary); transform: translateY(-3px); }
 
+.purpose-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+}
+
+.purpose-card .card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.purpose-card.education .card-icon {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+}
+
+.purpose-card.personnel .card-icon {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.purpose-card h3 {
+  margin-bottom: 0.25rem;
+}
+
+.purpose-card p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  opacity: 0.8;
+}
+
+.purpose-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.purpose-card.education:hover {
+  border-color: #3b82f6;
+}
+
+.purpose-card.personnel:hover {
+  border-color: #10b981;
+}
+
 .stats-list { display: grid; gap: 1rem; }
 .stat-item { display: flex; align-items: center; gap: 0.75rem; color: var(--color-text); }
 .stat-item svg { color: var(--primary); }
@@ -421,6 +584,93 @@ const isVideo = (src: string): boolean => {
 .modal-content {
   background: var(--color-background); width: 90%; max-width: 900px; max-height: 90vh;
   border-radius: 20px; overflow: hidden; border: 1px solid var(--color-border);
+  display: flex; flex-direction: column;
+}
+
+.modal-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-background-soft);
+}
+
+.modal-header h2 { margin: 0; font-size: 1.5rem; font-weight: 700; color: var(--color-heading); }
+
+.close-btn {
+  background: none; border: none; font-size: 2rem; color: var(--color-text);
+  cursor: pointer; opacity: 0.5; transition: opacity 0.3s;
+}
+
+.close-btn:hover { opacity: 1; }
+
+.modal-body {
+  padding: 2rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-intro { margin-bottom: 2rem; color: var(--color-text); opacity: 0.8; font-size: 1.1rem; }
+
+.competencies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.competency-card {
+  background: var(--color-background-soft);
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--primary);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comp-category { font-weight: 700; font-size: 0.95rem; line-height: 1.2; flex: 1; padding-right: 1rem; }
+.comp-level { font-size: 0.8rem; font-weight: 600; opacity: 0.7; white-space: nowrap; }
+
+.card-body { padding: 1.5rem; }
+
+.ac-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+
+.ac-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.check-icon { margin-top: 0.2rem; flex-shrink: 0; }
+
+.ac-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ac-id-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  width: fit-content;
+  letter-spacing: 0.05em;
+}
+
+.ac-label {
+  font-weight: 500;
+  color: var(--color-text);
 }
 
 @media (max-width: 1024px) {

@@ -88,6 +88,11 @@ const routes = [
       path: '/portfolio-apprentissage',
       name: 'portfolio-apprentissage',
       component: () => import('../views/PortfolioApprentissageView.vue')
+    },
+    {
+      path: '/experience-professionnelle',
+      name: 'experience-professionnelle',
+      component: () => import('../views/ProfessionalExperienceView.vue')
     }
   ]
 

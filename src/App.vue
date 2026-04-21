@@ -326,6 +326,16 @@ watch(() => route.path, () => {
                 "
                 >{{ t('nav.portfolio') }}</RouterLink
               >
+              <RouterLink
+                to="/experience-professionnelle"
+                class="dropdown-item"
+                @click="
+                  isOpen = false;
+                  isDropdownOpen = false;
+                  isParcoursDropdownOpen = false;
+                "
+                >{{ t('nav.professional_experience') }}</RouterLink
+              >
             </div>
           </div>
 

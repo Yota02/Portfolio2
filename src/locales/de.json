@@ -77,8 +77,10 @@
       "software": "Software"
     },
     "purposes": {
-      "education": "Bildung",
-      "personnel": "Persönlich"
+      "education": "Akademisches Projekt",
+      "education_desc": "Dieses Projekt wurde im Rahmen meines BUT Informatik-Studiums durchgeführt. Es erfüllt spezifische Bildungsziele und wurde von Lehrern bewertet.",
+      "personnel": "Persönliches Projekt",
+      "personnel_desc": "Dieses Projekt wurde in meiner Freizeit aus reiner Leidenschaft durchgeführt. Es ermöglicht mir, neue Technologien zu erkunden und meine Grenzen außerhalb des schulischen Rahmens zu erweitern."
     },
     "subprojects": "Unterprojekte",
     "view_project_link": "Projekt ansehen →",
@@ -100,14 +102,14 @@
         },
         "competencies": {
           "0": {
-            "0": "AC31.01 | Geeignete Architekturen wählen und implementieren (Web-Architektur Vue.js/Flask)",
-            "1": "AC31.03 | Lösungen in eine Produktionsumgebung integrieren"
+            "0": "AC31.01 :: Geeignete Architekturen wählen und implementieren (Web-Architektur Vue.js/Flask)",
+            "1": "AC31.03 :: Lösungen in eine Produktionsumgebung integrieren"
           },
           "1": {
-            "0": "AC25.02 | Kunden- und Benutzerbedürfnisse formalisieren"
+            "0": "AC25.02 :: Kunden- und Benutzerbedürfnisse formalisieren"
           },
           "2": {
-            "0": "AC24.03 | Datenwiedergabe durch Programmierung und Visualisierung organisieren (Dashboards)"
+            "0": "AC24.03 :: Datenwiedergabe durch Programmierung und Visualisierung organisieren (Dashboards)"
           }
         }
       },
@@ -123,20 +125,20 @@
         },
         "competencies": {
           "0": {
-            "0": "AC21.01 | Funktionale und nicht-funktionale Spezifikationen aus Anforderungen entwickeln und implementieren",
-            "1": "AC21.04 | Anwendungsqualität durch Tests verifizieren und validieren"
+            "0": "AC21.01 :: Funktionale und nicht-funktionale Spezifikationen aus Anforderungen entwickeln und implementieren",
+            "1": "AC21.04 :: Anwendungsqualität durch Tests verifizieren und validieren"
           },
           "1": {
-            "0": "AC23.01 | Kommunizierende Anwendungen entwerfen und entwickeln",
-            "1": "AC23.02 | Virtualisierte Netzwerkeserver und -dienste verwenden (Docker)",
-            "2": "AC23.03 | Dienste und Daten eines Systems sichern (SSH)"
+            "0": "AC23.01 :: Kommunizierende Anwendungen entwerfen und entwickeln",
+            "1": "AC23.02 :: Virtualisierte Netzwerkeserver und -dienste verwenden (Docker)",
+            "2": "AC23.03 :: Dienste und Daten eines Systems sichern (SSH)"
           },
           "2": {
-            "0": "AC25.04 | Einen Projektüberwachungsansatz definieren und implementieren (Scrum/Agile)"
+            "0": "AC25.04 :: Einen Projektüberwachungsansatz definieren und implementieren (Scrum/Agile)"
           },
           "3": {
-            "0": "AC26.03 | Zwischenmenschliche Fähigkeiten für die Arbeit in einem IT-Team mobilisieren",
-            "1": "AC26.04 | Über berufliche Tätigkeit berichten"
+            "0": "AC26.03 :: Zwischenmenschliche Fähigkeiten für die Arbeit in einem IT-Team mobilisieren",
+            "1": "AC26.04 :: Über berufliche Tätigkeit berichten"
           }
         },
         "subProjects": {
@@ -171,14 +173,14 @@
         },
         "competencies": {
           "0": {
-            "0": "AC21.03 | Gute Design- und Programmierpraktiken übernehmen (MVC Symfony)",
-            "1": "AC21.02 | Prinzipien der Barrierefreiheit und Ergonomie anwenden"
+            "0": "AC21.03 :: Gute Design- und Programmierpraktiken übernehmen (MVC Symfony)",
+            "1": "AC21.02 :: Prinzipien der Barrierefreiheit und Ergonomie anwenden"
           },
           "1": {
-            "0": "AC24.01 | Unternehmensdatenmodelle optimieren"
+            "0": "AC24.01 :: Unternehmensdatenmodelle optimieren"
           },
           "2": {
-            "0": "AC26.01 | Vielfalt, Struktur und Dimension der Informatik in einer Organisation verstehen"
+            "0": "AC26.01 :: Vielfalt, Struktur und Dimension der Informatik in einer Organisation verstehen"
           }
         }
       },
@@ -193,17 +195,17 @@
         },
         "competencies": {
           "0": {
-            "0": "AC11.01 | Einfache Designs implementieren",
-            "1": "AC11.04 | Benutzerschnittstellen entwickeln"
+            "0": "AC11.01 :: Einfache Designs implementieren",
+            "1": "AC11.04 :: Benutzerschnittstellen entwickeln"
           },
           "1": {
-            "0": "AC22.01 | Komplexe, an das Problem angepasste Datenstrukturen wählen (Pandas Dataframes)"
+            "0": "AC22.01 :: Komplexe, an das Problem angepasste Datenstrukturen wählen (Pandas Dataframes)"
           },
           "2": {
-            "0": "AC24.04 | Heterogene Daten manipulieren (Excel, CSV, API)"
+            "0": "AC24.04 :: Heterogene Daten manipulieren (Excel, CSV, API)"
           },
           "3": {
-            "0": "AC15.01 | Kunden- und Benutzerbedürfnisse erfassen"
+            "0": "AC15.01 :: Kunden- und Benutzerbedürfnisse erfassen"
           }
         }
       },
@@ -218,15 +220,15 @@
         },
         "competencies": {
           "0": {
-            "0": "AC11.03 | Tests durchführen und Ergebnisse gegen Spezifikationen evaluieren (TDD/JUnit)",
-            "1": "AC11.04 | Benutzerschnittstellen entwickeln (JavaFX)"
+            "0": "AC11.03 :: Tests durchführen und Ergebnisse gegen Spezifikationen evaluieren (TDD/JUnit)",
+            "1": "AC11.04 :: Benutzerschnittstellen entwickeln (JavaFX)"
           },
           "1": {
-            "0": "AC12.01 | Ein Problem methodisch analysieren (Zerlegung in einfache algorithmische Elemente)",
-            "1": "AC12.02 | Algorithmen für klassische Probleme vergleichen (Dijkstra)"
+            "0": "AC12.01 :: Ein Problem methodisch analysieren (Zerlegung in einfache algorithmische Elemente)",
+            "1": "AC12.02 :: Algorithmen für klassische Probleme vergleichen (Dijkstra)"
           },
           "2": {
-            "0": "AC22.01 | Komplexe, an das Problem angepasste Datenstrukturen wählen (Graphen)"
+            "0": "AC22.01 :: Komplexe, an das Problem angepasste Datenstrukturen wählen (Graphen)"
           }
         }
       },
@@ -242,10 +244,10 @@
         },
         "competencies": {
           "0": {
-            "0": "AC21.03 | Gute Design- und Programmierpraktiken übernehmen"
+            "0": "AC21.03 :: Gute Design- und Programmierpraktiken übernehmen"
           },
           "1": {
-            "0": "AC22.02 | Angemessene algorithmische Techniken für komplexe Probleme verwenden (Künstliche Intelligenz)"
+            "0": "AC22.02 :: Angemessene algorithmische Techniken für komplexe Probleme verwenden (Künstliche Intelligenz)"
           }
         }
       },
@@ -260,14 +262,14 @@
         },
         "competencies": {
           "0": {
-            "0": "AC31.02 | Eine bestehende Anwendung weiterentwickeln (Plugin-System)",
-            "1": "AC31.01 | Geeignete Architekturen wählen und implementieren (Modular)"
+            "0": "AC31.02 :: Eine bestehende Anwendung weiterentwickeln (Plugin-System)",
+            "1": "AC31.01 :: Geeignete Architekturen wählen und implementieren (Modular)"
           },
           "1": {
-            "0": "AC22.02 | Angemessene algorithmische Techniken für komplexe Probleme verwenden (KI, RAG)"
+            "0": "AC22.02 :: Angemessene algorithmische Techniken für komplexe Probleme verwenden (KI, RAG)"
           },
           "2": {
-            "0": "AC13.01 | Die verschiedenen Komponenten (Hardware und Software) eines digitalen Systems identifizieren"
+            "0": "AC13.01 :: Die verschiedenen Komponenten (Hardware und Software) eines digitalen Systems identifizieren"
           }
         },
         "subProjects": {
@@ -300,13 +302,13 @@
         },
         "competencies": {
           "0": {
-            "0": "AC31.01 | Geeignete Architekturen wählen und implementieren (Mobil/PWA)"
+            "0": "AC31.01 :: Geeignete Architekturen wählen und implementieren (Mobil/PWA)"
           },
           "1": {
-            "0": "AC23.01 | Kommunizierende Anwendungen entwerfen und entwickeln (Firebase)"
+            "0": "AC23.01 :: Kommunizierende Anwendungen entwerfen und entwickeln (Firebase)"
           },
           "2": {
-            "0": "AC14.01 | Eine relationale Datenbank aktualisieren und abfragen (MySQL)"
+            "0": "AC14.01 :: Eine relationale Datenbank aktualisieren und abfragen (MySQL)"
           }
         }
       },
@@ -321,11 +323,11 @@
         },
         "competencies": {
           "0": {
-            "0": "AC11.01 | Einfache Designs implementieren",
-            "1": "AC11.04 | Benutzerschnittstellen entwickeln"
+            "0": "AC11.01 :: Einfache Designs implementieren",
+            "1": "AC11.04 :: Benutzerschnittstellen entwickeln"
           },
           "1": {
-            "0": "AC14.03 | Eine relationale Datenbank nach Spezifikationen entwerfen"
+            "0": "AC14.03 :: Eine relationale Datenbank nach Spezifikationen entwerfen"
           }
         }
       },
@@ -341,15 +343,15 @@
         },
         "competencies": {
           "0": {
-            "0": "AC26.03 | Zwischenmenschliche Fähigkeiten für die Arbeit in einem IT-Team mobilisieren",
-            "1": "AC26.01 | Vielfalt und Dynamik eines IT-Teams verstehen"
+            "0": "AC26.03 :: Zwischenmenschliche Fähigkeiten für die Arbeit in einem IT-Team mobilisieren",
+            "1": "AC26.01 :: Vielfalt und Dynamik eines IT-Teams verstehen"
           },
           "1": {
-            "0": "AC25.01 | Die Arbeit eines Teams organisieren (Aufgabenverteilung)",
-            "1": "AC25.03 | Machbarkeitskriterien identifizieren (Kurzzeitmanagement)"
+            "0": "AC25.01 :: Die Arbeit eines Teams organisieren (Aufgabenverteilung)",
+            "1": "AC25.03 :: Machbarkeitskriterien identifizieren (Kurzzeitmanagement)"
           },
           "2": {
-            "0": "AC21.03 | Gute Design- und Programmierpraktiken übernehmen (Kollaborativer Code)"
+            "0": "AC21.03 :: Gute Design- und Programmierpraktiken übernehmen (Kollaborativer Code)"
           }
         }
       },
