@@ -84,6 +84,11 @@ const routes = [
       name: 'competencies',
       component: () => import('../views/CompetenciesView.vue')
     },
+    {
+      path: '/portfolio-apprentissage',
+      name: 'portfolio-apprentissage',
+      component: () => import('../views/PortfolioApprentissageView.vue')
+    }
   ]
 
 const router = createRouter({

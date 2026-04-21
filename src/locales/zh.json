@@ -11,7 +11,8 @@
     "blog": "博客",
     "timeline": "时间线",
     "toggle_theme": "切换主题",
-    "toggle_nav": "切换导航"
+    "toggle_nav": "切换导航",
+    "portfolio": "Portfolio d'apprentissage"
   },
   "home": {
     "greeting": "你好，我是",

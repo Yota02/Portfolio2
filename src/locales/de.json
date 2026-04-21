@@ -11,7 +11,8 @@
     "blog": "Blog",
     "timeline": "Timeline",
     "toggle_theme": "Thema wechseln",
-    "toggle_nav": "Navigation umschalten"
+    "toggle_nav": "Navigation umschalten",
+    "portfolio": "Portfolio d'apprentissage"
   },
   "home": {
     "greeting": "Hallo, ich bin",

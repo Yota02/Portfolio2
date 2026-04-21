@@ -316,6 +316,16 @@ watch(() => route.path, () => {
                 "
                 >{{ t('nav.participations') }}</RouterLink
               >
+              <RouterLink
+                to="/portfolio-apprentissage"
+                class="dropdown-item"
+                @click="
+                  isOpen = false;
+                  isDropdownOpen = false;
+                  isParcoursDropdownOpen = false;
+                "
+                >{{ t('nav.portfolio') }}</RouterLink
+              >
             </div>
           </div>
 

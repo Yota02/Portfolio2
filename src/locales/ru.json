@@ -11,7 +11,8 @@
     "blog": "Блог",
     "timeline": "Хронология",
     "toggle_theme": "Сменить тему",
-    "toggle_nav": "Переключить навигацию"
+    "toggle_nav": "Переключить навигацию",
+    "portfolio": "Portfolio d'apprentissage"
   },
   "home": {
     "greeting": "Привет, я",
