@@ -80,7 +80,9 @@
       "education": "Akademisches Projekt",
       "education_desc": "Dieses Projekt wurde im Rahmen meines BUT Informatik-Studiums durchgeführt. Es erfüllt spezifische Bildungsziele und wurde von Lehrern bewertet.",
       "personnel": "Persönliches Projekt",
-      "personnel_desc": "Dieses Projekt wurde in meiner Freizeit aus reiner Leidenschaft durchgeführt. Es ermöglicht mir, neue Technologien zu erkunden und meine Grenzen außerhalb des schulischen Rahmens zu erweitern."
+      "personnel_desc": "Dieses Projekt wurde in meiner Freizeit aus reiner Leidenschaft durchgeführt. Es ermöglicht mir, neue Technologien zu erkunden und meine Grenzen außerhalb des schulischen Rahmens zu erweitern.",
+      "professionnel": "Kundenauftrag",
+      "professionnel_desc": "Dieses Projekt wurde für einen realen Kunden durchgeführt. Es beinhaltet direkte Kommunikation mit dem Kunden, Anforderungsmanagement und die Einhaltung eines strengen Lastenhefts."
     },
     "subprojects": "Unterprojekte",
     "view_project_link": "Projekt ansehen →",
@@ -369,6 +371,19 @@
         "description": "Datenverarbeitungspipeline für Machine Learning.",
         "longDescription": "Loom ist ein Projekt zur Automatisierung des Daten-Workflows für KI-Modelle, von der Sammlung bis zur Bereitstellung.",
         "startDate": "Janvier 2026"
+      },
+      "project-gecolab": {
+        "description": "Professionelle Showcase-Website für ein Labor für Genetik und Naturschutz.",
+        "longDescription": "Gecolab ist eine moderne Webplattform, die für das Labor für Erhaltungsgenetik der Universität Lüttich entwickelt wurde. Die Website präsentiert die Missionen des Labors, seine genetischen Analysedienste und seine Forschungsprojekte. Es wurde mit Vue.js entwickelt und integriert interaktive Karten mit Leaflet sowie ein automatisiertes Bereitstellungssystem.",
+        "context": "Realer Kundenauftrag für die Universität Lüttich. Ziel des Projekts war es, eine alte Website durch eine modernere, responsive und wartungsfreundliche Lösung zu ersetzen.",
+        "personalContribution": "Ich habe die gesamte Kundenbeziehung verwaltet: Anforderungsaufnahme, Präsentation von Mockups und Feedback-Sitzungen. Technisch habe ich das Frontend mit Vue.js implementiert, die interaktiven Karten konfiguriert und eine CI/CD-Pipeline über GitHub Actions für die automatische Bereitstellung bei jedem Update eingerichtet.",
+        "duration": "Projekt über 3 Monate realisiert.",
+        "startDate": "Januar 2026",
+        "features": {
+          "0": "Moderne und responsive Benutzeroberfläche mit Vue.js",
+          "1": "Interaktive Kartierung von Projekten mit Leaflet",
+          "2": "Mehrsprachige Verwaltung (Französisch/Englisch)"
+        }
       }
     }
   },

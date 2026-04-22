@@ -120,89 +120,14 @@ const competencies = [
             language: "yaml",
             code: "services:\n  app:\n    build: .\n    ports:\n      - \"5000:5000\"\n    environment:\n      - DATABASE_URL=mysql://user:pass@db/ctf",
             explanation: "Exemple de configuration Docker utilisée pour isoler les challenges de cybersécurité du reste de l'infrastructure."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    title: "Compétence 2 : Optimiser des solutions informatiques (Niveau 3)",
-    description: "Améliorer les performances et la qualité du code",
-    acs: [
-      {
-        id: "AC 1",
-        name: "Analyser les performances d'une application",
-        text: "Lors du développement de Star Guardian, j'ai analysé les goulots d'étranglement lors du traitement de milliers de CDMs pour optimiser le temps de réponse.",
-        traces: [
-          {
-            name: "Benchmarking Pandas vs Standard Library",
-            link: "/project/project-4",
-            type: "code",
-            language: "python",
-            code: "# Utilisation de vectorisation avec Pandas\ndf['collision_prob'] = df['covariance'].apply(calculate_pc)",
-            explanation: "Comparaison des temps d'exécution entre un traitement itératif classique et une approche vectorisée avec Pandas, justifiant le choix technologique."
-          }
-        ]
-      },
-      {
-        id: "AC 2",
-        name: "Optimiser le code et les algorithmes",
-        text: "J'applique les principes SOLID pour garantir un code performant et évolutif, comme démontré lors de mes missions au CSUM.",
-        traces: [
-          {
-            name: "Refactoring SOLID du MCC",
-            link: "/project/project-4",
-            type: "interface",
-            image: "projet/CSUM/mcc_refactor.webp",
-            explanation: "Capture d'écran de l'architecture logicielle après application des principes de responsabilité unique et d'inversion de dépendance."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    title: "Compétence 3 : Administrer des systèmes informatiques (Niveau 3)",
-    description: "Installer, configurer et maintenir des infrastructures",
-    acs: [
-      {
-        id: "AC 1",
-        name: "Installer et configurer des services réseau",
-        text: "Ma mission d'automatisation du clonage m'a permis de configurer des services serveurs critiques en environnement réel.",
-        traces: [
-          {
-            name: "Configuration Serveur Master (Linux)",
-            link: "/project/project-4",
-            type: "code",
-            language: "bash",
-            code: "# Config PXE/TFTP\ndefault menu.c32\nprompt 0\ntimeout 300\nlabel clone\n  kernel vmlinuz\n  append initrd=initrd.img",
-            explanation: "Extrait de la configuration du bootloader PXE pour automatiser le lancement de l'outil de clonage sur le réseau local."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    title: "Compétence 4 : Gérer des données de l'information (Niveau 3)",
-    description: "Concevoir et administrer des bases de données",
-    acs: [
-      {
-        id: "AC 1",
-        name: "Optimiser les modèles de données de l'entreprise",
-        text: "Au CSUM, j'ai dû centraliser des données CDMs hétérogènes. J'ai également modélisé des schémas complexes pour Capital Wars.",
-        traces: [
-          {
-            name: "Centralisation des données spatiales",
-            link: "/project/project-4",
-            type: "interface",
-            image: "projet/CSUM/starguardian_data.webp",
-            explanation: "Interface de Star Guardian montrant la consolidation de données provenant de multiples sources (JSON, TXT, API) dans un format unifié."
           },
           {
-            name: "Modèle Entité-Association (MCD) - Capital Wars",
-            link: "/project/project-3",
-            type: "diagram",
-            image: "projet/CapitalWars/mcd.webp",
-            explanation: "Ce diagramme EA présente la structure de données complexe du Serious Game."
+            name: "Déploiement Automatisé Gecolab (GitHub Actions)",
+            link: "/project/project-gecolab",
+            type: "code",
+            language: "yaml",
+            code: "name: Deploy Website\non:\n  push:\n    branches: [ main ]\njobs:\n  build-and-deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v2\n      - name: Build\n        run: npm install && npm run build\n      - name: Deploy\n        uses: JamesIves/github-pages-deploy-action@4.1.5\n        with:\n          branch: gh-pages\n          folder: dist",
+            explanation: "Mise en place d'une pipeline CI/CD pour le projet Gecolab. À chaque push sur la branche principale, le site est automatiquement compilé et déployé sur les serveurs de production."
           }
         ]
       }
@@ -259,6 +184,13 @@ const competencies = [
             type: "interface",
             image: "projet/Ndi2025/live_capture.webp",
             explanation: "Interface finale de la Nuit de l'Info, fruit d'une coordination intense en équipe sur une période de 15h non-stop."
+          },
+          {
+            name: "Gestion des Issues Client - Gecolab",
+            link: "/project/project-gecolab",
+            type: "interface",
+            image: "projet/Gecolab/services.jpeg",
+            explanation: "Pour le projet Gecolab, j'ai utilisé les issues GitHub pour centraliser les retours du client. Chaque demande a été transformée en ticket technique, permettant un suivi transparent et rigoureux de l'avancement."
           }
         ]
       }
@@ -294,6 +226,14 @@ const competencies = [
             language: "yaml",
             code: "name: Deploy to K8s\non: [push]\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v2\n      - name: Deploy\n        run: kubectl apply -f k8s/",
             explanation: "Automatisation du déploiement (CI/CD) garantissant que chaque évolution du code est intégrée de manière sécurisée et reproductible."
+          },
+          {
+            name: "CI/CD Pipeline - Gecolab",
+            link: "/project/project-gecolab",
+            type: "code",
+            language: "yaml",
+            code: "name: Gecolab CI/CD\non:\n  push:\n    branches: [ main ]\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v2\n      - name: Build and Deploy\n        run: |\n          npm install\n          npm run build\n          # Commande de déploiement automatique",
+            explanation: "Mise en place d'un déploiement automatisé (GitHub Actions) pour le projet client Gecolab. Le pipeline gère le build Vue.js et le déploiement sur l'infrastructure cible, assurant une intégration continue fiable."
           }
         ]
       }

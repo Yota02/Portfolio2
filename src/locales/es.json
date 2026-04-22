@@ -80,7 +80,9 @@
       "education": "Proyecto Académico",
       "education_desc": "Este proyecto se realizó como parte de mi plan de estudios de BUT Informática. Cumple objetivos educativos específicos y fue evaluado por profesores.",
       "personnel": "Proyecto Personal",
-      "personnel_desc": "Este proyecto se realizó en mi tiempo libre por pura pasión. Me permite explorar nuevas tecnologías y superar mis límites fuera del marco escolar."
+      "personnel_desc": "Este proyecto se realizó en mi tiempo libre por pura pasión. Me permite explorar nuevas tecnologías y superar mis límites fuera del marco escolar.",
+      "professionnel": "Pedido de Cliente",
+      "professionnel_desc": "Este proyecto fue realizado para un cliente real. Implica una comunicación directa con el cliente, la gestión de necesidades y el cumplimiento de un pliego de condiciones estricto."
     },
     "subprojects": "Subproyectos",
     "view_project_link": "Ver proyecto →",
@@ -369,6 +371,19 @@
         "description": "Pipeline de procesamiento de datos para aprendizaje automático.",
         "longDescription": "Loom es un proyecto destinado a automatizar el flujo de trabajo de datos para modelos de IA, desde la recolección hasta el despliegue.",
         "startDate": "Enero 2026"
+      },
+      "project-gecolab": {
+        "description": "Sitio web profesional para un laboratorio de genética y conservación.",
+        "longDescription": "Gecolab es una plataforma web moderna diseñada para el Laboratorio de Genética de la Conservación de la Universidad de Lieja. El sitio presenta las misiones del laboratorio, sus servicios de análisis genéticos y sus proyectos de investigación. Desarrollado con Vue.js, integra mapas interactivos con Leaflet y un sistema de despliegue automatizado.",
+        "context": "Pedido de cliente real para la Universidad de Lieja. El proyecto buscaba reemplazar un sitio antiguo por una solución más moderna, responsive y fácil de mantener.",
+        "personalContribution": "Gestioné la totalidad de la relación con el cliente: recopilación de necesidades, presentación de prototipos y sesiones de retroalimentación. Técnicamente, implementé el frontend con Vue.js, configuré los mapas interactivos y establecí una pipeline CI/CD a través de GitHub Actions para un despliegue automático en cada actualización.",
+        "duration": "Proyecto realizado en 3 meses.",
+        "startDate": "Enero 2026",
+        "features": {
+          "0": "Interfaz moderna y responsive con Vue.js",
+          "1": "Mapeo interactivo de proyectos con Leaflet",
+          "2": "Gestión multilingüe (Francés/Inglés)"
+        }
       }
     }
   },

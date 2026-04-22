@@ -1,5 +1,5 @@
 export type ProjectCategory = "IA" | "Dev Web" | "Logiciel" | "Jeux Vidéo";
-export type ProjectPurpose = "Éducation" | "Personnel";
+export type ProjectPurpose = "Éducation" | "Personnel" | "Professionnel";
 
 export interface SubProject {
   id: string;
@@ -141,6 +141,11 @@ export const projects: Project[] = [
         items: ["projects.items.project-2.competencies.2.0"],
       },
       {
+        category: "Conduire",
+        level: "Niveau 3",
+        items: ["projects.items.project-2.competencies.2.1"]
+      },
+      {
         category: "Collaborer",
         level: "Niveau 2",
         items: ["projects.items.project-2.competencies.3.0", "projects.items.project-2.competencies.3.1"],
@@ -235,6 +240,16 @@ export const projects: Project[] = [
         level: "Niveau 1",
         items: ["projects.items.project-4.competencies.3.0"],
       },
+      {
+        category: "Conduire",
+        level: "Niveau 3",
+        items: ["projects.items.project-4.competencies.3.1"],
+      },
+      {
+        category: "Collaborer",
+        level: "Niveau 1",
+        items: ["projects.items.project-4.competencies.4.0"],
+      },
     ],
   },
   {
@@ -272,6 +287,11 @@ export const projects: Project[] = [
         category: "Optimiser",
         level: "Niveau 2",
         items: ["projects.items.project-5.competencies.2.0"],
+      },
+      {
+        category: "Collaborer",
+        level: "Niveau 1",
+        items: ["projects.items.project-5.competencies.3.0"],
       },
     ],
   },
@@ -497,10 +517,56 @@ export const projects: Project[] = [
       },
       {
         category: "Optimiser",
-        level: "Niveau 3",
+        level: "Niveau 2",
         items: ["projects.items.project-13.competencies.1.0"],
       },
     ],
+  },
+  {
+    id: "project-gecolab",
+    name: "Gecolab",
+    description: "projects.items.project-gecolab.description",
+    longDescription: "projects.items.project-gecolab.longDescription",
+    context: "projects.items.project-gecolab.context",
+    personalContribution: "projects.items.project-gecolab.personalContribution",
+    duration: "projects.items.project-gecolab.duration",
+    tags: ["Vue.js", "JavaScript", "HTML5", "CSS3", "GitHub Actions", "Git", "Leaflet"],
+    images: ["main.jpeg", "services.jpeg", "contact.jpeg"],
+    logo: "main.webp",
+    category: "Dev Web",
+    purpose: "Professionnel",
+    features: [
+      "projects.items.project-gecolab.features.0",
+      "projects.items.project-gecolab.features.1",
+      "projects.items.project-gecolab.features.2"
+    ],
+    links: { demo: "https://www.gecolab.be/#/", github: "#" },
+    folder: "Gecolab",
+    startDate: "projects.items.project-gecolab.startDate",
+    isOngoing: false,
+    newTech: ["GitHub Actions", "Leaflet"],
+    competencies: [
+      {
+        category: "Réaliser",
+        level: "Niveau 3",
+        items: ["projects.items.project-gecolab.competencies.0.0"]
+      },
+      {
+        category: "Conduire",
+        level: "Niveau 3",
+        items: ["projects.items.project-gecolab.competencies.1.0", "projects.items.project-gecolab.competencies.1.1"]
+      },
+      {
+        category: "Collaborer",
+        level: "Niveau 3",
+        items: ["projects.items.project-gecolab.competencies.2.0"]
+      },
+      {
+        category: "Administrer",
+        level: "Niveau 2",
+        items: ["projects.items.project-gecolab.competencies.3.0"]
+      }
+    ]
   },
 ];
 
@@ -509,7 +575,7 @@ export const categoryMap: Record<ProjectCategory, string> = {
 };
 
 export const purposeMap: Record<ProjectPurpose, string> = {
-  "Éducation": "education", "Personnel": "personnel"
+  "Éducation": "education", "Personnel": "personnel", "Professionnel": "professionnel"
 };
 
 export const getProjectById = (id: string): Project | undefined => projects.find((p) => p.id === id);

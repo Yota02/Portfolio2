@@ -84,7 +84,9 @@
       "education": "Projet Académique",
       "education_desc": "Ce projet a été réalisé dans le cadre de mon cursus en BUT Informatique. Il répond à des objectifs pédagogiques précis et a été évalué par des enseignants.",
       "personnel": "Projet Personnel",
-      "personnel_desc": "Ce projet a été réalisé sur mon temps libre par pure passion. Il me permet d'explorer de nouvelles technologies et de repousser mes limites en dehors du cadre scolaire."
+      "personnel_desc": "Ce projet a été réalisé sur mon temps libre par pure passion. Il me permet d'explorer de nouvelles technologies et de repousser mes limites en dehors du cadre scolaire.",
+      "professionnel": "Commande Client",
+      "professionnel_desc": "Ce projet a été réalisé pour un client réel. Il implique une communication directe avec le client, la gestion des besoins, et le respect d'un cahier des charges strict."
     },
     "subprojects": "Sous-projets",
     "view_project_link": "Voir le projet →",
@@ -110,14 +112,14 @@
         },
         "competencies": {
           "0": {
-            "0": "AC31.01 :: Choisir et implémenter les architectures adaptées (Architecture Web Vue.js/Flask)",
-            "1": "AC31.03 :: Intégrer des solutions dans un environnement de production"
+            "0": "AC31.01 :: Choisir et implémenter les architectures adaptées :: Architecture Web découplée avec Vue.js en frontend et Flask en backend, permettant une maintenance facilitée et une évolutivité des contenus pédagogiques.",
+            "1": "AC31.03 :: Intégrer des solutions dans un environnement de production :: Utilisation de services cloud pour l'hébergement de l'application et de l'API, avec une configuration sécurisée des variables d'environnement."
           },
           "1": {
-            "0": "AC25.02 :: Formaliser les besoins client et utilisateur"
+            "0": "AC25.02 :: Formaliser les besoins client et utilisateur :: Analyse des personas (élèves, professeurs) pour concevoir des parcours d'apprentissage adaptés et une interface intuitive."
           },
           "2": {
-            "0": "AC24.03 :: Organiser la restitution de données par de la programmation et de la visualisation (Dashboards)"
+            "0": "AC24.03 :: Organiser la restitution de données par de la programmation et de la visualisation :: Implémentation de tableaux de bord de progression permettant aux utilisateurs de visualiser leurs acquis via des graphiques dynamiques."
           }
         }
       },
@@ -136,20 +138,21 @@
         },
         "competencies": {
           "0": {
-            "0": "AC21.01 :: Élaborer et implémenter des spécifications fonctionnelles et non fonctionnelles",
-            "1": "AC21.04 :: Vérifier et valider la qualité de l'application par des tests"
+            "0": "AC21.01 :: Élaborer et implémenter des spécifications fonctionnelles et non fonctionnelles :: Rédaction d'un backlog produit complet et conception des diagrammes de cas d'utilisation pour définir les mécaniques de capture de flag.",
+            "1": "AC21.04 :: Vérifier et valider la qualité de l'application par des tests :: Mise en place de tests d'intégration pour vérifier la communication entre le frontend Flask et les conteneurs Docker de challenges."
           },
           "1": {
-            "0": "AC23.01 :: Concevoir et développer des applications communicantes",
-            "1": "AC23.02 :: Utiliser des serveurs et des services réseau virtualisés (Docker)",
-            "2": "AC23.03 :: Sécuriser les services et les données d'un système (SSH)"
+            "0": "AC23.01 :: Concevoir et développer des applications communicantes :: Développement d'une architecture client-serveur permettant l'envoi et la validation des flags en temps réel via des sockets sécurisés.",
+            "1": "AC23.02 :: Utiliser des serveurs et des services réseau virtualisés :: Isolation complète de chaque challenge de sécurité dans des conteneurs Docker distincts, garantissant la stabilité et la sécurité de l'infrastructure hôte.",
+            "2": "AC23.03 :: Sécuriser les services et les données d'un système :: Configuration de tunnels SSH sécurisés pour l'administration des serveurs de challenges et protection des bases de données utilisateurs."
           },
           "2": {
-            "0": "AC25.04 :: Définir et mettre en œuvre une démarche de suivi de projet (Scrum/Agile)"
+            "0": "AC25.04 :: Définir et mettre en œuvre une démarche de suivi de projet :: Utilisation de la méthodologie Scrum avec sprints de 2 semaines et réunions de rétrospective pour s'assurer du respect des délais.",
+            "1": "AC25.02 :: Formaliser les besoins client et utilisateur :: Analyse et rédaction des exigences pour la plateforme CTF en collaboration avec les enseignants pour simuler une demande client réelle."
           },
           "3": {
-            "0": "AC26.03 :: Mobiliser des compétences interpersonnelles pour travailler dans une équipe informatique",
-            "1": "AC26.04 :: Rendre compte de son activité professionnelle"
+            "0": "AC26.03 :: Mobiliser des compétences interpersonnelles pour travailler dans une équipe informatique :: Coordination technique fluide entre les membres de l'équipe pour l'intégration des différents modules de la plateforme.",
+            "1": "AC26.04 :: Rendre compte de son activité professionnelle :: Rédaction de rapports techniques hebdomadaires et soutenance finale présentant les choix d'architecture et de sécurité."
           }
         },
         "subProjects": {
@@ -187,14 +190,14 @@
         },
         "competencies": {
           "0": {
-            "0": "AC21.03 :: Adopter de bonnes pratiques de conception et de programmation (MVC Symfony)",
-            "1": "AC21.02 :: Appliquer les principes d'accessibilité et d'ergonomie"
+            "0": "AC21.03 :: Adopter de bonnes pratiques de conception et de programmation :: Application stricte du design pattern MVC avec Symfony, assurant une séparation nette entre la logique de simulation économique et l'affichage des graphiques.",
+            "1": "AC21.02 :: Appliquer les principes d'accessibilité et d'ergonomie :: Création d'un dashboard financier lisible et intuitif, testé auprès d'utilisateurs pour optimiser la prise de décision rapide pendant le jeu."
           },
           "1": {
-            "0": "AC24.01 :: Optimiser les modèles de données de l'entreprise"
+            "0": "AC24.01 :: Optimiser les modèles de données de l'entreprise :: Modélisation et normalisation d'une base de données MySQL complexe gérant les stocks, les employés, les investissements et l'historique financier des startups."
           },
           "2": {
-            "0": "AC26.01 :: Comprendre la diversité, la structure et la dimension de l'informatique dans une organisation"
+            "0": "AC26.01 :: Comprendre la diversité, la structure et la dimension de l'informatique dans une organisation :: Analyse des flux d'information comptables pour les traduire en fonctionnalités logicielles automatisées."
           }
         }
       },
@@ -213,14 +216,21 @@
         },
         "competencies": {
           "0": {
-            "0": "AC11.01 :: Implémenter des conceptions simples (Architecture Star Guardian)",
-            "1": "AC11.04 :: Développer des interfaces utilisateur (Tkinter)"
+            "0": "AC11.01 :: Implémenter des conceptions simples :: Architecture modulaire en Python permettant le traitement séquentiel des fichiers CDM et la génération de rapports.",
+            "1": "AC11.04 :: Développer des interfaces utilisateur :: Conception d'une interface graphique avec Tkinter offrant un tableau de bord de suivi des alertes."
           },
           "1": {
-            "0": "AC22.01 :: Choisir des structures de données complexes (Dataframes Pandas)"
+            "0": "AC22.01 :: Choisir des structures de données complexes :: Utilisation intensive de Dataframes Pandas pour le tri, le filtrage et l'analyse statistique de milliers de messages."
           },
           "2": {
-            "0": "AC24.04 :: Manipuler des données hétérogènes (Excel, CSV, API)"
+            "0": "AC24.04 :: Manipuler des données hétérogènes :: Développement de scripts d'importation capables de parser des formats variés (XML, CSV) et de les centraliser."
+          },
+          "3": {
+            "0": "AC35.03 :: Identifier les critères de faisabilité d'un projet informatique :: Étude de faisabilité technique pour l'automatisation du MCC, incluant l'analyse des ressources nécessaires.",
+            "1": "AC25.02 :: Formaliser les besoins client et utilisateur :: Immersion au sein de l'équipe du CSUM pour extraire les besoins critiques des ingénieurs de vol et les traduire en fonctionnalités logicielles d'alerte."
+          },
+          "4": {
+            "0": "AC16.02 :: Identifier les différents métiers de l'informatique :: Collaboration directe avec les experts du domaine spatial pour aligner le logiciel sur les processus opérationnels."
           }
         }
       },
@@ -238,15 +248,18 @@
         },
         "competencies": {
           "0": {
-            "0": "AC11.03 :: Réaliser des tests et évaluer leurs résultats par rapport aux spécifications (TDD/JUnit)",
-            "1": "AC11.04 :: Développer des interfaces utilisateur (JavaFX)"
+            "0": "AC11.03 :: Réaliser des tests et évaluer leurs résultats :: Mise en œuvre d'une couverture de tests unitaires exhaustive avec JUnit suivant la méthodologie TDD.",
+            "1": "AC11.04 :: Développer des interfaces utilisateur :: Développement d'une interface utilisateur réactive avec JavaFX intégrant des éléments graphiques dynamiques."
           },
           "1": {
-            "0": "AC12.01 :: Analyser un problème avec méthode (décomposition en éléments algorithmiques simples)",
-            "1": "AC12.02 :: Comparer des algorithmes pour des problèmes classiques (Dijkstra)"
+            "0": "AC12.01 :: Analyser un problème avec méthode :: Modélisation des règles de deck-building par une décomposition algorithmique précise des phases de jeu.",
+            "1": "AC12.02 :: Comparer des algorithmes pour des problèmes classiques :: Implémentation de l'algorithme de Dijkstra pour calculer les chemins les plus courts et valider les liaisons."
           },
           "2": {
-            "0": "AC22.01 :: Choisir des structures de données complexes adaptées au problème (Graphes)"
+            "0": "AC22.01 :: Choisir des structures de données complexes :: Modélisation du réseau ferroviaire sous forme de graphe pondéré facilitant le calcul des scores."
+          },
+          "3": {
+            "0": "AC16.03 :: Acquérir les bases d'une communication efficace :: Collaboration active en binôme pour la répartition des modules Java et la synchronisation des suites de tests unitaires via Git."
           }
         }
       },
@@ -265,10 +278,10 @@
         },
         "competencies": {
           "0": {
-            "0": "AC21.03 :: Adopter de bonnes pratiques de conception et de programmation"
+            "0": "AC21.03 :: Adopter de bonnes pratiques de conception :: Application des principes de modularité et de documentation pour assurer la réutilisabilité du pipeline d'entraînement."
           },
           "1": {
-            "0": "AC22.02 :: Utiliser des techniques algorithmiques adaptées pour des problèmes complexes (Intelligence Artificielle)"
+            "0": "AC22.02 :: Utiliser des techniques algorithmiques adaptées :: Conception et entraînement d'un réseau de neurones convolutionnel (CNN) optimisé pour la reconnaissance visuelle."
           }
         }
       },
@@ -286,14 +299,14 @@
         },
         "competencies": {
           "0": {
-            "0": "AC31.02 :: Faire évoluer une application existante (Système de Plugins)",
-            "1": "AC31.01 :: Choisir et implémenter les architectures adaptées (Modulaire)"
+            "0": "AC31.02 :: Faire évoluer une application existante :: Conception d'un système de chargement dynamique de plugins permettant d'ajouter des fonctionnalités (RSS, GitHub) sans modifier le noyau stable de l'assistant.",
+            "1": "AC31.01 :: Choisir et implémenter les architectures adaptées :: Architecture modulaire événementielle permettant une communication fluide entre le cœur Python et les différents modules d'IA (LLM)."
           },
           "1": {
-            "0": "AC22.02 :: Utiliser des techniques algorithmiques adaptées pour des problèmes complexes (IA, RAG)"
+            "0": "AC22.02 :: Utiliser des techniques algorithmiques adaptées pour des problèmes complexes :: Implémentation d'une chaîne de RAG (Retrieval-Augmented Generation) avec ChromaDB pour permettre à l'IA d'interroger des documents locaux avec contexte."
           },
           "2": {
-            "0": "AC13.01 :: Identifier les différents composants (matériels et logiciels) d'un système numérique"
+            "0": "AC13.01 :: Identifier les composants d'un système numérique :: Analyse des entrées/sorties audio pour configurer les couches logicielles de reconnaissance vocale sur Windows et Linux."
           }
         },
         "subProjects": {
@@ -329,13 +342,13 @@
         },
         "competencies": {
           "0": {
-            "0": "AC31.01 :: Choisir et implémenter les architectures adaptées (Mobile/PWA)"
+            "0": "AC31.01 :: Choisir et implémenter les architectures adaptées :: Développement d'une Progressive Web App (PWA) permettant une utilisation offline et une installation mobile."
           },
           "1": {
-            "0": "AC23.01 :: Concevoir et développer des applications communicantes (Firebase)"
+            "0": "AC23.01 :: Concevoir et développer des applications communicantes :: Intégration de Firebase pour la persistance des données et la synchronisation temps réel des statistiques."
           },
           "2": {
-            "0": "AC14.01 :: Mettre à jour et interroger une base de données relationnelle (MySQL)"
+            "0": "AC14.01 :: Mettre à jour et interroger une base de données :: Utilisation de SQL pour gérer les relations entre les mots, les thèmes et l'historique de mémorisation."
           }
         }
       },
@@ -353,11 +366,11 @@
         },
         "competencies": {
           "0": {
-            "0": "AC11.01 :: Implémenter des conceptions simples",
-            "1": "AC11.04 :: Développer des interfaces utilisateur"
+            "0": "AC11.01 :: Implémenter des conceptions simples :: Architecture Flask structurée permettant une navigation fluide entre les fiches d'œuvres et les profils utilisateurs.",
+            "1": "AC11.04 :: Développer des interfaces utilisateur :: Création de formulaires dynamiques pour la saisie des notes et commentaires avec validation côté serveur."
           },
           "1": {
-            "0": "AC14.03 :: Concevoir une base de données relationnelle à partir d'un cahier des charges"
+            "0": "AC14.03 :: Concevoir une base de données relationnelle :: Conception d'un schéma entité-association optimisé pour stocker les œuvres, les utilisateurs et leurs interactions."
           }
         }
       },
@@ -376,15 +389,15 @@
         },
         "competencies": {
           "0": {
-            "0": "AC26.03 :: Mobiliser des compétences interpersonnelles pour travailler dans une équipe informatique",
-            "1": "AC26.01 :: Comprendre la diversité et la dynamique d'une équipe informatique"
+            "0": "AC26.03 :: Mobiliser des compétences interpersonnelles pour travailler dans une équipe informatique :: Gestion de la communication interne au sein d'une équipe de 7 personnes pendant 15 heures, assurant une cohésion et une motivation constante malgré la fatigue.",
+            "1": "AC26.01 :: Comprendre la diversité et la dynamique d'une équipe informatique :: Analyse des forces de chaque membre (designers, dev backend/frontend) pour optimiser la synergie du groupe."
           },
           "1": {
-            "0": "AC25.01 :: Organiser le travail d'une équipe (Répartition des tâches)",
-            "1": "AC25.03 :: Identifier des critères de faisabilité (Gestion temps court)"
+            "0": "AC25.01 :: Organiser le travail d'une équipe :: Mise en place d'un tableau Kanban (GitHub Projects) pour une répartition équitable et efficace des tâches techniques sous contrainte de temps extrême.",
+            "1": "AC25.03 :: Identifier des critères de faisabilité :: Évaluation en temps réel des fonctionnalités 'must-have' vs 'nice-to-have' pour garantir la livraison d'un MVP fonctionnel au bout de la nuit."
           },
           "2": {
-            "0": "AC21.03 :: Adopter de bonnes pratiques de conception et de programmation (Code collaboratif)"
+            "0": "AC21.03 :: Adopter de bonnes pratiques de conception et de programmation :: Utilisation rigoureuse de Git (branches, PR) et de standards de code pour permettre un travail simultané sans conflits techniques."
           }
         }
       },
@@ -399,6 +412,14 @@
           "0": "Narration interactive basée sur des choix scientifiques",
           "1": "Puzzles moléculaires pour comprendre la chiralité",
           "2": "Moteur de jeu léger et performant en Vanilla JS"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC21.03 :: Adopter de bonnes pratiques de conception :: Développement modulaire en JavaScript pur permettant une extension facile des mécaniques de puzzle."
+          },
+          "1": {
+            "0": "AC22.02 :: Utiliser des techniques algorithmiques adaptées :: Implémentation d'un algorithme de propagation de contamination basé sur les propriétés biologiques des molécules."
+          }
         }
       },
       "project-13": {
@@ -415,10 +436,10 @@
         },
         "competencies": {
           "0": {
-            "0": "AC31.03 :: Intégrer des solutions dans un environnement de production (CI/CD pour l'IA)"
+            "0": "AC31.03 :: Intégrer des solutions dans un environnement de production :: Automatisation de la mise en production des modèles via Docker assurant la cohérence des environnements."
           },
           "1": {
-            "0": "AC32.01 :: Utiliser des modèles mathématiques et statistiques pour résoudre des problèmes complexes"
+            "0": "AC32.01 :: Utiliser des modèles mathématiques et statistiques :: Application de modèles statistiques pour le prétraitement des données (normalisation, outliers) avant l'entraînement."
           }
         }
       },
@@ -437,18 +458,46 @@
         },
         "competencies": {
           "0": {
-            "0": "AC33.01 :: Concevoir et gérer des infrastructures hybrides ou cloud",
-            "1": "AC33.02 :: Automatiser le déploiement et la maintenance d'une infrastructure complexe"
+            "0": "AC33.01 :: Concevoir et gérer des infrastructures cloud :: Mise en place d'un cluster Kubernetes managé pour orchestrer les micro-services et garantir leur haute disponibilité.",
+            "1": "AC33.02 :: Automatiser le déploiement d'une infrastructure :: Automatisation de l'infrastructure via Terraform (IaC) pour permettre une réplication rapide et fiable."
           },
           "1": {
-            "0": "AC35.01 :: Piloter un projet complexe impliquant plusieurs parties prenantes",
-            "1": "AC35.02 :: Garantir la qualité et la sécurité tout au long du cycle de vie"
+            "0": "AC35.01 :: Piloter un projet complexe :: Coordination des différents intervenants (sécurité, réseau, dev) en utilisant des méthodes agiles pour aligner les objectifs.",
+            "1": "AC35.02 :: Garantir la qualité et la sécurité :: Implémentation de scans de vulnérabilités automatiques dans la pipeline CI/CD pour garantir un niveau de sécurité maximal."
           },
           "2": {
-            "0": "AC36.01 :: Manager une équipe informatique ou coordonner des experts",
-            "1": "AC36.02 :: Réaliser une veille technologique stratégique"
+            "0": "AC36.01 :: Manager une équipe informatique :: Gestion d'une équipe technique de 6 personnes incluant la définition des rôles, le suivi et la résolution des blocages.",
+            "1": "AC36.02 :: Réaliser une veille technologique stratégique :: Veille technologique active sur les outils d'observabilité (Prometheus, Grafana) pour intégrer les meilleures pratiques."
           }
         }
+      },
+      "project-gecolab": {
+        "description": "Site vitrine professionnel pour un laboratoire de génétique et de conservation.",
+        "longDescription": "Gecolab est une plateforme web moderne conçue pour le Laboratoire de Génétique de la Conservation de l'Université de Liège. Le site présente les missions du labo, ses services d'analyses génétiques et ses projets de recherche. Développé en Vue.js, il intègre des cartes interactives avec Leaflet et un système de déploiement automatisé.",
+        "context": "Commande de client réelle pour l'Université de Liège. Le projet visait à remplacer un ancien site par une solution plus moderne, responsive et facile à maintenir.",
+        "personalContribution": "J'ai géré l'intégralité de la relation client : recueil des besoins, présentation des maquettes, et sessions de feedback. Techniquement, j'ai implémenté le frontend avec Vue.js, configuré les cartes interactives et mis en place une pipeline CI/CD via GitHub Actions pour un déploiement automatique à chaque mise à jour.",
+        "duration": "Projet réalisé sur 3 mois.",
+        "startDate": "Janvier 2026",
+        "features": {
+          "0": "Interface moderne et responsive avec Vue.js",
+          "1": "Cartographie interactive des projets avec Leaflet",
+          "2": "Gestion multilingue (Français/Anglais)"
+        },
+          "competencies": {
+            "0": {
+              "0": "AC31.03 :: Intégrer des solutions dans un environnement de production :: Déploiement automatisé du site vitrine via une pipeline CI/CD (GitHub Actions), garantissant une mise à jour instantanée et sans interruption de service pour le client."
+            },
+            "1": {
+              "0": "AC25.02 :: Formaliser les besoins client et utilisateur :: Traduction des attentes du laboratoire (visibilité, cartographie des projets) en spécifications techniques et maquettes UI validées lors de réunions hebdomadaires.",
+              "1": "AC25.04 :: Définir et mettre en œuvre une démarche de suivi de projet :: Utilisation rigoureuse des Issues et des Projets GitHub pour suivre l'avancement des tâches et prioriser les retours du client (feedback loop)."
+            },
+            "2": {
+              "0": "AC26.04 :: Rendre compte de son activité professionnelle :: Animation de présentations bimensuelles au client pour exposer les avancées techniques et justifier les choix technologiques (Vue.js, Leaflet)."
+            },
+            "3": {
+              "0": "AC33.02 :: Automatiser le déploiement et la maintenance d'une infrastructure :: Configuration de scripts de build optimisés et de workflows de déploiement automatique sur hébergement web, réduisant les erreurs manuelles à zéro."
+            }
+          }
       }
     }
   },
