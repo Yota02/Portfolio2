@@ -532,7 +532,7 @@ export const projects: Project[] = [
     duration: "projects.items.project-gecolab.duration",
     tags: ["Vue.js", "JavaScript", "HTML5", "CSS3", "GitHub Actions", "Git", "Leaflet"],
     images: ["main.jpeg", "services.jpeg", "contact.jpeg"],
-    logo: "main.webp",
+    logo: "main.jpeg",
     category: "Dev Web",
     purpose: "Professionnel",
     features: [
