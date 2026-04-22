@@ -2,7 +2,7 @@
 import { useRoute, RouterLink } from 'vue-router'
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getProjectById, techIconMap, purposeMap } from '@/data/projects'
+import { getProjectById, techIconMap, purposeMap, type ProjectPurpose } from '@/data/projects'
 
 const { t } = useI18n()
 const baseUrl = import.meta.env.BASE_URL
@@ -36,7 +36,12 @@ const project = computed(() => {
     subProjects: [],
     competencies: [],
     category: 'Logiciel',
-    purpose: 'Personnel'
+    purpose: 'Personnel' as ProjectPurpose,
+    context: '',
+    personalContribution: '',
+    duration: '',
+    newTech: [],
+    logo: ''
   }
 })
 
@@ -120,39 +125,41 @@ const isVideo = (src: string): boolean => {
 const parseAC = (acString: string) => {
   if (!acString || typeof acString !== 'string') return { id: '', name: '' }
   
-  // Cas avec "::" (nouveau séparateur pour éviter le conflit avec la pluralisation i18n)
   if (acString.includes('::')) {
-    const [id, ...nameParts] = acString.split('::')
+    const parts = acString.split('::')
+    const id = parts[0] || ''
+    const nameParts = parts.slice(1)
     return { 
       id: id.trim(), 
       name: nameParts.join('::').trim() 
     }
   }
 
-  // Cas simple : "ID | Nom" (fallback si encore présent)
   if (acString.includes('|')) {
-    const [id, ...nameParts] = acString.split('|')
+    const parts = acString.split('|')
+    const id = parts[0] || ''
+    const nameParts = parts.slice(1)
     return { 
       id: id.trim(), 
       name: nameParts.join('|').trim() 
     }
   }
   
-  // Cas avec ":" : "ID : Nom"
   if (acString.includes(':')) {
-    const [id, ...nameParts] = acString.split(':')
+    const parts = acString.split(':')
+    const id = parts[0] || ''
+    const nameParts = parts.slice(1)
     return { 
       id: id.trim(), 
       name: nameParts.join(':').trim() 
     }
   }
 
-  // Fallback regex pour "ACxxxx.xx Nom"
   const acMatch = acString.match(/^(AC\s*\d+\.\d+)(.*)$/i)
-  if (acMatch && acMatch[2].trim()) {
+  if (acMatch) {
     return {
-      id: acMatch[1].trim(),
-      name: acMatch[2].trim()
+      id: (acMatch[1] || '').trim(),
+      name: (acMatch[2] || '').trim() || acString
     }
   }
   
@@ -184,10 +191,10 @@ const parseAC = (acString: string) => {
         </button>
         <div class="title-wrapper">
           <h1 class="project-title">{{ project.name }}</h1>
-          <span :class="['purpose-badge', purposeMap[project.purpose]]">
+          <span :class="['purpose-badge', purposeMap[project.purpose as ProjectPurpose]]">
             <svg v-if="project.purpose === 'Éducation'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
             <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            {{ t('projects.purposes.' + purposeMap[project.purpose]) }}
+            {{ t('projects.purposes.' + purposeMap[project.purpose as ProjectPurpose]) }}
           </span>
         </div>
         <p class="project-subtitle">{{ t(project.description) }}</p>
@@ -262,14 +269,14 @@ const parseAC = (acString: string) => {
             <p>{{ t(project.duration) }}</p>
           </div>
 
-          <div class="info-card purpose-card" :class="purposeMap[project.purpose]">
+          <div class="info-card purpose-card" :class="purposeMap[project.purpose as ProjectPurpose]">
             <div class="card-icon">
               <svg v-if="project.purpose === 'Éducation'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
               <svg v-else xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </div>
             <div class="card-content">
-              <h3>{{ t('projects.purposes.' + purposeMap[project.purpose]) }}</h3>
-              <p>{{ t('projects.purposes.' + purposeMap[project.purpose] + '_desc') }}</p>
+              <h3>{{ t('projects.purposes.' + purposeMap[project.purpose as ProjectPurpose]) }}</h3>
+              <p>{{ t('projects.purposes.' + purposeMap[project.purpose as ProjectPurpose] + '_desc') }}</p>
             </div>
           </div>
 

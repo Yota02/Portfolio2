@@ -31,17 +31,17 @@ interface CompetencyWithProjects extends Competency {
 const parseAC = (translatedItem: string) => {
   const parts = translatedItem.split('::').map(p => p.trim())
   if (parts.length >= 3) {
-    return { code: parts[0], title: parts[1], context: parts[2] }
+    return { code: parts[0] || '', title: parts[1] || '', context: parts[2] || '' }
   }
   if (parts.length === 2) {
-    let title = parts[1]
+    let title = parts[1] || ''
     let context = ''
     const match = title.match(/\(([^)]+)\)$/)
     if (match) {
-      context = match[1]
+      context = match[1] || ''
       title = title.replace(/\s*\([^)]+\)$/, '').trim()
     }
-    return { code: parts[0], title, context }
+    return { code: parts[0] || '', title, context }
   }
   return { code: '', title: translatedItem, context: '' }
 }
@@ -78,7 +78,9 @@ const competenciesByCategory = computed(() => {
   })
 
   Object.keys(grouped).forEach(cat => {
-    grouped[cat].sort((a, b) => a.level.localeCompare(b.level))
+    if (grouped[cat]) {
+      grouped[cat]!.sort((a, b) => a.level.localeCompare(b.level))
+    }
   })
 
   return grouped

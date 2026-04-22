@@ -293,7 +293,7 @@ const competencies = [
                 </h4>
                 <div class="detailed-traces">
                   <div v-for="(trace, tIndex) in ac.traces" :key="tIndex" class="detailed-trace-card">
-                    <div class="trace-visual-container" @click="trace.type !== 'code' && openModal(trace.image, trace.name, trace.explanation)">
+                    <div class="trace-visual-container" @click="trace.type !== 'code' && openModal(trace.image || '', trace.name, trace.explanation)">
                       <!-- Image / Diagram -->
                       <img v-if="trace.type !== 'code'" :src="`${baseUrl}${trace.image}`" :alt="trace.name" class="trace-visual-media" />
 
