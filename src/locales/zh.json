@@ -546,20 +546,30 @@
         "institution": "蒙彼利埃-塞特 IUT",
         "description": "计算机科学全方位培训：软件开发、Web、数据库、网络和人工智能。"
       },
+      "obj-5": {
+        "title": "Licence IAE (双学位)",
+        "institution": "IAE Montpellier",
+        "description": "管理与行政方面的补充培训。"
+      },
       "obj-2": {
         "title": "普通高中毕业证",
         "institution": "Jean Jaurès 中学",
         "description": "主修数学和 NSI（数字与计算机科学）。优等成绩。"
       },
-      "obj-3": {
-        "title": "CTF 平台开发与设计者",
-        "institution": "蒙彼利埃 IUT (项目)",
-        "description": "设计并开发一个网络安全挑战平台。使用 Flask、Docker 和敏捷方法。"
+      "obj-6": {
+        "title": "生物信息学硕士 (2026-2028)",
+        "institution": "大学 (目标)",
+        "description": "计算机科学与生物学交叉领域的专业化。"
       },
-      "obj-4": {
-        "title": "人工智能开发者与桌面助手",
-        "institution": "个人项目 (Victoria)",
-        "description": "使用本地 AI 创建模块化助手。集成 LLM 和插件系统。"
+      "obj-7": {
+        "title": "病毒学博士 (2028-2030)",
+        "institution": "研究实验室",
+        "description": "专注于病毒及其感染机制的研究。"
+      },
+      "obj-8": {
+        "title": "博士后与研究",
+        "institution": "国际 (日本、中国、德国)",
+        "description": "先进的国际研究以及教学研究员的职业生涯。"
       }
     }
   },

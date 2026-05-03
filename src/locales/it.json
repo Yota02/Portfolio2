@@ -32,9 +32,9 @@
     },
     "parcours": {
       "title": "Il mio Percorso",
-      "p1": "Attualmente al <strong class=\"text-dark\">3° anno di informatica all'IUT di Montpellier</strong>, mi sto specializzando in algoritmi e sistemi complessi.",
-      "p2": "Il mio obiettivo è proseguire con un <span class=\"text-blue\">Master in Bioinformatica</span>, dove combinerò l'informatica e le scienze della vita per analizzare dati biologici.",
-      "p3": "In parallelo, sto sviluppando una <span class=\"text-emerald\">IA personale</span> per esplorare l'apprendimento automatico e le sue applicazioni pratiche."
+      "p1": "Attualmente al <strong class=\"text-dark\">3° anno di informatica all'IUT di Montpellier</strong> e in una <strong class=\"text-dark\">doppia laurea in Licenza IAE</strong>, mi sto specializzando in algoritmi e sistemi complessi.",
+      "p2": "Il mio obiettivo è conseguire un <span class=\"text-blue\">Master in Bioinformatica</span> (2026-2028), e poi un <span class=\"text-blue\">Dottorato in Virologia</span> (2028-2030) per diventare ricercatore.",
+      "p3": "Aspiro a realizzare dei <span class=\"text-emerald\">post-dottorati in Giappone, Cina o Germania</span> per arricchire la mia esperienza internazionale prima di dedicarmi pienamente alla ricerca."
     },
     "international": {
       "title": "Ambizione Internazionale",
@@ -551,15 +551,25 @@
         "institution": "Lycée Jean Jaurès",
         "description": "Specializzazioni in Matematica e Informatica. Lode."
       },
-      "obj-3": {
-        "title": "Sviluppatore & Progettista Piattaforma CTF",
-        "institution": "IUT di Montpellier (Progetto)",
-        "description": "Progettazione e sviluppo di una piattaforma di sfide di cybersicurezza. Uso di Flask, Docker e metodologie Agile."
+      "obj-5": {
+        "title": "Licence IAE (Doppia Laurea)",
+        "institution": "IAE Montpellier",
+        "description": "Formazione complementare in gestione e amministrazione."
       },
-      "obj-4": {
-        "title": "Sviluppatore IA & Assistente Desktop",
-        "institution": "Progetto Personale (Victoria)",
-        "description": "Creazione di un assistente modulare con IA locale. Integrazione di LLM e sistema di plugin."
+      "obj-6": {
+        "title": "Master in Bioinformatica (2026-2028)",
+        "institution": "Università (Target)",
+        "description": "Specializzazione all'interfaccia tra informatica e biologia."
+      },
+      "obj-7": {
+        "title": "PhD in Virologia (2028-2030)",
+        "institution": "Laboratorio di Ricerca",
+        "description": "Ricerca focalizzata sullo studio dei virus e dei meccanismi di infezione."
+      },
+      "obj-8": {
+        "title": "Post-dottorati & Ricerca",
+        "institution": "Internazionale (Giappone, Cina, Germania)",
+        "description": "Ricerca internazionale avanzata e carriera come professore-ricercatore."
       }
     }
   },

@@ -14,12 +14,36 @@ interface TimelineItem {
 
 const timelineItems: TimelineItem[] = [
   {
-    id: 'obj-4',
-    titleKey: 'obj-4.title',
-    institutionKey: 'obj-4.institution',
-    date: `Mai 2025 - ${t('objectives.today')}`,
-    descriptionKey: 'obj-4.description',
+    id: 'obj-8',
+    titleKey: 'obj-8.title',
+    institutionKey: 'obj-8.institution',
+    date: '2030+',
+    descriptionKey: 'obj-8.description',
     type: 'experience'
+  },
+  {
+    id: 'obj-7',
+    titleKey: 'obj-7.title',
+    institutionKey: 'obj-7.institution',
+    date: '2028 - 2030',
+    descriptionKey: 'obj-7.description',
+    type: 'education'
+  },
+  {
+    id: 'obj-6',
+    titleKey: 'obj-6.title',
+    institutionKey: 'obj-6.institution',
+    date: '2026 - 2028',
+    descriptionKey: 'obj-6.description',
+    type: 'education'
+  },
+  {
+    id: 'obj-5',
+    titleKey: 'obj-5.title',
+    institutionKey: 'obj-5.institution',
+    date: '2025 - 2026',
+    descriptionKey: 'obj-5.description',
+    type: 'education'
   },
   {
     id: 'obj-1',
@@ -28,14 +52,6 @@ const timelineItems: TimelineItem[] = [
     date: '2023 - 2026',
     descriptionKey: 'obj-1.description',
     type: 'education'
-  },
-  {
-    id: 'obj-3',
-    titleKey: 'obj-3.title',
-    institutionKey: 'obj-3.institution',
-    date: 'Sept. 2024 - Janv. 2025',
-    descriptionKey: 'obj-3.description',
-    type: 'experience'
   },
   {
     id: 'obj-2',

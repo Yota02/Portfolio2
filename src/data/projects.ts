@@ -37,6 +37,8 @@ export interface Project {
   folder: string;
   startDate?: string; // Key
   endDate?: string; // Key
+  startDateStr?: string; // ISO YYYY-MM
+  endDateStr?: string; // ISO YYYY-MM
   isOngoing?: boolean;
   newTech: string[];
   subProjects?: SubProject[];
@@ -80,6 +82,7 @@ export const projects: Project[] = [
     links: { demo: "#", github: "#" },
     folder: "CodeTonFutur",
     startDate: "projects.items.project-1.startDate",
+    startDateStr: "2025-04",
     isOngoing: true,
     newTech: [],
     competencies: [
@@ -122,6 +125,8 @@ export const projects: Project[] = [
     folder: "CTF",
     startDate: "projects.items.project-2.startDate",
     endDate: "projects.items.project-2.endDate",
+    startDateStr: "2024-09",
+    endDateStr: "2025-01",
     isOngoing: false,
     newTech: ["Docker", "Scrum", "SSH", "Flask"],
     competencies: [
@@ -164,7 +169,7 @@ export const projects: Project[] = [
     context: "projects.items.project-3.context",
     personalContribution: "projects.items.project-3.personalContribution",
     duration: "projects.items.project-3.duration",
-    tags: ["Symfony", "Twig", "CSS3", "HTML5", "JavaScript", "MySQL"],
+    tags: ["Symfony", "Twig", "CSS3", "HTML5", "JavaScript", "MySQL", "GitHub Actions"],
     images: ["live_capture.webp", "uml_plugins.webp", "mcd.webp", "code_plugin.webp", "capital-wars.webp", "capital-wars2.webp", "capital-wars3.webp"],
     logo: "logo.webp",
     category: "Jeux Vidéo",
@@ -179,6 +184,7 @@ export const projects: Project[] = [
     links: { demo: "https://dev.capitalwars.rlbrt.fr/accueil", github: "#" },
     folder: "CapitalWars",
     startDate: "projects.items.project-3.startDate",
+    startDateStr: "2025-09",
     isOngoing: true,
     newTech: ["Symfony", "Twig"],
     competencies: [
@@ -217,6 +223,8 @@ export const projects: Project[] = [
     folder: "starGuardian",
     startDate: "projects.items.project-4.startDate",
     endDate: "projects.items.project-4.endDate",
+    startDateStr: "2025-05",
+    endDateStr: "2025-07",
     isOngoing: false,
     newTech: ["Pandas"],
     competencies: [
@@ -270,6 +278,8 @@ export const projects: Project[] = [
     folder: "trains",
     startDate: "projects.items.project-5.startDate",
     endDate: "projects.items.project-5.endDate",
+    startDateStr: "2024-03",
+    endDateStr: "2024-06",
     isOngoing: false,
     newTech: ["JavaFX", "JUnit"],
     competencies: [
@@ -313,6 +323,8 @@ export const projects: Project[] = [
     folder: "IA_Kiana",
     startDate: "projects.items.project-6.startDate",
     endDate: "projects.items.project-6.endDate",
+    startDateStr: "2023-06",
+    endDateStr: "2024-06",
     isOngoing: false,
     newTech: ["Pytorch"],
     competencies: [
@@ -336,7 +348,7 @@ export const projects: Project[] = [
     context: "projects.items.project-7.context",
     personalContribution: "projects.items.project-7.personalContribution",
     duration: "projects.items.project-7.duration",
-    tags: ["Python", "CustomTkinter", "Watchdog", "ChromaDb", "Ollama"],
+    tags: ["Python", "CustomTkinter", "Watchdog", "ChromaDb", "Ollama", "GitHub Actions"],
     images: ["main.webp", "rss.webp", "issue_maker.webp", "logo.webp"],
     logo: "logo.webp",
     logo_recadrer: "logo_recadrer.webp",
@@ -346,6 +358,7 @@ export const projects: Project[] = [
     links: { demo: "#", github: "https://github.com/Yota02/Victoria_v3" },
     folder: "Victoria",
     startDate: "projects.items.project-7.startDate",
+    startDateStr: "2025-05",
     isOngoing: true,
     newTech: ["CustomTkinter", "Watchdog"],
     competencies: [
@@ -378,7 +391,7 @@ export const projects: Project[] = [
     context: "projects.items.project-8.context",
     personalContribution: "projects.items.project-8.personalContribution",
     duration: "projects.items.project-8.duration",
-    tags: ["Symfony", "Twig", "Firebase", "MySQL", "CSS3", "HTML5", "JavaScript"],
+    tags: ["Symfony", "Twig", "Firebase", "MySQL", "CSS3", "HTML5", "JavaScript", "GitHub Actions"],
     images: ["live_capture.jpeg", "main.webp", "shiru.webp", "main_langue.webp", "shiruchan-liste.webp", "shiruchan-quiz.webp"],
     logo: "logo.webp",
     category: "Dev Web",
@@ -387,6 +400,7 @@ export const projects: Project[] = [
     links: { demo: "https://yota02.github.io/WorldOfChan/", github: "#" },
     folder: "WorldOfChan",
     startDate: "projects.items.project-8.startDate",
+    startDateStr: "2025-09",
     isOngoing: true,
     newTech: ["Firebase"],
     competencies: [
@@ -422,6 +436,8 @@ export const projects: Project[] = [
     folder: "Anakomi",
     startDate: "projects.items.project-10.startDate",
     endDate: "projects.items.project-10.endDate",
+    startDateStr: "2025-09",
+    endDateStr: "2025-09",
     isOngoing: false,
     newTech: [],
     competencies: [
@@ -445,7 +461,7 @@ export const projects: Project[] = [
     context: "projects.items.project-11.context",
     personalContribution: "projects.items.project-11.personalContribution",
     duration: "projects.items.project-11.duration",
-    tags: ["Vue.js", "JavaScript", "HTML5", "CSS3", "Git"],
+    tags: ["Vue.js", "JavaScript", "HTML5", "CSS3", "GitHub Actions", "Git"],
     images: ["live_capture.webp", "main.webp", "BD_presentation.webp", "BD.webp", "texte.webp", "tux_animation.webm"],
     logo: "tux.webp",
     category: "Dev Web",
@@ -455,6 +471,8 @@ export const projects: Project[] = [
     folder: "Ndi2025",
     startDate: "projects.items.project-11.startDate",
     endDate: "projects.items.project-11.endDate",
+    startDateStr: "2025-12",
+    endDateStr: "2025-12",
     isOngoing: false,
     newTech: [],
     competencies: [
@@ -480,7 +498,7 @@ export const projects: Project[] = [
     name: "CHIRAL",
     description: "projects.items.project-12.description",
     longDescription: "projects.items.project-12.longDescription",
-    tags: ["JavaScript", "HTML5", "CSS3", "Git"],
+    tags: ["JavaScript", "HTML5", "CSS3", "Git", "GitHub Actions"],
     images: ["live_capture.webp", "titre.webp", "agario.webp", "nv1.webp"],
     logo: "titre.webp",
     category: "Jeux Vidéo",
@@ -489,6 +507,7 @@ export const projects: Project[] = [
     links: { demo: "https://yota02.github.io/CHIRAL/", github: "https://github.com/Yota02/CHIRAL" },
     folder: "CHIRAL",
     startDate: "projects.items.project-12.startDate",
+    startDateStr: "2026-01",
     isOngoing: true,
     newTech: [],
     competencies: [],
@@ -507,6 +526,7 @@ export const projects: Project[] = [
     links: { demo: "https://yota02.github.io/KyoLoom/", github: "https://github.com/Yota02/KyoLoom" },
     folder: "KyoLoom",
     startDate: "projects.items.project-13.startDate",
+    startDateStr: "2026-01",
     isOngoing: true,
     newTech: [],
     competencies: [
@@ -530,7 +550,7 @@ export const projects: Project[] = [
     context: "projects.items.project-gecolab.context",
     personalContribution: "projects.items.project-gecolab.personalContribution",
     duration: "projects.items.project-gecolab.duration",
-    tags: ["Vue.js", "JavaScript", "HTML5", "CSS3", "GitHub Actions", "Git", "Leaflet"],
+    tags: ["Vue.js", "JavaScript", "HTML5", "CSS3", "GitHub Actions", "Git"],
     images: ["main.jpeg", "services.jpeg", "contact.jpeg"],
     logo: "main.jpeg",
     category: "Dev Web",
@@ -543,6 +563,7 @@ export const projects: Project[] = [
     links: { demo: "https://www.gecolab.be/#/", github: "#" },
     folder: "Gecolab",
     startDate: "projects.items.project-gecolab.startDate",
+    startDateStr: "2026-01",
     isOngoing: false,
     newTech: ["GitHub Actions", "Leaflet"],
     competencies: [

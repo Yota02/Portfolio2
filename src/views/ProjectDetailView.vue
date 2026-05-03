@@ -87,12 +87,6 @@ const getTechIcon = (tech: string): string => {
   return techIcons.value[tech] || ''
 }
 
-const getProjectImage = (imagePath: string): string => {
-  if (!imagePath) return ''
-  if (imagePath.startsWith('http')) return imagePath
-  return `${baseUrl}projet/${project.value.folder || ''}/${imagePath}`
-}
-
 const showCompetencies = ref(false)
 
 const categoryColors: Record<string, string> = {

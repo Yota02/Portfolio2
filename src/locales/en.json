@@ -32,9 +32,9 @@
     },
     "parcours": {
       "title": "My Journey",
-      "p1": "Currently in my <strong class=\"text-dark\">3rd year of computer science at the IUT of Montpellier</strong>, I specialize in algorithms and complex systems.",
-      "p2": "My goal is to pursue a <span class=\"text-blue\">Master's in Bioinformatics</span>, where I will combine computer science and life sciences to analyze biological data.",
-      "p3": "In parallel, I am developing a <span class=\"text-emerald\">personal AI</span> to explore machine learning and its practical applications."
+      "p1": "Currently in my <strong class=\"text-dark\">3rd year of computer science at the IUT of Montpellier</strong> and in a <strong class=\"text-dark\">Licence IAE double degree</strong>, I specialize in algorithms and complex systems.",
+      "p2": "My goal is to pursue a <span class=\"text-blue\">Master's in Bioinformatics</span> (2026-2028), then a <span class=\"text-blue\">PhD in Virology</span> (2028-2030) to become a researcher.",
+      "p3": "I aspire to complete <span class=\"text-emerald\">post-doctorates in Japan, China, or Germany</span> to enrich my international expertise before working fully in research."
     },
     "international": {
       "title": "International Ambition",
@@ -607,20 +607,30 @@
         "institution": "IUT of Montpellier-Sète",
         "description": "Versatile training in computer science: software development, web, databases, networks and artificial intelligence."
       },
+      "obj-5": {
+        "title": "Licence IAE (Double Degree)",
+        "institution": "IAE Montpellier",
+        "description": "Complementary training in management and administration to acquire dual scientific and managerial competence."
+      },
       "obj-2": {
         "title": "High School Diploma",
         "institution": "Lycée Jean Jaurès",
         "description": "Specialties in Mathematics and CS (Numeric and Computer Sciences). Honors."
       },
-      "obj-3": {
-        "title": "CTF Platform Developer & Designer",
-        "institution": "IUT of Montpellier (Project)",
-        "description": "Design and development of a cybersecurity challenge platform. Use of Flask, Docker and Agile methodologies."
+      "obj-6": {
+        "title": "Master's in Bioinformatics",
+        "institution": "University (Target)",
+        "description": "Specialization at the interface of computer science and biology for genomic and protein data analysis."
       },
-      "obj-4": {
-        "title": "AI Developer & Desktop Assistant",
-        "institution": "Personal Project (Victoria)",
-        "description": "Creation of a modular assistant with local AI. Integration of LLM and plugin system."
+      "obj-7": {
+        "title": "PhD in Virology",
+        "institution": "Research Laboratory",
+        "description": "Doctorate focusing on the study of viruses, their infection mechanisms and the development of innovative therapies."
+      },
+      "obj-8": {
+        "title": "Post-doctorates & Research",
+        "institution": "International (Japan, China, Germany)",
+        "description": "Advanced international research and career as a professor-researcher in bioinformatics and virology."
       }
     }
   },

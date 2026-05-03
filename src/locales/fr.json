@@ -33,9 +33,9 @@
     },
     "parcours": {
       "title": "Mon Parcours",
-      "p1": "Actuellement en <strong class=\"text-dark\">3ème année de BUT Informatique à l'IUT de Montpellier</strong>, je me spécialise dans l'algorithmique et les systèmes complexes.",
-      "p2": "Mon objectif est de poursuivre en <span class=\"text-blue\">Master Bioinformatique</span>, où je pourrai allier informatique et sciences du vivant pour analyser des données biologiques.",
-      "p3": "En parallèle, je développe une <span class=\"text-emerald\">IA personnelle</span> pour explorer le machine learning et ses applications concrètes."
+      "p1": "Actuellement en <strong class=\"text-dark\">3ème année de BUT Informatique à l'IUT de Montpellier</strong> et en <strong class=\"text-dark\">double diplomation Licence IAE</strong>, je me spécialise dans l'algorithmique et les systèmes complexes.",
+      "p2": "Mon objectif est de poursuivre en <span class=\"text-blue\">Master Bioinformatique</span> (2026-2028), puis en <span class=\"text-blue\">Thèse en Virologie</span> (2028-2030) afin de devenir chercheur.",
+      "p3": "J'aspire à réaliser des <span class=\"text-emerald\">post-doctorats au Japon, en Chine ou en Allemagne</span> pour enrichir mon expertise internationale avant de travailler pleinement dans la recherche."
     },
     "international": {
       "title": "Ambition Internationale",
@@ -483,21 +483,21 @@
           "1": "Cartographie interactive des projets avec Leaflet",
           "2": "Gestion multilingue (Français/Anglais)"
         },
-          "competencies": {
-            "0": {
-              "0": "AC31.03 :: Intégrer des solutions dans un environnement de production :: Déploiement automatisé du site vitrine via une pipeline CI/CD (GitHub Actions), garantissant une mise à jour instantanée et sans interruption de service pour le client."
-            },
-            "1": {
-              "0": "AC25.02 :: Formaliser les besoins client et utilisateur :: Traduction des attentes du laboratoire (visibilité, cartographie des projets) en spécifications techniques et maquettes UI validées lors de réunions hebdomadaires.",
-              "1": "AC25.04 :: Définir et mettre en œuvre une démarche de suivi de projet :: Utilisation rigoureuse des Issues et des Projets GitHub pour suivre l'avancement des tâches et prioriser les retours du client (feedback loop)."
-            },
-            "2": {
-              "0": "AC26.04 :: Rendre compte de son activité professionnelle :: Animation de présentations bimensuelles au client pour exposer les avancées techniques et justifier les choix technologiques (Vue.js, Leaflet)."
-            },
-            "3": {
-              "0": "AC33.02 :: Automatiser le déploiement et la maintenance d'une infrastructure :: Configuration de scripts de build optimisés et de workflows de déploiement automatique sur hébergement web, réduisant les erreurs manuelles à zéro."
-            }
+        "competencies": {
+          "0": {
+            "0": "AC31.03 :: Intégrer des solutions dans un environnement de production :: Déploiement automatisé du site vitrine via une pipeline CI/CD (GitHub Actions), garantissant une mise à jour instantanée et sans interruption de service pour le client."
+          },
+          "1": {
+            "0": "AC25.02 :: Formaliser les besoins client et utilisateur :: Traduction des attentes du laboratoire (visibilité, cartographie des projets) en spécifications techniques et maquettes UI validées lors de réunions hebdomadaires.",
+            "1": "AC25.04 :: Définir et mettre en œuvre une démarche de suivi de projet :: Utilisation rigoureuse des Issues et des Projets GitHub pour suivre l'avancement des tâches et prioriser les retours du client (feedback loop)."
+          },
+          "2": {
+            "0": "AC26.04 :: Rendre compte de son activité professionnelle :: Animation de présentations bimensuelles au client pour exposer les avancées techniques et justifier les choix technologiques (Vue.js, Leaflet)."
+          },
+          "3": {
+            "0": "AC33.02 :: Automatiser le déploiement et la maintenance d'une infrastructure :: Configuration de scripts de build optimisés et de workflows de déploiement automatique sur hébergement web, réduisant les erreurs manuelles à zéro."
           }
+        }
       }
     }
   },
@@ -677,20 +677,30 @@
         "institution": "IUT de Montpellier-Sète",
         "description": "Formation polyvalente en informatique : développement logiciel, web, bases de données, réseaux et intelligence artificielle."
       },
+      "obj-5": {
+        "title": "Licence IAE (Double Diplomation)",
+        "institution": "IAE Montpellier",
+        "description": "Formation complémentaire en gestion et management pour acquérir une double compétence scientifique et managériale."
+      },
       "obj-2": {
         "title": "Baccalauréat Général",
         "institution": "Lycée Jean Jaurès",
         "description": "Spécialités Mathématiques et NSI (Numérique et Sciences Informatiques). Mention Très Bien."
       },
-      "obj-3": {
-        "title": "Développeur & Concepteur Plateforme CTF",
-        "institution": "IUT de Montpellier (Projet)",
-        "description": "Conception et développement d'une plateforme de challenges en cybersécurité. Utilisation de Flask, Docker et méthodologies Agile."
+      "obj-6": {
+        "title": "Master Bioinformatique",
+        "institution": "Université (Cible)",
+        "description": "Spécialisation à l'interface de l'informatique et de la biologie pour l'analyse de données génomiques et protéiques."
       },
-      "obj-4": {
-        "title": "Développeur IA & Assistant de Bureau",
-        "institution": "Projet Personnel (Victoria)",
-        "description": "Création d'un assistant modulaire avec IA locale. Intégration de LLM et système de plugins."
+      "obj-7": {
+        "title": "Thèse en Virologie",
+        "institution": "Laboratoire de Recherche",
+        "description": "Doctorat portant sur l'étude des virus, leurs mécanismes d'infection et le développement de thérapies innovantes."
+      },
+      "obj-8": {
+        "title": "Post-doctorats & Recherche",
+        "institution": "International (Japon, Chine, Allemagne)",
+        "description": "Recherche avancée à l'international et carrière dans l'enseignement-chercheur en bioinformatique et virologie."
       }
     }
   },

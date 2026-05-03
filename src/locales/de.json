@@ -32,9 +32,9 @@
     },
     "parcours": {
       "title": "Mein Werdegang",
-      "p1": "Derzeit im <strong class=\"text-dark\">3. Jahr des Informatikstudiums am IUT Montpellier</strong>, spezialisiere ich mich auf Algorithmen und komplexe Systeme.",
-      "p2": "Mein Ziel ist ein <span class=\"text-blue\">Master in Bioinformatik</span>, bei dem ich Informatik und Biowissenschaften kombiniere, um biologische Daten zu analysieren.",
-      "p3": "Parallel dazu entwickle ich eine <span class=\"text-emerald\">persönliche KI</span>, um Machine Learning und seine praktischen Anwendungen zu erforschen."
+      "p1": "Derzeit im <strong class=\"text-dark\">3. Jahr des Informatikstudiums am IUT Montpellier</strong> und in einem <strong class=\"text-dark\">Doppelabschluss Licence IAE</strong>, spezialisiere ich mich auf Algorithmen und komplexe Systeme.",
+      "p2": "Mein Ziel ist ein <span class=\"text-blue\">Master in Bioinformatik</span> (2026-2028) und anschließend eine <span class=\"text-blue\">Promotion in Virologie</span> (2028-2030), um Forscher zu werden.",
+      "p3": "Ich strebe <span class=\"text-emerald\">Post-Doctorates in Japan, China oder Deutschland</span> an, um meine internationale Expertise zu vertiefen, bevor ich vollständig in der Forschung arbeite."
     },
     "international": {
       "title": "Internationale Ambition",
@@ -187,7 +187,7 @@
         }
       },
       "project-4": {
-        "description": "Statistische Datenanalysetools für Satellitenkollisionswarnungen.",
+        "description": "Statistische Datenanalysetools for Satellitenkollisionswarnungen.",
         "longDescription": "Star Guardian ist eine Software zur Durchführung fortgeschrittener statistischer Analysen von Kollisionswarnungen für Satelliten im Orbit.",
         "startDate": "Januar 2025",
         "endDate": "April 2025",
@@ -218,7 +218,7 @@
         "endDate": "Juni 2024",
         "features": {
           "0": "Mit JavaFX entwickelte Grafikoberfläche",
-          "1": "Testgetriebene Entwicklung (TDD) mit JUnit"
+          "1": "Testgetriebene Entwicklung (TDD) with JUnit"
         },
         "competencies": {
           "0": {
@@ -256,7 +256,7 @@
       "project-7": {
         "description": "Modularer Desktop-Assistent mit lokaler KI.",
         "longDescription": "Victoria ist eine Desktop-Anwendung, die eine lokale künstliche Intelligenz (Ollama) nutzt und über Plugins erweiterbar ist.",
-        "startDate": "Mai 2025",
+        "startDate": "May 2025",
         "features": {
           "0": "Moderne CustomTkinter-Oberfläche",
           "1": "Plugin-System",
@@ -370,19 +370,65 @@
       "project-13": {
         "description": "Datenverarbeitungspipeline für Machine Learning.",
         "longDescription": "Loom ist ein Projekt zur Automatisierung des Daten-Workflows für KI-Modelle, von der Sammlung bis zur Bereitstellung.",
-        "startDate": "Janvier 2026"
-      },
-      "project-gecolab": {
-        "description": "Professionelle Showcase-Website für ein Labor für Genetik und Naturschutz.",
-        "longDescription": "Gecolab ist eine moderne Webplattform, die für das Labor für Erhaltungsgenetik der Universität Lüttich entwickelt wurde. Die Website präsentiert die Missionen des Labors, seine genetischen Analysedienste und seine Forschungsprojekte. Es wurde mit Vue.js entwickelt und integriert interaktive Karten mit Leaflet sowie ein automatisiertes Bereitstellungssystem.",
-        "context": "Realer Kundenauftrag für die Universität Lüttich. Ziel des Projekts war es, eine alte Website durch eine modernere, responsive und wartungsfreundliche Lösung zu ersetzen.",
-        "personalContribution": "Ich habe die gesamte Kundenbeziehung verwaltet: Anforderungsaufnahme, Präsentation von Mockups und Feedback-Sitzungen. Technisch habe ich das Frontend mit Vue.js implementiert, die interaktiven Karten konfiguriert und eine CI/CD-Pipeline über GitHub Actions für die automatische Bereitstellung bei jedem Update eingerichtet.",
-        "duration": "Projekt über 3 Monate realisiert.",
         "startDate": "Januar 2026",
         "features": {
-          "0": "Moderne und responsive Benutzeroberfläche mit Vue.js",
-          "1": "Interaktive Kartierung von Projekten mit Leaflet",
-          "2": "Mehrsprachige Verwaltung (Französisch/Englisch)"
+          "0": "Vollständige ML-Lebenszyklus-Automatisierung (MLOps)",
+          "1": "Skalierbare Vorverarbeitungspipeline für massive Datensätze",
+          "2": "Automatische Modellbereitstellung über Flask/Docker-API"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC31.03 :: Lösungen in eine Produktionsumgebung integrieren (KI CI/CD)"
+          },
+          "1": {
+            "0": "AC32.01 :: Mathematische und statistische Modelle zur Lösung komplexer Probleme verwenden"
+          }
+        }
+      },
+      "project-14": {
+        "description": "Big-Data-Analyseplattform für Genomik.",
+        "longDescription": "Bio-Data Analyzer ist eine Lösung für die massive DNA-Sequenzanalyse unter Verwendung verteilter Architekturen (Spark/Hadoop). Das Projekt integriert Deep-Learning-Modelle für die Vorhersage von Proteinstrukturen und groß angelegtes biologisches Daten-Clustering.",
+        "startDate": "Januar 2026",
+        "endDate": "Juni 2026",
+        "features": {
+          "0": "Verteilte Verarbeitung von FASTQ/BAM-Dateien über Spark",
+          "1": "Sequenzklassifizierung durch tiefe neuronale Netze",
+          "2": "Interaktive Visualisierung von multidimensionalen Datenclustern"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC32.01 :: Mathematische und statistische Modelle zur Lösung komplexer Probleme verwenden",
+            "1": "AC32.02 :: Fortgeschrittene KI-Techniken entwerfen und implementieren"
+          },
+          "1": {
+            "0": "AC34.01 :: Data Warehouses entwerfen und nutzen (Big Data)",
+            "1": "AC34.02 :: Wissen aus komplexen Daten extrahieren"
+          }
+        }
+      },
+      "project-15": {
+        "description": "Cloud-Monitoring und sicheres Orchestrierungssystem.",
+        "longDescription": "Cloud Sentinel ist eine vollständige Infrastruktur zur Überwachung von Cloud-Diensten unter Verwendung von Kubernetes und Terraform. Das Projekt umfasst eine automatisierte CI/CD-Kette, ein KI-basiertes Intrusionserkennungssystem und eine Steuerungsschnittstelle für das Incident-Management.",
+        "startDate": "September 2025",
+        "endDate": "März 2026",
+        "features": {
+          "0": "Mikro-Services-Orchestrierung mit Kubernetes",
+          "1": "Automatisierte Bereitstellung (CI/CD) with GitHub Actions and Terraform",
+          "2": "Echtzeit-Überwachung mit Prometheus und Grafana"
+        },
+        "competencies": {
+          "0": {
+            "0": "AC33.01 :: Hybride oder Cloud-Infrastrukturen entwerfen und verwalten",
+            "1": "AC33.02 :: Bereitstellung und Wartung einer komplexen Infrastruktur automatisieren"
+          },
+          "1": {
+            "0": "AC35.01 :: Ein komplexes Projekt mit mehreren Beteiligten leiten",
+            "1": "AC35.02 :: Qualität und Sicherheit während des gesamten Projektlebenszyklus garantieren"
+          },
+          "2": {
+            "0": "AC36.01 :: Ein IT-Team leiten oder Experten koordinieren",
+            "1": "AC36.02 :: Strategische Technologiebeobachtung durchführen"
+          }
         }
       }
     }
@@ -563,20 +609,30 @@
         "institution": "IUT von Montpellier-Sète",
         "description": "Vielseitige Ausbildung in Informatik: Softwareentwicklung, Web, Datenbanken, Netzwerke und künstliche Intelligenz."
       },
+      "obj-5": {
+        "title": "Licence IAE (Doppelabschluss)",
+        "institution": "IAE Montpellier",
+        "description": "Ergänzende Ausbildung in Management und Verwaltung zum Erwerb einer doppelten wissenschaftlichen und managementbezogenen Kompetenz."
+      },
       "obj-2": {
         "title": "Abitur",
         "institution": "Lycée Jean Jaurès",
         "description": "Schwerpunkte Mathematik und Informatik. Mit Auszeichnung."
       },
-      "obj-3": {
-        "title": "CTF-Plattformentwickler & Designer",
-        "institution": "IUT von Montpellier (Projekt)",
-        "description": "Design und Entwicklung einer Plattform für Cybersicherheits-Herausforderungen. Einsatz von Flask, Docker und Agile-Methoden."
+      "obj-6": {
+        "title": "Master in Bioinformatik",
+        "institution": "Universität (Ziel)",
+        "description": "Spezialisierung an der Schnittstelle von Informatik und Biologie zur Analyse von Genom- und Proteindaten."
       },
-      "obj-4": {
-        "title": "KI-Entwickler & Desktop-Assistent",
-        "institution": "Persönliches Projekt (Victoria)",
-        "description": "Erstellung eines modularen Assistenten mit lokaler KI. Integration von LLM und Plugin-System."
+      "obj-7": {
+        "title": "Promotion in Virologie",
+        "institution": "Forschungslabor",
+        "description": "Promotion mit Schwerpunkt auf der Erforschung von Viren, ihren Infektionsmechanismen und der Entwicklung innovativer Therapien."
+      },
+      "obj-8": {
+        "title": "Postdoktoranden & Forschung",
+        "institution": "International (Japan, China, Deutschland)",
+        "description": "Fortgeschrittene internationale Forschung und Karriere als Dozent-Forscher in Bioinformatik und virologie."
       }
     }
   },
@@ -621,7 +677,7 @@
     "experiences": {
       "ctf": {
         "detail_0": "Design einer Cybersecurity-Challenge-Plattform (Capture The Flag).",
-        "detail_1": "Backend-Entwicklung mit Flask und Docker-Container-Management für Challenges.",
+        "detail_1": "Backend-Entwicklung mit Flask and Docker-Container-Management für Challenges.",
         "detail_2": "Implementierung der Agile-Scrum-Methodik zur Projektverfolgung."
       },
       "victoria": {

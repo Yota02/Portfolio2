@@ -26,6 +26,11 @@
   --accent: #8b5cf6;
   --accent-rgb: 139, 92, 246;
   --accent-dark: #7c3aed;
+  
+  --blue: #3b82f6;
+  --purple: #a855f7;
+  --orange: #f97316;
+  --emerald: #10b981;
 }
 
 /* semantic color variables for this project */

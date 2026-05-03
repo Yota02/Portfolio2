@@ -563,20 +563,30 @@
         "institution": "IUT de Montpellier-Sète",
         "description": "Formación polivalente en informatique: desarrollo de software, web, bases de datos, redes e inteligencia artificial."
       },
+      "obj-5": {
+        "title": "Licenciatura IAE (Doble Titulación)",
+        "institution": "IAE Montpellier",
+        "description": "Formación complementaria en gestión y administración para adquirir una doble competencia científica y directiva."
+      },
       "obj-2": {
         "title": "Bachillerato General",
         "institution": "Lycée Jean Jaurès",
         "description": "Especialidades en Matemáticas y NSI (Informática). Mención de Honor."
       },
-      "obj-3": {
-        "title": "Desarrollador y Diseñador de Plataforma CTF",
-        "institution": "IUT de Montpellier (Projet)",
-        "description": "Diseño y desarrollo de una plataforma de desafíos de ciberseguridad. Uso de Flask, Docker y metodologías ágiles."
+      "obj-6": {
+        "title": "Máster en Bioinformática",
+        "institution": "Universidad (Objetivo)",
+        "description": "Especialización en la interfaz de la informática y la biología para el análisis de datos genómicos y proteicos."
       },
-      "obj-4": {
-        "title": "Desarrollador de IA y Asistente de Escritorio",
-        "institution": "Proyecto Personal (Victoria)",
-        "description": "Creación de un asistente modular con IA local. Integración de LLM y sistema de complementos."
+      "obj-7": {
+        "title": "Doctorado en Virología",
+        "institution": "Laboratorio de Investigación",
+        "description": "Doctorado centrado en el estudio de los virus, sus mecanismos de infección y el desarrollo de terapias innovadoras."
+      },
+      "obj-8": {
+        "title": "Posdoctorados e Investigación",
+        "institution": "Internacional (Japón, China, Alemania)",
+        "description": "Investigación internacional avanzada y carrera como profesor-investigador en bioinformática y virología."
       }
     }
   },

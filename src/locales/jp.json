@@ -546,20 +546,30 @@
         "institution": "モンペリエ・セットIUT",
         "description": "コンピュータサイエンスの多才なトレーニング：ソフトウェア開発、ウェブ、データベース、ネットワーク、人工知能。"
       },
+      "obj-5": {
+        "title": "Licence IAE (ダブルディグリー)",
+        "institution": "IAE Montpellier",
+        "description": "経営および管理に関する補完的なトレーニング。"
+      },
       "obj-2": {
         "title": "普通バカロレア",
         "institution": "ジャン・ジョレス高校",
         "description": "数学とNSI（デジタル・コンピュータサイエンス）の専門。優秀成績。"
       },
-      "obj-3": {
-        "title": "CTFプラットフォーム開発者・設計者",
-        "institution": "モンペリエIUT（プロジェクト）",
-        "description": "サイバーセキュリティ・チャレンジ・プラットフォームの設計と開発。Flask、Docker、アジャイル手法を使用。"
+      "obj-6": {
+        "title": "バイオインフォマティクス修士 (2026-2028)",
+        "institution": "大学 (志望)",
+        "description": "コンピュータサイエンスと生物学のインターフェースにおける専門化。"
       },
-      "obj-4": {
-        "title": "AI開発者・デスクトップアシスタント",
-        "institution": "個人プロジェクト (Victoria)",
-        "description": "ローカルAIを使用したモジュール式アシスタントの作成。LLMの統合とプラグインシステム。"
+      "obj-7": {
+        "title": "ウイルス学博士 (2028-2030)",
+        "institution": "研究室",
+        "description": "ウイルスと感染メカニズムの研究に焦点を当てた研究。"
+      },
+      "obj-8": {
+        "title": "ポストドクター & 研究",
+        "institution": "国際 (日本、中国、ドイツ)",
+        "description": "高度な国際研究および教授研究者としてのキャリア。"
       }
     }
   },

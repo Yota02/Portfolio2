@@ -41,6 +41,40 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
 
 const baseUrl = import.meta.env.BASE_URL;
 
+// Fonction pour obtenir l'URL de l'icône avec fallback
+const iconExtensions = ['.webp', '.png', '.ico', '.svg', '.gif']
+const techIconAttempts = new Map<string, number>()
+
+const getTechIconUrl = (tech: string) => {
+  const iconName = techIconMap[tech]
+  if (!iconName) return `${baseUrl}icone/default.webp`
+  return `${baseUrl}icone/${iconName}.webp`
+}
+
+// Gestion des erreurs d'image avec fallback
+const handleImageError = (event: Event, tech: string) => {
+  const img = event.target as HTMLImageElement
+  const iconName = techIconMap[tech]
+  if (!iconName) {
+    img.src = `${baseUrl}icone/default.webp`
+    return
+  }
+  
+  // Récupérer le nombre d'essais pour cette tech
+  const attempts = techIconAttempts.get(tech) || 0
+  
+  // Essayer l'extension suivante
+  if (attempts < iconExtensions.length) {
+    const newSrc = `${baseUrl}icone/${iconName}${iconExtensions[attempts]}`
+    techIconAttempts.set(tech, attempts + 1)
+    img.src = newSrc
+    return
+  }
+  
+  // Aucune extension ne fonctionne, utiliser default
+  img.src = `${baseUrl}icone/default.webp`
+}
+
 // Fonction pour obtenir la source de l'image du logo (priorise logo_recadrer si disponible)
 const getLogoSrc = (project: Project) => {
   const logo = project.logo_recadrer || project.logo
@@ -83,10 +117,11 @@ const toggleTech = (tech: string) => {
             :title="tech"
           >
             <img
-              :src="`${baseUrl}icone/${techIconMap[tech]}.webp`"
+              :src="getTechIconUrl(tech)"
               :alt="`Icône de ${tech}`"
               class="tech-icon"
               loading="lazy"
+              @error="(e) => handleImageError(e, tech)"
             />
           </div>
         </div>
