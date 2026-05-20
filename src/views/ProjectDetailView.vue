@@ -46,7 +46,9 @@ const project = computed(() => {
     personalContribution: '',
     duration: '',
     newTech: [],
-    logo: ''
+    logo: '',
+    version: undefined,
+    groupId: undefined
   }
 })
 

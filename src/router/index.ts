@@ -87,6 +87,11 @@ const routes = [
       path: '/experience-professionnelle',
       name: 'experience-professionnelle',
       component: () => import('../views/ProfessionalExperienceView.vue')
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: () => import('../views/AdminView.vue')
     }
   ]
 
