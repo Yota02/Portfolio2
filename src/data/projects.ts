@@ -18,6 +18,8 @@ export interface Competency {
 export interface Project {
   id: string;
   name: string;
+  version?: string;
+  groupId?: string;
   description: string; // Key
   longDescription: string; // Key
   context?: string; // Key
@@ -343,6 +345,8 @@ export const projects: Project[] = [
   {
     id: "project-7",
     name: "Victoria",
+    version: "v3",
+    groupId: "victoria",
     description: "projects.items.project-7.description",
     longDescription: "projects.items.project-7.longDescription",
     context: "projects.items.project-7.context",
@@ -382,6 +386,26 @@ export const projects: Project[] = [
       { id: "sub-victoria-1", name: "projects.items.project-7.subProjects.0.name", description: "projects.items.project-7.subProjects.0.description", images: ["rss.webp"], features: ["projects.items.project-7.subProjects.0.features.0", "projects.items.project-7.subProjects.0.features.1"] },
       { id: "sub-victoria-2", name: "projects.items.project-7.subProjects.1.name", description: "projects.items.project-7.subProjects.1.description", images: ["issue_maker.webp"], features: ["projects.items.project-7.subProjects.1.features.0", "projects.items.project-7.subProjects.1.features.1"] },
     ],
+  },
+  {
+    id: "project-7-v1",
+    name: "Victoria v1",
+    version: "v1",
+    groupId: "victoria",
+    description: "projects.items.project-7.description",
+    longDescription: "projects.items.project-7.longDescription",
+    tags: ["Python", "Tkinter"],
+    images: ["logo.webp"],
+    logo: "logo.webp",
+    category: "IA",
+    purpose: "Personnel",
+    features: ["projects.items.project-7.features.0"],
+    links: { demo: "#", github: "#" },
+    folder: "Victoria",
+    startDate: "projects.items.project-7.startDate",
+    isOngoing: false,
+    newTech: [],
+    competencies: [],
   },
   {
     id: "project-8",
@@ -600,6 +624,10 @@ export const purposeMap: Record<ProjectPurpose, string> = {
 };
 
 export const getProjectById = (id: string): Project | undefined => projects.find((p) => p.id === id);
+
+export const getProjectsByGroupId = (groupId: string): Project[] => {
+  return projects.filter((p) => p.groupId === groupId);
+};
 
 export const getProjectsByCategory = (): Record<ProjectCategory, Project[]> => {
   return projects.reduce((groups, project) => {

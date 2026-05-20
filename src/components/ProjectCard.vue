@@ -39,7 +39,13 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
     </div>
 
     <div class="card-info-badges">
-      <span class="badge purpose-badge">{{ t('projects.purposes.' + purposeMap[project.purpose]) }}</span>
+      <span v-if="project.version" class="badge version-badge">{{ project.version }}</span>
+      <span
+        class="badge purpose-badge"
+        :class="purposeMap[project.purpose]"
+      >
+        {{ t('projects.purposes.' + purposeMap[project.purpose]) }}
+      </span>
     </div>
 
     <h2 class="card-title">{{ project.name }}</h2>
@@ -58,7 +64,7 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
       >
         +{{ getDisplayedTags(project.tags).remaining }}
       </span>
-      <span v-slot:sub v-if="project.subProjects && project.subProjects.length > 0" class="tag tag-sub">
+      <span v-if="project.subProjects && project.subProjects.length > 0" class="tag tag-sub">
         📂 {{ project.subProjects.length }} sous-projet{{ project.subProjects.length > 1 ? 's' : '' }}
       </span>
     </div>
@@ -181,7 +187,8 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  margin: 0;
+  display: flex;
+  gap: 0.5rem;
   z-index: 2;
 }
 
@@ -195,18 +202,55 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
   transition: all 0.3s ease;
 }
 
-.purpose-badge {
-  background: rgba(var(--color-background-soft-rgb), 0.8);
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-  backdrop-filter: blur(8px);
-}
-
-.project-card:hover .purpose-badge {
+.version-badge {
   background: var(--primary);
   color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.purpose-badge {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.purpose-badge.education {
+  background: var(--color-background);
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.purpose-badge.personnel {
+  background: var(--color-background);
+  color: #10b981;
+  border-color: #10b981;
+}
+
+.purpose-badge.professionnel {
+  background: var(--color-background);
+  color: #8b5cf6;
+  border-color: #8b5cf6;
+}
+
+.project-card:hover .purpose-badge.education {
+  background: #3b82f6;
+  color: white;
   border-color: transparent;
-  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.project-card:hover .purpose-badge.personnel {
+  background: #10b981;
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.project-card:hover .purpose-badge.professionnel {
+  background: #8b5cf6;
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
 .card-title {
