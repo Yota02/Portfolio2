@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { LucideIcon } from 'lucide-vue-next'
 
 defineProps<{
   title?: string

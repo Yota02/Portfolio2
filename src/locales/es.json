@@ -435,6 +435,18 @@
         "duration": "",
         "startDate": "",
         "endDate": ""
+      },
+      "projekt-bersetzung": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "features": {
+          "0": "",
+          "1": ""
+        }
       }
     }
   },
