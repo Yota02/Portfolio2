@@ -3,47 +3,13 @@ import { computed, ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { projects, type Competency, type Project } from '@/data/projects'
+import { categoryColors, categoryKeyMap, getBgColor, parseAC } from '@/utils/competencies'
+import { useSafeIntersectionObserver } from '@/composables/useSafeIntersectionObserver'
 
 const { t } = useI18n()
 
-const categoryColors: Record<string, string> = {
-  'Réaliser': '#3b82f6',
-  'Optimiser': '#8b5cf6',
-  'Administrer': '#10b981',
-  'Gérer': '#f59e0b',
-  'Conduire': '#ef4444',
-  'Collaborer': '#ec4899'
-}
-
-const categoryKeyMap: Record<string, string> = {
-  'Réaliser': 'realiser',
-  'Optimiser': 'optimiser',
-  'Administrer': 'administrer',
-  'Gérer': 'gerer',
-  'Conduire': 'conduire',
-  'Collaborer': 'collaborer'
-}
-
 interface CompetencyWithProjects extends Competency {
   projects: Project[]
-}
-
-const parseAC = (translatedItem: string) => {
-  const parts = translatedItem.split('::').map(p => p.trim())
-  if (parts.length >= 3) {
-    return { code: parts[0] || '', title: parts[1] || '', context: parts[2] || '' }
-  }
-  if (parts.length === 2) {
-    let title = parts[1] || ''
-    let context = ''
-    const match = title.match(/\(([^)]+)\)$/)
-    if (match) {
-      context = match[1] || ''
-      title = title.replace(/\s*\([^)]+\)$/, '').trim()
-    }
-    return { code: parts[0] || '', title, context }
-  }
-  return { code: '', title: translatedItem, context: '' }
 }
 
 const competenciesByCategory = computed(() => {
@@ -92,11 +58,6 @@ const isLevelValidated = (category: string, level: string) => {
 
 const categoryOrder = ['Réaliser', 'Optimiser', 'Administrer', 'Gérer', 'Conduire', 'Collaborer']
 
-const getBgColor = (category: string) => {
-  const color = categoryColors[category] || '#ccc'
-  return `${color}15`
-}
-
 const baseUrl = import.meta.env.BASE_URL;
 
 const getProjectLogo = (project: Project) => {
@@ -122,6 +83,8 @@ const scrollToCategory = (category: string) => {
   }
 }
 
+const { observe } = useSafeIntersectionObserver()
+
 onMounted(() => {
   const observerOptions = {
     root: null,
@@ -129,20 +92,23 @@ onMounted(() => {
     threshold: 0
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const catKey = entry.target.id.replace('category-', '')
-        const cat = Object.keys(categoryKeyMap).find(key => categoryKeyMap[key] === catKey)
-        if (cat) activeCategory.value = cat
-      }
-    })
-  }, observerOptions)
-
+  const elements: Element[] = []
   categoryOrder.forEach(category => {
     const el = document.getElementById(`category-${categoryKeyMap[category]}`)
-    if (el) observer.observe(el)
+    if (el) elements.push(el)
   })
+
+  if (elements.length > 0) {
+    observe(elements, (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const catKey = entry.target.id.replace('category-', '')
+          const cat = Object.keys(categoryKeyMap).find(key => categoryKeyMap[key] === catKey)
+          if (cat) activeCategory.value = cat
+        }
+      })
+    }, observerOptions)
+  }
 })
 </script>
 
@@ -155,10 +121,11 @@ onMounted(() => {
     </div>
 
     <div class="container">
-      <div class="header reveal-up">
-        <h1 class="page-title">{{ t('competencies.title') }}</h1>
-        <p class="page-subtitle">{{ t('competencies.subtitle') }}</p>
-      </div>
+      <AppPageHeader 
+        :title="t('competencies.title')"
+        :subtitle="t('competencies.subtitle')"
+        centered
+      />
 
       <!-- Quick Navigator -->
       <div class="category-nav-wrapper reveal-up">
@@ -806,6 +773,10 @@ onMounted(() => {
 
 @keyframes reveal-up {
   from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+ from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
 }
 </style>

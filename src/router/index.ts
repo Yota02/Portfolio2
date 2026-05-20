@@ -1,11 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ProjectsView from '../views/ProjectsView.vue'
-import ProjectDetailView from '../views/ProjectDetailView.vue'
-import SubProjectDetailView from '../views/SubProjectDetailView.vue'
-import VictoriaView from '../views/VictoriaView.vue'
-import AboutView from '../views/AboutView.vue'
-import ResumeView from '../views/ResumeView.vue'
 
 const routes = [
     {
@@ -16,22 +10,22 @@ const routes = [
     {
       path: '/resume',
       name: 'resume',
-      component: ResumeView
+      component: () => import('../views/ResumeView.vue')
     },
     {
       path: '/about',
       name: 'about',
-      component: AboutView
+      component: () => import('../views/AboutView.vue')
     },
     {
       path: '/projects',
       name: 'projects',
-      component: ProjectsView
+      component: () => import('../views/ProjectsView.vue')
     },
     {
       path: '/project/:id',
       name: 'project-detail',
-      component: ProjectDetailView
+      component: () => import('../views/ProjectDetailView.vue')
     },
     {
       path: '/contact',
@@ -51,7 +45,7 @@ const routes = [
     {
       path: '/victoria',
       name: 'victoria',
-      component: VictoriaView
+      component: () => import('../views/VictoriaView.vue')
     },
     {
       path: '/objectives',
@@ -76,7 +70,7 @@ const routes = [
     {
       path: '/projects/:projectId/sub/:subId',
       name: 'sub-project-detail',
-      component: SubProjectDetailView,
+      component: () => import('../views/SubProjectDetailView.vue'),
       props: true
     },
     {

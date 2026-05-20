@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import { ref } from 'vue';
+import BaseModal from '@/components/BaseModal.vue';
 
 const baseUrl = import.meta.env.BASE_URL;
 
@@ -8,12 +9,10 @@ const selectedImage = ref<{ url: string; title: string; explanation: string } | 
 
 const openModal = (image: string, title: string, explanation: string) => {
   selectedImage.value = { url: `${baseUrl}${image}`, title, explanation };
-  document.body.style.overflow = 'hidden';
 };
 
 const closeModal = () => {
   selectedImage.value = null;
-  document.body.style.overflow = 'auto';
 };
 
 const competencies = [
@@ -338,20 +337,17 @@ const competencies = [
     </div>
 
     <!-- Modal for image zoom -->
-    <Transition name="fade">
-      <div v-if="selectedImage" class="modal-overlay" @click="closeModal">
-        <button class="close-modal" @click="closeModal">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
-        <div class="modal-content" @click.stop>
+    <BaseModal :isOpen="selectedImage !== null" @close="closeModal">
+      <template #body>
+        <div v-if="selectedImage" class="modal-detail-wrapper">
           <img :src="selectedImage.url" :alt="selectedImage.title" class="modal-image" />
           <div class="modal-info">
             <h3 class="modal-title">{{ selectedImage.title }}</h3>
             <p class="modal-explanation">{{ selectedImage.explanation }}</p>
           </div>
         </div>
-      </div>
-    </Transition>
+      </template>
+    </BaseModal>
   </div>
 </template>
 
@@ -726,104 +722,33 @@ const competencies = [
 }
 
 /* Modal Styles */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 2rem;
-}
-
-.close-modal {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  background: white;
-  border: none;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: black;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  z-index: 1001;
-}
-
-.close-modal:hover {
-  transform: rotate(90deg) scale(1.1);
-  background: var(--accent);
-  color: white;
-}
-
-.modal-content {
-  max-width: 90vw;
-  max-height: 90vh;
-  background: var(--color-background);
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+.modal-detail-wrapper {
   display: flex;
   flex-direction: column;
-  animation: modalIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 16px;
+  overflow: hidden;
 }
-
 .modal-image {
   max-width: 100%;
   max-height: 70vh;
   object-fit: contain;
   background: #000;
+  border-radius: 12px 12px 0 0;
 }
-
 .modal-info {
-  padding: 2rem;
-  background: var(--color-background-soft);
+  padding: 1.5rem 0 0 0;
 }
-
 .modal-title {
   font-size: 1.5rem;
   font-weight: 800;
   margin-bottom: 0.75rem;
   color: var(--color-heading);
 }
-
 .modal-explanation {
   font-size: 1.1rem;
   line-height: 1.6;
   color: var(--color-text);
   opacity: 0.9;
-}
-
-/* Animations */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-@keyframes modalIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9) translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
 }
 
 @media (max-width: 768px) {
@@ -847,19 +772,6 @@ const competencies = [
 
   .trace-visual-container {
     height: 200px;
-  }
-
-  .modal-overlay {
-    padding: 1rem;
-  }
-
-  .modal-info {
-    padding: 1.5rem;
-  }
-
-  .close-modal {
-    top: 1rem;
-    right: 1rem;
   }
 }
 </style>

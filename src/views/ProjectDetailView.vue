@@ -2,7 +2,11 @@
 import { useRoute, RouterLink } from 'vue-router'
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getProjectById, techIconMap, purposeMap, type ProjectPurpose } from '@/data/projects'
+import { getProjectById, purposeMap, type ProjectPurpose } from '@/data/projects'
+import { categoryColors, categoryKeyMap, getBgColor, parseAC } from '@/utils/competencies'
+import TechBadge from '@/components/TechBadge.vue'
+import ImageCarousel from '@/components/ImageCarousel.vue'
+import BaseModal from '@/components/BaseModal.vue'
 
 const { t } = useI18n()
 const baseUrl = import.meta.env.BASE_URL
@@ -45,37 +49,9 @@ const project = computed(() => {
   }
 })
 
-const fullImages = computed(() => {
-  return project.value.images.map(img =>
-    img.startsWith('http') ? img : `${baseUrl}projet/${project.value.folder}/${img}`
-  )
-})
-
-const currentImageIndex = ref(0)
-
-const nextImage = () => {
-  if (fullImages.value.length > 1) {
-    currentImageIndex.value = (currentImageIndex.value + 1) % fullImages.value.length
-  }
-}
-
-const prevImage = () => {
-  if (fullImages.value.length > 1) {
-    currentImageIndex.value = currentImageIndex.value === 0 ? fullImages.value.length - 1 : currentImageIndex.value - 1
-  }
-}
-
-const techIcons = ref<Record<string, string>>({})
+const showCompetencies = ref(false)
 
 onMounted(() => {
-  const icons: Record<string, string> = {}
-  for (const tech of project.value.tags) {
-    const iconFileName = techIconMap[tech]
-    if (iconFileName) {
-      icons[tech] = `${iconFileName}.webp`
-    }
-  }
-  techIcons.value = icons
   window.addEventListener('scroll', updateScrollProgress)
 })
 
@@ -118,14 +94,14 @@ const isVideo = (src: string): boolean => {
 
 const parseAC = (acString: string) => {
   if (!acString || typeof acString !== 'string') return { id: '', name: '' }
-  
+
   if (acString.includes('::')) {
     const parts = acString.split('::')
     const id = parts[0] || ''
     const nameParts = parts.slice(1)
-    return { 
-      id: id.trim(), 
-      name: nameParts.join('::').trim() 
+    return {
+      id: id.trim(),
+      name: nameParts.join('::').trim()
     }
   }
 
@@ -133,19 +109,19 @@ const parseAC = (acString: string) => {
     const parts = acString.split('|')
     const id = parts[0] || ''
     const nameParts = parts.slice(1)
-    return { 
-      id: id.trim(), 
-      name: nameParts.join('|').trim() 
+    return {
+      id: id.trim(),
+      name: nameParts.join('|').trim()
     }
   }
-  
+
   if (acString.includes(':')) {
     const parts = acString.split(':')
     const id = parts[0] || ''
     const nameParts = parts.slice(1)
-    return { 
-      id: id.trim(), 
-      name: nameParts.join(':').trim() 
+    return {
+      id: id.trim(),
+      name: nameParts.join(':').trim()
     }
   }
 
@@ -156,7 +132,7 @@ const parseAC = (acString: string) => {
       name: (acMatch[2] || '').trim() || acString
     }
   }
-  
+
   return { id: '', name: acString }
 }
 </script>
@@ -196,29 +172,7 @@ const parseAC = (acString: string) => {
 
       <div class="project-content">
         <div class="main-section reveal-left">
-          <div class="carousel-container">
-            <div class="carousel">
-              <div v-if="fullImages.length > 0 && isVideo(fullImages[currentImageIndex]!)" class="carousel-video">
-                <video :src="fullImages[currentImageIndex]!" controls autoplay muted loop class="video-element">
-                  {{ t('projects.video_not_supported') }}
-                </video>
-              </div>
-              <img v-else-if="fullImages.length > 0" :src="fullImages[currentImageIndex]!" :alt="t('projects.image_alt')" class="carousel-image" />
-              <div v-else class="image-placeholder">
-                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                  <polyline points="21 15 16 10 5 21"></polyline>
-                </svg>
-                <p>{{ t('projects.image_alt') }}</p>
-              </div>
-            </div>
-            <button v-if="fullImages.length > 1" @click="prevImage" class="carousel-btn prev">&lt;</button>
-            <button v-if="fullImages.length > 1" @click="nextImage" class="carousel-btn next">&gt;</button>
-            <div v-if="fullImages.length > 1" class="carousel-indicators">
-              <span v-for="(img, index) in fullImages" :key="index" :class="['indicator', { active: index === currentImageIndex }]" @click="currentImageIndex = index"></span>
-            </div>
-          </div>
+          <ImageCarousel :images="project.images" :folder="project.folder" />
 
           <div class="description-section">
             <h2>{{ t('projects.description') }}</h2>
@@ -252,9 +206,12 @@ const parseAC = (acString: string) => {
           <div class="info-card">
             <h3>{{ t('projects.technologies') }}</h3>
             <div class="tech-list">
-              <span v-for="tech in project.tags" :key="tech" class="tech-icon" :title="tech">
-                <img v-if="getTechIcon(tech)" :src="`${baseUrl}icone/${getTechIcon(tech)}`" :alt="tech" width="24" height="24" />
-              </span>
+              <TechBadge
+                v-for="tech in project.tags"
+                :key="tech"
+                :tech="tech"
+                :iconOnly="true"
+              />
             </div>
           </div>
 
@@ -320,51 +277,43 @@ const parseAC = (acString: string) => {
       </div>
     </div>
 
-    <Teleport to="body">
-      <Transition name="fade">
-        <div v-if="showCompetencies" class="modal-overlay" @click="showCompetencies = false">
-          <div class="modal-content" @click.stop>
-            <div class="modal-header">
-              <h2>{{ t('competencies.title') }}</h2>
-              <button class="close-btn" @click="showCompetencies = false">×</button>
+    <BaseModal :isOpen="showCompetencies" @close="showCompetencies = false">
+      <template #header>
+        <h2>{{ t('competencies.title') }}</h2>
+      </template>
+      <template #body>
+        <p class="modal-intro">{{ t('competencies.modal_intro') }}</p>
+
+        <div class="competencies-grid">
+          <div
+            v-for="(comp, index) in project.competencies"
+            :key="index"
+            class="competency-card"
+            :style="{ borderTopColor: categoryColors[comp.category] || '#ccc' }"
+          >
+            <div class="card-header" :style="{ backgroundColor: getBgColor(comp.category) }">
+              <span class="comp-category" :style="{ color: categoryColors[comp.category] || '#333' }">
+                {{ t('competencies.categories.' + categoryKeyMap[comp.category]) }}
+              </span>
+              <span class="comp-level">{{ t('competencies.levels.' + (comp.level === 'Niveau 1' ? 'n1' : comp.level === 'Niveau 2' ? 'n2' : 'n3')) }}</span>
             </div>
-
-            <div class="modal-body">
-              <p class="modal-intro">{{ t('competencies.modal_intro') }}</p>
-
-              <div class="competencies-grid">
-                <div
-                  v-for="(comp, index) in project.competencies"
-                  :key="index"
-                  class="competency-card"
-                  :style="{ borderTopColor: categoryColors[comp.category] || '#ccc' }"
-                >
-                  <div class="card-header" :style="{ backgroundColor: getBgColor(comp.category) }">
-                    <span class="comp-category" :style="{ color: categoryColors[comp.category] || '#333' }">
-                      {{ t('competencies.categories.' + categoryKeyMap[comp.category]) }}
+            <div class="card-body">
+              <ul class="ac-list">
+                <li v-for="item in comp.items" :key="item">
+                  <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" :style="{ color: categoryColors[comp.category] }"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <div class="ac-content">
+                    <span v-if="parseAC(t(item)).id" class="ac-id-badge" :style="{ backgroundColor: getBgColor(comp.category), color: categoryColors[comp.category] }">
+                      {{ parseAC(t(item)).id }}
                     </span>
-                    <span class="comp-level">{{ t('competencies.levels.' + (comp.level === 'Niveau 1' ? 'n1' : comp.level === 'Niveau 2' ? 'n2' : 'n3')) }}</span>
+                    <span class="ac-label">{{ parseAC(t(item)).name }}</span>
                   </div>
-                  <div class="card-body">
-                    <ul class="ac-list">
-                      <li v-for="item in comp.items" :key="item">
-                        <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" :style="{ color: categoryColors[comp.category] }"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <div class="ac-content">
-                          <span v-if="parseAC(t(item)).id" class="ac-id-badge" :style="{ backgroundColor: getBgColor(comp.category), color: categoryColors[comp.category] }">
-                            {{ parseAC(t(item)).id }}
-                          </span>
-                          <span class="ac-label">{{ parseAC(t(item)).name }}</span>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      </Transition>
-    </Teleport>
+      </template>
+    </BaseModal>
   </div>
 </template>
 
@@ -498,19 +447,6 @@ const parseAC = (acString: string) => {
   gap: 3rem;
 }
 
-.carousel-container { position: relative; margin-bottom: 2rem; }
-.carousel { border-radius: 16px; overflow: hidden; background: var(--color-background-soft); box-shadow: var(--shadow-lg); }
-.carousel-image { width: 100%; height: auto; display: block; }
-.carousel-video { width: 100%; height: auto; display: flex; justify-content: center; align-items: center; }
-.video-element { width: 100%; height: auto; max-height: 500px; object-fit: contain; }
-.carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 0.5rem; cursor: pointer; font-size: 1.5rem; border-radius: 50%; transition: background 0.3s; }
-.carousel-btn:hover { background: var(--primary); }
-.carousel-btn.prev { left: 10px; }
-.carousel-btn.next { right: 10px; }
-.carousel-indicators { display: flex; justify-content: center; margin-top: 1rem; }
-.indicator { width: 10px; height: 10px; border-radius: 50%; background: var(--color-border); margin: 0 5px; cursor: pointer; transition: all 0.3s; }
-.indicator.active { background: var(--primary); transform: scale(1.2); }
-
 .description-section h2, .features-section h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; color: var(--color-heading); }
 .description-section p { line-height: 1.8; color: var(--color-text); opacity: 0.8; }
 .features-list { list-style: none; padding: 0; }
@@ -520,8 +456,6 @@ const parseAC = (acString: string) => {
 .info-card { background: var(--color-background-soft); border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm); }
 .info-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: var(--color-heading); }
 .tech-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.tech-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--color-background); border-radius: 8px; border: 1px solid var(--color-border); transition: all 0.3s ease; }
-.tech-icon:hover { background: var(--primary); transform: translateY(-3px); }
 
 .purpose-card {
   display: flex;
@@ -576,41 +510,6 @@ const parseAC = (acString: string) => {
 .stats-list { display: grid; gap: 1rem; }
 .stat-item { display: flex; align-items: center; gap: 0.75rem; color: var(--color-text); }
 .stat-item svg { color: var(--primary); }
-
-.modal-overlay {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px);
-  display: flex; justify-content: center; align-items: center; z-index: 2000;
-}
-.modal-content {
-  background: var(--color-background); width: 90%; max-width: 900px; max-height: 90vh;
-  border-radius: 20px; overflow: hidden; border: 1px solid var(--color-border);
-  display: flex; flex-direction: column;
-}
-
-.modal-header {
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid var(--color-border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--color-background-soft);
-}
-
-.modal-header h2 { margin: 0; font-size: 1.5rem; font-weight: 700; color: var(--color-heading); }
-
-.close-btn {
-  background: none; border: none; font-size: 2rem; color: var(--color-text);
-  cursor: pointer; opacity: 0.5; transition: opacity 0.3s;
-}
-
-.close-btn:hover { opacity: 1; }
-
-.modal-body {
-  padding: 2rem;
-  overflow-y: auto;
-  flex: 1;
-}
 
 .modal-intro { margin-bottom: 2rem; color: var(--color-text); opacity: 0.8; font-size: 1.1rem; }
 
