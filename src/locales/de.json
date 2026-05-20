@@ -113,7 +113,10 @@
           "2": {
             "0": "AC24.03 :: Datenwiedergabe durch Programmierung und Visualisierung organisieren (Dashboards)"
           }
-        }
+        },
+        "context": "",
+        "personalContribution": "",
+        "duration": ""
       },
       "project-2": {
         "description": "Plattform für Capture The Flag (CTF) Herausforderungen in der Cybersicherheit.",
@@ -384,6 +387,54 @@
           "1": "Interaktive Kartierung von Projekten mit Leaflet",
           "2": "Mehrsprachige Verwaltung (Französisch/Englisch)"
         }
+      },
+      "y": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": "",
+        "features": {
+          "0": ""
+        }
+      },
+      "": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yo": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yom": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yomu": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
       }
     }
   },

@@ -30,7 +30,7 @@ const baseUrl = import.meta.env.BASE_URL
   >
     <img
       v-if="showIcon && techIconMap[tech]"
-      :src="`${baseUrl}icone/${techIconMap[tech]}.webp`"
+      :src="`${baseUrl}icone/${techIconMap[tech]}${techIconMap[tech].includes('.') ? '' : '.webp'}`"
       :alt="`Icône de ${tech}`"
       class="tech-icon"
       loading="lazy"

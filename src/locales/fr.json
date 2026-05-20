@@ -484,21 +484,69 @@
           "1": "Cartographie interactive des projets avec Leaflet",
           "2": "Gestion multilingue (Français/Anglais)"
         },
-          "competencies": {
-            "0": {
-              "0": "AC31.03 :: Intégrer des solutions dans un environnement de production :: Déploiement automatisé du site vitrine via une pipeline CI/CD (GitHub Actions), garantissant une mise à jour instantanée et sans interruption de service pour le client."
-            },
-            "1": {
-              "0": "AC25.02 :: Formaliser les besoins client et utilisateur :: Traduction des attentes du laboratoire (visibilité, cartographie des projets) en spécifications techniques et maquettes UI validées lors de réunions hebdomadaires.",
-              "1": "AC25.04 :: Définir et mettre en œuvre une démarche de suivi de projet :: Utilisation rigoureuse des Issues et des Projets GitHub pour suivre l'avancement des tâches et prioriser les retours du client (feedback loop)."
-            },
-            "2": {
-              "0": "AC26.04 :: Rendre compte de son activité professionnelle :: Animation de présentations bimensuelles au client pour exposer les avancées techniques et justifier les choix technologiques (Vue.js, Leaflet)."
-            },
-            "3": {
-              "0": "AC33.02 :: Automatiser le déploiement et la maintenance d'une infrastructure :: Configuration de scripts de build optimisés et de workflows de déploiement automatique sur hébergement web, réduisant les erreurs manuelles à zéro."
-            }
+        "competencies": {
+          "0": {
+            "0": "AC31.03 :: Intégrer des solutions dans un environnement de production :: Déploiement automatisé du site vitrine via une pipeline CI/CD (GitHub Actions), garantissant une mise à jour instantanée et sans interruption de service pour le client."
+          },
+          "1": {
+            "0": "AC25.02 :: Formaliser les besoins client et utilisateur :: Traduction des attentes du laboratoire (visibilité, cartographie des projets) en spécifications techniques et maquettes UI validées lors de réunions hebdomadaires.",
+            "1": "AC25.04 :: Définir et mettre en œuvre une démarche de suivi de projet :: Utilisation rigoureuse des Issues et des Projets GitHub pour suivre l'avancement des tâches et prioriser les retours du client (feedback loop)."
+          },
+          "2": {
+            "0": "AC26.04 :: Rendre compte de son activité professionnelle :: Animation de présentations bimensuelles au client pour exposer les avancées techniques et justifier les choix technologiques (Vue.js, Leaflet)."
+          },
+          "3": {
+            "0": "AC33.02 :: Automatiser le déploiement et la maintenance d'une infrastructure :: Configuration de scripts de build optimisés et de workflows de déploiement automatique sur hébergement web, réduisant les erreurs manuelles à zéro."
           }
+        }
+      },
+      "y": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": "",
+        "features": {
+          "0": ""
+        }
+      },
+      "": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yo": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yom": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yomu": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "10 jour",
+        "startDate": "10 mai 2026",
+        "endDate": "20 mai 2026"
       }
     }
   },

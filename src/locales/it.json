@@ -109,7 +109,10 @@
           "2": {
             "0": "AC24.03 :: Organizzare la restituzione dei dati attraverso la programmazione e la visualizzazione (Dashboard)"
           }
-        }
+        },
+        "context": "",
+        "personalContribution": "",
+        "duration": ""
       },
       "project-2": {
         "description": "Piattaforma dedicata alle sfide Capture The Flag (CTF) in cybersicurezza.",
@@ -367,6 +370,54 @@
         "description": "Pipeline di elaborazione dati per il machine learning.",
         "longDescription": "Loom è un progetto volto ad automatizzare il flusso di lavoro dei dati per i modelli di IA, dalla raccolta alla distribuzione.",
         "startDate": "Gennaio 2026"
+      },
+      "y": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": "",
+        "features": {
+          "0": ""
+        }
+      },
+      "": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yo": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yom": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yomu": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
       }
     }
   },

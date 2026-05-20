@@ -141,8 +141,21 @@
                 </div>
 
                 <!-- Techs -->
-                <div class="flex flex-wrap gap-1 p-3 rounded-xl bg-slate-50 border border-slate-100 max-h-32 overflow-y-auto">
-                    <span v-for="(icon, name) in techs" :key="name" @click="toggleTech(name)" :class="['px-2 py-0.5 rounded-full text-[9px] font-bold border transition cursor-pointer', form.tags.includes(name) ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-slate-500 border-slate-200']">{{ name }}</span>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <label class="block text-[10px] font-black text-slate-500 uppercase tracking-wider">Technologies</label>
+                        <button type="button" @click="showNewTech = !showNewTech" class="text-[10px] font-black text-blue-600 uppercase hover:underline">Ajouter une Tech</button>
+                    </div>
+                    
+                    <div v-if="showNewTech" class="p-4 bg-blue-50 rounded-xl border border-blue-100 space-y-3">
+                        <input v-model="newTechName" type="text" placeholder="Nom de la technologie" class="w-full rounded-lg border-blue-200 p-2 text-sm outline-none focus:ring-2 focus:ring-blue-500">
+                        <input type="file" @change="onTechIconChange" accept="image/*" class="text-[10px] file:mr-4 file:py-1 file:px-3 file:rounded-full file:border-0 file:bg-blue-100 file:text-blue-700">
+                        <button type="button" @click="addNewTech" :disabled="!newTechName || !newTechTempIcon" class="w-full bg-blue-600 text-white font-bold py-2 rounded-lg text-xs uppercase tracking-widest hover:bg-blue-700 transition">Valider</button>
+                    </div>
+
+                    <div class="flex flex-wrap gap-1 p-3 rounded-xl bg-slate-50 border border-slate-100 max-h-32 overflow-y-auto">
+                        <span v-for="(icon, name) in techs" :key="name" @click="toggleTech(name)" :class="['px-2 py-0.5 rounded-full text-[9px] font-bold border transition cursor-pointer', form.tags.includes(name) ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-slate-500 border-slate-200']">{{ name }}</span>
+                    </div>
                 </div>
 
                 <button type="submit" :disabled="loading" class="w-full bg-slate-900 text-white font-black py-4 rounded-xl hover:bg-slate-800 transition shadow-xl tracking-widest text-sm uppercase">{{ form.id ? 'Mettre à jour' : 'Créer' }}</button>
@@ -268,6 +281,8 @@
                 const loading = ref(false); const dropActive = ref(false); const showCropModal = ref(false);
                 const cropImageSrc = ref(''); let cropper = null; 
                 
+                const showNewTech = ref(false); const newTechName = ref(''); const newTechTempIcon = ref('');
+
                 const initialForm = { id: '', name: '', folder: '', category: 'Dev Web', purpose: 'Personnel', description: '', longDescription: '', context: '', personalContribution: '', duration: '', tags: [], images: [], logo: '', isOngoing: false, startDate: '', endDate: '', features: [], links: { demo: '', github: '' } };
                 const form = ref({ ...initialForm });
                 const previews = ref({ logo: null, images: [] });
@@ -289,6 +304,27 @@
 
                         if (projects.value.length) editProject(projects.value[0]);
                     } finally { loading.value = false; }
+                };
+
+                const onTechIconChange = async (e) => {
+                    const file = e.target.files[0]; if (!file) return;
+                    const fd = new FormData(); fd.append('techIcon', file);
+                    const res = await fetch('/api/upload', { method: 'POST', body: fd });
+                    const data = await res.json(); newTechTempIcon.value = data.techIcon;
+                };
+
+                const addNewTech = async () => {
+                    const res = await fetch('/api/techs', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name: newTechName.value, tempIcon: newTechTempIcon.value })
+                    });
+                    if (res.ok) {
+                        const data = await res.json();
+                        techs.value = data.techs;
+                        newTechName.value = ''; newTechTempIcon.value = ''; showNewTech.value = false;
+                        alert('Technologie ajoutée !');
+                    }
                 };
 
                 const resetForm = () => {
@@ -403,7 +439,7 @@
                     });
                 });
 
-                return { projects, techs, locales, currentLang, loading, dropActive, showCropModal, cropImageSrc, form, previews, trans, imageList, currentImageIndex, editProject, resetForm, saveProject, onLogoChange, applyCrop, cancelCrop, onImagesDrop, onImagesChange, removeImage, toggleTech, generateKeys, addFeature, removeFeature, nextImage, prevImage, selectImage };
+                return { projects, techs, locales, currentLang, loading, dropActive, showCropModal, cropImageSrc, form, previews, trans, imageList, currentImageIndex, editProject, resetForm, saveProject, onLogoChange, applyCrop, cancelCrop, onImagesDrop, onImagesChange, removeImage, toggleTech, generateKeys, addFeature, removeFeature, nextImage, prevImage, selectImage, showNewTech, newTechName, newTechTempIcon, onTechIconChange, addNewTech };
             }
         }).mount('#app');
     </script>

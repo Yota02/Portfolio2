@@ -892,5 +892,38 @@
         ]
       }
     ]
+  },
+  {
+    "id": "project-1779285718375",
+    "name": "Yomu",
+    "description": "projects.items.yomu.description",
+    "longDescription": "projects.items.yomu.longDescription",
+    "context": "projects.items.yomu.context",
+    "personalContribution": "projects.items.yomu.personalContribution",
+    "duration": "projects.items.yomu.duration",
+    "tags": [
+      "Flask",
+      "TensorFlow",
+      "Python",
+      "HTML5",
+      "Git"
+    ],
+    "images": [],
+    "logo": "logo.webp",
+    "category": "Logiciel",
+    "purpose": "Personnel",
+    "features": [
+      "projects.items.y.features.0"
+    ],
+    "links": {
+      "demo": "",
+      "github": "https://github.com/Yota02/Yomu"
+    },
+    "folder": "yomu",
+    "isOngoing": false,
+    "startDate": "projects.items.yomu.startDate",
+    "endDate": "projects.items.yomu.endDate",
+    "newTech": [],
+    "competencies": []
   }
 ]

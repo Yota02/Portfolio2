@@ -113,7 +113,10 @@
           "2": {
             "0": "AC24.03 :: Organizar la restitución de datos a través de la programación y la visualización (Cuadros de mando)"
           }
-        }
+        },
+        "context": "",
+        "personalContribution": "",
+        "duration": ""
       },
       "project-2": {
         "description": "Plataforma dedicada a desafíos Capture The Flag (CTF) en ciberseguridad.",
@@ -384,6 +387,54 @@
           "1": "Mapeo interactivo de proyectos con Leaflet",
           "2": "Gestión multilingüe (Francés/Inglés)"
         }
+      },
+      "y": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": "",
+        "features": {
+          "0": ""
+        }
+      },
+      "": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yo": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yom": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yomu": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
       }
     }
   },

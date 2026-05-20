@@ -109,7 +109,10 @@
           "2": {
             "0": "AC24.03 :: 通过编程和可视化组织数据呈现（仪表板）"
           }
-        }
+        },
+        "context": "",
+        "personalContribution": "",
+        "duration": ""
       },
       "project-2": {
         "description": "致力于网络安全中夺旗赛 (CTF) 挑战的平台。",
@@ -367,6 +370,54 @@
         "description": "用于机器学习的数据处理流水线。",
         "longDescription": "Loom 是一个旨在自动化 AI 模型数据工作流的项目，从收集到部署。",
         "startDate": "2026年1月"
+      },
+      "y": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": "",
+        "features": {
+          "0": ""
+        }
+      },
+      "": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yo": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yom": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yomu": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
       }
     }
   },

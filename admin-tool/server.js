@@ -58,7 +58,41 @@ function syncPortfolio(projects) {
     }
 }
 
+function syncTechs(techs) {
+    let tsContent = fs.readFileSync(PROJECTS_TS_PATH, 'utf8');
+    const techMapMatch = tsContent.match(/export const techIconMap: Record<string, string> = \{([\s\S]*?)\};/);
+    if (techMapMatch) {
+        const formattedTechs = Object.entries(techs)
+            .map(([name, icon]) => `  "${name}": "${icon}"`)
+            .join(',\n');
+        tsContent = tsContent.replace(techMapMatch[1], `\n${formattedTechs}\n`);
+        fs.writeFileSync(PROJECTS_TS_PATH, tsContent);
+    }
+}
+
 app.get('/api/techs', (req, res) => res.json(JSON.parse(fs.readFileSync(TECHS_JSON))));
+
+app.post('/api/techs', (req, res) => {
+    try {
+        const { name, icon, tempIcon } = req.body;
+        const techs = JSON.parse(fs.readFileSync(TECHS_JSON));
+        
+        let finalIcon = icon;
+        if (tempIcon) {
+            const ext = path.extname(tempIcon);
+            const iconName = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+            finalIcon = (ext.toLowerCase() === '.webp') ? iconName : `${iconName}${ext}`;
+            const source = path.join(__dirname, 'temp_uploads', tempIcon);
+            const target = path.join(PUBLIC_ICONE_DIR, `${iconName}${ext}`);
+            fs.copyFileSync(source, target);
+        }
+
+        techs[name] = finalIcon;
+        fs.writeFileSync(TECHS_JSON, JSON.stringify(techs, null, 2));
+        syncTechs(techs);
+        res.json({ success: true, techs });
+    } catch (error) { res.status(500).json({ error: error.message }); }
+});
 
 app.get('/api/projects', (req, res) => res.json(JSON.parse(fs.readFileSync(PROJECTS_JSON))));
 
