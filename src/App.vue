@@ -114,6 +114,7 @@ watch(() => route.path, () => {
 
           <RouterLink to="/blog" class="nav-link" @click="closeMenu">{{ t('nav.blog') }}</RouterLink>
           <RouterLink to="/contact" class="nav-link" @click="closeMenu">{{ t('nav.contact') }}</RouterLink>
+          <RouterLink to="/admin" class="nav-link" @click="closeMenu">Admin</RouterLink>
 
           <div class="header-actions desktop-only">
             <AppLangSwitcher />

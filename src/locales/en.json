@@ -84,6 +84,15 @@
     },
     "subprojects": "Sub-projects",
     "evolution": "Project Evolution",
+    "evolution_details_button": "Details v1 → v2",
+    "evolution_details_title": "Evolution v1 → v2",
+    "evolution_notes": "- Move to a Flask backend + React frontend\n- Modernized interface and clearer user flow\n- Dropped PyInstaller in favor of service-based launch\n- Stronger AI engine with quality/performance modes\n- Async processing and improved layout preservation\n- Added bilingual reading room and EPUB export",
+    "evolution_types": {
+      "added": "New",
+      "optimized": "Improved",
+      "removed": "Replaced",
+      "info": "General"
+    },
     "view_project_link": "View project →",
     "but_competencies": "BUT Competencies",
     "unknown_project": "Unknown Project",
@@ -473,13 +482,26 @@
         "endDate": ""
       },
       "yomu": {
-        "description": "",
-        "longDescription": "",
-        "context": "",
-        "personalContribution": "",
-        "duration": "",
-        "startDate": "",
-        "endDate": ""
+        "description": "AI light novel PDF translator (v2 of Projekt Bersetzung).",
+        "longDescription": "Direct evolution of v1 with a clear architectural shift. Key improvements:\n- Move to a Flask backend + React frontend\n- Modernized interface and clearer user flow\n- Dropped PyInstaller in favor of service-based launch\n- Stronger AI engine with quality/performance modes\n- Async processing and improved layout preservation\n- Added bilingual reading room and EPUB export",
+        "context": "Personal project to speed up translation and reading of light novels.",
+        "personalContribution": "End-to-end development of the Flask backend and React UI, plus AI model integration and processing pipeline.",
+        "duration": "10 days",
+        "startDate": "May 10, 2026",
+        "endDate": "May 20, 2026"
+      },
+      "projekt-bersetzung": {
+        "description": "PDF novel translation software (v1 of Yomu).",
+        "longDescription": "Initial project focused on translating PDF novels into French with a simple workflow. This v1 laid the functional foundation that evolved into Yomu (v2).",
+        "context": "Personal project born from the need to read untranslated light novels.",
+        "personalContribution": "Full design and implementation: Tkinter UI, PDF processing, and translated file generation.",
+        "duration": "Since April 2025.",
+        "startDate": "April 2025",
+        "endDate": "",
+        "features": {
+          "0": "Simple UI with drag-and-drop PDF and target language selection",
+          "1": "Generate a translated PDF while preserving the layout"
+        }
       },
       "project-gecolab": {
         "description": "",

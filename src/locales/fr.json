@@ -90,6 +90,15 @@
     },
     "subprojects": "Sous-projets",
     "evolution": "Évolution du projet",
+    "evolution_details_button": "Détails v1 → v2",
+    "evolution_details_title": "Évolution v1 → v2",
+    "evolution_notes": "- Passage à une architecture backend Flask + frontend React\n- Interface moderne et flux utilisateur plus clair\n- Abandon de PyInstaller au profit d'un lancement par services\n- Moteur IA plus robuste avec modes qualité/performance\n- Traitement asynchrone et meilleure préservation de mise en page\n- Ajout du salon de lecture bilingue et export EPUB",
+    "evolution_types": {
+      "added": "Nouveau",
+      "optimized": "Optimisé",
+      "removed": "Remplacé",
+      "info": "Général"
+    },
     "view_project_link": "Voir le projet →",
     "but_competencies": "Compétences BUT",
     "unknown_project": "Projet inconnu",
@@ -500,6 +509,19 @@
           }
         }
       },
+      "projekt-bersetzung": {
+        "description": "Logiciel de traduction de romans PDF (v1 de Yomu).",
+        "longDescription": "Projet initial visant à traduire des romans PDF vers le français via une interface simple et efficace. Cette v1 a posé les bases fonctionnelles qui ont evolue vers Yomu (v2).",
+        "context": "Projet personnel ne d'un besoin de lecture de light novels non traduits.",
+        "personalContribution": "Conception et developpement complets : interface Tkinter, traitement des PDFs et generation du fichier traduit.",
+        "duration": "Depuis avril 2025.",
+        "startDate": "Avril 2025",
+        "endDate": "",
+        "features": {
+          "0": "Interface simple avec glisser-deposer du PDF et choix de la langue",
+          "1": "Generation d'un PDF traduit en conservant la mise en page"
+        }
+      },
       "y": {
         "description": "",
         "longDescription": "",
@@ -540,11 +562,11 @@
         "endDate": ""
       },
       "yomu": {
-        "description": "",
-        "longDescription": "",
-        "context": "",
-        "personalContribution": "",
-        "duration": "10 jour",
+        "description": "Traducteur IA de light novels PDF (v2 de Projekt Bersetzung).",
+        "longDescription": "Evolution directe de la v1 avec un changement d'architecture et de perimetre fonctionnel. Ameliorations principales :\n- Passage a une architecture backend Flask + frontend React\n- Interface moderne et flux utilisateur plus clair\n- Abandon de PyInstaller au profit d'un lancement par services\n- Moteur IA plus robuste avec modes qualite/performance\n- Traitement asynchrone et meilleure preservation de mise en page\n- Ajout du salon de lecture bilingue et export EPUB",
+        "context": "Projet personnel pour accelerer la traduction et la lecture de light novels.",
+        "personalContribution": "Developpement complet du backend Flask et de l'interface React, integration des modeles IA et pipeline de traitement.",
+        "duration": "10 jours",
         "startDate": "10 mai 2026",
         "endDate": "20 mai 2026"
       }

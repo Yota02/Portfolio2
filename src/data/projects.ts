@@ -999,8 +999,48 @@ export const projects: Project[] = [
   ]
 },
   {
+  id: "project-projekt-bersetzung",
+  name: "Projekt Bersetzung",
+  version: "v1",
+  groupId: "yomu",
+  description: "projects.items.projekt-bersetzung.description",
+  longDescription: "projects.items.projekt-bersetzung.longDescription",
+  context: "projects.items.projekt-bersetzung.context",
+  personalContribution: "projects.items.projekt-bersetzung.personalContribution",
+  duration: "projects.items.projekt-bersetzung.duration",
+  tags: [
+    "Python",
+    "Tkinter",
+    "Pyinstaller"
+  ],
+  images: [
+    "screenshot.webp",
+    "fichier_2.webp",
+    "fichier_anglais.webp",
+    "fichier_français.webp"
+  ],
+  logo: "icon.webp",
+  category: "Logiciel",
+  purpose: "Personnel",
+  features: [
+    "projects.items.projekt-bersetzung.features.0",
+    "projects.items.projekt-bersetzung.features.1"
+  ],
+  links: {
+    demo: "https://yota02.github.io/portfolio/projets/ProjektBersetzung.html",
+    github: "#"
+  },
+  folder: "ProjektBersetzung",
+  isOngoing: true,
+  startDate: "projects.items.projekt-bersetzung.startDate",
+  newTech: [],
+  competencies: []
+},
+  {
   id: "project-1779285718375",
   name: "Yomu",
+  version: "v2",
+  groupId: "yomu",
   description: "projects.items.yomu.description",
   longDescription: "projects.items.yomu.longDescription",
   context: "projects.items.yomu.context",
