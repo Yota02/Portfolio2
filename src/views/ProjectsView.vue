@@ -22,9 +22,12 @@ const groupedProjects = computed(() => {
   return filtered
 })
 
-// Calculer les technologies uniques à partir des tags des projets
+// Calculer les technologies uniques à partir des projets affichés
 const uniqueTechnologies = computed(() => {
-  const allTags = projects.flatMap(project => project.tags)
+  const filteredProjects = selectedTechs.value.length === 0
+    ? projects
+    : projects.filter(project => selectedTechs.value.every(tech => project.tags.includes(tech)))
+  const allTags = filteredProjects.flatMap(project => project.tags)
   return [...new Set(allTags)]
 })
 
@@ -371,7 +374,7 @@ const toggleTech = (tech: string) => {
 
 .tech-icons {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
   justify-items: center;
   transition: opacity 0.3s ease;

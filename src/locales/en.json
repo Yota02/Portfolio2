@@ -112,7 +112,10 @@
           "2": {
             "0": "AC24.03 :: Organize data restitution through programming and visualization (Dashboards)"
           }
-        }
+        },
+        "context": "",
+        "personalContribution": "",
+        "duration": ""
       },
       "project-2": {
         "description": "Platform dedicated to Capture The Flag (CTF) challenges in cybersecurity.",
@@ -429,6 +432,54 @@
             "1": "AC36.02 :: Perform strategic technology watch"
           }
         }
+      },
+      "y": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": "",
+        "features": {
+          "0": ""
+        }
+      },
+      "": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yo": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yom": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yomu": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
       }
     }
   },

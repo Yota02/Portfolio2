@@ -499,6 +499,54 @@
             "0": "AC33.02 :: Automatiser le déploiement et la maintenance d'une infrastructure :: Configuration de scripts de build optimisés et de workflows de déploiement automatique sur hébergement web, réduisant les erreurs manuelles à zéro."
           }
         }
+      },
+      "y": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": "",
+        "features": {
+          "0": ""
+        }
+      },
+      "": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yo": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yom": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "yomu": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "10 jour",
+        "startDate": "10 mai 2026",
+        "endDate": "20 mai 2026"
       }
     }
   },
