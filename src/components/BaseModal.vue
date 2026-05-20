@@ -37,30 +37,32 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Transition name="modal-fade">
-    <div v-if="isOpen" class="modal-overlay" @click.self="emit('close')">
-      <div class="modal-container" role="dialog" aria-modal="true">
-        <button class="close-btn" @click="emit('close')" aria-label="Fermer la modal">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
+  <Teleport to="body">
+    <Transition name="modal-fade">
+      <div v-if="isOpen" class="modal-overlay" @click.self="emit('close')">
+        <div class="modal-container" role="dialog" aria-modal="true">
+          <button class="close-btn" @click="emit('close')" aria-label="Fermer la modal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
 
-        <header v-if="$slots.header" class="modal-header">
-          <slot name="header"></slot>
-        </header>
+          <header v-if="$slots.header" class="modal-header">
+            <slot name="header"></slot>
+          </header>
 
-        <main class="modal-body">
-          <slot name="body"></slot>
-        </main>
+          <main class="modal-body">
+            <slot name="body"></slot>
+          </main>
 
-        <footer v-if="$slots.footer" class="modal-footer">
-          <slot name="footer"></slot>
-        </footer>
+          <footer v-if="$slots.footer" class="modal-footer">
+            <slot name="footer"></slot>
+          </footer>
+        </div>
       </div>
-    </div>
-  </Transition>
+    </Transition>
+  </Teleport>
 </template>
 
 <style scoped>

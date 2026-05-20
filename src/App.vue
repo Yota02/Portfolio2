@@ -16,7 +16,7 @@ const isOpen = ref(false);
 const { initTheme } = useTheme();
 const { observe, disconnectAll } = useSafeIntersectionObserver();
 
-const isResumePage = computed(() => route.path === '/resume');
+const hideHeaderFooter = computed(() => route.path === '/resume' || route.path.startsWith('/admin'));
 
 function toggleMenu() {
   isOpen.value = !isOpen.value;
@@ -66,7 +66,7 @@ watch(() => route.path, () => {
 
 <template>
   <div class="app-container">
-    <header v-if="!isResumePage">
+    <header v-if="!hideHeaderFooter">
       <nav class="nav-container">
         <RouterLink to="/" class="logo" @click="closeMenu">
           <span class="logo-text">Portfolio</span>
@@ -132,7 +132,7 @@ watch(() => route.path, () => {
       </RouterView>
     </main>
 
-    <footer class="footer" v-if="!isResumePage">
+    <footer class="footer" v-if="!hideHeaderFooter">
       <p>{{ t('footer.rights') }}</p>
     </footer>
   </div>
