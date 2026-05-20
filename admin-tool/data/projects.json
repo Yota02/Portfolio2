@@ -894,6 +894,44 @@
     ]
   },
   {
+    "id": "project-projekt-bersetzung",
+    "name": "Projekt Bersetzung",
+    "description": "projects.items.projekt-bersetzung.description",
+    "longDescription": "projects.items.projekt-bersetzung.longDescription",
+    "context": "projects.items.projekt-bersetzung.context",
+    "personalContribution": "projects.items.projekt-bersetzung.personalContribution",
+    "duration": "projects.items.projekt-bersetzung.duration",
+    "tags": [
+      "Python",
+      "Tkinter",
+      "Pyinstaller",
+      "Git"
+    ],
+    "images": [
+      "screenshot.webp",
+      "fichier_2.webp",
+      "fichier_anglais.webp",
+      "fichier_français.webp"
+    ],
+    "logo": "icon.webp",
+    "category": "Logiciel",
+    "purpose": "Personnel",
+    "features": [
+      "projects.items.projekt-bersetzung.features.0",
+      "projects.items.projekt-bersetzung.features.1"
+    ],
+    "links": {
+      "demo": "",
+      "github": "https://github.com/Yota02/Projekt--bersetzung"
+    },
+    "folder": "ProjektBersetzung",
+    "isOngoing": true,
+    "startDate": "projects.items.projekt-bersetzung.startDate",
+    "endDate": "",
+    "newTech": [],
+    "competencies": []
+  },
+  {
     "id": "project-1779285718375",
     "name": "Yomu",
     "description": "projects.items.yomu.description",

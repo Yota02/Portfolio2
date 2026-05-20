@@ -16,7 +16,7 @@ const isExternal = computed(() => (props.href && (props.href.startsWith('http') 
 <template>
   <component
     :is="to ? 'RouterLink' : href ? 'a' : 'button'"
-    :[to ? 'to' : 'href']="to || href"
+    v-bind="to ? { to } : { href }"
     :target="isExternal ? '_blank' : undefined"
     :class="['app-button', variant || 'primary', size || 'md']"
   >

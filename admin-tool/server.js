@@ -7,6 +7,7 @@ const sharp = require('sharp');
 
 const app = express();
 const PORT = 3000;
+const WATCH_DEBOUNCE_MS = 200;
 
 // Config paths
 const PORTFOLIO_ROOT = path.join(__dirname, '..');
@@ -79,8 +80,36 @@ function syncPortfolio(projects) {
         }).join(',\n');
         
         tsContent = tsContent.replace(projectsArrayMatch[1], `\n${formattedProjects}\n`);
+        syncingFromJson = true;
         fs.writeFileSync(PROJECTS_TS_PATH, tsContent);
+        setTimeout(() => { syncingFromJson = false; }, WATCH_DEBOUNCE_MS);
     }
+}
+
+function getProjectsFromProjectsTs() {
+    const tsContent = fs.readFileSync(PROJECTS_TS_PATH, 'utf8');
+    const projectsArrayMatch = tsContent.match(/export const projects: Project\[\] = \[([\s\S]*?)\];/);
+    if (!projectsArrayMatch) return null;
+    const arrayLiteral = `[${projectsArrayMatch[1]}]`;
+    try {
+        // eslint-disable-next-line no-new-func
+        const parsed = Function(`"use strict"; return (${arrayLiteral});`)();
+        return Array.isArray(parsed) ? parsed : null;
+    } catch (error) {
+        console.error('Failed to parse projects.ts:', error);
+        return null;
+    }
+}
+
+function syncJsonFromTs() {
+    const projects = getProjectsFromProjectsTs();
+    if (!projects) return;
+    const nextJson = JSON.stringify(projects, null, 2);
+    const currentJson = fs.readFileSync(PROJECTS_JSON, 'utf8');
+    if (currentJson.trim() === nextJson.trim()) return;
+    syncingFromTs = true;
+    fs.writeFileSync(PROJECTS_JSON, nextJson);
+    setTimeout(() => { syncingFromTs = false; }, WATCH_DEBOUNCE_MS);
 }
 
 function syncTechs(techs) {
@@ -91,7 +120,9 @@ function syncTechs(techs) {
             .map(([name, icon]) => `  "${name}": "${icon}"`)
             .join(',\n');
         tsContent = tsContent.replace(techMapMatch[1], `\n${formattedTechs}\n`);
+        syncingTechsFromJson = true;
         fs.writeFileSync(PROJECTS_TS_PATH, tsContent);
+        setTimeout(() => { syncingTechsFromJson = false; }, WATCH_DEBOUNCE_MS);
     }
 }
 
@@ -109,6 +140,17 @@ function getTechsFromProjectsTs() {
         if (key) techs[key] = value;
     }
     return techs;
+}
+
+function syncTechsJsonFromTs() {
+    const techs = getTechsFromProjectsTs();
+    if (!techs) return;
+    const nextJson = JSON.stringify(techs, null, 2);
+    const currentJson = fs.readFileSync(TECHS_JSON, 'utf8');
+    if (currentJson.trim() === nextJson.trim()) return;
+    syncingTechsFromTs = true;
+    fs.writeFileSync(TECHS_JSON, nextJson);
+    setTimeout(() => { syncingTechsFromTs = false; }, WATCH_DEBOUNCE_MS);
 }
 
 app.get('/api/techs', (req, res) => {
@@ -330,3 +372,64 @@ app.delete('/api/projects/:id', (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+
+let syncingFromJson = false;
+let syncingFromTs = false;
+let jsonWatchTimer = null;
+let tsWatchTimer = null;
+let syncingTechsFromJson = false;
+let syncingTechsFromTs = false;
+let techsJsonWatchTimer = null;
+let techsTsWatchTimer = null;
+
+function watchProjectsFiles() {
+    if (fs.existsSync(PROJECTS_JSON)) {
+        fs.watch(PROJECTS_JSON, { persistent: true }, (eventType) => {
+            if (eventType !== 'change' || syncingFromTs) return;
+            if (jsonWatchTimer) clearTimeout(jsonWatchTimer);
+            jsonWatchTimer = setTimeout(() => {
+                try {
+                    const projects = JSON.parse(fs.readFileSync(PROJECTS_JSON));
+                    syncPortfolio(projects);
+                } catch (error) {
+                    console.error('Failed to sync projects.json -> projects.ts:', error);
+                }
+            }, WATCH_DEBOUNCE_MS);
+        });
+    }
+
+    if (fs.existsSync(PROJECTS_TS_PATH)) {
+        fs.watch(PROJECTS_TS_PATH, { persistent: true }, (eventType) => {
+            if (eventType !== 'change' || syncingFromJson) return;
+            if (tsWatchTimer) clearTimeout(tsWatchTimer);
+            tsWatchTimer = setTimeout(() => {
+                syncJsonFromTs();
+            }, WATCH_DEBOUNCE_MS);
+        });
+
+        fs.watch(PROJECTS_TS_PATH, { persistent: true }, (eventType) => {
+            if (eventType !== 'change' || syncingTechsFromJson) return;
+            if (techsTsWatchTimer) clearTimeout(techsTsWatchTimer);
+            techsTsWatchTimer = setTimeout(() => {
+                syncTechsJsonFromTs();
+            }, WATCH_DEBOUNCE_MS);
+        });
+    }
+
+    if (fs.existsSync(TECHS_JSON)) {
+        fs.watch(TECHS_JSON, { persistent: true }, (eventType) => {
+            if (eventType !== 'change' || syncingTechsFromTs) return;
+            if (techsJsonWatchTimer) clearTimeout(techsJsonWatchTimer);
+            techsJsonWatchTimer = setTimeout(() => {
+                try {
+                    const techs = JSON.parse(fs.readFileSync(TECHS_JSON));
+                    syncTechs(techs);
+                } catch (error) {
+                    console.error('Failed to sync techs.json -> projects.ts:', error);
+                }
+            }, WATCH_DEBOUNCE_MS);
+        });
+    }
+}
+
+watchProjectsFiles();
