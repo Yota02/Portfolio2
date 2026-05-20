@@ -43,13 +43,13 @@ const baseUrl = import.meta.env.BASE_URL
 .tech-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.8rem;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
   background: var(--color-background-soft);
   border: 1px solid var(--color-border);
   border-radius: 999px;
   color: var(--color-text);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.22s ease;
@@ -71,26 +71,26 @@ const baseUrl = import.meta.env.BASE_URL
 }
 
 .tech-badge.icon-only {
-  padding: 0.6rem;
-  border-radius: 12px;
+  padding: 0.8rem;
+  border-radius: 16px;
   justify-content: center;
 }
 
 .tech-badge.icon-only:hover {
-  transform: translateY(-3px) scale(1.08);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .tech-icon {
-  width: 18px;
-  height: 18px;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
   display: block;
 }
 
 .tech-badge.icon-only .tech-icon {
-  width: 24px;
-  height: 24px;
+  width: 42px;
+  height: 42px;
 }
 
 .tech-badge.active .tech-icon {

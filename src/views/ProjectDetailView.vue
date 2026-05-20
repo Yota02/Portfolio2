@@ -7,6 +7,7 @@ import { categoryColors, categoryKeyMap, getBgColor, parseAC } from '@/utils/com
 import TechBadge from '@/components/TechBadge.vue'
 import ImageCarousel from '@/components/ImageCarousel.vue'
 import BaseModal from '@/components/BaseModal.vue'
+import ProjectEvolution from '@/components/ProjectEvolution.vue'
 
 const { t } = useI18n()
 const baseUrl = import.meta.env.BASE_URL
@@ -123,6 +124,12 @@ onUnmounted(() => {
               </li>
             </ul>
           </div>
+
+          <ProjectEvolution
+            v-if="project.groupId"
+            :groupId="project.groupId"
+            :currentProjectId="project.id"
+          />
         </div>
 
         <aside class="sidebar reveal-right">
@@ -347,15 +354,21 @@ onUnmounted(() => {
 }
 
 .purpose-badge.education {
-  background-color: rgba(59, 130, 246, 0.1);
+  background-color: var(--color-background);
   color: #3b82f6;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  border: 1px solid #3b82f6;
 }
 
 .purpose-badge.personnel {
-  background-color: rgba(16, 185, 129, 0.1);
+  background-color: var(--color-background);
   color: #10b981;
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  border: 1px solid #10b981;
+}
+
+.purpose-badge.professionnel {
+  background-color: var(--color-background);
+  color: #8b5cf6;
+  border: 1px solid #8b5cf6;
 }
 
 .project-subtitle {
@@ -378,7 +391,7 @@ onUnmounted(() => {
 
 .info-card { background: var(--color-background-soft); border: 1px solid var(--color-border); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm); }
 .info-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: var(--color-heading); }
-.tech-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tech-list { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
 .purpose-card {
   display: flex;
@@ -398,13 +411,21 @@ onUnmounted(() => {
 }
 
 .purpose-card.education .card-icon {
-  background-color: rgba(59, 130, 246, 0.1);
+  background-color: var(--color-background);
   color: #3b82f6;
+  border: 1px solid #3b82f6;
 }
 
 .purpose-card.personnel .card-icon {
-  background-color: rgba(16, 185, 129, 0.1);
+  background-color: var(--color-background);
   color: #10b981;
+  border: 1px solid #10b981;
+}
+
+.purpose-card.professionnel .card-icon {
+  background-color: var(--color-background);
+  color: #8b5cf6;
+  border: 1px solid #8b5cf6;
 }
 
 .purpose-card h3 {
@@ -428,6 +449,10 @@ onUnmounted(() => {
 
 .purpose-card.personnel:hover {
   border-color: #10b981;
+}
+
+.purpose-card.professionnel:hover {
+  border-color: #8b5cf6;
 }
 
 .stats-list { display: grid; gap: 1rem; }

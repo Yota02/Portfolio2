@@ -313,8 +313,8 @@ const toggleTech = (tech: string) => {
 
 .tech-icons {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1.25rem;
   justify-items: center;
   transition: opacity 0.3s ease;
 }
