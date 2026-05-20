@@ -906,9 +906,15 @@
       "TensorFlow",
       "Python",
       "HTML5",
-      "Git"
+      "Git",
+      "Hugging face",
+      "react"
     ],
-    "images": [],
+    "images": [
+      "yomu-01.png",
+      "yomu-02.png",
+      "yomu-03.png"
+    ],
     "logo": "logo.webp",
     "category": "Logiciel",
     "purpose": "Personnel",

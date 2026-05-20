@@ -46,17 +46,57 @@ export interface Project {
 }
 
 export const techIconMap: Record<string, string> = {
-  Python: "python", Flask: "flask", JavaScript: "javascript", HTML5: "html", CSS3: "css",
-  Excel: "excel", Docker: "docker", Scrum: "scrum", MySQL: "mysql", MVC: "mvc",
-  "Vue.js": "vuejs", TypeScript: "typescript", Vite: "vite", Unity: "unity", "C#": "csharp",
-  IA: "ia", Pytorch: "pytorch", TensorFlow: "tensorflow", Ctfd: "ctfd", Apache: "apache",
-  Conda: "conda", Git: "git", JavaFX: "JavaFX", Java: "java", Pandas: "pandas",
-  NumPy: "numpy", PyGame: "pygame", SSH: "ssh", WordPress: "wordpress", Linux: "linux",
-  Symfony: "symfony", Bootstrap: "bootstrap", "Reinforcement Learning": "reinforcement_learning",
-  Jeux: "jeux", Twig: "twig", JUnit: "junit", Tkinter: "Tkinter", CustomTkinter: "CustomTkinter",
-  Watchdog: "Watchdog", Firebase: "firebase", ChromaDb: "chromadb", Ollama: "ollama",
-  Spark: "spark", Hadoop: "hadoop", Kubernetes: "kubernetes", Terraform: "terraform",
-  Prometheus: "prometheus", Grafana: "grafana", "GitHub Actions": "githubactions",
+  "Python": "python",
+  "Flask": "flask",
+  "JavaScript": "javascript",
+  "HTML5": "html",
+  "CSS3": "css",
+  "Excel": "excel",
+  "Docker": "docker",
+  "Scrum": "scrum",
+  "MySQL": "mysql",
+  "MVC": "mvc",
+  "Vue.js": "vuejs",
+  "TypeScript": "typescript",
+  "Vite": "vite",
+  "Unity": "unity",
+  "C#": "csharp",
+  "IA": "ia",
+  "Pytorch": "pytorch",
+  "TensorFlow": "tensorflow",
+  "Ctfd": "ctfd",
+  "Apache": "apache",
+  "Conda": "conda",
+  "Git": "git",
+  "JavaFX": "JavaFX",
+  "Java": "java",
+  "Pandas": "pandas",
+  "NumPy": "numpy",
+  "PyGame": "pygame",
+  "SSH": "ssh",
+  "WordPress": "wordpress",
+  "Linux": "linux",
+  "Symfony": "symfony",
+  "Bootstrap": "bootstrap",
+  "Reinforcement Learning": "reinforcement_learning",
+  "Jeux": "jeux",
+  "Twig": "twig",
+  "JUnit": "junit",
+  "Tkinter": "Tkinter",
+  "CustomTkinter": "CustomTkinter",
+  "Watchdog": "Watchdog",
+  "Firebase": "firebase",
+  "ChromaDb": "chromadb",
+  "Ollama": "ollama",
+  "Spark": "spark",
+  "Hadoop": "hadoop",
+  "Kubernetes": "kubernetes",
+  "Terraform": "terraform",
+  "Prometheus": "prometheus",
+  "Grafana": "grafana",
+  "GitHub Actions": "githubactions",
+  "react": "react.png",
+  "Hugging face": "huggingface.png"
 };
 
 export const categoryOrder: ProjectCategory[] = ["Dev Web", "IA", "Jeux Vidéo", "Logiciel"];
@@ -897,7 +937,8 @@ export const projects: Project[] = [
     "HTML5",
     "CSS3",
     "GitHub Actions",
-    "Git"
+    "Git",
+    "Leaflet"
   ],
   images: [
     "main.jpeg",
@@ -920,7 +961,8 @@ export const projects: Project[] = [
   startDate: "projects.items.project-gecolab.startDate",
   isOngoing: false,
   newTech: [
-    "GitHub Actions"
+    "GitHub Actions",
+    "Leaflet"
   ],
   competencies: [
     {
@@ -967,9 +1009,15 @@ export const projects: Project[] = [
     "TensorFlow",
     "Python",
     "HTML5",
-    "Git"
+    "Git",
+    "Hugging face",
+    "react"
   ],
-  images: [],
+  images: [
+    "yomu-01.png",
+    "yomu-02.png",
+    "yomu-03.png"
+  ],
   logo: "logo.webp",
   category: "Logiciel",
   purpose: "Personnel",

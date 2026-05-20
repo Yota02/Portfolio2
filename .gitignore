@@ -28,3 +28,6 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# Admin tools temp downloads
+/admin-tool/temp-download/
