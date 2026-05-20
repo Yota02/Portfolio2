@@ -47,5 +47,7 @@
   "Terraform": "terraform",
   "Prometheus": "prometheus",
   "Grafana": "grafana",
-  "GitHub Actions": "githubactions"
+  "GitHub Actions": "githubactions",
+  "react": "react.png",
+  "Hugging face": "huggingface.png"
 }
