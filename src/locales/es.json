@@ -448,6 +448,53 @@
           "1": ""
         }
       }
+    },
+    "metrics": {
+      "title": "Cifras clave",
+      "labels": {
+        "accuracy": "Precisión",
+        "lines_of_code": "Líneas de código",
+        "duration_hours": "Horas de desarrollo",
+        "challenges": "Desafíos",
+        "containers": "Contenedores Docker",
+        "ai_agents": "Agentes de IA",
+        "quizzes": "Quizzes y Ejercicios",
+        "database_tables": "Tablas de BD",
+        "levels": "Niveles",
+        "assets_created": "Recursos creados",
+        "languages": "Idiomas",
+        "screens": "Pantallas UI",
+        "microservices": "Microservicios",
+        "matches_simulated": "Partidos simulados",
+        "team_members": "Miembros del equipo",
+        "fps": "Objetivo FPS",
+        "reading_styles": "Estilos de lectura",
+        "economic_systems": "Sistemas económicos",
+        "templates": "Plantillas Twig",
+        "train_paths": "Rutas de trenes",
+        "map_sizes": "Configuración del mapa",
+        "images_processed": "Imágenes procesadas",
+        "epochs": "Épocas de entrenamiento",
+        "layers": "Capas de red",
+        "decision_rules": "Reglas de decisión",
+        "shaders_particles": "Shaders y Partículas",
+        "zones": "Zonas explorables",
+        "upgrades": "Mejoras",
+        "settings": "Ajustes de usuario",
+        "challenges_completed": "Desafíos completados",
+        "mini_games": "Mini-juegos",
+        "state_models": "Modelos de estado",
+        "parameter_controls": "Controles de parámetros",
+        "nodes_modeled": "Nodos modelados",
+        "databases_synced": "Bases de datos sinc",
+        "documents_processed": "Documentos procesados",
+        "admin_interfaces": "Interfaces de admin",
+        "workflows": "Flujos de trabajo",
+        "translation_engines": "Motores de trad",
+        "words_processed": "Palabras procesadas",
+        "metadata_parsers": "Analizadores de metadatos",
+        "pages_processed": "Páginas procesadas"
+      }
     }
   },
   "victoria": {

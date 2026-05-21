@@ -439,6 +439,53 @@
           "1": ""
         }
       }
+    },
+    "metrics": {
+      "title": "Metriche chiave",
+      "labels": {
+        "accuracy": "Precisione",
+        "lines_of_code": "Righe di codice",
+        "duration_hours": "Ore di sviluppo",
+        "challenges": "Sfide",
+        "containers": "Container Docker",
+        "ai_agents": "Agenti IA",
+        "quizzes": "Quiz ed Esercizi",
+        "database_tables": "Tabelle DB",
+        "levels": "Livelli",
+        "assets_created": "Asset creati",
+        "languages": "Lingue",
+        "screens": "Schermate UI",
+        "microservices": "Microservizi",
+        "matches_simulated": "Partite simulate",
+        "team_members": "Membri del team",
+        "fps": "Target FPS",
+        "reading_styles": "Stili di lettura",
+        "economic_systems": "Sistemi economici",
+        "templates": "Modelli Twig",
+        "train_paths": "Traiettorie treni",
+        "map_sizes": "Configurazioni mappa",
+        "images_processed": "Immagini elaborate",
+        "epochs": "Epoche di addestramento",
+        "layers": "Strati di rete",
+        "decision_rules": "Regole di decisione",
+        "shaders_particles": "Shader e Particelle",
+        "zones": "Zone esplorabili",
+        "upgrades": "Aggiornamenti",
+        "settings": "Impostazioni utente",
+        "challenges_completed": "Sfide completate",
+        "mini_games": "Mini-giochi",
+        "state_models": "Modelli di stato",
+        "parameter_controls": "Controlli parametri",
+        "nodes_modeled": "Nodi modellati",
+        "databases_synced": "Database sinc",
+        "documents_processed": "Documenti elaborati",
+        "admin_interfaces": "Interfacce admin",
+        "workflows": "Flussi di lavoro",
+        "translation_engines": "Motori di traduzione",
+        "words_processed": "Parole elaborate",
+        "metadata_parsers": "Parser di metadati",
+        "pages_processed": "Pagine elaborate"
+      }
     }
   },
   "victoria": {

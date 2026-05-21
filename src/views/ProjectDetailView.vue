@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useRoute, RouterLink } from 'vue-router'
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getProjectById, purposeMap, type ProjectPurpose } from '@/data/projects'
+import { getProjectById, purposeMap, type ProjectPurpose, type ProjectMetric } from '@/data/projects'
 import { categoryColors, categoryKeyMap, getBgColor, parseAC } from '@/utils/competencies'
 import TechBadge from '@/components/TechBadge.vue'
 import ImageCarousel from '@/components/ImageCarousel.vue'
@@ -49,7 +49,8 @@ const project = computed(() => {
     newTech: [],
     logo: '',
     version: undefined,
-    groupId: undefined
+    groupId: undefined,
+    metrics: [] as ProjectMetric[]
   }
 })
 
@@ -66,12 +67,89 @@ const calculatedDuration = computed(() => {
 
 const showCompetencies = ref(false)
 
+// Logic for key metrics scroll animation
+const metricsContainer = ref<HTMLElement | null>(null)
+const animatedValues = ref<number[]>([])
+const hasAnimated = ref(false)
+
+const formatValue = (value: number) => {
+  if (value % 1 === 0) {
+    return value.toString()
+  }
+  return value.toFixed(1)
+}
+
+const startCountAnimation = () => {
+  if (hasAnimated.value || !project.value.metrics) return
+  hasAnimated.value = true
+
+  animatedValues.value = project.value.metrics.map(() => 0)
+
+  const duration = 1500 // 1.5s animation duration
+  const startTime = performance.now()
+
+  const animate = (currentTime: number) => {
+    const elapsedTime = currentTime - startTime
+    const progress = Math.min(elapsedTime / duration, 1)
+
+    // Smooth ease-out quad deceleration
+    const ease = progress * (2 - progress)
+
+    if (project.value.metrics) {
+      project.value.metrics.forEach((metric, index) => {
+        const targetValue = metric.value
+        animatedValues.value[index] = Number((targetValue * ease).toFixed(1))
+      })
+    }
+
+    if (progress < 1) {
+      requestAnimationFrame(animate)
+    } else {
+      // Ensure exact final values
+      if (project.value.metrics) {
+        animatedValues.value = project.value.metrics.map(m => m.value)
+      }
+    }
+  }
+
+  requestAnimationFrame(animate)
+}
+
+let observer: IntersectionObserver | null = null
+
+watch(() => project.value.id, () => {
+  hasAnimated.value = false
+  animatedValues.value = project.value.metrics ? project.value.metrics.map(() => 0) : []
+  setTimeout(() => {
+    if (metricsContainer.value && observer) {
+      observer.unobserve(metricsContainer.value)
+      observer.observe(metricsContainer.value)
+    }
+  }, 100)
+})
+
 onMounted(() => {
   window.addEventListener('scroll', updateScrollProgress)
+
+  // Initialize intersection observer for metrics
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        startCountAnimation()
+      }
+    })
+  }, { threshold: 0.15 })
+
+  if (metricsContainer.value) {
+    observer.observe(metricsContainer.value)
+  }
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', updateScrollProgress)
+  if (observer) {
+    observer.disconnect()
+  }
 })
 
 const getTechIcon = (tech: string): string => {
@@ -193,6 +271,38 @@ const parseAC = (acString: string) => {
       <div class="project-content">
         <div class="main-section reveal-left">
           <ImageCarousel :images="project.images" :folder="project.folder" />
+
+          <!-- Chiffres clés & Métriques -->
+          <div
+            v-if="project.metrics && project.metrics.length > 0"
+            ref="metricsContainer"
+            :class="['metrics-panel', 'glass-panel', 'reveal-up', purposeMap[project.purpose as ProjectPurpose]]"
+          >
+            <div class="metrics-panel-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="h2-icon">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+              <h2>{{ t('projects.metrics.title') }}</h2>
+            </div>
+            
+            <div class="metrics-grid">
+              <div
+                v-for="(metric, index) in project.metrics"
+                :key="index"
+                class="metric-card"
+              >
+                <div class="metric-visual">
+                  <span class="metric-value gradient-text">
+                    {{ animatedValues[index] !== undefined ? formatValue(animatedValues[index]) : 0 }}
+                  </span>
+                  <span class="metric-suffix">{{ metric.suffix }}</span>
+                </div>
+                <div class="metric-label">{{ t(metric.labelKey) }}</div>
+              </div>
+            </div>
+          </div>
 
           <div class="description-section glass-panel">
             <h2>
@@ -1227,6 +1337,165 @@ const parseAC = (acString: string) => {
 .ac-label {
   font-weight: 600;
   color: var(--color-heading);
+}
+
+/* Metrics section style */
+.metrics-panel {
+  padding: 2.2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 20px;
+  background: rgba(var(--primary-rgb), 0.02);
+  border: 1px solid rgba(var(--primary-rgb), 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root.dark .metrics-panel {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+.metrics-panel.education {
+  --theme-color: #3b82f6;
+  --theme-color-rgb: 59, 130, 246;
+}
+
+.metrics-panel.personnel {
+  --theme-color: #10b981;
+  --theme-color-rgb: 16, 185, 129;
+}
+
+.metrics-panel.professionnel {
+  --theme-color: #8b5cf6;
+  --theme-color-rgb: 139, 92, 246;
+}
+
+.metrics-panel::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(var(--theme-color-rgb, var(--primary-rgb)), 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.metrics-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.metrics-panel-title h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin: 0;
+}
+
+.metrics-panel-title svg {
+  color: var(--theme-color, var(--primary));
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.metric-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  background: rgba(var(--primary-rgb), 0.03);
+  border: 1px solid rgba(var(--primary-rgb), 0.08);
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root.dark .metric-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.metric-card:hover {
+  transform: translateY(-5px);
+  background: rgba(var(--primary-rgb), 0.06);
+  border-color: rgba(var(--theme-color-rgb, var(--primary-rgb)), 0.25);
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.1);
+}
+
+:root.dark .metric-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.3);
+}
+
+.metric-visual {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.metric-value {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--color-heading) 30%, rgba(var(--theme-color-rgb, var(--primary-rgb)), 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.metric-suffix {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--theme-color, var(--primary));
+  margin-left: 0.15rem;
+}
+
+.metric-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #8e8e93);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+  .metrics-panel {
+    padding: 1.5rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .metric-value {
+    font-size: 2.2rem;
+  }
+  
+  .metric-suffix {
+    font-size: 1.1rem;
+  }
 }
 
 /* Responsiveness adjustments */

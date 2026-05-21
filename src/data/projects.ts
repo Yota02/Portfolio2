@@ -15,6 +15,12 @@ export interface Competency {
   items: string[]; // Keys
 }
 
+export interface ProjectMetric {
+  value: number;
+  suffix?: string;
+  labelKey: string;
+}
+
 export interface Project {
   id: string;
   name: string;
@@ -45,6 +51,7 @@ export interface Project {
   newTech: string[];
   subProjects?: SubProject[];
   competencies?: Competency[];
+  metrics?: ProjectMetric[];
 }
 
 export const techIconMap: Record<string, string> = {
@@ -164,6 +171,12 @@ export const projects: Project[] = [
         "projects.items.project-1.competencies.2.0"
       ]
     }
+  ],
+  metrics: [
+    { value: 15, suffix: "+", labelKey: "projects.metrics.labels.quizzes" },
+    { value: 95, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
+    { value: 2.5, suffix: "k+", labelKey: "projects.metrics.labels.lines_of_code" },
+    { value: 1, suffix: "", labelKey: "projects.metrics.labels.ai_agents" }
   ]
 },
   {
@@ -282,6 +295,12 @@ export const projects: Project[] = [
         "projects.items.project-2.subProjects.1.features.1"
       ]
     }
+  ],
+  metrics: [
+    { value: 12, suffix: "+", labelKey: "projects.metrics.labels.challenges" },
+    { value: 150, suffix: "h+", labelKey: "projects.metrics.labels.duration_hours" },
+    { value: 10, suffix: "+", labelKey: "projects.metrics.labels.containers" },
+    { value: 4, suffix: "", labelKey: "projects.metrics.labels.team_members" }
   ]
 },
   {
@@ -353,6 +372,12 @@ export const projects: Project[] = [
         "projects.items.project-3.competencies.2.0"
       ]
     }
+  ],
+  metrics: [
+    { value: 4, suffix: "", labelKey: "projects.metrics.labels.economic_systems" },
+    { value: 35, suffix: "+", labelKey: "projects.metrics.labels.database_tables" },
+    { value: 25, suffix: "+", labelKey: "projects.metrics.labels.templates" },
+    { value: 4.2, suffix: "k+", labelKey: "projects.metrics.labels.lines_of_code" }
   ]
 },
   {
@@ -435,6 +460,12 @@ export const projects: Project[] = [
         "projects.items.project-4.competencies.4.0"
       ]
     }
+  ],
+  metrics: [
+    { value: 60, suffix: "fps", labelKey: "projects.metrics.labels.fps" },
+    { value: 5, suffix: "", labelKey: "projects.metrics.labels.levels" },
+    { value: 8, suffix: "", labelKey: "projects.metrics.labels.ai_behaviors" },
+    { value: 120, suffix: "+", labelKey: "projects.metrics.labels.assets_created" }
   ]
 },
   {
@@ -506,6 +537,12 @@ export const projects: Project[] = [
         "projects.items.project-5.competencies.3.0"
       ]
     }
+  ],
+  metrics: [
+    { value: 99.8, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
+    { value: 15, suffix: "+", labelKey: "projects.metrics.labels.train_paths" },
+    { value: 3, suffix: "", labelKey: "projects.metrics.labels.map_sizes" },
+    { value: 1.8, suffix: "k+", labelKey: "projects.metrics.labels.lines_of_code" }
   ]
 },
   {
@@ -561,6 +598,12 @@ export const projects: Project[] = [
         "projects.items.project-6.competencies.1.0"
       ]
     }
+  ],
+  metrics: [
+    { value: 94.5, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
+    { value: 50, suffix: "k+", labelKey: "projects.metrics.labels.images_processed" },
+    { value: 10, suffix: "", labelKey: "projects.metrics.labels.epochs" },
+    { value: 3, suffix: "", labelKey: "projects.metrics.labels.layers" }
   ]
 },
   {
@@ -653,6 +696,12 @@ export const projects: Project[] = [
         "projects.items.project-7.subProjects.1.features.1"
       ]
     }
+  ],
+  metrics: [
+    { value: 100, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
+    { value: 15, suffix: "+", labelKey: "projects.metrics.labels.decision_rules" },
+    { value: 200, suffix: "+", labelKey: "projects.metrics.labels.matches_simulated" },
+    { value: 60, suffix: "fps", labelKey: "projects.metrics.labels.fps" }
   ]
 },
   {
@@ -720,6 +769,12 @@ export const projects: Project[] = [
         "projects.items.project-8.competencies.2.0"
       ]
     }
+  ],
+  metrics: [
+    { value: 3, suffix: "", labelKey: "projects.metrics.labels.shaders_particles" },
+    { value: 4, suffix: "", labelKey: "projects.metrics.labels.zones" },
+    { value: 15, suffix: "+", labelKey: "projects.metrics.labels.upgrades" },
+    { value: 60, suffix: "fps", labelKey: "projects.metrics.labels.fps" }
   ]
 },
   {
@@ -771,6 +826,12 @@ export const projects: Project[] = [
         "projects.items.project-10.competencies.1.0"
       ]
     }
+  ],
+  metrics: [
+    { value: 8, suffix: "", labelKey: "projects.metrics.labels.languages" },
+    { value: 45, suffix: "+", labelKey: "projects.metrics.labels.screens" },
+    { value: 12, suffix: "", labelKey: "projects.metrics.labels.settings" },
+    { value: 100, suffix: "%", labelKey: "projects.metrics.labels.accuracy" }
   ]
 },
   {
@@ -837,6 +898,12 @@ export const projects: Project[] = [
         "projects.items.project-11.competencies.2.0"
       ]
     }
+  ],
+  metrics: [
+    { value: 1, suffix: "", labelKey: "projects.metrics.labels.challenges_completed" },
+    { value: 15, suffix: "h", labelKey: "projects.metrics.labels.duration_hours" },
+    { value: 2, suffix: "", labelKey: "projects.metrics.labels.mini_games" },
+    { value: 100, suffix: "%", labelKey: "projects.metrics.labels.accuracy" }
   ]
 },
   {
@@ -872,7 +939,13 @@ export const projects: Project[] = [
   startDate: "projects.items.project-12.startDate",
   isOngoing: true,
   newTech: [],
-  competencies: []
+  competencies: [],
+  metrics: [
+    { value: 3, suffix: "", labelKey: "projects.metrics.labels.state_models" },
+    { value: 99.9, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
+    { value: 5, suffix: "", labelKey: "projects.metrics.labels.parameter_controls" },
+    { value: 1.2, suffix: "k+", labelKey: "projects.metrics.labels.nodes_modeled" }
+  ]
 },
   {
   id: "project-13",
@@ -923,6 +996,12 @@ export const projects: Project[] = [
         "projects.items.project-13.competencies.1.0"
       ]
     }
+  ],
+  metrics: [
+    { value: 4, suffix: "", labelKey: "projects.metrics.labels.microservices" },
+    { value: 98, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
+    { value: 2, suffix: "", labelKey: "projects.metrics.labels.databases_synced" },
+    { value: 50, suffix: "+", labelKey: "projects.metrics.labels.documents_processed" }
   ]
 },
   {
@@ -996,6 +1075,12 @@ export const projects: Project[] = [
         "projects.items.project-gecolab.competencies.3.0"
       ]
     }
+  ],
+  metrics: [
+    { value: 4, suffix: "", labelKey: "projects.metrics.labels.admin_interfaces" },
+    { value: 15, suffix: "+", labelKey: "projects.metrics.labels.workflows" },
+    { value: 100, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
+    { value: 8, suffix: "", labelKey: "projects.metrics.labels.team_members" }
   ]
 },
   {
@@ -1034,7 +1119,13 @@ export const projects: Project[] = [
   startDate: "projects.items.projekt-bersetzung.startDate",
   endDate: "",
   newTech: [],
-  competencies: []
+  competencies: [],
+  metrics: [
+    { value: 3, suffix: "", labelKey: "projects.metrics.labels.translation_engines" },
+    { value: 1.5, suffix: "k+", labelKey: "projects.metrics.labels.words_processed" },
+    { value: 98.7, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
+    { value: 5, suffix: "", labelKey: "projects.metrics.labels.languages" }
+  ]
 },
   {
   id: "project-1779285718375",
@@ -1073,7 +1164,13 @@ export const projects: Project[] = [
   startDate: "projects.items.yomu.startDate",
   endDate: "projects.items.yomu.endDate",
   newTech: [],
-  competencies: []
+  competencies: [],
+  metrics: [
+    { value: 4, suffix: "", labelKey: "projects.metrics.labels.reading_styles" },
+    { value: 25, suffix: "+", labelKey: "projects.metrics.labels.metadata_parsers" },
+    { value: 100, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
+    { value: 5, suffix: "k+", labelKey: "projects.metrics.labels.pages_processed" }
+  ]
 }
 ];
 

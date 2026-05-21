@@ -439,6 +439,53 @@
           "1": ""
         }
       }
+    },
+    "metrics": {
+      "title": "关键数据",
+      "labels": {
+        "accuracy": "准确率",
+        "lines_of_code": "代码行数",
+        "duration_hours": "开发时间",
+        "challenges": "挑战数",
+        "containers": "Docker 容器数",
+        "ai_agents": "AI 代理数",
+        "quizzes": "测验与练习",
+        "database_tables": "数据库表",
+        "levels": "关卡数",
+        "assets_created": "创建的资源数",
+        "languages": "语言数",
+        "screens": "UI 界面数",
+        "microservices": "微服务",
+        "matches_simulated": "模拟比赛数",
+        "team_members": "团队成员数",
+        "fps": "目标 FPS",
+        "reading_styles": "阅读样式",
+        "economic_systems": "经济系统",
+        "templates": "Twig 模板",
+        "train_paths": "火车运行路线",
+        "map_sizes": "地图配置",
+        "images_processed": "图像处理数",
+        "epochs": "训练轮数",
+        "layers": "网络层数",
+        "decision_rules": "决策规则",
+        "shaders_particles": "着色器与粒子效果",
+        "zones": "可探索区域",
+        "upgrades": "升级项目",
+        "settings": "用户设置",
+        "challenges_completed": "已完成的挑战",
+        "mini_games": "小游戏",
+        "state_models": "状态模型",
+        "parameter_controls": "参数控制",
+        "nodes_modeled": "节点建模数",
+        "databases_synced": "已同步的数据库数",
+        "documents_processed": "处理的文档数",
+        "admin_interfaces": "管理界面",
+        "workflows": "工作流数",
+        "translation_engines": "翻译引擎数",
+        "words_processed": "处理的词数",
+        "metadata_parsers": "元数据解析器",
+        "pages_processed": "处理的页面数"
+      }
     }
   },
   "victoria": {

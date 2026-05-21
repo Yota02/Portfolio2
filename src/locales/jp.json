@@ -439,6 +439,53 @@
           "1": ""
         }
       }
+    },
+    "metrics": {
+      "title": "主な統計情報",
+      "labels": {
+        "accuracy": "精度",
+        "lines_of_code": "コード行数",
+        "duration_hours": "開発時間",
+        "challenges": "課題数",
+        "containers": "Dockerコンテナ数",
+        "ai_agents": "AIエージェント数",
+        "quizzes": "クイズ・演習",
+        "database_tables": "データベーステーブル",
+        "levels": "レベル数",
+        "assets_created": "作成アセット数",
+        "languages": "対応言語数",
+        "screens": "UI画面数",
+        "microservices": "マイクロサービス",
+        "matches_simulated": "シミュレーションマッチ数",
+        "team_members": "チームメンバー数",
+        "fps": "ターゲットFPS",
+        "reading_styles": "読書スタイル数",
+        "economic_systems": "経済システム",
+        "templates": "Twigテンプレート",
+        "train_paths": "電車の走行ルート",
+        "map_sizes": "マップ構成",
+        "images_processed": "画像処理数",
+        "epochs": "学習エポック",
+        "layers": "ネットワーク層",
+        "decision_rules": "意思決定ルール",
+        "shaders_particles": "シェーダー・パーティクル",
+        "zones": "探索エリア",
+        "upgrades": "アップグレード項目",
+        "settings": "ユーザー設定",
+        "challenges_completed": "クリアしたチャレンジ",
+        "mini_games": "ミニゲーム",
+        "state_models": "状態モデル",
+        "parameter_controls": "パラメータ制御",
+        "nodes_modeled": "モデリングされたノード",
+        "databases_synced": "同期されたDB数",
+        "documents_processed": "処理ドキュメント数",
+        "admin_interfaces": "管理画面数",
+        "workflows": "ワークフロー数",
+        "translation_engines": "翻訳エンジン数",
+        "words_processed": "処理文字数",
+        "metadata_parsers": "メタデータパーサー",
+        "pages_processed": "処理ページ数"
+      }
     }
   },
   "victoria": {

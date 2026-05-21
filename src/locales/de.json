@@ -494,6 +494,53 @@
           "1": ""
         }
       }
+    },
+    "metrics": {
+      "title": "Wichtige Kennzahlen",
+      "labels": {
+        "accuracy": "Genauigkeit",
+        "lines_of_code": "Zeilen Code",
+        "duration_hours": "Entwicklungsstunden",
+        "challenges": "Herausforderungen",
+        "containers": "Docker-Container",
+        "ai_agents": "KI-Agenten",
+        "quizzes": "Quizze & Übungen",
+        "database_tables": "Datenbanktabellen",
+        "levels": "Levels",
+        "assets_created": "Erstellte Assets",
+        "languages": "Sprachen",
+        "screens": "Benutzeroberflächen",
+        "microservices": "Mikrodienste",
+        "matches_simulated": "Simulierte Spiele",
+        "team_members": "Teammitglieder",
+        "fps": "Ziel-FPS",
+        "reading_styles": "Lesestile",
+        "economic_systems": "Wirtschaftssysteme",
+        "templates": "Twig-Vorlagen",
+        "train_paths": "Zugstrecken",
+        "map_sizes": "Kartenkonfigurationen",
+        "images_processed": "Bilder verarbeitet",
+        "epochs": "Trainingsepochen",
+        "layers": "Netzwerkschichten",
+        "decision_rules": "Entscheidungsregeln",
+        "shaders_particles": "Shader & Partikel",
+        "zones": "Erkundbare Zonen",
+        "upgrades": "Upgrades",
+        "settings": "Benutzereinstellungen",
+        "challenges_completed": "Herausforderungen bestanden",
+        "mini_games": "Minispiele",
+        "state_models": "Zustandsmodelle",
+        "parameter_controls": "Parametersteuerungen",
+        "nodes_modeled": "Modellierte Knoten",
+        "databases_synced": "Datenbanken sync",
+        "documents_processed": "Dokumente verarbeitet",
+        "admin_interfaces": "Admin-Oberflächen",
+        "workflows": "Arbeitsabläufe",
+        "translation_engines": "Übersetzungs-Engines",
+        "words_processed": "Wörter verarbeitet",
+        "metadata_parsers": "Metadaten-Parser",
+        "pages_processed": "Seiten verarbeitet"
+      }
     }
   },
   "victoria": {
