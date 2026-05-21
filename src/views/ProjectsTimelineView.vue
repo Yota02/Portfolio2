@@ -1,88 +1,15 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { projects, type ProjectCategory } from '@/data/projects'
-import {
-  Calendar,
-  ArrowRight,
-  Tag,
-  Filter,
-  Code,
-  Cpu,
-  Gamepad2,
-  Box,
-  CheckCircle2,
-  Clock
-} from 'lucide-vue-next'
+import { projects } from '@/data/projects'
+import { parseDate } from '@/utils/dateUtils'
 
-const { t } = useI18n()
-const baseUrl = import.meta.env.BASE_URL
+const { t, locale } = useI18n()
 
-const selectedCategory = ref<ProjectCategory | 'All'>('All')
-const categories: (ProjectCategory | 'All')[] = ['All', 'Dev Web', 'IA', 'Jeux Vidéo', 'Logiciel']
-
-const filteredProjects = computed(() => {
-  let result = [...projects]
-
-  if (selectedCategory.value !== 'All') {
-    result = result.filter(p => p.category === selectedCategory.value)
-  }
-
-  return result.sort((a, b) => {
-    const dateA = a.startDateStr || '0'
-    const dateB = b.startDateStr || '0'
-    return dateB.localeCompare(dateA)
-  })
-})
-
-const getCategoryIcon = (category: string) => {
-  switch (category) {
-    case 'Dev Web': return Code
-    case 'IA': return Cpu
-    case 'Jeux Vidéo': return Gamepad2
-    case 'Logiciel': return Box
-    default: return Code
-  }
-}
-
-const getCategoryColor = (category: string) => {
-  switch (category) {
-    case 'Dev Web': return 'var(--blue)'
-    case 'IA': return 'var(--purple)'
-    case 'Jeux Vidéo': return 'var(--orange)'
-    case 'Logiciel': return 'var(--emerald)'
-    default: return 'var(--primary)'
-  }
-}
-
-const getProjectImage = (project: any) => {
-  if (!project.images || project.images.length === 0) return ''
-  let imageName = project.images[0]
-  if (project.id === 'project-3' && imageName === 'live_capture.webp') {
-    imageName = 'capital-wars.webp'
-  }
-  return `${baseUrl}projet/${project.folder}/${imageName}`
-}
-
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-}
-
-const initObserver = () => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible')
-      }
-    })
-  }, observerOptions)
-
-  document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el))
-}
-
-onMounted(() => {
-  initObserver()
+const sortedProjects = [...projects].sort((a, b) => {
+  const dateA = parseDate(a.startDate, locale.value, t)
+  const dateB = parseDate(b.startDate, locale.value, t)
+  return dateB.getTime() - dateA.getTime()
 })
 </script>
 

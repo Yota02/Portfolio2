@@ -105,14 +105,11 @@ watch(() => route.path, () => {
             :label="t('nav.parcours')" 
             :items="[
               { to: '/objectives', label: t('nav.diplomas') },
-              { to: '/participations', label: t('nav.participations') },
-              { to: '/portfolio-apprentissage', label: t('nav.portfolio') },
-              { to: '/experience-professionnelle', label: t('nav.professional_experience') }
+              { to: '/participations', label: t('nav.participations') }
             ]"
             @close-menu="closeMenu"
           />
 
-          <RouterLink to="/blog" class="nav-link" @click="closeMenu">{{ t('nav.blog') }}</RouterLink>
           <RouterLink to="/contact" class="nav-link" @click="closeMenu">{{ t('nav.contact') }}</RouterLink>
           <RouterLink to="/admin" class="nav-link" @click="closeMenu">Admin</RouterLink>
 
@@ -354,4 +351,3 @@ header {
   transform: translate(0, 0);
 }
 </style>
-
