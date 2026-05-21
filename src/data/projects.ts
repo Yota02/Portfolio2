@@ -650,8 +650,7 @@ export const projects: Project[] = [
     "HTML5",
     "CSS3",
     "GitHub Actions",
-    "Git",
-    "Leaflet"
+    "Git"
   ],
   images: [
     "main.jpeg",
@@ -674,8 +673,7 @@ export const projects: Project[] = [
   startDate: "projects.items.project-gecolab.startDate",
   isOngoing: false,
   newTech: [
-    "GitHub Actions",
-    "Leaflet"
+    "GitHub Actions"
   ]
 },
   {

@@ -56,6 +56,8 @@
     "description": "Описание",
     "features": "Функционал",
     "technologies": "Технологии",
+    "search_projects_placeholder": "Поиск проекта...",
+    "search_techs_placeholder": "Фильтр...",
     "links": "Ссылки",
     "view_demo": "Посмотреть демо",
     "source_code": "Исходный код",

@@ -56,6 +56,8 @@
     "description": "Descripción",
     "features": "Funcionalidades",
     "technologies": "Tecnologías",
+    "search_projects_placeholder": "Buscar un proyecto...",
+    "search_techs_placeholder": "Filtrar...",
     "links": "Enlaces",
     "view_demo": "Ver demo",
     "source_code": "Código fuente",
@@ -251,14 +253,14 @@
       },
       "project-gecolab": {
         "description": "Sitio web profesional para un laboratorio de genética y conservación.",
-        "longDescription": "Gecolab es una plataforma web moderna diseñada para el Laboratorio de Genética de la Conservación de la Universidad de Lieja. El sitio presenta las misiones del laboratorio, sus servicios de análisis genéticos y sus proyectos de investigación. Desarrollado con Vue.js, integra mapas interactivos con Leaflet y un sistema de despliegue automatizado.",
+        "longDescription": "Gecolab es una plataforma web moderna diseñada para el Laboratorio de Genética de la Conservación de la Universidad de Lieja. El sitio presenta las misiones del laboratorio, sus servicios de análisis genéticos y sus proyectos de investigación. Desarrollado con Vue.js, integra un sistema de despliegue automatizado.",
         "context": "Pedido de cliente real para la Universidad de Lieja. El proyecto buscaba reemplazar un sitio antiguo por una solución más moderna, responsive y fácil de mantener.",
         "personalContribution": "Gestioné la totalidad de la relación con el cliente: recopilación de necesidades, presentación de prototipos y sesiones de retroalimentación. Técnicamente, implementé el frontend con Vue.js, configuré los mapas interactivos y establecí una pipeline CI/CD a través de GitHub Actions para un despliegue automático en cada actualización.",
         "duration": "Proyecto realizado en 3 meses.",
         "startDate": "Enero 2026",
         "features": {
           "0": "Interfaz moderna y responsive con Vue.js",
-          "1": "Mapeo interactivo de proyectos con Leaflet",
+          "1": "Mapeo interactivo de proyectos",
           "2": "Gestión multilingüe (Francés/Inglés)"
         }
       },

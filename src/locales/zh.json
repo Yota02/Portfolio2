@@ -55,8 +55,10 @@
     "back_to_projects": "← 返回项目",
     "description": "描述",
     "features": "功能",
-    "technologies": "技术",
-    "links": "链接",
+    "technologies": "技术栈",
+    "search_projects_placeholder": "搜索项目...",
+    "search_techs_placeholder": "筛选...",
+    "links": "相关链接",
     "view_demo": "查看演示",
     "source_code": "源码",
     "stats": {

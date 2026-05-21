@@ -56,6 +56,8 @@
     "description": "Beschreibung",
     "features": "Funktionen",
     "technologies": "Technologien",
+    "search_projects_placeholder": "Projekt suchen...",
+    "search_techs_placeholder": "Filtern...",
     "links": "Links",
     "view_demo": "Demo ansehen",
     "source_code": "Quellcode",
@@ -251,14 +253,14 @@
       },
       "project-gecolab": {
         "description": "Professionelle Showcase-Website für ein Labor für Genetik und Naturschutz.",
-        "longDescription": "Gecolab ist eine moderne Webplattform, die für das Labor für Erhaltungsgenetik der Universität Lüttich entwickelt wurde. Die Website präsentiert die Missionen des Labors, seine genetischen Analysedienste und seine Forschungsprojekte. Es wurde mit Vue.js entwickelt und integriert interaktive Karten mit Leaflet sowie ein automatisiertes Bereitstellungssystem.",
+        "longDescription": "Gecolab ist eine moderne Webplattform, die für das Labor für Erhaltungsgenetik der Universität Lüttich entwickelt wurde. Die Website präsentiert die Missionen des Labors, seine genetischen Analysedienste und seine Forschungsprojekte. Es wurde mit Vue.js entwickelt und integriert ein automatisiertes Bereitstellungssystem.",
         "context": "Realer Kundenauftrag für die Universität Lüttich. Ziel des Projekts war es, eine alte Website durch eine modernere, responsive und wartungsfreundliche Lösung zu ersetzen.",
         "personalContribution": "Ich habe die gesamte Kundenbeziehung verwaltet: Anforderungsaufnahme, Präsentation von Mockups und Feedback-Sitzungen. Technisch habe ich das Frontend mit Vue.js implementiert, die interaktiven Karten konfiguriert und eine CI/CD-Pipeline über GitHub Actions für die automatische Bereitstellung bei jedem Update eingerichtet.",
         "duration": "Projekt über 3 Monate realisiert.",
         "startDate": "Januar 2026",
         "features": {
           "0": "Moderne und responsive Benutzeroberfläche mit Vue.js",
-          "1": "Interaktive Kartierung von Projekten mit Leaflet",
+          "1": "Interaktive Kartierung von Projekten",
           "2": "Mehrsprachige Verwaltung (Französisch/Englisch)"
         }
       },
