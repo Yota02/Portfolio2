@@ -24,9 +24,10 @@ const groupedProjects = computed(() => {
 
 // Calculer les technologies uniques à partir des projets affichés
 const uniqueTechnologies = computed(() => {
+  const allShownProjects = Object.values(getProjectsByCategory()).flat()
   const filteredProjects = selectedTechs.value.length === 0
-    ? projects
-    : projects.filter(project => selectedTechs.value.every(tech => project.tags.includes(tech)))
+    ? allShownProjects
+    : allShownProjects.filter(project => selectedTechs.value.every(tech => project.tags.includes(tech)))
   const allTags = filteredProjects.flatMap(project => project.tags)
   return [...new Set(allTags)]
 })
@@ -87,7 +88,9 @@ const getLogoSrc = (project: Project) => {
 }
 
 // Nouvelle propriété calculée pour le nombre total de projets
-const totalProjects = computed(() => projects.length)
+const totalProjects = computed(() => {
+  return Object.values(groupedProjects.value).reduce((total, list) => total + list.length, 0)
+})
 
 // Fonction pour basculer la sélection d'une technologie
 const toggleTech = (tech: string) => {
@@ -137,12 +140,6 @@ const toggleTech = (tech: string) => {
         <div class="container">
           <div class="header">
             <h1 class="page-title">{{ t('projects.title') }} ({{ totalProjects }})</h1>
-            <RouterLink to="/competencies" class="competencies-btn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-              </svg>
-              {{ t('projects.view_competencies') }}
-            </RouterLink>
           </div>
 
           <div
@@ -212,40 +209,13 @@ const toggleTech = (tech: string) => {
   text-shadow: 0 0 40px rgba(var(--primary-rgb), 0.2);
 }
 
-.competencies-btn {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
 
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-  color: white;
-  text-decoration: none;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
-  margin-top: 0;
-  z-index: 10;
-}
 
-.competencies-btn:hover {
-  transform: translateY(calc(-50% - 2px));
-  box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.4);
-}
 
-.competencies-btn svg {
-  transition: transform 0.3s ease;
-}
 
-.competencies-btn:hover svg {
-  transform: scale(1.1);
-}
+
+
+
 
 .category-section {
   margin-bottom: 5rem;
@@ -404,18 +374,9 @@ const toggleTech = (tech: string) => {
     justify-content: center;
   }
 
-  .competencies-btn {
-    position: static;
-    transform: none;
-    margin-top: 1.5rem;
-    width: auto;
-    font-size: 0.8rem;
-    padding: 0.6rem 1.2rem;
-  }
+  
 
-  .competencies-btn:hover {
-    transform: translateY(-2px);
-  }
+  
 
   .category-title {
     font-size: 1.8rem;

@@ -11,8 +11,7 @@
     "blog": "Blog",
     "timeline": "Cronología",
     "toggle_theme": "Cambiar tema",
-    "toggle_nav": "Alternar navegación",
-    "portfolio": "Portfolio d'apprentissage"
+    "toggle_nav": "Alternar navegación"
   },
   "home": {
     "greeting": "Hola, soy",
@@ -53,7 +52,6 @@
   },
   "projects": {
     "title": "Mis Proyectos",
-    "view_competencies": "Ver competencias",
     "back_to_projects": "← Volver a proyectos",
     "description": "Descripción",
     "features": "Funcionalidades",
@@ -86,7 +84,6 @@
     },
     "subprojects": "Subproyectos",
     "view_project_link": "Ver proyecto →",
-    "but_competencies": "Competencias BUT",
     "unknown_project": "Proyecto Desconocido",
     "project_not_found": "Este proyecto no existe",
     "unknown_subproject": "Subproyecto no encontrado",
@@ -102,18 +99,6 @@
           "0": "Chatbot inteligente basado en GPT",
           "1": "Ejercicios prácticos con corrección automática"
         },
-        "competencies": {
-          "0": {
-            "0": "AC31.01 :: Elegir e implementar arquitecturas adecuadas (Arquitectura Web Vue.js/Flask)",
-            "1": "AC31.03 :: Integrar soluciones en un entorno de producción"
-          },
-          "1": {
-            "0": "AC25.02 :: Formalizar las necesidades del cliente y del usuario"
-          },
-          "2": {
-            "0": "AC24.03 :: Organizar la restitución de datos a través de la programación y la visualización (Cuadros de mando)"
-          }
-        },
         "context": "",
         "personalContribution": "",
         "duration": ""
@@ -127,24 +112,6 @@
           "0": "Desafíos que explotan vulnerabilidades SSH",
           "1": "Juego \"Rainbow Jumper\" para obtener la bandera",
           "2": "Despliegue contenedorizado con Docker"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC21.01 :: Desarrollar e implementar especificaciones funcionales y no funcionales a partir de los requisitos",
-            "1": "AC21.04 :: Verificar y validar la calidad de la aplicación mediante pruebas"
-          },
-          "1": {
-            "0": "AC23.01 :: Diseñar y desarrollar aplicaciones comunicantes",
-            "1": "AC23.02 :: Utilizar servidores y servicios de red virtualizados (Docker)",
-            "2": "AC23.03 :: Asegurar los servicios y datos de un sistema (SSH)"
-          },
-          "2": {
-            "0": "AC25.04 :: Definir e implementar un enfoque de seguimiento de proyectos (Scrum/Agile)"
-          },
-          "3": {
-            "0": "AC26.03 :: Movilizar competencias interpersonales para trabajar en un equipo de TI",
-            "1": "AC26.04 :: Informar sobre la actividad profesional"
-          }
         },
         "subProjects": {
           "0": {
@@ -175,18 +142,6 @@
           "2": "Competición entre jugadores",
           "3": "Gestión de recursos en tiempo real",
           "4": "Redacción de Balances, Cuentas de resultados"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC21.03 :: Adoptar buenas prácticas de diseño y programación (MVC Symfony)",
-            "1": "AC21.02 :: Aplicar principios de accesibilidad y ergonomía"
-          },
-          "1": {
-            "0": "AC24.01 :: Optimizar los modelos de datos de la empresa"
-          },
-          "2": {
-            "0": "AC26.01 :: Comprender la diversidad, estructura y dimensión de la informática en una organización"
-          }
         }
       },
       "project-4": {
@@ -197,21 +152,6 @@
         "features": {
           "0": "Interfaz intuitiva de visualización de datos",
           "1": "Análisis estadísticos de probabilidades de colisión"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC11.01 :: Implementar diseños sencillos",
-            "1": "AC11.04 :: Desarrollar interfaces de usuario"
-          },
-          "1": {
-            "0": "AC22.01 :: Elegir estructuras de datos complejas adaptadas al problema (Dataframes Pandas)"
-          },
-          "2": {
-            "0": "AC24.04 :: Manipular datos heterogéneos (Excel, CSV, API)"
-          },
-          "3": {
-            "0": "AC15.01 :: Comprender las necesidades del cliente y del usuario"
-          }
         }
       },
       "project-5": {
@@ -222,19 +162,6 @@
         "features": {
           "0": "Interfaz gráfica desarrollada con JavaFX",
           "1": "Desarrollo guiado por pruebas (TDD) con JUnit"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC11.03 :: Realizar pruebas y evaluar sus resultados frente a las especificaciones (TDD/JUnit)",
-            "1": "AC11.04 :: Desarrollar interfaces de usuario (JavaFX)"
-          },
-          "1": {
-            "0": "AC12.01 :: Analizar un problema con método (desglose en elementos algorítmicos simples)",
-            "1": "AC12.02 :: Comparar algoritmos para problemas clásicos (Dijkstra)"
-          },
-          "2": {
-            "0": "AC22.01 :: Elegir estructuras de datos complejas adaptadas al problema (Grafos)"
-          }
         }
       },
       "project-6": {
@@ -246,14 +173,6 @@
           "0": "Detección con una precisión del 98%",
           "1": "Redes neuronales de convolución (CNN)",
           "2": "Panel de control de progresión"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC21.03 :: Adoptar buenas prácticas de diseño y programación"
-          },
-          "1": {
-            "0": "AC22.02 :: Utilizar técnicas algorítmicas adecuadas para problemas complejos (Inteligencia Artificial)"
-          }
         }
       },
       "project-7": {
@@ -264,18 +183,6 @@
           "0": "Interfaz moderna con CustomTkinter",
           "1": "Sistema de complementos",
           "2": "Integración RAG (ChromaDb)"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC31.02 :: Evolucionar una aplicación existente (Sistema de complementos)",
-            "1": "AC31.01 :: Elegir e implementar arquitecturas adecuadas (Modular)"
-          },
-          "1": {
-            "0": "AC22.02 :: Utilizar técnicas algorítmicas adecuadas para problemas complejos (IA, RAG)"
-          },
-          "2": {
-            "0": "AC13.01 :: Identificar los diferentes componentes (hardware y software) de un sistema digital"
-          }
         },
         "subProjects": {
           "0": {
@@ -304,17 +211,6 @@
           "0": "Aprendizaje diario gamificado",
           "1": "Sistema de recordatorio inteligente",
           "2": "Soporte para 10 idiomas"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC31.01 :: Elegir e implementar arquitecturas adecuadas (Móvil/PWA)"
-          },
-          "1": {
-            "0": "AC23.01 :: Diseñar y desarrollar aplicaciones comunicantes (Firebase)"
-          },
-          "2": {
-            "0": "AC14.01 :: Actualizar y consultar una base de datos relacional (MySQL)"
-          }
         }
       },
       "project-10": {
@@ -325,15 +221,6 @@
         "features": {
           "0": "Puntuación y comentarios",
           "1": "Rankings comunitarios"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC11.01 :: Implementar diseños sencillos",
-            "1": "AC11.04 :: Desarrollar interfaces de usuario"
-          },
-          "1": {
-            "0": "AC14.03 :: Diseñar una base de datos relacional a partir de especificaciones"
-          }
         }
       },
       "project-11": {
@@ -345,19 +232,6 @@
           "0": "Desarrollo intensivo en tiempo limitado (Hackathon)",
           "1": "Trabajo colaborativo y distribución de tareas",
           "2": "Respeto a un tema y restricciones técnicas"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC26.03 :: Movilizar competencias interpersonales para trabajar en un equipo de TI",
-            "1": "AC26.01 :: Comprender la diversidad y dinámica de un equipo de TI"
-          },
-          "1": {
-            "0": "AC25.01 :: Organizar el trabajo de un equipo (Distribución de tareas)",
-            "1": "AC25.03 :: Identificar criterios de viabilidad (Gestión de tiempo corto)"
-          },
-          "2": {
-            "0": "AC21.03 :: Adoptar buenas prácticas de diseño y programación (Código colaborativo)"
-          }
         }
       },
       "project-12": {
@@ -493,7 +367,31 @@
         "translation_engines": "Motores de trad",
         "words_processed": "Palabras procesadas",
         "metadata_parsers": "Analizadores de metadatos",
-        "pages_processed": "Páginas procesadas"
+        "pages_processed": "Páginas procesadas",
+        "articles": "Artículos redactados",
+        "learning_paths": "Rutas de aprendizaje",
+        "categories": "Categorías",
+        "financial_reports": "Informes financieros",
+        "market_events": "Eventos de mercado",
+        "cdm_processed": "Mensajes CDM procesados",
+        "reliability": "Fiabilidad de las alertas",
+        "analysis_time": "Tiempo de análisis",
+        "unit_tests": "Pruebas unitarias",
+        "rules_compliance": "Cumplimiento de reglas",
+        "classes": "Clases de imágenes",
+        "plugins": "Plugins disponibles",
+        "latency": "Tiempo de respuesta",
+        "privacy": "Privacidad",
+        "words_available": "Palabras en la base de datos",
+        "retention_rate": "Tasa de retención",
+        "database_entries": "Entradas en la base de datos",
+        "query_time": "Tiempo de consulta",
+        "scientific_concepts": "Conceptos popularizados",
+        "automation_rate": "Tasa de automatización",
+        "pipeline_stages": "Etapas del pipeline",
+        "model_accuracy": "Precisión del modelo",
+        "client_satisfaction": "Satisfacción del cliente",
+        "manual_deploys": "Despliegues manuales"
       }
     }
   },
@@ -508,29 +406,6 @@
     "tech_title": "Tecnologías Utilizadas",
     "tech_description": "Este proyecto implementa Python para la lógica, PyTorch para la IA y CustomTkinter para la interfaz. Watchdog permite la vigilancia automática de archivos.",
     "plugins_title": "Complementos Disponibles"
-  },
-  "competencies": {
-    "title": "Competencias del BUT Informática",
-    "subtitle": "Descubre todas las competencias desarrolladas a través de mis proyectos",
-    "count": "{count} competencia(s)",
-    "projects_count": "{count} proyecto(s)",
-    "associated_projects": "Proyectos asociados:",
-    "context_label": "Contexto:",
-    "back_to_projects": "Proyectos",
-    "categories": {
-      "realiser": "Realizar",
-      "optimiser": "Optimizar",
-      "administrer": "Administrar",
-      "gerer": "Gestionar",
-      "conduire": "Dirigir",
-      "collaborer": "Colaborar"
-    },
-    "levels": {
-      "n1": "Nivel 1",
-      "n2": "Nivel 2",
-      "n3": "Nivel 3"
-    },
-    "modal_intro": "Este proyecto permitió validar las siguientes competencias y aprendizajes críticos:"
   },
   "participations": {
     "title": "Mis Participaciones",

@@ -39,7 +39,7 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
     </div>
 
     <div class="card-info-badges">
-      <span v-if="project.version" class="badge version-badge">{{ project.version }}</span>
+      <span v-if="project.version" class="badge version-badge">v{{ project.version }}</span>
       <span
         class="badge purpose-badge"
         :class="purposeMap[project.purpose]"
@@ -206,6 +206,9 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
   background: var(--primary);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.2rem 0.5rem;
+  font-size: 0.65rem;
+  border-radius: 8px;
 }
 
 .purpose-badge {

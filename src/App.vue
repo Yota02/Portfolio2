@@ -55,13 +55,7 @@ onMounted(() => {
   if (savedLang) {
     locale.value = savedLang;
   }
-
-  setTimeout(setupRevealAnimations, 500);
 });
-
-watch(() => route.path, () => {
-  setTimeout(setupRevealAnimations, 500);
-}, { immediate: true });
 </script>
 
 <template>
@@ -111,7 +105,6 @@ watch(() => route.path, () => {
           />
 
           <RouterLink to="/contact" class="nav-link" @click="closeMenu">{{ t('nav.contact') }}</RouterLink>
-          <RouterLink to="/admin" class="nav-link" @click="closeMenu">Admin</RouterLink>
 
           <div class="header-actions desktop-only">
             <AppLangSwitcher />
@@ -123,7 +116,12 @@ watch(() => route.path, () => {
 
     <main class="main-content">
       <RouterView v-slot="{ Component }">
-        <Transition name="page" mode="out-in">
+        <Transition 
+          name="page" 
+          mode="out-in"
+          appear
+          @after-enter="setupRevealAnimations"
+        >
           <component :is="Component" :key="route.path" />
         </Transition>
       </RouterView>
