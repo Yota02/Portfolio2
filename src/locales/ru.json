@@ -439,6 +439,53 @@
           "1": ""
         }
       }
+    },
+    "metrics": {
+      "title": "Ключевые показатели",
+      "labels": {
+        "accuracy": "Точность",
+        "lines_of_code": "Строк кода",
+        "duration_hours": "Часов разработки",
+        "challenges": "Челленджи",
+        "containers": "Контейнеров Docker",
+        "ai_agents": "Агенты ИИ",
+        "quizzes": "Квизы и Упражнения",
+        "database_tables": "Таблиц БД",
+        "levels": "Уровней",
+        "assets_created": "Создано ассетов",
+        "languages": "Языков",
+        "screens": "Экранов интерфейса",
+        "microservices": "Микросервисы",
+        "matches_simulated": "Симуляций",
+        "team_members": "Участников команды",
+        "fps": "Целевой FPS",
+        "reading_styles": "Стили чтения",
+        "economic_systems": "Экономические системы",
+        "templates": "Шаблоны Twig",
+        "train_paths": "Пути поездов",
+        "map_sizes": "Конфигурации карт",
+        "images_processed": "Изображений обработано",
+        "epochs": "Эпох обучения",
+        "layers": "Слоев сети",
+        "decision_rules": "Правила принятия решений",
+        "shaders_particles": "Шейдеры и частицы",
+        "zones": "Зоны для исследований",
+        "upgrades": "Улучшений",
+        "settings": "Пользовательские настройки",
+        "challenges_completed": "Испытаний пройдено",
+        "mini_games": "Мини-игры",
+        "state_models": "Модели состояний",
+        "parameter_controls": "Управление параметрами",
+        "nodes_modeled": "Моделированных узлов",
+        "databases_synced": "Синхронизированных БД",
+        "documents_processed": "Документов обработано",
+        "admin_interfaces": "Интерфейсы админа",
+        "workflows": "Рабочие процессы",
+        "translation_engines": "Системы перевода",
+        "words_processed": "Слов переведено",
+        "metadata_parsers": "Парсеры метаданных",
+        "pages_processed": "Страниц обработано"
+      }
     }
   },
   "victoria": {

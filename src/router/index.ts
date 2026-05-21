@@ -58,11 +58,6 @@ const routes = [
       component: () => import('../views/ParticipationsView.vue')
     },
     {
-      path: '/blog',
-      name: 'blog',
-      component: () => import('../views/BlogView.vue')
-    },
-    {
       path: '/projects-timeline',
       name: 'projects-timeline',
       component: () => import('../views/ProjectsTimelineView.vue')
