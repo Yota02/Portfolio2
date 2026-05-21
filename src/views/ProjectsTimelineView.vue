@@ -1,71 +1,13 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { projects } from '@/data/projects'
+import { parseDate } from '@/utils/dateUtils'
 
 const { t, locale } = useI18n()
 
-// Localized month mapping for sorting
-const monthMap: Record<string, Record<string, number>> = {
-  fr: {
-    'Janvier': 0, 'Février': 1, 'Mars': 2, 'Avril': 3, 'Mai': 4, 'Juin': 5,
-    'Juillet': 6, 'Août': 7, 'Septembre': 8, 'Octobre': 9, 'Novembre': 10, 'Décembre': 11
-  },
-  en: {
-    'January': 0, 'February': 1, 'March': 2, 'April': 3, 'May': 4, 'June': 5,
-    'July': 6, 'August': 7, 'September': 8, 'October': 9, 'November': 10, 'December': 11
-  },
-  es: {
-    'Enero': 0, 'Febrero': 1, 'Marzo': 2, 'Abril': 3, 'Mayo': 4, 'Junio': 5,
-    'Julio': 6, 'Agosto': 7, 'Septiembre': 8, 'Octubre': 9, 'Noviembre': 10, 'Diciembre': 11
-  },
-  de: {
-    'Januar': 0, 'Februar': 1, 'März': 2, 'April': 3, 'Mai': 4, 'Juni': 5,
-    'Juli': 6, 'August': 7, 'September': 8, 'Oktober': 9, 'November': 10, 'Dezember': 11
-  },
-  it: {
-    'Gennaio': 0, 'Febbraio': 1, 'Marzo': 2, 'Aprile': 3, 'Maggio': 4, 'Giugno': 5,
-    'Luglio': 6, 'Agosto': 7, 'Settembre': 8, 'Ottobre': 9, 'Novembre': 10, 'Dicembre': 11
-  },
-  ru: {
-    'Январь': 0, 'Февраль': 1, 'Март': 2, 'Апрель': 3, 'Май': 4, 'Июнь': 5,
-    'Июль': 6, 'Август': 7, 'Сентябрь': 8, 'Октябрь': 9, 'Ноябрь': 10, 'Декабрь': 11
-  }
-}
-
-// Special case for Chinese and Japanese (YYYY年M月)
-const parseAsianDate = (dateStr: string) => {
-  const match = dateStr.match(/(\d+)年(\d+)月/)
-  if (match && match[1] && match[2]) {
-    return new Date(parseInt(match[1]), parseInt(match[2]) - 1)
-  }
-  return new Date(0)
-}
-
-const parseDate = (dateKey: string | undefined) => {
-  if (!dateKey) return new Date(0)
-  
-  const translatedDate = t(dateKey)
-  const currentLocale = locale.value as string
-
-  if (currentLocale === 'zh' || currentLocale === 'jp') {
-    return parseAsianDate(translatedDate)
-  }
-
-  const parts = translatedDate.split(' ')
-  if (parts.length === 2 && parts[1] && parts[0]) {
-    const monthName = parts[0]
-    const year = parseInt(parts[1])
-    const monthMapForLocale = monthMap[currentLocale]
-    const month = monthMapForLocale ? (monthMapForLocale[monthName] ?? 0) : 0
-    return new Date(year, month)
-  }
-  
-  return new Date(0)
-}
-
 const sortedProjects = [...projects].sort((a, b) => {
-  const dateA = parseDate(a.startDate)
-  const dateB = parseDate(b.startDate)
+  const dateA = parseDate(a.startDate, locale.value, t)
+  const dateB = parseDate(b.startDate, locale.value, t)
   return dateB.getTime() - dateA.getTime()
 })
 </script>
