@@ -15,7 +15,7 @@
   },
   "home": {
     "greeting": "Bonjour, je suis",
-    "subtitle": "Étudiant en BUT Informatique",
+    "subtitle": "Étudiant en BUT Informatique & L3 MTS",
     "description": "Je suis passionné par l'IA, le développement web et les technologies émergentes. Chaque jour, j'apprends et j'explore de nouvelles idées pour devenir enseignant-chercheur.",
     "view_projects": "Voir mes projets",
     "learn_more": "En savoir plus",
@@ -31,9 +31,8 @@
     },
     "parcours": {
       "title": "Mon Parcours",
-      "p1": "Actuellement en <strong class=\"text-dark\">3ème année de BUT Informatique à l'IUT de Montpellier</strong>, je me spécialise dans l'algorithmique et les systèmes complexes.",
-      "p2": "Mon objectif est de poursuivre en <span class=\"text-blue\">Master Bioinformatique</span>, où je pourrai allier informatique et sciences du vivant pour analyser des données biologiques.",
-      "p3": "En parallèle, je développe une <span class=\"text-emerald\">IA personnelle</span> pour explorer le machine learning et ses applications concrètes."
+      "p1": "Actuellement en <strong class=\"text-dark\">3ème année de BUT Informatique à l'IUT de Montpellier</strong> et en double diplomation <strong class=\"text-dark\">L3 MTS à l'IAE de Montpellier</strong>, je me spécialise dans l'algorithmique et les systèmes complexes.",
+      "p2": "Mon objectif est de poursuivre en <span class=\"text-blue\">Master Bioinformatique</span>, où je pourrai allier informatique et sciences du vivant pour analyser des données biologiques."
     },
     "international": {
       "title": "Ambition Internationale",
@@ -621,7 +620,7 @@
       "obj-2": {
         "title": "Baccalauréat Général",
         "institution": "Lycée Jean Jaurès",
-        "description": "Spécialités Mathématiques et NSI (Numérique et Sciences Informatiques). Mention Très Bien."
+        "description": "Spécialités Mathématiques et NSI (Numérique et Sciences Informatiques), avec mention Très Bien."
       },
       "obj-3": {
         "title": "Développeur & Concepteur Plateforme CTF",
@@ -632,6 +631,21 @@
         "title": "Développeur IA & Assistant de Bureau",
         "institution": "Projet Personnel (Victoria)",
         "description": "Création d'un assistant modulaire avec IA locale. Intégration de LLM et système de plugins."
+      },
+      "obj-5": {
+        "title": "L3 MTS e-learning",
+        "institution": "IAE de Montpellier",
+        "description": "Double diplomation en Management des Technologies des Services, parcours e-learning."
+      },
+      "obj-6": {
+        "title": "Stage - Centre Spatial (CSUM)",
+        "institution": "Université de Montpellier",
+        "description": "Stage de développement et recherche au Centre Spatial Universitaire de Montpellier."
+      },
+      "obj-7": {
+        "title": "Stage - Centre Spatial (CSUM)",
+        "institution": "Université de Montpellier",
+        "description": "Stage technique au Centre Spatial Universitaire de Montpellier."
       }
     }
   },

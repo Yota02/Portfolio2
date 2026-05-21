@@ -124,29 +124,34 @@ const printResume = () => {
           <h2 class="main-heading">{{ t('objectives.types.experience').toUpperCase() }}</h2>
           <div class="timeline-item">
             <div class="timeline-header">
-              <h3 class="item-title">{{ t('objectives.items.obj-3.title') }}</h3>
-              <span class="item-date">{{ t('projects.items.project-2.startDate') }} - {{ t('projects.items.project-2.endDate') }}</span>
+              <h3 class="item-title">{{ t('objectives.items.obj-7.title') }}</h3>
+              <span class="item-date">Avril 2026 - Juillet 2026</span>
             </div>
-            <p class="item-subtitle">{{ t('objectives.items.obj-3.institution') }}</p>
-            <ul class="item-details">
-              <li v-for="i in [0,1,2]" :key="i">{{ t(`resume.experiences.ctf.detail_${i}`) }}</li>
-            </ul>
+            <p class="item-subtitle">{{ t('objectives.items.obj-7.institution') }}</p>
+            <p class="item-desc">{{ t('objectives.items.obj-6.description') }}</p>
           </div>
 
           <div class="timeline-item">
             <div class="timeline-header">
-              <h3 class="item-title">{{ t('objectives.items.obj-4.title') }}</h3>
-              <span class="item-date">{{ t('projects.items.project-7.startDate') }} - {{ t('resume.present') }}</span>
+              <h3 class="item-title">{{ t('objectives.items.obj-6.title') }}</h3>
+              <span class="item-date">Janvier 2025 - Avril 2025</span>
             </div>
-            <p class="item-subtitle">{{ t('objectives.items.obj-4.institution') }}</p>
-            <ul class="item-details">
-              <li v-for="i in [0,1,2]" :key="i">{{ t(`resume.experiences.victoria.detail_${i}`) }}</li>
-            </ul>
+            <p class="item-subtitle">{{ t('objectives.items.obj-6.institution') }}</p>
+            <p class="item-desc">{{ t('objectives.items.obj-6.description') }}</p>
           </div>
         </section>
 
         <section class="main-section">
           <h2 class="main-heading">{{ t('objectives.types.education').toUpperCase() }}</h2>
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <h3 class="item-title">{{ t('objectives.items.obj-5.title') }}</h3>
+              <span class="item-date">2025 - 2026</span>
+            </div>
+            <p class="item-subtitle">{{ t('objectives.items.obj-5.institution') }}</p>
+            <p class="item-desc">{{ t('objectives.items.obj-5.description') }}</p>
+          </div>
+
           <div class="timeline-item">
             <div class="timeline-header">
               <h3 class="item-title">{{ t('objectives.items.obj-1.title') }}</h3>
@@ -159,7 +164,7 @@ const printResume = () => {
           <div class="timeline-item">
             <div class="timeline-header">
               <h3 class="item-title">{{ t('objectives.items.obj-2.title') }}</h3>
-              <span class="item-date">2023</span>
+              <span class="item-date">2020 - 2023</span>
             </div>
             <p class="item-subtitle">{{ t('objectives.items.obj-2.institution') }}</p>
             <p class="item-desc">{{ t('objectives.items.obj-2.description') }}</p>

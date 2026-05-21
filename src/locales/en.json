@@ -15,7 +15,7 @@
   },
   "home": {
     "greeting": "Hello, I am",
-    "subtitle": "Computer Science Student",
+    "subtitle": "Computer Science & Management Student (BUT & L3 MTS)",
     "description": "I am passionate about AI, web development and emerging technologies. Every day, I learn and explore new ideas to become a teacher-researcher.",
     "view_projects": "View my projects",
     "learn_more": "Learn more",
@@ -31,9 +31,8 @@
     },
     "parcours": {
       "title": "My Journey",
-      "p1": "Currently in my <strong class=\"text-dark\">3rd year of computer science at the IUT of Montpellier</strong>, I specialize in algorithms and complex systems.",
-      "p2": "My goal is to pursue a <span class=\"text-blue\">Master's in Bioinformatics</span>, where I will combine computer science and life sciences to analyze biological data.",
-      "p3": "In parallel, I am developing a <span class=\"text-emerald\">personal AI</span> to explore machine learning and its practical applications."
+      "p1": "Currently in my <strong class=\"text-dark\">3rd year of computer science at the IUT of Montpellier</strong> and in a double degree <strong class=\"text-dark\">L3 MTS at IAE Montpellier</strong>, I specialize in algorithms and complex systems.",
+      "p2": "My goal is to pursue a <span class=\"text-blue\">Master's in Bioinformatics</span>, where I will combine computer science and life sciences to analyze biological data."
     },
     "international": {
       "title": "International Ambition",
@@ -584,7 +583,7 @@
       "obj-2": {
         "title": "High School Diploma",
         "institution": "Lycée Jean Jaurès",
-        "description": "Specialties in Mathematics and CS (Numeric and Computer Sciences). Honors."
+        "description": "Specialties in Mathematics and CS (Numeric and Computer Sciences), with honors (Très Bien)."
       },
       "obj-3": {
         "title": "CTF Platform Developer & Designer",
@@ -595,6 +594,21 @@
         "title": "AI Developer & Desktop Assistant",
         "institution": "Personal Project (Victoria)",
         "description": "Creation of a modular assistant with local AI. Integration of LLM and plugin system."
+      },
+      "obj-5": {
+        "title": "L3 MTS e-learning",
+        "institution": "IAE Montpellier",
+        "description": "Double degree in Management of Service Technologies, e-learning track."
+      },
+      "obj-6": {
+        "title": "Internship - Space Center (CSUM)",
+        "institution": "University of Montpellier",
+        "description": "Development and research internship at the Montpellier University Space Center."
+      },
+      "obj-7": {
+        "title": "Internship - Space Center (CSUM)",
+        "institution": "University of Montpellier",
+        "description": "Technical internship at the Montpellier University Space Center."
       }
     }
   },

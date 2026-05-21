@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { GraduationCap, Briefcase, School, Rocket } from 'lucide-vue-next'
 
 const { t } = useI18n()
 
@@ -10,16 +11,36 @@ interface TimelineItem {
   date: string;
   descriptionKey: string;
   type: 'education' | 'experience';
+  icon: any;
 }
 
 const timelineItems: TimelineItem[] = [
   {
-    id: 'obj-4',
-    titleKey: 'obj-4.title',
-    institutionKey: 'obj-4.institution',
-    date: `Mai 2025 - ${t('objectives.today')}`,
-    descriptionKey: 'obj-4.description',
-    type: 'experience'
+    id: 'obj-7',
+    titleKey: 'obj-7.title',
+    institutionKey: 'obj-7.institution',
+    date: 'Avril 2026 - Juillet 2026',
+    descriptionKey: 'obj-7.description',
+    type: 'experience',
+    icon: Rocket
+  },
+  {
+    id: 'obj-5',
+    titleKey: 'obj-5.title',
+    institutionKey: 'obj-5.institution',
+    date: '2025 - 2026',
+    descriptionKey: 'obj-5.description',
+    type: 'education',
+    icon: School
+  },
+  {
+    id: 'obj-6',
+    titleKey: 'obj-6.title',
+    institutionKey: 'obj-6.institution',
+    date: 'Janvier 2025 - Avril 2025',
+    descriptionKey: 'obj-6.description',
+    type: 'experience',
+    icon: Rocket
   },
   {
     id: 'obj-1',
@@ -27,15 +48,8 @@ const timelineItems: TimelineItem[] = [
     institutionKey: 'obj-1.institution',
     date: '2023 - 2026',
     descriptionKey: 'obj-1.description',
-    type: 'education'
-  },
-  {
-    id: 'obj-3',
-    titleKey: 'obj-3.title',
-    institutionKey: 'obj-3.institution',
-    date: 'Sept. 2024 - Janv. 2025',
-    descriptionKey: 'obj-3.description',
-    type: 'experience'
+    type: 'education',
+    icon: GraduationCap
   },
   {
     id: 'obj-2',
@@ -43,7 +57,8 @@ const timelineItems: TimelineItem[] = [
     institutionKey: 'obj-2.institution',
     date: '2020 - 2023',
     descriptionKey: 'obj-2.description',
-    type: 'education'
+    type: 'education',
+    icon: GraduationCap
   }
 ]
 </script>
@@ -67,7 +82,12 @@ const timelineItems: TimelineItem[] = [
         >
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <span class="item-date">{{ item.date }}</span>
+            <div class="content-header">
+              <div class="icon-wrapper">
+                <component :is="item.icon" :size="24" />
+              </div>
+              <span class="item-date">{{ item.date }}</span>
+            </div>
             <h3 class="item-title">{{ t('objectives.items.' + item.titleKey) }}</h3>
             <h4 class="item-institution">{{ t('objectives.items.' + item.institutionKey) }}</h4>
             <p class="item-description">{{ t('objectives.items.' + item.descriptionKey) }}</p>
@@ -177,12 +197,41 @@ const timelineItems: TimelineItem[] = [
   border-color: var(--primary);
 }
 
+.content-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.timeline-item.left .content-header {
+  flex-direction: row-reverse;
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--color-background);
+  color: var(--primary);
+  border: 1px solid var(--color-border);
+}
+
+.timeline-item.education .icon-wrapper {
+  color: #10b981;
+}
+
 .item-date {
-  display: block;
   font-weight: 700;
   color: var(--primary);
-  margin-bottom: 0.5rem;
   font-size: 0.9rem;
+}
+
+.timeline-item.education .item-date {
+  color: #10b981;
 }
 
 .item-title {
@@ -220,7 +269,6 @@ const timelineItems: TimelineItem[] = [
   letter-spacing: 0.5px;
 }
 
-.timeline-item.education .item-date { color: #10b981; }
 .timeline-item.education .timeline-dot { border-color: #10b981; }
 
 @media (max-width: 768px) {
@@ -242,6 +290,10 @@ const timelineItems: TimelineItem[] = [
   .timeline-item.left .timeline-dot,
   .timeline-item.right .timeline-dot {
     left: 10px;
+  }
+
+  .timeline-item.left .content-header {
+    flex-direction: row;
   }
 }
 </style>
