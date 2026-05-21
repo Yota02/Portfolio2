@@ -544,37 +544,33 @@
       "Vue.js",
       "JavaScript",
       "HTML5",
-      "CSS3",
       "GitHub Actions",
-      "Git",
-      "Leaflet"
-    ],
-    "images": [
+      "Git"
+      ],
+      "images": [
       "main.jpeg",
       "services.jpeg",
       "contact.jpeg"
-    ],
-    "logo": "main.jpeg",
-    "category": "Dev Web",
-    "purpose": "Professionnel",
-    "features": [
+      ],
+      "logo": "main.jpeg",
+      "category": "Dev Web",
+      "purpose": "Professionnel",
+      "features": [
       "projects.items.project-gecolab.features.0",
       "projects.items.project-gecolab.features.1",
       "projects.items.project-gecolab.features.2"
-    ],
-    "links": {
+      ],
+      "links": {
       "demo": "https://www.gecolab.be/#/",
       "github": "#"
-    },
-    "folder": "Gecolab",
-    "startDate": "projects.items.project-gecolab.startDate",
-    "isOngoing": false,
-    "newTech": [
-      "GitHub Actions",
-      "Leaflet"
-    ]
-  },
-  {
+      },
+      "folder": "Gecolab",
+      "startDate": "projects.items.project-gecolab.startDate",
+      "isOngoing": false,
+      "newTech": [
+      "GitHub Actions"
+      ]
+      },
     "id": "project-projekt-bersetzung",
     "name": "Projekt Bersetzung",
     "version": "1",

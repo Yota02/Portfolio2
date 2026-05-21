@@ -8,16 +8,30 @@ import ProjectCard from '@/components/ProjectCard.vue'
 
 const { t } = useI18n()
 
+// Search queries
+const searchQuery = ref('')
+const techSearchQuery = ref('')
+
 const groupedProjects = computed(() => {
   const allProjects = getProjectsByCategory()
-  if (selectedTechs.value.length === 0) {
-    return allProjects
-  }
   const filtered: Record<ProjectCategory, Project[]> = {} as Record<ProjectCategory, Project[]>
+  
   for (const category of categoryOrder) {
-    filtered[category] = allProjects[category].filter(project =>
-      selectedTechs.value.every(tech => project.tags.includes(tech))
-    )
+    filtered[category] = allProjects[category].filter(project => {
+      // Filter by selected techs
+      const matchesTechs = selectedTechs.value.length === 0 || 
+                           selectedTechs.value.every(tech => project.tags.includes(tech))
+      
+      // Filter by search query
+      const query = searchQuery.value.toLowerCase()
+      const matchesQuery = !query || 
+                           project.id.toLowerCase().includes(query) ||
+                           (t('projects.items.' + project.id + '.title') || '').toLowerCase().includes(query) ||
+                           (t('projects.items.' + project.id + '.description') || '').toLowerCase().includes(query) ||
+                           project.tags.some(tag => tag.toLowerCase().includes(query))
+      
+      return matchesTechs && matchesQuery
+    })
   }
   return filtered
 })
@@ -25,11 +39,16 @@ const groupedProjects = computed(() => {
 // Calculer les technologies uniques à partir des projets affichés
 const uniqueTechnologies = computed(() => {
   const allShownProjects = Object.values(getProjectsByCategory()).flat()
-  const filteredProjects = selectedTechs.value.length === 0
-    ? allShownProjects
-    : allShownProjects.filter(project => selectedTechs.value.every(tech => project.tags.includes(tech)))
-  const allTags = filteredProjects.flatMap(project => project.tags)
-  return [...new Set(allTags)]
+  
+  // On ne filtre pas les technologies par selectedTechs ici pour permettre de désélectionner
+  // mais on filtre par techSearchQuery
+  const allTags = allShownProjects.flatMap(project => project.tags)
+  const uniqueTags = [...new Set(allTags)].sort()
+  
+  if (!techSearchQuery.value) return uniqueTags
+  
+  const query = techSearchQuery.value.toLowerCase()
+  return uniqueTags.filter(tech => tech.toLowerCase().includes(query))
 })
 
 // État pour le repli de la sidebar
@@ -115,6 +134,14 @@ const toggleTech = (tech: string) => {
             </svg>
           </button>
         </div>
+        <div v-if="!isCollapsed" class="search-wrapper sidebar-search">
+          <input 
+            v-model="techSearchQuery" 
+            type="text" 
+            :placeholder="t('projects.search_techs_placeholder')"
+            class="search-input small"
+          >
+        </div>
         <div v-if="!isCollapsed" class="tech-icons">
           <TechBadge
             v-for="tech in uniqueTechnologies"
@@ -140,6 +167,20 @@ const toggleTech = (tech: string) => {
         <div class="container">
           <div class="header">
             <h1 class="page-title">{{ t('projects.title') }} ({{ totalProjects }})</h1>
+            <div class="search-wrapper main-search">
+              <div class="input-with-icon">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <input 
+                  v-model="searchQuery" 
+                  type="text" 
+                  :placeholder="t('projects.search_projects_placeholder')"
+                  class="search-input"
+                >
+              </div>
+            </div>
           </div>
 
           <div
@@ -183,8 +224,63 @@ const toggleTech = (tech: string) => {
   margin-bottom: 4rem;
   animation: fadeInUp 0.6s ease-out;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+/* Search Styles */
+.search-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.search-wrapper.main-search {
+  margin-bottom: 0;
+  flex: 1;
+  max-width: 500px;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--color-text);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-background-soft);
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.1);
+  background: var(--color-background);
+}
+
+.search-input.small {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+}
+
+.sidebar-search {
+  padding: 0 0.5rem;
 }
 
 @keyframes fadeInUp {
@@ -372,6 +468,12 @@ const toggleTech = (tech: string) => {
   .header {
     flex-direction: column;
     justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .search-wrapper.main-search {
+    max-width: 100%;
+    width: 100%;
   }
 
   

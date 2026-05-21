@@ -56,6 +56,8 @@
     "description": "Descrizione",
     "features": "Funzionalità",
     "technologies": "Tecnologie",
+    "search_projects_placeholder": "Cerca un progetto...",
+    "search_techs_placeholder": "Filtra...",
     "links": "Link",
     "view_demo": "Vedi la demo",
     "source_code": "Codice sorgente",

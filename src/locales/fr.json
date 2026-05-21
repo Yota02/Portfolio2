@@ -59,6 +59,8 @@
     "duration": "Durée du projet",
     "features": "Fonctionnalités",
     "technologies": "Technologies",
+    "search_projects_placeholder": "Rechercher un projet...",
+    "search_techs_placeholder": "Filtrer...",
     "links": "Liens",
     "view_demo": "Voir la démo",
     "source_code": "Code source",
@@ -318,14 +320,14 @@
       },
       "project-gecolab": {
         "description": "Site vitrine professionnel pour un laboratoire de génétique et de conservation.",
-        "longDescription": "Gecolab est une plateforme web moderne conçue pour le Laboratoire de Génétique de la Conservation de l'Université de Liège. Le site présente les missions du labo, ses services d'analyses génétiques et ses projets de recherche. Développé en Vue.js, il intègre des cartes interactives avec Leaflet et un système de déploiement automatisé.",
+        "longDescription": "Gecolab est une plateforme web moderne conçue pour le Laboratoire de Génétique de la Conservation de l'Université de Liège. Le site présente les missions du labo, ses services d'analyses génétiques et ses projets de recherche. Développé en Vue.js, il intègre un système de déploiement automatisé.",
         "context": "Commande de client réelle pour l'Université de Liège. Le projet visait à remplacer un ancien site par une solution plus moderne, responsive et facile à maintenir.",
         "personalContribution": "J'ai géré l'intégralité de la relation client : recueil des besoins, présentation des maquettes, et sessions de feedback. Techniquement, j'ai implémenté le frontend avec Vue.js, configuré les cartes interactives et mis en place une pipeline CI/CD via GitHub Actions pour un déploiement automatique à chaque mise à jour.",
         "duration": "Projet réalisé sur 3 mois.",
         "startDate": "Janvier 2026",
         "features": {
           "0": "Interface moderne et responsive avec Vue.js",
-          "1": "Cartographie interactive des projets avec Leaflet",
+          "1": "Cartographie interactive des projets",
           "2": "Gestion multilingue (Français/Anglais)"
         }
       },
