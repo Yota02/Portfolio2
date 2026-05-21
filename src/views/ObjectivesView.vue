@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { GraduationCap, Briefcase, School, Rocket } from 'lucide-vue-next'
 
 const { t } = useI18n()
+const baseUrl = import.meta.env.BASE_URL;
 
 interface TimelineItem {
   id: string;
@@ -11,7 +11,7 @@ interface TimelineItem {
   date: string;
   descriptionKey: string;
   type: 'education' | 'experience';
-  icon: any;
+  image: string;
 }
 
 const timelineItems: TimelineItem[] = [
@@ -22,7 +22,16 @@ const timelineItems: TimelineItem[] = [
     date: 'Avril 2026 - Juillet 2026',
     descriptionKey: 'obj-7.description',
     type: 'experience',
-    icon: Rocket
+    image: 'csum.webp'
+  },
+  {
+    id: 'obj-8',
+    titleKey: 'obj-8.title',
+    institutionKey: 'obj-8.institution',
+    date: 'Mars 2026',
+    descriptionKey: 'obj-8.description',
+    type: 'experience',
+    image: 'Gecolab.png'
   },
   {
     id: 'obj-5',
@@ -31,7 +40,7 @@ const timelineItems: TimelineItem[] = [
     date: '2025 - 2026',
     descriptionKey: 'obj-5.description',
     type: 'education',
-    icon: School
+    image: 'iae.webp'
   },
   {
     id: 'obj-6',
@@ -40,7 +49,7 @@ const timelineItems: TimelineItem[] = [
     date: 'Janvier 2025 - Avril 2025',
     descriptionKey: 'obj-6.description',
     type: 'experience',
-    icon: Rocket
+    image: 'csum.webp'
   },
   {
     id: 'obj-1',
@@ -49,7 +58,7 @@ const timelineItems: TimelineItem[] = [
     date: '2023 - 2026',
     descriptionKey: 'obj-1.description',
     type: 'education',
-    icon: GraduationCap
+    image: 'IUT-Montpellier.webp'
   },
   {
     id: 'obj-2',
@@ -58,7 +67,16 @@ const timelineItems: TimelineItem[] = [
     date: '2020 - 2023',
     descriptionKey: 'obj-2.description',
     type: 'education',
-    icon: GraduationCap
+    image: 'jeanJaurès.webp'
+  },
+  {
+    id: 'obj-9',
+    titleKey: 'obj-9.title',
+    institutionKey: 'obj-9.institution',
+    date: 'Juillet 2021',
+    descriptionKey: 'obj-9.description',
+    type: 'education',
+    image: 'bia.gif'
   }
 ]
 </script>
@@ -84,7 +102,7 @@ const timelineItems: TimelineItem[] = [
           <div class="timeline-content">
             <div class="content-header">
               <div class="icon-wrapper">
-                <component :is="item.icon" :size="24" />
+                <img :src="`${baseUrl}icone/${item.image}`" :alt="t('objectives.items.' + item.institutionKey)" class="institution-logo" />
               </div>
               <span class="item-date">{{ item.date }}</span>
             </div>
@@ -212,16 +230,20 @@ const timelineItems: TimelineItem[] = [
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: var(--color-background);
-  color: var(--primary);
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: white;
+  padding: 8px;
   border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
 }
 
-.timeline-item.education .icon-wrapper {
-  color: #10b981;
+.institution-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .item-date {

@@ -133,6 +133,15 @@ const printResume = () => {
 
           <div class="timeline-item">
             <div class="timeline-header">
+              <h3 class="item-title">{{ t('objectives.items.obj-8.title') }}</h3>
+              <span class="item-date">Mars 2026</span>
+            </div>
+            <p class="item-subtitle">{{ t('objectives.items.obj-8.institution') }}</p>
+            <p class="item-desc">{{ t('objectives.items.obj-8.description') }}</p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
               <h3 class="item-title">{{ t('objectives.items.obj-6.title') }}</h3>
               <span class="item-date">Janvier 2025 - Avril 2025</span>
             </div>
@@ -168,6 +177,15 @@ const printResume = () => {
             </div>
             <p class="item-subtitle">{{ t('objectives.items.obj-2.institution') }}</p>
             <p class="item-desc">{{ t('objectives.items.obj-2.description') }}</p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <h3 class="item-title">{{ t('objectives.items.obj-9.title') }}</h3>
+              <span class="item-date">Juillet 2021</span>
+            </div>
+            <p class="item-subtitle">{{ t('objectives.items.obj-9.institution') }}</p>
+            <p class="item-desc">{{ t('objectives.items.obj-9.description') }}</p>
           </div>
         </section>
 

@@ -620,7 +620,7 @@
       "obj-2": {
         "title": "Baccalauréat Général",
         "institution": "Lycée Jean Jaurès",
-        "description": "Spécialités Mathématiques et NSI (Numérique et Sciences Informatiques), avec mention Très Bien."
+        "description": "Spécialités Mathématiques et NSI (Numérique et Sciences Informatiques), avec Mentions."
       },
       "obj-3": {
         "title": "Développeur & Concepteur Plateforme CTF",
@@ -646,6 +646,16 @@
         "title": "Stage - Centre Spatial (CSUM)",
         "institution": "Université de Montpellier",
         "description": "Stage technique au Centre Spatial Universitaire de Montpellier."
+      },
+      "obj-8": {
+        "title": "Stage de recherche",
+        "institution": "Laboratoire Gecolab (Liège)",
+        "description": "Stage au sein du laboratoire Gecolab à Liège, Belgique."
+      },
+      "obj-9": {
+        "title": "BIA (Brevet d'Initiation Aéronautique)",
+        "institution": "Académie de Montpellier",
+        "description": "Diplôme validant des connaissances théoriques et pratiques en aéronautique, avec mention Bien."
       }
     }
   },

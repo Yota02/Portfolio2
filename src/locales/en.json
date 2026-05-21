@@ -583,7 +583,7 @@
       "obj-2": {
         "title": "High School Diploma",
         "institution": "Lycée Jean Jaurès",
-        "description": "Specialties in Mathematics and CS (Numeric and Computer Sciences), with honors (Très Bien)."
+        "description": "Specialties in Mathematics and CS (Numeric and Computer Sciences), with honors."
       },
       "obj-3": {
         "title": "CTF Platform Developer & Designer",
@@ -609,6 +609,16 @@
         "title": "Internship - Space Center (CSUM)",
         "institution": "University of Montpellier",
         "description": "Technical internship at the Montpellier University Space Center."
+      },
+      "obj-8": {
+        "title": "Research Internship",
+        "institution": "Gecolab Laboratory (Liège)",
+        "description": "Internship at the Gecolab laboratory in Liège, Belgium."
+      },
+      "obj-9": {
+        "title": "BIA (Aeronautical Initiation Certificate)",
+        "institution": "Academy of Montpellier",
+        "description": "Diploma validating theoretical and practical knowledge in aeronautics, with honors (Bien)."
       }
     }
   },
