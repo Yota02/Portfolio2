@@ -13,6 +13,11 @@
     "toggle_theme": "Сменить тему",
     "toggle_nav": "Переключить навигацию"
   },
+  "common": {
+    "back": "Back",
+    "ecosystem_title": "Victoria Project Ecosystem",
+    "ecosystem_desc": "The Victoria Project ecosystem brings together a set of innovative solutions focused on artificial intelligence and automation."
+  },
   "home": {
     "greeting": "Привет, я",
     "subtitle": "Студент факультета информатики",

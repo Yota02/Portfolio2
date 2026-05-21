@@ -13,6 +13,11 @@
     "toggle_theme": "Changer le thème",
     "toggle_nav": "Basculer la navigation"
   },
+  "common": {
+    "back": "Retour",
+    "ecosystem_title": "Écosystème Victoria Project",
+    "ecosystem_desc": "L'écosystème Victoria Project regroupe un ensemble de solutions innovantes axées sur l'intelligence artificielle et l'automatisation."
+  },
   "home": {
     "greeting": "Bonjour, je suis",
     "subtitle": "Étudiant en BUT Informatique & L3 MTS",

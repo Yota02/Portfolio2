@@ -13,6 +13,11 @@
     "toggle_theme": "Toggle theme",
     "toggle_nav": "Toggle navigation"
   },
+  "common": {
+    "back": "Back",
+    "ecosystem_title": "Victoria Project Ecosystem",
+    "ecosystem_desc": "The Victoria Project ecosystem brings together a set of innovative solutions focused on artificial intelligence and automation."
+  },
   "home": {
     "greeting": "Hello, I am",
     "subtitle": "Computer Science & Management Student (BUT & L3 MTS)",

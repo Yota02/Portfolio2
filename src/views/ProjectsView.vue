@@ -75,6 +75,14 @@ const toggleTech = (tech: string) => {
 
 <template>
   <div class="projects-page">
+    <RouterLink to="/ecosystem" class="ecosystem-btn top-left">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>écosystem Victoria Project</span>
+    </RouterLink>
     <div class="layout-container">
       <aside class="tech-sidebar" :class="{ collapsed: isCollapsed }">
         <div class="sidebar-header">
@@ -153,6 +161,7 @@ const toggleTech = (tech: string) => {
   min-height: 80vh;
   padding: 4rem 2rem;
   background: linear-gradient(180deg, transparent 0%, var(--color-background-mute) 100%);
+  position: relative;
 }
 
 .container {
@@ -245,6 +254,48 @@ const toggleTech = (tech: string) => {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-shadow: 0 0 40px rgba(var(--primary-rgb), 0.2);
+}
+
+.ecosystem-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-background-soft);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  color: var(--color-text);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.ecosystem-btn.top-left {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  z-index: 100;
+}
+
+.ecosystem-btn:hover {
+  background: var(--color-background-mute);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: var(--primary);
+}
+
+.ecosystem-btn.top-left:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.ecosystem-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.ecosystem-btn:hover svg {
+  transform: scale(1.1);
 }
 
 
