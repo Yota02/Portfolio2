@@ -357,6 +357,17 @@
                                         <input v-model="form.folder" type="text" class="premium-input w-full rounded-xl p-3 border text-base outline-none" required>
                                     </div>
                                 </div>
+
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Version (ex: 2)</label>
+                                        <input v-model="form.version" type="text" class="premium-input w-full rounded-xl p-3 border text-base outline-none" placeholder="1, 2, ...">
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">ID du Groupe (groupId)</label>
+                                        <input v-model="form.groupId" type="text" class="premium-input w-full rounded-xl p-3 border text-base outline-none" placeholder="yomu-group, ...">
+                                    </div>
+                                </div>
                                 
                                 <div class="grid grid-cols-2 gap-6">
                                     <div>
@@ -797,7 +808,7 @@
                 const editingTech = ref(null);
                 const techForm = ref({ name: '', icon: '', tempIcon: '', preview: null });
 
-                const initialForm = { id: '', name: '', folder: '', category: 'Dev Web', purpose: 'Personnel', description: '', longDescription: '', context: '', personalContribution: '', duration: '', tags: [], images: [], logo: '', isOngoing: false, startDate: '', endDate: '', features: [], links: { demo: '', github: '' } };
+                const initialForm = { id: '', name: '', version: '', groupId: '', folder: '', category: 'Dev Web', purpose: 'Personnel', description: '', longDescription: '', context: '', personalContribution: '', duration: '', tags: [], images: [], logo: '', isOngoing: false, startDate: '', endDate: '', features: [], links: { demo: '', github: '' } };
                 const form = ref({ ...initialForm });
                 const previews = ref({ logo: null, images: [] });
                 const imageItems = ref([]);
@@ -1001,7 +1012,35 @@
                 const onImagesDrop = (e) => { dropActive.value = false; handleFiles(e.dataTransfer.files); };
                 const onImagesChange = (e) => handleFiles(e.target.files);
                 const removeImage = (i) => { imageItems.value.splice(i, 1); previews.value.images = imageItems.value.map(it => it.preview); if (currentImageIndex.value >= previews.value.images.length) currentImageIndex.value = 0; };
-                const toggleTech = (n) => { const i = form.value.tags.indexOf(n); if(i>-1) form.value.tags.splice(i,1); else form.value.tags.push(n); };
+                
+                const techLanguageMap = {
+                    "Flask": "Python", "Django": "Python", "Pandas": "Python", "NumPy": "Python", "Pytorch": "Python", "TensorFlow": "Python", "Tkinter": "Python", "CustomTkinter": "Python", "Watchdog": "Python", "PyGame": "Python", "Pyinstaller": "Python", "Reinforcement Learning": "Python",
+                    "JavaFX": "Java", "JUnit": "Java",
+                    "Symfony": "PHP", "Twig": "PHP",
+                    "Vue.js": "JavaScript", "react": "JavaScript", "Vite": "JavaScript", "TypeScript": "JavaScript",
+                    "Unity": "C#"
+                };
+
+                const toggleTech = (n) => { 
+                    const i = form.value.tags.indexOf(n); 
+                    if(i>-1) {
+                        form.value.tags.splice(i,1); 
+                        const parent = techLanguageMap[n];
+                        if (parent) {
+                            const stillHasOtherChild = form.value.tags.some(tag => techLanguageMap[tag] === parent);
+                            if (!stillHasOtherChild) {
+                                const pIdx = form.value.tags.indexOf(parent);
+                                if (pIdx > -1) form.value.tags.splice(pIdx, 1);
+                            }
+                        }
+                    } else {
+                        form.value.tags.push(n); 
+                        const parent = techLanguageMap[n];
+                        if (parent && !form.value.tags.includes(parent)) {
+                            form.value.tags.push(parent);
+                        }
+                    }
+                };
                 const addFeature = () => {
                     if (!form.value.features) form.value.features = [];
                     const base = form.value.id ? `projects.items.${form.value.id}.features` : (form.value.name ? `projects.items.${form.value.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.features` : 'projects.items.new-project.features');

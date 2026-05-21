@@ -354,10 +354,33 @@ const removeImage = (i: number) => {
   if (currentImageIndex.value >= previews.value.images.length) currentImageIndex.value = 0;
 };
 
+const techLanguageMap: Record<string, string> = {
+  "Flask": "Python", "Django": "Python", "Pandas": "Python", "NumPy": "Python", "Pytorch": "Python", "TensorFlow": "Python", "Tkinter": "Python", "CustomTkinter": "Python", "Watchdog": "Python", "PyGame": "Python", "Pyinstaller": "Python", "Reinforcement Learning": "Python",
+  "JavaFX": "Java", "JUnit": "Java",
+  "Symfony": "PHP", "Twig": "PHP",
+  "Vue.js": "JavaScript", "react": "JavaScript", "Vite": "JavaScript", "TypeScript": "JavaScript",
+  "Unity": "C#"
+};
+
 const toggleTech = (n: string) => {
   const i = form.value.tags.indexOf(n);
-  if (i > -1) form.value.tags.splice(i, 1);
-  else form.value.tags.push(n);
+  if (i > -1) {
+    form.value.tags.splice(i, 1);
+    const parent = techLanguageMap[n];
+    if (parent) {
+      const stillHasOtherChild = form.value.tags.some(tag => techLanguageMap[tag] === parent);
+      if (!stillHasOtherChild) {
+        const pIdx = form.value.tags.indexOf(parent);
+        if (pIdx > -1) form.value.tags.splice(pIdx, 1);
+      }
+    }
+  } else {
+    form.value.tags.push(n);
+    const parent = techLanguageMap[n];
+    if (parent && !form.value.tags.includes(parent)) {
+      form.value.tags.push(parent);
+    }
+  }
 };
 
 const addFeature = () => {

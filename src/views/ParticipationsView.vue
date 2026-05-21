@@ -307,12 +307,13 @@ const getParticipationColor = (type: string) => {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  background: #f1f5f9;
-  color: #475569;
+  background: var(--color-background-soft);
+  color: var(--color-text);
   padding: 0.3rem 0.7rem;
   border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 700;
+  opacity: 0.8;
 }
 
 .result-tag {
@@ -321,34 +322,34 @@ const getParticipationColor = (type: string) => {
   gap: 0.25rem;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #059669;
-  background: #ecfdf5;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
   padding: 0.2rem 0.6rem;
   border-radius: 999px;
 }
 
 .card-body {
   display: flex;
-  gap: 1rem;
-  align-items: center;
+  gap: 1.5rem;
+  align-items: flex-start;
 }
 
 .logo-container {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 0.75rem;
+  width: 54px;
+  height: 54px;
+  border-radius: 1rem;
   overflow: hidden;
-  background: #f8fafc;
+  background: var(--color-background);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border);
 }
 
 .institution-logo {
-  width: 85%;
-  height: 80%;
+  width: 75%;
+  height: 75%;
   object-fit: contain;
 }
 
@@ -357,23 +358,26 @@ const getParticipationColor = (type: string) => {
 }
 
 .item-title {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: var(--color-heading);
-  margin-bottom: 0.2rem;
-  line-height: 1.2;
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
 }
 
 .item-description {
-  color: #64748b;
-  font-size: 0.9rem;
-  line-height: 1.4;
+  color: var(--color-text);
+  opacity: 0.7;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .card-footer {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   display: flex;
   justify-content: flex-end;
+  border-top: 1px solid var(--color-border);
+  padding-top: 1rem;
 }
 
 .footer-actions {
@@ -384,45 +388,101 @@ const getParticipationColor = (type: string) => {
 
 .type-tag {
   font-size: 0.7rem;
-  font-weight: 700;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
+  font-weight: 750;
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.type-tag.concours { background: #fee2e2; color: #b91c1c; }
-.type-tag.hackathon { background: #e0f2fe; color: #0369a1; }
+.type-tag.concours { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+.type-tag.hackathon { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+.type-tag.formation { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+.type-tag.spatial { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
 
 .btn-link {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  color: #3b82f6;
+  color: var(--primary);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .btn-link:hover {
-  color: #1d4ed8;
-  text-decoration: underline;
+  transform: translateX(3px);
+  filter: brightness(1.1);
 }
 
 /* Points */
 .dot-ring {
   position: absolute;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 9999px;
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(var(--primary-rgb), 0.1);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0.2; }
+  100% { transform: scale(1); opacity: 0.5; }
 }
 
 .dot-inner {
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 3px solid var(--color-background);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-md);
+  background: var(--color-background-soft);
+  color: var(--primary);
+  z-index: 2;
+}
+
+.dot-inner.bg-concours { color: #ef4444; }
+.dot-inner.bg-hackathon { color: #3b82f6; }
+
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 2rem;
+  }
+
+  .timeline-row {
+    flex-direction: row !important;
+    margin-bottom: 3rem;
+  }
+
+  .row-left, .row-right {
+    flex-direction: row !important;
+  }
+
+  .timeline-content {
+    width: 100%;
+    padding: 0 0 0 4rem !important;
+  }
+
+  .timeline-spacer {
+    display: none;
+  }
+
+  .timeline-dot-wrapper {
+    left: 2rem;
+    transform: translate(-50%, -50%);
+  }
+  
+  .header-section {
+    margin-bottom: 3rem;
+  }
+  
+  .title {
+    font-size: 2.2rem;
+  }
 }
 </style>

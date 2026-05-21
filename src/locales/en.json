@@ -11,8 +11,7 @@
     "blog": "Blog",
     "timeline": "Timeline",
     "toggle_theme": "Toggle theme",
-    "toggle_nav": "Toggle navigation",
-    "portfolio": "Learning Portfolio"
+    "toggle_nav": "Toggle navigation"
   },
   "home": {
     "greeting": "Hello, I am",
@@ -53,7 +52,6 @@
   },
   "projects": {
     "title": "My Projects",
-    "view_competencies": "View competencies",
     "back_to_projects": "← Back to projects",
     "description": "Description",
     "features": "Features",
@@ -94,7 +92,6 @@
       "info": "General"
     },
     "view_project_link": "View project →",
-    "but_competencies": "BUT Competencies",
     "unknown_project": "Unknown Project",
     "project_not_found": "This project does not exist",
     "unknown_subproject": "Sub-project not found",
@@ -110,18 +107,6 @@
           "0": "Intelligent chatbot based on GPT",
           "1": "Practical exercises with automatic correction"
         },
-        "competencies": {
-          "0": {
-            "0": "AC31.01 :: Choose and implement appropriate architectures (Web Architecture Vue.js/Flask)",
-            "1": "AC31.03 :: Integrate solutions into a production environment"
-          },
-          "1": {
-            "0": "AC25.02 :: Formalize client and user needs"
-          },
-          "2": {
-            "0": "AC24.03 :: Organize data restitution through programming and visualization (Dashboards)"
-          }
-        },
         "context": "",
         "personalContribution": "",
         "duration": ""
@@ -135,24 +120,6 @@
           "0": "Challenges exploiting SSH vulnerabilities",
           "1": "\"Rainbow Jumper\" game to obtain the flag",
           "2": "Containerized deployment with Docker"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC21.01 :: Develop and implement functional and non-functional specifications from requirements",
-            "1": "AC21.04 :: Verify and validate application quality through testing"
-          },
-          "1": {
-            "0": "AC23.01 :: Design and develop communicating applications",
-            "1": "AC23.02 :: Use virtualized network servers and services (Docker)",
-            "2": "AC23.03 :: Secure a system's services and data (SSH)"
-          },
-          "2": {
-            "0": "AC25.04 :: Define and implement a project monitoring approach (Scrum/Agile)"
-          },
-          "3": {
-            "0": "AC26.03 :: Mobilize interpersonal skills to work in an IT team",
-            "1": "AC26.04 :: Report on professional activity"
-          }
         },
         "subProjects": {
           "0": {
@@ -183,18 +150,6 @@
           "2": "Competition between players",
           "3": "Real-time resource management",
           "4": "Writing Balance Sheets, Profit and Loss accounts"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC21.03 :: Adopt good design and programming practices (MVC Symfony)",
-            "1": "AC21.02 :: Apply principles of accessibility and ergonomics"
-          },
-          "1": {
-            "0": "AC24.01 :: Optimize company data models"
-          },
-          "2": {
-            "0": "AC26.01 :: Understand the diversity, structure, and dimension of computing in an organization"
-          }
         }
       },
       "project-4": {
@@ -205,21 +160,6 @@
         "features": {
           "0": "Intuitive data visualization interface",
           "1": "Statistical analysis of collision probabilities"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC11.01 :: Implement simple designs",
-            "1": "AC11.04 :: Develop user interfaces"
-          },
-          "1": {
-            "0": "AC22.01 :: Choose complex data structures adapted to the problem (Pandas Dataframes)"
-          },
-          "2": {
-            "0": "AC24.04 :: Manipulate heterogeneous data (Excel, CSV, API)"
-          },
-          "3": {
-            "0": "AC15.01 :: Grasp client and user needs"
-          }
         }
       },
       "project-5": {
@@ -230,19 +170,6 @@
         "features": {
           "0": "Graphical interface developed with JavaFX",
           "1": "Test-driven development (TDD) with JUnit"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC11.03 :: Perform tests and evaluate their results against specifications (TDD/JUnit)",
-            "1": "AC11.04 :: Develop user interfaces (JavaFX)"
-          },
-          "1": {
-            "0": "AC12.01 :: Analyze a problem methodically (breaking it down into simple algorithmic elements)",
-            "1": "AC12.02 :: Compare algorithms for classic problems (Dijkstra)"
-          },
-          "2": {
-            "0": "AC22.01 :: Choose complex data structures adapted to the problem (Graphs)"
-          }
         }
       },
       "project-6": {
@@ -254,14 +181,6 @@
           "0": "Detection with 98% accuracy",
           "1": "Convolutional Neural Networks (CNN)",
           "2": "Progress dashboard"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC21.03 :: Adopt good design and programming practices"
-          },
-          "1": {
-            "0": "AC22.02 :: Use appropriate algorithmic techniques for complex problems (Artificial Intelligence)"
-          }
         }
       },
       "project-7": {
@@ -272,18 +191,6 @@
           "0": "Modern CustomTkinter interface",
           "1": "Plugin system",
           "2": "RAG integration (ChromaDb)"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC31.02 :: Evolve an existing application (Plugin System)",
-            "1": "AC31.01 :: Choose and implement appropriate architectures (Modular)"
-          },
-          "1": {
-            "0": "AC22.02 :: Use appropriate algorithmic techniques for complex problems (AI, RAG)"
-          },
-          "2": {
-            "0": "AC13.01 :: Identify the different components (hardware and software) of a digital system"
-          }
         },
         "subProjects": {
           "0": {
@@ -312,17 +219,6 @@
           "0": "Gamified daily learning",
           "1": "Intelligent reminder system",
           "2": "Support for 10 languages"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC31.01 :: Choose and implement appropriate architectures (Mobile/PWA)"
-          },
-          "1": {
-            "0": "AC23.01 :: Design and develop communicating applications (Firebase)"
-          },
-          "2": {
-            "0": "AC14.01 :: Update and query a relational database (MySQL)"
-          }
         }
       },
       "project-10": {
@@ -333,15 +229,6 @@
         "features": {
           "0": "Rating and comments",
           "1": "Community rankings"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC11.01 :: Implement simple designs",
-            "1": "AC11.04 :: Develop user interfaces"
-          },
-          "1": {
-            "0": "AC14.03 :: Design a relational database from specifications"
-          }
         }
       },
       "project-11": {
@@ -353,19 +240,6 @@
           "0": "Intensive development in limited time (Hackathon)",
           "1": "Collaborative work and task distribution",
           "2": "Respect for a theme and technical constraints"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC26.03 :: Mobilize interpersonal skills to work in an IT team",
-            "1": "AC26.01 :: Understand the diversity and dynamics of an IT team"
-          },
-          "1": {
-            "0": "AC25.01 :: Organize a team's work (Task distribution)",
-            "1": "AC25.03 :: Identify feasibility criteria (Short time management)"
-          },
-          "2": {
-            "0": "AC21.03 :: Adopt good design and programming practices (Collaborative code)"
-          }
         }
       },
       "project-12": {
@@ -386,14 +260,6 @@
           "0": "Complete ML lifecycle automation (MLOps)",
           "1": "Scalable preprocessing pipeline for massive datasets",
           "2": "Automatic model deployment via Flask/Docker API"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC31.03 :: Integrate solutions into a production environment (AI CI/CD)"
-          },
-          "1": {
-            "0": "AC32.01 :: Use mathematical and statistical models to solve complex problems"
-          }
         }
       },
       "project-14": {
@@ -405,16 +271,6 @@
           "0": "Distributed processing of FASTQ/BAM files via Spark",
           "1": "Sequence classification by deep neural networks",
           "2": "Interactive visualization of multidimensional data clusters"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC32.01 :: Use mathematical and statistical models to solve complex problems",
-            "1": "AC32.02 :: Design and implement advanced AI techniques"
-          },
-          "1": {
-            "0": "AC34.01 :: Design and exploit data warehouses (Big Data)",
-            "1": "AC34.02 :: Extract knowledge from complex data"
-          }
         }
       },
       "project-15": {
@@ -426,20 +282,6 @@
           "0": "Micro-services orchestration with Kubernetes",
           "1": "Automated deployment (CI/CD) with GitHub Actions and Terraform",
           "2": "Real-time monitoring with Prometheus and Grafana"
-        },
-        "competencies": {
-          "0": {
-            "0": "AC33.01 :: Design and manage hybrid or cloud infrastructures",
-            "1": "AC33.02 :: Automate deployment and maintenance of a complex infrastructure"
-          },
-          "1": {
-            "0": "AC35.01 :: Lead a complex project involving multiple stakeholders",
-            "1": "AC35.02 :: Guarantee quality and security throughout the project lifecycle"
-          },
-          "2": {
-            "0": "AC36.01 :: Manage an IT team or coordinate experts",
-            "1": "AC36.02 :: Perform strategic technology watch"
-          }
         }
       },
       "y": {
@@ -556,7 +398,31 @@
         "translation_engines": "Translation engines",
         "words_processed": "Words processed",
         "metadata_parsers": "Metadata parsers",
-        "pages_processed": "Pages processed"
+        "pages_processed": "Pages processed",
+        "articles": "Articles written",
+        "learning_paths": "Learning paths",
+        "categories": "Categories",
+        "financial_reports": "Financial reports",
+        "market_events": "Market events",
+        "cdm_processed": "CDM messages processed",
+        "reliability": "Alert reliability",
+        "analysis_time": "Analysis time",
+        "unit_tests": "Unit tests",
+        "rules_compliance": "Rules compliance",
+        "classes": "Image classes",
+        "plugins": "Available plugins",
+        "latency": "Response time",
+        "privacy": "Privacy",
+        "words_available": "Words in database",
+        "retention_rate": "Retention rate",
+        "database_entries": "Database entries",
+        "query_time": "Query time",
+        "scientific_concepts": "Popularized concepts",
+        "automation_rate": "Automation rate",
+        "pipeline_stages": "Pipeline stages",
+        "model_accuracy": "Model accuracy",
+        "client_satisfaction": "Client satisfaction",
+        "manual_deploys": "Manual deploys"
       }
     }
   },
@@ -571,29 +437,6 @@
     "tech_title": "Technologies Used",
     "tech_description": "This project implements Python for the logic, PyTorch for the AI, and CustomTkinter for the interface. Watchdog allows automatic file monitoring.",
     "plugins_title": "Available Plugins"
-  },
-  "competencies": {
-    "title": "BUT Computer Science Competencies",
-    "subtitle": "Discover all the competencies developed through my projects",
-    "count": "{count} competency(ies)",
-    "projects_count": "{count} project(s)",
-    "associated_projects": "Associated projects:",
-    "context_label": "Context:",
-    "back_to_projects": "Projects",
-    "categories": {
-      "realiser": "Realize",
-      "optimiser": "Optimize",
-      "administrer": "Administer",
-      "gerer": "Manage",
-      "conduire": "Lead",
-      "collaborer": "Collaborate"
-    },
-    "levels": {
-      "n1": "Level 1",
-      "n2": "Level 2",
-      "n3": "Level 3"
-    },
-    "modal_intro": "This project helped validate the following competencies and critical learnings:"
   },
   "participations": {
     "title": "My Participations",

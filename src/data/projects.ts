@@ -9,12 +9,6 @@ export interface SubProject {
   features: string[]; // Keys
 }
 
-export interface Competency {
-  category: "Réaliser" | "Optimiser" | "Administrer" | "Gérer" | "Conduire" | "Collaborer";
-  level: "Niveau 1" | "Niveau 2" | "Niveau 3";
-  items: string[]; // Keys
-}
-
 export interface ProjectMetric {
   value: number;
   suffix?: string;
@@ -48,7 +42,6 @@ export interface Project {
   isOngoing?: boolean;
   newTech: string[];
   subProjects?: SubProject[];
-  competencies?: Competency[];
   metrics?: ProjectMetric[];
 }
 
@@ -75,6 +68,7 @@ export const techIconMap: Record<string, string> = {
   "Apache": "apache",
   "Conda": "conda",
   "Git": "git",
+  "PHP": "php.webp",
   "JavaFX": "JavaFX",
   "Java": "java",
   "Pandas": "pandas",
@@ -145,37 +139,7 @@ export const projects: Project[] = [
   folder: "CodeTonFutur",
   startDate: "projects.items.project-1.startDate",
   isOngoing: true,
-  newTech: [],
-  competencies: [
-    {
-      category: "Réaliser",
-      level: "Niveau 3",
-      items: [
-        "projects.items.project-1.competencies.0.0",
-        "projects.items.project-1.competencies.0.1"
-      ]
-    },
-    {
-      category: "Conduire",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-1.competencies.1.0"
-      ]
-    },
-    {
-      category: "Gérer",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-1.competencies.2.0"
-      ]
-    }
-  ],
-  metrics: [
-    { value: 15, suffix: "+", labelKey: "projects.metrics.labels.quizzes" },
-    { value: 95, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
-    { value: 2.5, suffix: "k+", labelKey: "projects.metrics.labels.lines_of_code" },
-    { value: 1, suffix: "", labelKey: "projects.metrics.labels.ai_agents" }
-  ]
+  newTech: []
 },
   {
   id: "project-2",
@@ -227,47 +191,6 @@ export const projects: Project[] = [
     "SSH",
     "Flask"
   ],
-  competencies: [
-    {
-      category: "Réaliser",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-2.competencies.0.0",
-        "projects.items.project-2.competencies.0.1"
-      ]
-    },
-    {
-      category: "Administrer",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-2.competencies.1.0",
-        "projects.items.project-2.competencies.1.1",
-        "projects.items.project-2.competencies.1.2"
-      ]
-    },
-    {
-      category: "Conduire",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-2.competencies.2.0"
-      ]
-    },
-    {
-      category: "Conduire",
-      level: "Niveau 3",
-      items: [
-        "projects.items.project-2.competencies.2.1"
-      ]
-    },
-    {
-      category: "Collaborer",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-2.competencies.3.0",
-        "projects.items.project-2.competencies.3.1"
-      ]
-    }
-  ],
   subProjects: [
     {
       id: "sub-1",
@@ -293,12 +216,6 @@ export const projects: Project[] = [
         "projects.items.project-2.subProjects.1.features.1"
       ]
     }
-  ],
-  metrics: [
-    { value: 12, suffix: "+", labelKey: "projects.metrics.labels.challenges" },
-    { value: 150, suffix: "h+", labelKey: "projects.metrics.labels.duration_hours" },
-    { value: 10, suffix: "+", labelKey: "projects.metrics.labels.containers" },
-    { value: 4, suffix: "", labelKey: "projects.metrics.labels.team_members" }
   ]
 },
   {
@@ -346,36 +263,6 @@ export const projects: Project[] = [
   newTech: [
     "Symfony",
     "Twig"
-  ],
-  competencies: [
-    {
-      category: "Réaliser",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-3.competencies.0.0",
-        "projects.items.project-3.competencies.0.1"
-      ]
-    },
-    {
-      category: "Gérer",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-3.competencies.1.0"
-      ]
-    },
-    {
-      category: "Collaborer",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-3.competencies.2.0"
-      ]
-    }
-  ],
-  metrics: [
-    { value: 4, suffix: "", labelKey: "projects.metrics.labels.economic_systems" },
-    { value: 35, suffix: "+", labelKey: "projects.metrics.labels.database_tables" },
-    { value: 25, suffix: "+", labelKey: "projects.metrics.labels.templates" },
-    { value: 4.2, suffix: "k+", labelKey: "projects.metrics.labels.lines_of_code" }
   ]
 },
   {
@@ -413,57 +300,6 @@ export const projects: Project[] = [
   isOngoing: false,
   newTech: [
     "Pandas"
-  ],
-  competencies: [
-    {
-      category: "Réaliser",
-      level: "Niveau 1",
-      items: [
-        "projects.items.project-4.competencies.0.0",
-        "projects.items.project-4.competencies.0.1"
-      ]
-    },
-    {
-      category: "Optimiser",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-4.competencies.1.0"
-      ]
-    },
-    {
-      category: "Gérer",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-4.competencies.2.0"
-      ]
-    },
-    {
-      category: "Conduire",
-      level: "Niveau 1",
-      items: [
-        "projects.items.project-4.competencies.3.0"
-      ]
-    },
-    {
-      category: "Conduire",
-      level: "Niveau 3",
-      items: [
-        "projects.items.project-4.competencies.3.1"
-      ]
-    },
-    {
-      category: "Collaborer",
-      level: "Niveau 1",
-      items: [
-        "projects.items.project-4.competencies.4.0"
-      ]
-    }
-  ],
-  metrics: [
-    { value: 60, suffix: "fps", labelKey: "projects.metrics.labels.fps" },
-    { value: 5, suffix: "", labelKey: "projects.metrics.labels.levels" },
-    { value: 8, suffix: "", labelKey: "projects.metrics.labels.ai_behaviors" },
-    { value: 120, suffix: "+", labelKey: "projects.metrics.labels.assets_created" }
   ]
 },
   {
@@ -503,44 +339,6 @@ export const projects: Project[] = [
   newTech: [
     "JavaFX",
     "JUnit"
-  ],
-  competencies: [
-    {
-      category: "Réaliser",
-      level: "Niveau 1",
-      items: [
-        "projects.items.project-5.competencies.0.0",
-        "projects.items.project-5.competencies.0.1"
-      ]
-    },
-    {
-      category: "Optimiser",
-      level: "Niveau 1",
-      items: [
-        "projects.items.project-5.competencies.1.0",
-        "projects.items.project-5.competencies.1.1"
-      ]
-    },
-    {
-      category: "Optimiser",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-5.competencies.2.0"
-      ]
-    },
-    {
-      category: "Collaborer",
-      level: "Niveau 1",
-      items: [
-        "projects.items.project-5.competencies.3.0"
-      ]
-    }
-  ],
-  metrics: [
-    { value: 99.8, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
-    { value: 15, suffix: "+", labelKey: "projects.metrics.labels.train_paths" },
-    { value: 3, suffix: "", labelKey: "projects.metrics.labels.map_sizes" },
-    { value: 1.8, suffix: "k+", labelKey: "projects.metrics.labels.lines_of_code" }
   ]
 },
   {
@@ -580,28 +378,6 @@ export const projects: Project[] = [
   isOngoing: false,
   newTech: [
     "Pytorch"
-  ],
-  competencies: [
-    {
-      category: "Réaliser",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-6.competencies.0.0"
-      ]
-    },
-    {
-      category: "Optimiser",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-6.competencies.1.0"
-      ]
-    }
-  ],
-  metrics: [
-    { value: 94.5, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
-    { value: 50, suffix: "k+", labelKey: "projects.metrics.labels.images_processed" },
-    { value: 10, suffix: "", labelKey: "projects.metrics.labels.epochs" },
-    { value: 3, suffix: "", labelKey: "projects.metrics.labels.layers" }
   ]
 },
   {
@@ -645,30 +421,6 @@ export const projects: Project[] = [
     "CustomTkinter",
     "Watchdog"
   ],
-  competencies: [
-    {
-      category: "Réaliser",
-      level: "Niveau 3",
-      items: [
-        "projects.items.project-7.competencies.0.0",
-        "projects.items.project-7.competencies.0.1"
-      ]
-    },
-    {
-      category: "Optimiser",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-7.competencies.1.0"
-      ]
-    },
-    {
-      category: "Administrer",
-      level: "Niveau 1",
-      items: [
-        "projects.items.project-7.competencies.2.0"
-      ]
-    }
-  ],
   subProjects: [
     {
       id: "sub-victoria-1",
@@ -694,12 +446,6 @@ export const projects: Project[] = [
         "projects.items.project-7.subProjects.1.features.1"
       ]
     }
-  ],
-  metrics: [
-    { value: 100, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
-    { value: 15, suffix: "+", labelKey: "projects.metrics.labels.decision_rules" },
-    { value: 200, suffix: "+", labelKey: "projects.metrics.labels.matches_simulated" },
-    { value: 60, suffix: "fps", labelKey: "projects.metrics.labels.fps" }
   ]
 },
   {
@@ -744,35 +490,6 @@ export const projects: Project[] = [
   isOngoing: true,
   newTech: [
     "Firebase"
-  ],
-  competencies: [
-    {
-      category: "Réaliser",
-      level: "Niveau 3",
-      items: [
-        "projects.items.project-8.competencies.0.0"
-      ]
-    },
-    {
-      category: "Administrer",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-8.competencies.1.0"
-      ]
-    },
-    {
-      category: "Gérer",
-      level: "Niveau 1",
-      items: [
-        "projects.items.project-8.competencies.2.0"
-      ]
-    }
-  ],
-  metrics: [
-    { value: 3, suffix: "", labelKey: "projects.metrics.labels.shaders_particles" },
-    { value: 4, suffix: "", labelKey: "projects.metrics.labels.zones" },
-    { value: 15, suffix: "+", labelKey: "projects.metrics.labels.upgrades" },
-    { value: 60, suffix: "fps", labelKey: "projects.metrics.labels.fps" }
   ]
 },
   {
@@ -807,30 +524,7 @@ export const projects: Project[] = [
   startDate: "projects.items.project-10.startDate",
   endDate: "projects.items.project-10.endDate",
   isOngoing: false,
-  newTech: [],
-  competencies: [
-    {
-      category: "Réaliser",
-      level: "Niveau 1",
-      items: [
-        "projects.items.project-10.competencies.0.0",
-        "projects.items.project-10.competencies.0.1"
-      ]
-    },
-    {
-      category: "Gérer",
-      level: "Niveau 1",
-      items: [
-        "projects.items.project-10.competencies.1.0"
-      ]
-    }
-  ],
-  metrics: [
-    { value: 8, suffix: "", labelKey: "projects.metrics.labels.languages" },
-    { value: 45, suffix: "+", labelKey: "projects.metrics.labels.screens" },
-    { value: 12, suffix: "", labelKey: "projects.metrics.labels.settings" },
-    { value: 100, suffix: "%", labelKey: "projects.metrics.labels.accuracy" }
-  ]
+  newTech: []
 },
   {
   id: "project-11",
@@ -871,38 +565,7 @@ export const projects: Project[] = [
   startDate: "projects.items.project-11.startDate",
   endDate: "projects.items.project-11.endDate",
   isOngoing: false,
-  newTech: [],
-  competencies: [
-    {
-      category: "Collaborer",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-11.competencies.0.0",
-        "projects.items.project-11.competencies.0.1"
-      ]
-    },
-    {
-      category: "Conduire",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-11.competencies.1.0",
-        "projects.items.project-11.competencies.1.1"
-      ]
-    },
-    {
-      category: "Réaliser",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-11.competencies.2.0"
-      ]
-    }
-  ],
-  metrics: [
-    { value: 1, suffix: "", labelKey: "projects.metrics.labels.challenges_completed" },
-    { value: 15, suffix: "h", labelKey: "projects.metrics.labels.duration_hours" },
-    { value: 2, suffix: "", labelKey: "projects.metrics.labels.mini_games" },
-    { value: 100, suffix: "%", labelKey: "projects.metrics.labels.accuracy" }
-  ]
+  newTech: []
 },
   {
   id: "project-12",
@@ -936,14 +599,7 @@ export const projects: Project[] = [
   folder: "CHIRAL",
   startDate: "projects.items.project-12.startDate",
   isOngoing: true,
-  newTech: [],
-  competencies: [],
-  metrics: [
-    { value: 3, suffix: "", labelKey: "projects.metrics.labels.state_models" },
-    { value: 99.9, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
-    { value: 5, suffix: "", labelKey: "projects.metrics.labels.parameter_controls" },
-    { value: 1.2, suffix: "k+", labelKey: "projects.metrics.labels.nodes_modeled" }
-  ]
+  newTech: []
 },
   {
   id: "project-13",
@@ -978,29 +634,7 @@ export const projects: Project[] = [
   folder: "KyoLoom",
   startDate: "projects.items.project-13.startDate",
   isOngoing: true,
-  newTech: [],
-  competencies: [
-    {
-      category: "Réaliser",
-      level: "Niveau 3",
-      items: [
-        "projects.items.project-13.competencies.0.0"
-      ]
-    },
-    {
-      category: "Optimiser",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-13.competencies.1.0"
-      ]
-    }
-  ],
-  metrics: [
-    { value: 4, suffix: "", labelKey: "projects.metrics.labels.microservices" },
-    { value: 98, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
-    { value: 2, suffix: "", labelKey: "projects.metrics.labels.databases_synced" },
-    { value: 50, suffix: "+", labelKey: "projects.metrics.labels.documents_processed" }
-  ]
+  newTech: []
 },
   {
   id: "project-gecolab",
@@ -1042,48 +676,13 @@ export const projects: Project[] = [
   newTech: [
     "GitHub Actions",
     "Leaflet"
-  ],
-  competencies: [
-    {
-      category: "Réaliser",
-      level: "Niveau 3",
-      items: [
-        "projects.items.project-gecolab.competencies.0.0"
-      ]
-    },
-    {
-      category: "Conduire",
-      level: "Niveau 3",
-      items: [
-        "projects.items.project-gecolab.competencies.1.0",
-        "projects.items.project-gecolab.competencies.1.1"
-      ]
-    },
-    {
-      category: "Collaborer",
-      level: "Niveau 3",
-      items: [
-        "projects.items.project-gecolab.competencies.2.0"
-      ]
-    },
-    {
-      category: "Administrer",
-      level: "Niveau 2",
-      items: [
-        "projects.items.project-gecolab.competencies.3.0"
-      ]
-    }
-  ],
-  metrics: [
-    { value: 4, suffix: "", labelKey: "projects.metrics.labels.admin_interfaces" },
-    { value: 15, suffix: "+", labelKey: "projects.metrics.labels.workflows" },
-    { value: 100, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
-    { value: 8, suffix: "", labelKey: "projects.metrics.labels.team_members" }
   ]
 },
   {
   id: "project-projekt-bersetzung",
   name: "Projekt Bersetzung",
+  version: "1",
+  groupId: "yomu-group",
   description: "projects.items.projekt-bersetzung.description",
   longDescription: "projects.items.projekt-bersetzung.longDescription",
   context: "projects.items.projekt-bersetzung.context",
@@ -1116,18 +715,13 @@ export const projects: Project[] = [
   isOngoing: true,
   startDate: "projects.items.projekt-bersetzung.startDate",
   endDate: "",
-  newTech: [],
-  competencies: [],
-  metrics: [
-    { value: 3, suffix: "", labelKey: "projects.metrics.labels.translation_engines" },
-    { value: 1.5, suffix: "k+", labelKey: "projects.metrics.labels.words_processed" },
-    { value: 98.7, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
-    { value: 5, suffix: "", labelKey: "projects.metrics.labels.languages" }
-  ]
+  newTech: []
 },
   {
   id: "project-1779285718375",
   name: "Yomu",
+  version: "2",
+  groupId: "yomu-group",
   description: "projects.items.yomu.description",
   longDescription: "projects.items.yomu.longDescription",
   context: "projects.items.yomu.context",
@@ -1161,14 +755,7 @@ export const projects: Project[] = [
   isOngoing: false,
   startDate: "projects.items.yomu.startDate",
   endDate: "projects.items.yomu.endDate",
-  newTech: [],
-  competencies: [],
-  metrics: [
-    { value: 4, suffix: "", labelKey: "projects.metrics.labels.reading_styles" },
-    { value: 25, suffix: "+", labelKey: "projects.metrics.labels.metadata_parsers" },
-    { value: 100, suffix: "%", labelKey: "projects.metrics.labels.accuracy" },
-    { value: 5, suffix: "k+", labelKey: "projects.metrics.labels.pages_processed" }
-  ]
+  newTech: []
 }
 ];
 
@@ -1187,7 +774,26 @@ export const getProjectsByGroupId = (groupId: string): Project[] => {
 };
 
 export const getProjectsByCategory = (): Record<ProjectCategory, Project[]> => {
+  // First, identify the latest version for each groupId
+  const latestVersions: Record<string, Project> = {};
+  
+  projects.forEach(project => {
+    if (project.groupId) {
+      const existing = latestVersions[project.groupId];
+      if (!existing || (project.version && existing.version && parseInt(project.version) > parseInt(existing.version))) {
+        latestVersions[project.groupId] = project;
+      }
+    }
+  });
+
   return projects.reduce((groups, project) => {
+    // If it's part of a group, only include it if it's the latest version
+    if (project.groupId) {
+      if (latestVersions[project.groupId].id !== project.id) {
+        return groups;
+      }
+    }
+
     const category = project.category;
     if (!groups[category]) groups[category] = [];
     groups[category].push(project);

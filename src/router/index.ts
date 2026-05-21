@@ -69,21 +69,6 @@ const routes = [
       props: true
     },
     {
-      path: '/competencies',
-      name: 'competencies',
-      component: () => import('../views/CompetenciesView.vue')
-    },
-    {
-      path: '/portfolio-apprentissage',
-      name: 'portfolio-apprentissage',
-      component: () => import('../views/PortfolioApprentissageView.vue')
-    },
-    {
-      path: '/experience-professionnelle',
-      name: 'experience-professionnelle',
-      component: () => import('../views/ProfessionalExperienceView.vue')
-    },
-    {
       path: '/admin',
       name: 'admin',
       component: () => import('../views/AdminView.vue')

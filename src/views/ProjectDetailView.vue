@@ -3,10 +3,8 @@ import { useRoute, RouterLink } from 'vue-router'
 import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { getProjectById, purposeMap, type ProjectPurpose, type ProjectMetric } from '@/data/projects'
-import { categoryColors, categoryKeyMap, getBgColor, parseAC } from '@/utils/competencies'
 import TechBadge from '@/components/TechBadge.vue'
 import ImageCarousel from '@/components/ImageCarousel.vue'
-import BaseModal from '@/components/BaseModal.vue'
 import ProjectEvolution from '@/components/ProjectEvolution.vue'
 import { getLocalizedDuration } from '@/utils/dateUtils'
 
@@ -40,7 +38,6 @@ const project = computed(() => {
     endDate: undefined,
     isOngoing: undefined,
     subProjects: [],
-    competencies: [],
     category: 'Logiciel',
     purpose: 'Personnel' as ProjectPurpose,
     context: '',
@@ -64,8 +61,6 @@ const calculatedDuration = computed(() => {
     t
   )
 })
-
-const showCompetencies = ref(false)
 
 // Logic for key metrics scroll animation
 const metricsContainer = ref<HTMLElement | null>(null)
@@ -168,15 +163,6 @@ onUnmounted(() => {
 
       <div :class="['project-header', 'reveal-up', purposeMap[project.purpose as ProjectPurpose]]">
         <div class="glow-orb"></div>
-        <button
-          v-if="project.competencies && project.competencies.length > 0"
-          @click="showCompetencies = true"
-          class="but-badge-btn"
-          :title="t('projects.view_competencies')"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-2 5l9-9l-9 9l2-5"></path><path d="M2 12l5 5l10 -10"></path></svg>
-          <span>{{ t('projects.but_competencies') }}</span>
-        </button>
         
         <div class="header-main-content">
           <div class="title-wrapper">
@@ -390,44 +376,6 @@ onUnmounted(() => {
         </aside>
       </div>
     </div>
-
-    <BaseModal :isOpen="showCompetencies" @close="showCompetencies = false">
-      <template #header>
-        <h2>{{ t('competencies.title') }}</h2>
-      </template>
-      <template #body>
-        <p class="modal-intro">{{ t('competencies.modal_intro') }}</p>
-
-        <div class="competencies-grid">
-          <div
-            v-for="(comp, index) in project.competencies"
-            :key="index"
-            class="competency-card"
-            :style="{ borderTopColor: categoryColors[comp.category] || '#ccc' }"
-          >
-            <div class="card-header" :style="{ backgroundColor: getBgColor(comp.category) }">
-              <span class="comp-category" :style="{ color: categoryColors[comp.category] || '#333' }">
-                {{ t('competencies.categories.' + categoryKeyMap[comp.category]) }}
-              </span>
-              <span class="comp-level">{{ t('competencies.levels.' + (comp.level === 'Niveau 1' ? 'n1' : comp.level === 'Niveau 2' ? 'n2' : 'n3')) }}</span>
-            </div>
-            <div class="card-body">
-              <ul class="ac-list">
-                <li v-for="item in comp.items" :key="item">
-                  <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" :style="{ color: categoryColors[comp.category] }"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <div class="ac-content">
-                    <span v-if="parseAC(t(item)).id" class="ac-id-badge" :style="{ backgroundColor: getBgColor(comp.category), color: categoryColors[comp.category] }">
-                      {{ parseAC(t(item)).id }}
-                    </span>
-                    <span class="ac-label">{{ parseAC(t(item)).name }}</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </template>
-    </BaseModal>
   </div>
 </template>
 
@@ -558,42 +506,13 @@ onUnmounted(() => {
   100% { transform: scale(1.35) translate(-25px, 25px); opacity: 1; }
 }
 
-.but-badge-btn {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.6rem 1.2rem;
-  background: rgba(var(--theme-color-rgb, var(--primary-rgb)), 0.1);
-  border: 1px solid rgba(var(--theme-color-rgb, var(--primary-rgb)), 0.25);
-  border-radius: 50px;
-  color: var(--color-heading);
-  font-weight: 750;
-  font-size: 0.85rem;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(8px);
-  z-index: 10;
-}
 
-.but-badge-btn:hover {
-  background: var(--theme-color, var(--primary));
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(var(--theme-color-rgb, var(--primary-rgb)), 0.4);
-  border-color: transparent;
-}
 
-.but-badge-btn svg {
-  transition: transform 0.3s ease;
-}
 
-.but-badge-btn:hover svg {
-  transform: scale(1.1) rotate(15deg);
-}
+
+
+
+
 
 .header-main-content {
   position: relative;
@@ -1137,130 +1056,43 @@ onUnmounted(() => {
 }
 
 /* Modal Competencies & Cards */
-.modal-intro {
-  margin-bottom: 2rem;
-  color: var(--color-text);
-  opacity: 0.85;
-  font-size: 1.05rem;
-  line-height: 1.6;
-}
 
-.competencies-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
-  padding: 0.5rem;
-}
 
-.competency-card {
-  background: var(--color-background-soft);
-  border-radius: 16px;
-  border: 1px solid var(--color-border);
-  border-top: 5px solid var(--primary);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-.competency-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
 
-.card-header {
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-}
 
-:root.dark .card-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-}
+
+
+
+
+
+:root.dark 
 @media (prefers-color-scheme: dark) {
-  :root:not(.light) .card-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-  }
+  :root:not(.light) 
 }
 
-.comp-category {
-  font-weight: 800;
-  font-size: 0.95rem;
-  line-height: 1.3;
-  flex: 1;
-  padding-right: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
 
-.comp-level {
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  opacity: 0.8;
-  white-space: nowrap;
-  background: rgba(0, 0, 0, 0.05);
-  padding: 0.25rem 0.65rem;
-  border-radius: 50px;
-}
 
-:root.dark .comp-level {
-  background: rgba(255, 255, 255, 0.1);
-}
+
+
+:root.dark 
 @media (prefers-color-scheme: dark) {
-  :root:not(.light) .comp-level {
-    background: rgba(255, 255, 255, 0.1);
-  }
+  :root:not(.light) 
 }
 
-.card-body {
-  padding: 1.5rem;
-}
 
-.ac-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
 
-.ac-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  font-size: 0.95rem;
-  color: var(--color-text);
-  line-height: 1.5;
-}
 
-.check-icon {
-  margin-top: 0.15rem;
-  flex-shrink: 0;
-}
 
-.ac-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
 
-.ac-id-badge {
-  font-size: 0.7rem;
-  font-weight: 800;
-  padding: 0.15rem 0.6rem;
-  border-radius: 6px;
-  width: fit-content;
-  letter-spacing: 0.05em;
-}
 
-.ac-label {
-  font-weight: 600;
-  color: var(--color-heading);
-}
+
+
+
+
+
+
+
 
 /* Metrics section style */
 .metrics-panel {
@@ -1443,14 +1275,7 @@ onUnmounted(() => {
     margin-bottom: 2rem;
   }
   
-  .but-badge-btn {
-    position: relative;
-    top: auto;
-    right: auto;
-    margin-bottom: 1.5rem;
-    display: inline-flex;
-    width: fit-content;
-  }
+  
   
   .project-title {
     font-size: 2.3rem;

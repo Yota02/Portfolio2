@@ -35,31 +35,7 @@
     "folder": "CodeTonFutur",
     "startDate": "projects.items.project-1.startDate",
     "isOngoing": true,
-    "newTech": [],
-    "competencies": [
-      {
-        "category": "Réaliser",
-        "level": "Niveau 3",
-        "items": [
-          "projects.items.project-1.competencies.0.0",
-          "projects.items.project-1.competencies.0.1"
-        ]
-      },
-      {
-        "category": "Conduire",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-1.competencies.1.0"
-        ]
-      },
-      {
-        "category": "Gérer",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-1.competencies.2.0"
-        ]
-      }
-    ]
+    "newTech": []
   },
   {
     "id": "project-2",
@@ -110,47 +86,6 @@
       "Scrum",
       "SSH",
       "Flask"
-    ],
-    "competencies": [
-      {
-        "category": "Réaliser",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-2.competencies.0.0",
-          "projects.items.project-2.competencies.0.1"
-        ]
-      },
-      {
-        "category": "Administrer",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-2.competencies.1.0",
-          "projects.items.project-2.competencies.1.1",
-          "projects.items.project-2.competencies.1.2"
-        ]
-      },
-      {
-        "category": "Conduire",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-2.competencies.2.0"
-        ]
-      },
-      {
-        "category": "Conduire",
-        "level": "Niveau 3",
-        "items": [
-          "projects.items.project-2.competencies.2.1"
-        ]
-      },
-      {
-        "category": "Collaborer",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-2.competencies.3.0",
-          "projects.items.project-2.competencies.3.1"
-        ]
-      }
     ],
     "subProjects": [
       {
@@ -224,30 +159,6 @@
     "newTech": [
       "Symfony",
       "Twig"
-    ],
-    "competencies": [
-      {
-        "category": "Réaliser",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-3.competencies.0.0",
-          "projects.items.project-3.competencies.0.1"
-        ]
-      },
-      {
-        "category": "Gérer",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-3.competencies.1.0"
-        ]
-      },
-      {
-        "category": "Collaborer",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-3.competencies.2.0"
-        ]
-      }
     ]
   },
   {
@@ -285,51 +196,6 @@
     "isOngoing": false,
     "newTech": [
       "Pandas"
-    ],
-    "competencies": [
-      {
-        "category": "Réaliser",
-        "level": "Niveau 1",
-        "items": [
-          "projects.items.project-4.competencies.0.0",
-          "projects.items.project-4.competencies.0.1"
-        ]
-      },
-      {
-        "category": "Optimiser",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-4.competencies.1.0"
-        ]
-      },
-      {
-        "category": "Gérer",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-4.competencies.2.0"
-        ]
-      },
-      {
-        "category": "Conduire",
-        "level": "Niveau 1",
-        "items": [
-          "projects.items.project-4.competencies.3.0"
-        ]
-      },
-      {
-        "category": "Conduire",
-        "level": "Niveau 3",
-        "items": [
-          "projects.items.project-4.competencies.3.1"
-        ]
-      },
-      {
-        "category": "Collaborer",
-        "level": "Niveau 1",
-        "items": [
-          "projects.items.project-4.competencies.4.0"
-        ]
-      }
     ]
   },
   {
@@ -369,38 +235,6 @@
     "newTech": [
       "JavaFX",
       "JUnit"
-    ],
-    "competencies": [
-      {
-        "category": "Réaliser",
-        "level": "Niveau 1",
-        "items": [
-          "projects.items.project-5.competencies.0.0",
-          "projects.items.project-5.competencies.0.1"
-        ]
-      },
-      {
-        "category": "Optimiser",
-        "level": "Niveau 1",
-        "items": [
-          "projects.items.project-5.competencies.1.0",
-          "projects.items.project-5.competencies.1.1"
-        ]
-      },
-      {
-        "category": "Optimiser",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-5.competencies.2.0"
-        ]
-      },
-      {
-        "category": "Collaborer",
-        "level": "Niveau 1",
-        "items": [
-          "projects.items.project-5.competencies.3.0"
-        ]
-      }
     ]
   },
   {
@@ -440,22 +274,6 @@
     "isOngoing": false,
     "newTech": [
       "Pytorch"
-    ],
-    "competencies": [
-      {
-        "category": "Réaliser",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-6.competencies.0.0"
-        ]
-      },
-      {
-        "category": "Optimiser",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-6.competencies.1.0"
-        ]
-      }
     ]
   },
   {
@@ -498,30 +316,6 @@
     "newTech": [
       "CustomTkinter",
       "Watchdog"
-    ],
-    "competencies": [
-      {
-        "category": "Réaliser",
-        "level": "Niveau 3",
-        "items": [
-          "projects.items.project-7.competencies.0.0",
-          "projects.items.project-7.competencies.0.1"
-        ]
-      },
-      {
-        "category": "Optimiser",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-7.competencies.1.0"
-        ]
-      },
-      {
-        "category": "Administrer",
-        "level": "Niveau 1",
-        "items": [
-          "projects.items.project-7.competencies.2.0"
-        ]
-      }
     ],
     "subProjects": [
       {
@@ -592,29 +386,6 @@
     "isOngoing": true,
     "newTech": [
       "Firebase"
-    ],
-    "competencies": [
-      {
-        "category": "Réaliser",
-        "level": "Niveau 3",
-        "items": [
-          "projects.items.project-8.competencies.0.0"
-        ]
-      },
-      {
-        "category": "Administrer",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-8.competencies.1.0"
-        ]
-      },
-      {
-        "category": "Gérer",
-        "level": "Niveau 1",
-        "items": [
-          "projects.items.project-8.competencies.2.0"
-        ]
-      }
     ]
   },
   {
@@ -649,24 +420,7 @@
     "startDate": "projects.items.project-10.startDate",
     "endDate": "projects.items.project-10.endDate",
     "isOngoing": false,
-    "newTech": [],
-    "competencies": [
-      {
-        "category": "Réaliser",
-        "level": "Niveau 1",
-        "items": [
-          "projects.items.project-10.competencies.0.0",
-          "projects.items.project-10.competencies.0.1"
-        ]
-      },
-      {
-        "category": "Gérer",
-        "level": "Niveau 1",
-        "items": [
-          "projects.items.project-10.competencies.1.0"
-        ]
-      }
-    ]
+    "newTech": []
   },
   {
     "id": "project-11",
@@ -707,32 +461,7 @@
     "startDate": "projects.items.project-11.startDate",
     "endDate": "projects.items.project-11.endDate",
     "isOngoing": false,
-    "newTech": [],
-    "competencies": [
-      {
-        "category": "Collaborer",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-11.competencies.0.0",
-          "projects.items.project-11.competencies.0.1"
-        ]
-      },
-      {
-        "category": "Conduire",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-11.competencies.1.0",
-          "projects.items.project-11.competencies.1.1"
-        ]
-      },
-      {
-        "category": "Réaliser",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-11.competencies.2.0"
-        ]
-      }
-    ]
+    "newTech": []
   },
   {
     "id": "project-12",
@@ -766,8 +495,7 @@
     "folder": "CHIRAL",
     "startDate": "projects.items.project-12.startDate",
     "isOngoing": true,
-    "newTech": [],
-    "competencies": []
+    "newTech": []
   },
   {
     "id": "project-13",
@@ -802,23 +530,7 @@
     "folder": "KyoLoom",
     "startDate": "projects.items.project-13.startDate",
     "isOngoing": true,
-    "newTech": [],
-    "competencies": [
-      {
-        "category": "Réaliser",
-        "level": "Niveau 3",
-        "items": [
-          "projects.items.project-13.competencies.0.0"
-        ]
-      },
-      {
-        "category": "Optimiser",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-13.competencies.1.0"
-        ]
-      }
-    ]
+    "newTech": []
   },
   {
     "id": "project-gecolab",
@@ -860,42 +572,13 @@
     "newTech": [
       "GitHub Actions",
       "Leaflet"
-    ],
-    "competencies": [
-      {
-        "category": "Réaliser",
-        "level": "Niveau 3",
-        "items": [
-          "projects.items.project-gecolab.competencies.0.0"
-        ]
-      },
-      {
-        "category": "Conduire",
-        "level": "Niveau 3",
-        "items": [
-          "projects.items.project-gecolab.competencies.1.0",
-          "projects.items.project-gecolab.competencies.1.1"
-        ]
-      },
-      {
-        "category": "Collaborer",
-        "level": "Niveau 3",
-        "items": [
-          "projects.items.project-gecolab.competencies.2.0"
-        ]
-      },
-      {
-        "category": "Administrer",
-        "level": "Niveau 2",
-        "items": [
-          "projects.items.project-gecolab.competencies.3.0"
-        ]
-      }
     ]
   },
   {
     "id": "project-projekt-bersetzung",
     "name": "Projekt Bersetzung",
+    "version": "1",
+    "groupId": "yomu-group",
     "description": "projects.items.projekt-bersetzung.description",
     "longDescription": "projects.items.projekt-bersetzung.longDescription",
     "context": "projects.items.projekt-bersetzung.context",
@@ -928,12 +611,13 @@
     "isOngoing": true,
     "startDate": "projects.items.projekt-bersetzung.startDate",
     "endDate": "",
-    "newTech": [],
-    "competencies": []
+    "newTech": []
   },
   {
     "id": "project-1779285718375",
     "name": "Yomu",
+    "version": "2",
+    "groupId": "yomu-group",
     "description": "projects.items.yomu.description",
     "longDescription": "projects.items.yomu.longDescription",
     "context": "projects.items.yomu.context",
@@ -967,7 +651,6 @@
     "isOngoing": false,
     "startDate": "projects.items.yomu.startDate",
     "endDate": "projects.items.yomu.endDate",
-    "newTech": [],
-    "competencies": []
+    "newTech": []
   }
 ]

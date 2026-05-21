@@ -329,6 +329,8 @@ app.post('/api/projects', async (req, res) => {
         const newProject = {
             id: projectData.id || `project-${Date.now()}`,
             name: projectData.name,
+            version: projectData.version || "",
+            groupId: projectData.groupId || "",
             description: projectData.description || "",
             longDescription: projectData.longDescription || "",
             context: projectData.context || "",
@@ -346,7 +348,7 @@ app.post('/api/projects', async (req, res) => {
             startDate: projectData.startDate || "",
             endDate: projectData.endDate || "",
             newTech: projectData.newTech || [],
-            competencies: projectData.competencies || []
+            metrics: projectData.metrics || []
         };
 
         const projects = JSON.parse(fs.readFileSync(PROJECTS_JSON));
