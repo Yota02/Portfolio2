@@ -253,12 +253,6 @@ onUnmounted(() => {
               </li>
             </ul>
           </div>
-
-          <ProjectEvolution
-            v-if="project.groupId"
-            :groupId="project.groupId"
-            :currentProjectId="project.id"
-          />
         </div>
 
         <aside class="sidebar reveal-right">
@@ -375,6 +369,12 @@ onUnmounted(() => {
           </div>
         </aside>
       </div>
+
+      <ProjectEvolution
+        v-if="project.groupId"
+        :groupId="project.groupId"
+        :currentProjectId="project.id"
+      />
     </div>
   </div>
 </template>
@@ -1056,44 +1056,6 @@ onUnmounted(() => {
 }
 
 /* Modal Competencies & Cards */
-
-
-
-
-
-
-
-
-
-
-:root.dark 
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) 
-}
-
-
-
-
-
-:root.dark 
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Metrics section style */
 .metrics-panel {
   padding: 2.2rem;

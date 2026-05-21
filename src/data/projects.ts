@@ -787,7 +787,7 @@ export const getProjectsByCategory = (): Record<ProjectCategory, Project[]> => {
   return projects.reduce((groups, project) => {
     // If it's part of a group, only include it if it's the latest version
     if (project.groupId) {
-      if (latestVersions[project.groupId].id !== project.id) {
+      if (latestVersions[project.groupId]?.id !== project.id) {
         return groups;
       }
     }

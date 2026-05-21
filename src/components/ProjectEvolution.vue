@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { getProjectsByGroupId, type Project } from '@/data/projects'
 import BaseModal from '@/components/BaseModal.vue'
@@ -13,11 +13,32 @@ const { t } = useI18n()
 const showEvolutionDetails = ref(false)
 const showVersionDetails = ref(false)
 const selectedVersion = ref<Project | null>(null)
+const timelineContainer = ref<HTMLElement | null>(null)
 
 const openVersionModal = (version: Project) => {
   selectedVersion.value = version
   showVersionDetails.value = true
 }
+
+// Auto-centrer la version actuelle au chargement
+onMounted(async () => {
+  await nextTick()
+  setTimeout(() => {
+    if (timelineContainer.value) {
+      const activeCard = timelineContainer.value.querySelector('.timeline-card.active') as HTMLElement
+      if (activeCard) {
+        const containerWidth = timelineContainer.value.offsetWidth
+        const cardOffset = activeCard.offsetLeft
+        const cardWidth = activeCard.offsetWidth
+        
+        timelineContainer.value.scrollTo({
+          left: cardOffset - (containerWidth / 2) + (cardWidth / 2),
+          behavior: 'smooth'
+        })
+      }
+    }
+  }, 300)
+})
 
 // Classification sémantique avancée des notes d'évolution pour le comparatif
 const classifiedNotes = computed(() => {
@@ -126,7 +147,7 @@ const isCurrent = (projectId: string) => projectId === props.currentProjectId
     </div>
     
     <!-- Timeline Épurée et Ultra-Lisible (Inline) -->
-    <div class="timeline-container">
+    <div class="timeline-container" ref="timelineContainer">
       <div class="timeline-steps">
         <div v-for="(version, index) in versions" :key="version.id" class="timeline-step-wrapper">
           
