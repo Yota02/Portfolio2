@@ -20,7 +20,8 @@ const openVersionModal = (version: Project) => {
   showVersionDetails.value = true
 }
 
-// Auto-centrer la version actuelle au chargement
+// Auto-centrer la version actuelle au chargement (Désactivé car peut porter à confusion si on veut une vue d'ensemble centrée)
+/*
 onMounted(async () => {
   await nextTick()
   setTimeout(() => {
@@ -39,6 +40,7 @@ onMounted(async () => {
     }
   }, 300)
 })
+*/
 
 // Classification sémantique avancée des notes d'évolution pour le comparatif
 const classifiedNotes = computed(() => {
@@ -337,73 +339,81 @@ const isCurrent = (projectId: string) => projectId === props.currentProjectId
 <style scoped>
 /* 1. SECTION PRINCIPALE INLINE (Design Épuré) */
 .project-evolution {
-  margin: 3.5rem 0;
-  padding: 2rem;
+  margin: 4rem auto;
+  padding: 0;
   background: var(--color-background-soft);
   border: 1px solid var(--color-border);
-  border-radius: 20px;
-  box-shadow: var(--shadow-sm);
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  overflow: hidden;
 }
 
 .evolution-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  padding: 2.5rem 2.5rem 1rem;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .evolution-title {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-size: 1.35rem;
-  font-weight: 800;
+  gap: 0.85rem;
+  font-size: 1.5rem;
+  font-weight: 850;
   color: var(--color-heading);
+  letter-spacing: -0.01em;
 }
 
 .title-icon {
   color: var(--primary);
+  filter: drop-shadow(0 2px 4px rgba(var(--primary-rgb), 0.2));
 }
 
 /* Bouton Comparer ultra-lisible */
 .evolution-compare-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.6rem 1.25rem;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 100px;
   border: 2px solid var(--primary);
   background: transparent;
   color: var(--primary);
-  font-size: 0.88rem;
-  font-weight: 750;
+  font-size: 0.95rem;
+  font-weight: 800;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.05);
 }
 
 .evolution-compare-btn:hover {
   background: var(--primary);
   color: white;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.25);
 }
 
 /* Container de Timeline */
 .timeline-container {
   width: 100%;
   overflow-x: auto;
-  padding: 0.5rem 0;
+  padding: 1rem 0 3rem;
   scrollbar-width: thin;
+  scroll-behavior: smooth;
+  display: flex; /* Key for centering */
 }
 
 .timeline-steps {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: max-content;
-  margin: 0 auto;
-  padding: 0.5rem 1rem;
+  margin: 0 auto; /* Key for robust centering */
+  padding: 1rem 2.5rem;
+  min-width: min-content;
+  gap: 0;
 }
 
 .timeline-step-wrapper {

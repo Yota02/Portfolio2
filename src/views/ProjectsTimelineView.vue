@@ -652,11 +652,17 @@ const getLogoSrc = (project: any) => {
 /* Timeline Layout */
 .timeline-wrapper {
   position: relative;
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .timeline {
   position: relative;
   padding: 2rem 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Core central timeline line */
@@ -686,30 +692,31 @@ const getLogoSrc = (project: any) => {
   align-items: center;
   position: relative;
   transition: all 0.5s ease;
+  justify-content: space-between;
 }
 
 .timeline-item.reverse {
   flex-direction: row-reverse;
 }
 
-.timeline-content {
+ .timeline-content {
   flex: 0 0 50%;
   min-width: 0;
-  padding-right: 3.5rem;
+  padding-right: 2rem;
   box-sizing: border-box;
   perspective: 1000px;
   display: flex;
   justify-content: flex-end;
 }
 
-.timeline-item.reverse .timeline-content {
+ .timeline-item.reverse .timeline-content {
+  padding-left: 2rem;
   padding-right: 0;
-  padding-left: 3.5rem;
   justify-content: flex-start;
 }
 
-.timeline-spacer {
-  flex: 0 0 50%;
+ .timeline-spacer {
+  display: none;
 }
 
 .project-card-link {
