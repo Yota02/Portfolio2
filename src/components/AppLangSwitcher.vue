@@ -173,17 +173,5 @@ onUnmounted(() => {
   font-weight: 500;
 }
 
-@media (max-width: 768px) {
-  .lang-dropdown-menu {
-    position: static;
-    box-shadow: none;
-    background: transparent;
-    border: none;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    margin-top: 0.5rem;
-    min-width: 100%;
-  }
-}
+
 </style>

@@ -149,11 +149,16 @@ onUnmounted(() => {
     box-shadow: none;
     background: transparent;
     border: none;
+    display: none;
+    margin-top: 0.5rem;
+    padding: 0;
+  }
+
+  .dropdown-menu.open {
+    display: block;
     opacity: 1;
     visibility: visible;
     transform: none;
-    margin-top: 0.5rem;
-    padding: 0;
   }
 }
 </style>

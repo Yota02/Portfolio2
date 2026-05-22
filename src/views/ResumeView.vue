@@ -558,5 +558,8 @@ const printResume = () => {
   .resume-sidebar {
     width: 100%;
   }
+  .projects-grid-mini {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

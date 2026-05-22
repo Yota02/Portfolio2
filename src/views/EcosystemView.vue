@@ -280,7 +280,8 @@ const getNodeCategoryRgb = (category: string) => {
 
 const categoriesDb = computed(() => {
   const isFr = locale.value === 'fr'
-  const groups: Record<string, { x: number, y: number, count: number, name: string, color: string, rgb: string }> = {
+  interface GroupData { x: number, y: number, count: number, name: string, color: string, rgb: string }
+  const groups: Record<string, GroupData> = {
     'IA': { x: 0, y: 0, count: 0, name: isFr ? 'ZONE IA / AUTOMATISATION' : 'AI & AUTOMATION ZONE', color: 'var(--accent)', rgb: '139, 92, 246' },
     'Logiciel': { x: 0, y: 0, count: 0, name: isFr ? 'ZONE LOGICIELS & OUTILS' : 'SOFTWARE & TOOLS ZONE', color: 'var(--primary)', rgb: '59, 130, 246' }
   }
@@ -288,16 +289,16 @@ const categoriesDb = computed(() => {
   // Accumulate node positions to calculate center of mass in real-time
   nodesRef.value.forEach(node => {
     const cat = node.project.category
-    if (groups[cat]) {
-      groups[cat].x += node.x
-      groups[cat].y += node.y
-      groups[cat].count++
+    const g = groups[cat]
+    if (g) {
+      g.x += node.x
+      g.y += node.y
+      g.count++
     }
   })
   
   // Average coordinates
-  return Object.keys(groups).map(key => {
-    const g = groups[key]
+  return Object.entries(groups).map(([id, g]) => {
     if (g.count > 0) {
       g.x /= g.count
       g.y /= g.count
@@ -306,8 +307,13 @@ const categoriesDb = computed(() => {
       g.y = center.y
     }
     return {
-      id: key,
-      ...g
+      id,
+      name: g.name,
+      x: g.x,
+      y: g.y,
+      color: g.color,
+      rgb: g.rgb,
+      count: g.count
     }
   })
 })

@@ -1249,4 +1249,10 @@ onUnmounted(() => {
     font-size: 1.1rem;
   }
 }
+
+@media (max-width: 480px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>

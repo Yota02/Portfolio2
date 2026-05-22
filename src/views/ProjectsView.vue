@@ -450,6 +450,10 @@ const toggleTech = (tech: string) => {
 }
 
 @media (max-width: 768px) {
+  .layout-container {
+    flex-direction: column;
+  }
+
   .projects-page {
     padding: 2rem 1rem;
   }

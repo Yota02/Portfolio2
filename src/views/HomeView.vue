@@ -63,7 +63,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
@@ -73,6 +73,7 @@ const baseUrl = import.meta.env.BASE_URL
 
 const mouseX = ref(0)
 const mouseY = ref(0)
+const isMobile = ref(false)
 
 const floatingCards = [
   { projectId: 'project-7', title: t('home.view_project'), image: `${baseUrl}projet/Victoria/logo.webp` },
@@ -83,16 +84,31 @@ const floatingCards = [
 ]
 
 const handleParallax = (e: MouseEvent) => {
+  if (isMobile.value) return
   mouseX.value = (e.clientX - window.innerWidth / 2) / 50
   mouseY.value = (e.clientY - window.innerHeight / 2) / 50
 }
 
 const cardStyle = (index: number) => {
+  if (isMobile.value) return {}
   const depth = (index + 1) * 0.5
   return {
     transform: `translate3d(${mouseX.value * depth}px, ${mouseY.value * depth}px, 0)`
   }
 }
+
+const checkMobile = () => {
+  isMobile.value = window.innerWidth <= 768
+}
+
+onMounted(() => {
+  checkMobile()
+  window.addEventListener('resize', checkMobile)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', checkMobile)
+})
 </script>
 
 <style scoped>
@@ -260,10 +276,141 @@ const cardStyle = (index: number) => {
 }
 
 @media (max-width: 768px) {
-  .hero { min-height: 60vh; padding: 1rem; }
-  .hero-title { font-size: 2rem; }
-  .hero-subtitle { font-size: 1.2rem; }
-  .hero-actions { flex-direction: column; }
-  .hero-visual { display: none; }
+  .hero {
+    min-height: 100vh;
+    padding: 6rem 1.5rem 3rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  
+  .hero-content {
+    text-align: center;
+    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+    font-weight: 800;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .social-icons {
+    justify-content: center;
+    margin: 0.5rem auto 1.25rem auto;
+    gap: 1.25rem;
+  }
+
+  .social-icon {
+    width: 44px;
+    height: 44px;
+    padding: 0.55rem;
+    border-radius: 50%;
+    background: rgba(var(--primary-rgb), 0.05);
+    border: 1px solid rgba(var(--primary-rgb), 0.1);
+    backdrop-filter: blur(4px);
+  }
+
+  .hero-actions {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions .btn {
+    width: auto;
+    min-width: 140px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-visual {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 160px;
+    width: 100%;
+    margin: 1.5rem auto 0 auto;
+    max-width: 320px;
+  }
+
+  .floating-card {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .floating-card:hover {
+    transform: translateY(-20px) scale(1.2) rotate(0deg) !important;
+    z-index: 10 !important;
+    box-shadow: 0 15px 35px rgba(var(--primary-rgb), 0.35);
+  }
+
+  .card-1 {
+    z-index: 5;
+    transform: scale(1.1) translateY(-10px) !important;
+    opacity: 1;
+  }
+  
+  .card-2 {
+    z-index: 4;
+    transform: translateX(42px) rotate(8deg) translateY(-2px) scale(0.95) !important;
+    opacity: 0.9;
+  }
+  
+  .card-3 {
+    z-index: 3;
+    transform: translateX(-42px) rotate(-8deg) translateY(-2px) scale(0.95) !important;
+    opacity: 0.9;
+  }
+  
+  .card-4 {
+    z-index: 2;
+    transform: translateX(80px) rotate(16deg) translateY(5px) scale(0.85) !important;
+    opacity: 0.7;
+  }
+  
+  .card-5 {
+    z-index: 1;
+    transform: translateX(-80px) rotate(-16deg) translateY(5px) scale(0.85) !important;
+    opacity: 0.7;
+  }
 }
 </style>
