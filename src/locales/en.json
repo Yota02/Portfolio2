@@ -16,7 +16,30 @@
   "common": {
     "back": "Back",
     "ecosystem_title": "Victoria Project Ecosystem",
-    "ecosystem_desc": "The Victoria Project ecosystem brings together a set of innovative solutions focused on artificial intelligence and automation."
+    "ecosystem_desc": "The Victoria Project ecosystem brings together a set of innovative solutions focused on artificial intelligence and automation.",
+    "ecosystem_intro": "At the centre, my Victoria project. Around it, the projects that orbit its ecosystem — each with its own logic: the infrastructure, an AI building block or a concrete application.",
+    "ecosystem_core": "Core: Victoria",
+    "ecosystem_zone_ia": "AI & Automation",
+    "ecosystem_zone_software": "Software & Tools",
+    "ecosystem_hint": "Hover or click a project to discover its role in the ecosystem."
+  },
+  "ecosystem": {
+    "core_tag": "The central project",
+    "core_desc": "Victoria is the heart of the ecosystem: a local, modular AI assistant. The other projects extend that approach — each explores a building block, an application or the infrastructure behind it.",
+    "roles": {
+      "project-13": {
+        "tag": "Infrastructure",
+        "desc": "Loom automates data and ML pipelines: the engineering logic behind the ecosystem's models."
+      },
+      "project-6": {
+        "tag": "AI block · Vision",
+        "desc": "Img Classifier explores convolutional neural networks: a vision capability and an example of a reusable AI model."
+      },
+      "project-1779285718375": {
+        "tag": "Application",
+        "desc": "Yomu is a finished product built with the same AI approach: a light-novel translator putting the ecosystem's building blocks into practice."
+      }
+    }
   },
   "home": {
     "greeting": "Hello, I am",

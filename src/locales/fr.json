@@ -16,7 +16,30 @@
   "common": {
     "back": "Retour",
     "ecosystem_title": "Écosystème Victoria Project",
-    "ecosystem_desc": "L'écosystème Victoria Project regroupe un ensemble de solutions innovantes axées sur l'intelligence artificielle et l'automatisation."
+    "ecosystem_desc": "L'écosystème Victoria Project regroupe un ensemble de solutions innovantes axées sur l'intelligence artificielle et l'automatisation.",
+    "ecosystem_intro": "Au centre, mon projet Victoria. Autour, les projets qui gravitent dans son écosystème — chacun avec sa propre logique : l'infrastructure, une brique d'IA ou une application concrète.",
+    "ecosystem_core": "Cœur : Victoria",
+    "ecosystem_zone_ia": "IA & Automatisation",
+    "ecosystem_zone_software": "Logiciels & Outils",
+    "ecosystem_hint": "Survolez ou cliquez sur un projet pour découvrir son rôle dans l'écosystème."
+  },
+  "ecosystem": {
+    "core_tag": "Le projet central",
+    "core_desc": "Victoria est le cœur de l'écosystème : un assistant IA local et modulaire. Les autres projets prolongent cette démarche — chacun en explore une brique, une application ou l'infrastructure.",
+    "roles": {
+      "project-13": {
+        "tag": "Infrastructure",
+        "desc": "Loom automatise les pipelines de données et de ML : la logique d'industrialisation derrière les modèles de l'écosystème."
+      },
+      "project-6": {
+        "tag": "Brique IA · Vision",
+        "desc": "Img Classifier explore les réseaux de neurones convolutionnels : une capacité de vision, exemple de modèle d'IA réutilisable."
+      },
+      "project-1779285718375": {
+        "tag": "Application",
+        "desc": "Yomu est un produit fini issu de la même approche IA : un traducteur de light novels qui met les briques de l'écosystème en pratique."
+      }
+    }
   },
   "home": {
     "greeting": "Bonjour, je suis",

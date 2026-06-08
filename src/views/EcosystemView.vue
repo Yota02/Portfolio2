@@ -1,341 +1,112 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { getProjectById, categoryMap, type ProjectCategory } from '@/data/projects'
 import TechBadge from '@/components/TechBadge.vue'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const router = useRouter()
 const baseUrl = import.meta.env.BASE_URL
 
-const ecosystemProjectIds = [
-  'project-1779285718375', // Yomu
-  'project-7',              // Victoria
-  'project-13',             // Loom (KyoLoom)
-  'project-6'               // Img Classifier
+// Victoria is the central project; the others orbit around it
+const CORE_ID = 'project-7'
+const satelliteIds = [
+  'project-13',            // Loom — infrastructure
+  'project-6',             // Img Classifier — AI building block (vision)
+  'project-1779285718375', // Yomu — application
 ]
-
-const ecosystemProjects = computed(() => {
-  return ecosystemProjectIds.map(id => getProjectById(id)).filter((p): p is any => p !== undefined)
-})
 
 function getLogoSrc(project: any) {
   const logo = project.logo_recadrer || project.logo
   return logo.startsWith('http') ? logo : `${baseUrl}projet/${project.folder}/${logo}`
 }
 
-const goToProject = (id: string) => {
-  router.push({ name: 'project-detail', params: { id } })
+const goToProject = (id: string) => router.push({ name: 'project-detail', params: { id } })
+
+const catColor = (cat: string) => (cat === 'IA' ? 'var(--accent)' : 'var(--primary)')
+
+// ----------------------------------------------------
+// STATIC LAYOUT — sober hub & branches diagram
+// ----------------------------------------------------
+const core = { x: 210, y: 300, r: 74 }
+
+const coreProject = getProjectById(CORE_ID)!
+
+const nodes = computed(() => {
+  const list = satelliteIds.map(id => getProjectById(id)).filter((p): p is any => !!p)
+  const n = list.length
+  const top = 130
+  const bottom = 470
+  return list.map((project, i) => ({
+    id: project.id,
+    project,
+    logo: getLogoSrc(project),
+    x: 590,
+    y: n <= 1 ? 300 : top + (bottom - top) * (i / (n - 1)),
+    r: 52,
+  }))
+})
+
+// ----------------------------------------------------
+// INTERACTION
+// ----------------------------------------------------
+const hoveredId = ref<string | null>(null)
+const selectedId = ref<string | null>(null)
+
+const activeId = computed(() => hoveredId.value || selectedId.value || 'core')
+const isCoreActive = computed(() => activeId.value === 'core')
+
+const selectNode = (id: string) => {
+  selectedId.value = selectedId.value === id ? null : id
+}
+
+const isDimmed = (id: string) => activeId.value !== 'core' && activeId.value !== id
+
+// ----------------------------------------------------
+// CONNECTORS (gentle static S-curves)
+// ----------------------------------------------------
+const getPathD = (node: { x: number; y: number; r: number }) => {
+  const x1 = core.x + core.r
+  const y1 = core.y
+  const x2 = node.x - node.r
+  const y2 = node.y
+  const mx = (x1 + x2) / 2
+  return `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`
+}
+
+const getMid = (node: { x: number; y: number; r: number }) => {
+  const x1 = core.x + core.r
+  const x2 = node.x - node.r
+  return { x: (x1 + x2) / 2, y: (core.y + node.y) / 2 }
 }
 
 // ----------------------------------------------------
-// STATE & INTERACTION
+// ACTIVE ENTITY (for the side panel)
 // ----------------------------------------------------
-const hoveredNodeId = ref<string | null>(null)
-const selectedNodeId = ref<string | null>(null)
+const activeProject = computed(() => {
+  if (isCoreActive.value) return coreProject
+  return nodes.value.find(n => n.id === activeId.value)?.project ?? coreProject
+})
 
-const toggleSelectNode = (id: string) => {
-  if (selectedNodeId.value === id) {
-    selectedNodeId.value = null
-  } else {
-    selectedNodeId.value = id
-  }
-}
-
-// ----------------------------------------------------
-// PHYSICS SIMULATION SETUP
-// ----------------------------------------------------
-const center = { x: 400, y: 300 }
-const radius = 210
-
-// Nodes layout list with physical properties
-const nodesRef = ref(
-  ecosystemProjects.value.map((project, index) => {
-    // Distribute nodes circularly
-    const angle = (index / ecosystemProjects.value.length) * 2 * Math.PI - Math.PI / 2
-    const bx = center.x + radius * Math.cos(angle)
-    const by = center.y + radius * Math.sin(angle)
-    return {
-      id: project.id,
-      name: project.name,
-      projectId: project.id,
-      logo: getLogoSrc(project),
-      angle: angle,
-      bx: bx,
-      by: by,
-      x: bx,
-      y: by,
-      vx: 0,
-      vy: 0,
-      seedX: Math.random() * 100,
-      seedY: Math.random() * 100,
-      project: project
-    }
-  })
+const activeRoleTag = computed(() =>
+  isCoreActive.value ? t('ecosystem.core_tag') : t(`ecosystem.roles.${activeId.value}.tag`)
+)
+const activeRoleDesc = computed(() =>
+  isCoreActive.value ? t('ecosystem.core_desc') : t(`ecosystem.roles.${activeId.value}.desc`)
+)
+const activeDesc = computed(() =>
+  isCoreActive.value ? t('common.ecosystem_desc') : t(activeProject.value.description)
+)
+const activeCategory = computed(() =>
+  t(`projects.categories.${categoryMap[activeProject.value.category as ProjectCategory] || 'ia'}`)
 )
 
-// Spores floating in background
-interface Spore {
-  id: number
-  x: number
-  y: number
-  vx: number
-  vy: number
-  size: number
-  opacity: number
-  seed: number
-}
-const spores = ref<Spore[]>([])
-
-const initSpores = () => {
-  spores.value = Array.from({ length: 30 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 800,
-    y: Math.random() * 600,
-    vx: (Math.random() - 0.5) * 0.3,
-    vy: (Math.random() - 0.5) * 0.3,
-    size: Math.random() * 3 + 1,
-    opacity: Math.random() * 0.35 + 0.1,
-    seed: Math.random() * 100
-  }))
-}
-
-// Mouse tracking inside SVG
-const mouseX = ref(-9999)
-const mouseY = ref(-9999)
-const isMouseInside = ref(false)
-
-const handleMouseMove = (event: MouseEvent) => {
-  const rect = (event.currentTarget as SVGSVGElement).getBoundingClientRect()
-  mouseX.value = ((event.clientX - rect.left) / rect.width) * 800
-  mouseY.value = ((event.clientY - rect.top) / rect.height) * 600
-  isMouseInside.value = true
-}
-
-const handleMouseLeave = () => {
-  isMouseInside.value = false
-  mouseX.value = -9999
-  mouseY.value = -9999
-}
-
-// ----------------------------------------------------
-// SIMULATION FRAME LOOP
-// ----------------------------------------------------
-let animationFrameId: number | null = null
-
-const updatePhysics = (time: number) => {
-  // Update node positions
-  nodesRef.value.forEach(node => {
-    // Target base circular coordinates
-    const targetBaseX = center.x + radius * Math.cos(node.angle)
-    const targetBaseY = center.y + radius * Math.sin(node.angle)
-
-    // Gentle float (Brownian noise simulation)
-    const floatX = Math.sin(time * 0.0013 + node.seedX) * 14 + Math.cos(time * 0.0028 + node.seedY) * 5
-    const floatY = Math.cos(time * 0.0011 + node.seedY) * 14 + Math.sin(time * 0.0022 + node.seedX) * 5
-
-    const targetX = targetBaseX + floatX
-    const targetY = targetBaseY + floatY
-
-    let ax = 0
-    let ay = 0
-
-    // Repulsion and attraction from mouse cursor
-    if (isMouseInside.value) {
-      const dx = node.x - mouseX.value
-      const dy = node.y - mouseY.value
-      const dist = Math.sqrt(dx * dx + dy * dy)
-
-      if (hoveredNodeId.value === node.id || selectedNodeId.value === node.id) {
-        // Gently pull the hovered/selected node toward the mouse so it stays right under it and is very easy to click
-        if (dist > 5) {
-          const attractionForce = 0.08
-          ax -= (dx / dist) * attractionForce
-          ay -= (dy / dist) * attractionForce
-        }
-      } else {
-        // Repel other nodes so the network deforms organically around the cursor
-        const repelRadius = 120 // reduced from 170
-        if (dist < repelRadius && dist > 1) {
-          const force = (1 - dist / repelRadius) * 3.5 // reduced from 6.5
-          ax += (dx / dist) * force
-          ay += (dy / dist) * force
-        }
-      }
-    }
-
-    // Spring mechanics returning nodes to anchor
-    const spring = 0.03
-    const damping = 0.85
-
-    ax += (targetX - node.x) * spring
-    ay += (targetY - node.y) * spring
-
-    node.vx = (node.vx + ax) * damping
-    node.vy = (node.vy + ay) * damping
-
-    node.x += node.vx
-    node.y += node.vy
-  })
-
-  // Update spores
-  spores.value.forEach(s => {
-    s.x += s.vx + Math.sin(time * 0.0008 + s.seed) * 0.06
-    s.y += s.vy + Math.cos(time * 0.0008 + s.seed) * 0.06
-
-    // Soft cursor push for spores
-    if (isMouseInside.value) {
-      const dx = s.x - mouseX.value
-      const dy = s.y - mouseY.value
-      const dist = Math.sqrt(dx * dx + dy * dy)
-      if (dist < 100 && dist > 1) {
-        const force = (1 - dist / 100) * 0.6
-        s.x += (dx / dist) * force
-        s.y += (dy / dist) * force
-      }
-    }
-
-    // Wrap around coordinates
-    if (s.x < 0) s.x = 800
-    if (s.x > 800) s.x = 0
-    if (s.y < 0) s.y = 600
-    if (s.y > 600) s.y = 0
-  })
-
-  animationFrameId = requestAnimationFrame(updatePhysics)
-}
-
-// ----------------------------------------------------
-// CURVED BEZIER CONNECTION PATHS
-// ----------------------------------------------------
-const getPathD = (node: any) => {
-  const x1 = center.x
-  const y1 = center.y
-  const x2 = node.x
-  const y2 = node.y
-  const dx = x2 - x1
-  const dy = y2 - y1
-  const angle = node.angle
-
-  // Curved paths bending outwards in a gorgeous flower layout
-  const bendStrength = 36
-  const px = Math.cos(angle + Math.PI / 2) * bendStrength
-  const py = Math.sin(angle + Math.PI / 2) * bendStrength
-
-  const cx1 = x1 + dx * 0.35 + px
-  const cy1 = y1 + dy * 0.35 + py
-  const cx2 = x1 + dx * 0.7 + px * 0.6
-  const cy2 = y1 + dy * 0.7 + py * 0.6
-
-  return `M ${x1} ${y1} C ${cx1} ${cy1}, ${cx2} ${cy2}, ${x2} ${y2}`
-}
-
-// ----------------------------------------------------
-// DETAILS PANEL LOGIC (GLASSMORPHISM)
-// ----------------------------------------------------
-const coreProject = computed(() => {
-  const isFr = locale.value === 'fr'
-  return {
-    id: 'core',
-    name: isFr ? 'Victoria Écosystème' : 'Victoria Ecosystem',
-    category: 'IA',
-    description: t('common.ecosystem_desc'),
-    features: isFr ? [
-      'Architecture ultra-modulaire par plugins à chaud',
-      'Traitement de langage naturel local avec Ollama',
-      'Mémoire augmentée via base de données vectorielle ChromaDB'
-    ] : [
-      'Ultra-modular hot-swapping plugin architecture',
-      'Local NLP processing powered by Ollama',
-      'Augmented memory via ChromaDB vector database'
-    ],
-    tags: ['Python', 'Ollama', 'ChromaDB', 'CustomTkinter', 'Watchdog'],
-    isCore: true
-  }
-})
-
-const activeNode = computed(() => {
-  if (hoveredNodeId.value) {
-    const node = nodesRef.value.find(n => n.id === hoveredNodeId.value)
-    if (node) return node.project
-  }
-  if (selectedNodeId.value) {
-    const node = nodesRef.value.find(n => n.id === selectedNodeId.value)
-    if (node) return node.project
-  }
-  return coreProject.value
-})
-
-// ----------------------------------------------------
-// DYNAMIC CATEGORY DIVISION (CHAMBERS)
-// ----------------------------------------------------
-const getNodeCategoryColor = (category: string) => {
-  return category === 'IA' ? 'var(--accent)' : 'var(--primary)'
-}
-
-const getNodeCategoryRgb = (category: string) => {
-  return category === 'IA' ? '139, 92, 246' : '59, 130, 246'
-}
-
-const categoriesDb = computed(() => {
-  const isFr = locale.value === 'fr'
-  interface GroupData { x: number, y: number, count: number, name: string, color: string, rgb: string }
-  const groups: Record<string, GroupData> = {
-    'IA': { x: 0, y: 0, count: 0, name: isFr ? 'ZONE IA / AUTOMATISATION' : 'AI & AUTOMATION ZONE', color: 'var(--accent)', rgb: '139, 92, 246' },
-    'Logiciel': { x: 0, y: 0, count: 0, name: isFr ? 'ZONE LOGICIELS & OUTILS' : 'SOFTWARE & TOOLS ZONE', color: 'var(--primary)', rgb: '59, 130, 246' }
-  }
-  
-  // Accumulate node positions to calculate center of mass in real-time
-  nodesRef.value.forEach(node => {
-    const cat = node.project.category
-    const g = groups[cat]
-    if (g) {
-      g.x += node.x
-      g.y += node.y
-      g.count++
-    }
-  })
-  
-  // Average coordinates
-  return Object.entries(groups).map(([id, g]) => {
-    if (g.count > 0) {
-      g.x /= g.count
-      g.y /= g.count
-    } else {
-      g.x = center.x
-      g.y = center.y
-    }
-    return {
-      id,
-      name: g.name,
-      x: g.x,
-      y: g.y,
-      color: g.color,
-      rgb: g.rgb,
-      count: g.count
-    }
-  })
-})
-
-// ----------------------------------------------------
-// LIFECYCLE
-// ----------------------------------------------------
-onMounted(() => {
-  initSpores()
-  animationFrameId = requestAnimationFrame(updatePhysics)
-})
-
-onUnmounted(() => {
-  if (animationFrameId !== null) {
-    cancelAnimationFrame(animationFrameId)
-  }
-})
+const roleTag = (id: string) => t(`ecosystem.roles.${id}.tag`)
 </script>
 
 <template>
   <div class="ecosystem-page">
-    <div class="bg-vignette"></div>
     <div class="container">
       <header class="header">
         <RouterLink to="/projects" class="back-btn">
@@ -344,194 +115,158 @@ onUnmounted(() => {
           </svg>
           <span>{{ t('common.back') }}</span>
         </RouterLink>
-        <h1 class="page-title">{{ t('common.ecosystem_title') }}</h1>
+        <div class="header-text">
+          <h1 class="page-title">{{ t('common.ecosystem_title') }}</h1>
+          <p class="page-subtitle">{{ t('common.ecosystem_intro') }}</p>
+        </div>
       </header>
 
       <div class="ecosystem-layout">
-        <!-- Interactive network visualization -->
+        <!-- Diagram -->
         <div class="graph-column">
-          <div class="graph-wrapper"
-               @mousemove="handleMouseMove"
-               @mouseleave="handleMouseLeave">
-            <div class="background-glow"></div>
-            
-            <svg viewBox="0 0 800 600" class="ecosystem-graph" preserveAspectRatio="xMidYMid meet">
-              <!-- Background spores (Deep biological dust) -->
-              <g class="spores-layer">
-                <circle v-for="spore in spores" :key="'spore-' + spore.id"
-                        :cx="spore.x" :cy="spore.y" :r="spore.size"
-                        fill="var(--primary)" :opacity="spore.opacity"
-                        class="spore-circle" />
-              </g>
+          <div class="graph-legend">
+            <div class="legend-item">
+              <span class="legend-dot core-dot"></span>
+              <span>{{ t('common.ecosystem_core') }}</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" :style="{ background: 'var(--accent)' }"></span>
+              <span>{{ t('common.ecosystem_zone_ia') }}</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" :style="{ background: 'var(--primary)' }"></span>
+              <span>{{ t('common.ecosystem_zone_software') }}</span>
+            </div>
+          </div>
 
-              <!-- Dynamic background category chambers (Cell dividers) -->
-              <g class="chambers-layer">
-                <g v-for="chamber in categoriesDb" :key="chamber.id" class="chamber-group">
-                  <!-- Soft blurred glowing capsule behind nodes -->
-                  <circle :cx="chamber.x" :cy="chamber.y" :r="chamber.id === 'IA' ? 180 : 125"
-                          :fill="`rgba(${chamber.rgb}, 0.035)`"
-                          class="chamber-blur" />
-                  <!-- Breathing dotted outer boundaries -->
-                  <circle :cx="chamber.x" :cy="chamber.y" :r="chamber.id === 'IA' ? 180 : 125"
-                          :stroke="chamber.color"
-                          stroke-width="1.5"
-                          stroke-dasharray="5 7"
-                          fill="none"
-                          class="chamber-ring" />
-                  <!-- Dynamic category pill label -->
-                  <rect :x="chamber.x - 90" :y="chamber.y - (chamber.id === 'IA' ? 192 : 137)" width="180" height="20" rx="10" 
-                        fill="var(--color-background-soft)" stroke="var(--color-border)" stroke-width="1" class="chamber-label-bg" />
-                  <text :x="chamber.x" :y="chamber.y - (chamber.id === 'IA' ? 178 : 123)" 
-                        text-anchor="middle" class="chamber-label" :fill="chamber.color">
-                    {{ chamber.name }}
-                  </text>
+          <div class="graph-wrapper">
+            <svg viewBox="0 0 800 600" class="ecosystem-graph" preserveAspectRatio="xMidYMid meet">
+              <!-- Connectors + relation labels -->
+              <g class="connections-layer">
+                <g v-for="node in nodes" :key="'conn-' + node.id"
+                   :style="{ '--cat': catColor(node.project.category) }">
+                  <path :d="getPathD(node)" class="connector"
+                        :class="{ 'is-active': activeId === node.id, 'is-dimmed': isDimmed(node.id) }" />
+                  <g class="relation-tag"
+                     :class="{ 'is-active': activeId === node.id, 'is-dimmed': isDimmed(node.id) }"
+                     :transform="`translate(${getMid(node).x}, ${getMid(node).y})`">
+                    <rect x="-58" y="-13" width="116" height="26" rx="13" class="relation-bg" />
+                    <text text-anchor="middle" dominant-baseline="middle" class="relation-text">
+                      {{ roleTag(node.id) }}
+                    </text>
+                  </g>
                 </g>
               </g>
 
-              <!-- Core concentric pulsing energy waves -->
-              <g class="ripples-layer">
-                <circle :cx="center.x" :cy="center.y" r="85" class="center-pulse-ring ring-1" />
-                <circle :cx="center.x" :cy="center.y" r="85" class="center-pulse-ring ring-2" />
-                <circle :cx="center.x" :cy="center.y" r="85" class="center-pulse-ring ring-3" />
-              </g>
-
-              <!-- Dynamic Bezier connections -->
-              <g class="connections-layer">
-                <template v-for="node in nodesRef" :key="'conn-' + node.id">
-                  <!-- Ambient glowing path -->
-                  <path :d="getPathD(node)" class="connection-glow" 
-                        :style="{ stroke: getNodeCategoryColor(node.project.category) }"
-                        :class="{ 'is-active': hoveredNodeId === node.id || selectedNodeId === node.id, 'is-dimmed': hoveredNodeId && hoveredNodeId !== node.id }" />
-                  
-                  <!-- Thin dashed structure path -->
-                  <path :d="getPathD(node)" class="connection-line" 
-                        :style="{ stroke: getNodeCategoryColor(node.project.category) }"
-                        :class="{ 'is-active': hoveredNodeId === node.id || selectedNodeId === node.id, 'is-dimmed': hoveredNodeId && hoveredNodeId !== node.id }" />
-                  
-                  <!-- Flowing energy wave pulses -->
-                  <path :d="getPathD(node)" class="connection-pulse" 
-                        :style="{ stroke: getNodeCategoryColor(node.project.category) }"
-                        :class="{ 'is-active': hoveredNodeId === node.id || selectedNodeId === node.id, 'is-dimmed': hoveredNodeId && hoveredNodeId !== node.id }" />
-                </template>
-              </g>
-
-              <!-- Center Core (Victoria) -->
-              <g class="node center-node" @click="selectedNodeId = null">
-                <!-- Rotating dashed orbital ring -->
-                <circle :cx="center.x" :cy="center.y" r="94" class="node-circle-outer center" />
-                <!-- Beating solid core circle -->
-                <circle :cx="center.x" :cy="center.y" r="78" class="node-circle center" />
-                <text :x="center.x" :y="center.y" text-anchor="middle" dominant-baseline="middle" class="node-label center">
-                  <tspan :x="center.x" dy="-0.5em">Victoria</tspan>
-                  <tspan :x="center.x" dy="1.2em">Project</tspan>
-                </text>
-              </g>
-
-              <!-- Peripheral Project Nodes -->
-              <g v-for="node in nodesRef" :key="node.id" 
-                 class="node peripheral-node" 
-                 :class="{ 'is-dimmed': hoveredNodeId && hoveredNodeId !== node.id, 'is-active': hoveredNodeId === node.id || selectedNodeId === node.id }"
-                 @mouseenter="hoveredNodeId = node.id"
-                 @mouseleave="hoveredNodeId = null"
-                 @click="toggleSelectNode(node.id)">
+              <!-- Core node (Victoria) -->
+              <g class="node core-node" :class="{ 'is-active': isCoreActive }"
+                 @mouseenter="hoveredId = 'core'"
+                 @mouseleave="hoveredId = null"
+                 @click="selectedId = null">
                 <defs>
-                  <clipPath :id="'clip-' + node.id">
-                    <circle :cx="node.x" :cy="node.y" r="38" />
+                  <clipPath id="clip-core">
+                    <circle :cx="core.x" :cy="core.y" :r="core.r - 8" />
                   </clipPath>
                 </defs>
-                
-                <!-- Glowing node ring with dynamic category color -->
-                <circle :cx="node.x" :cy="node.y" r="48" class="node-circle-outer" 
-                        :style="{ stroke: getNodeCategoryColor(node.project.category), filter: (hoveredNodeId === node.id || selectedNodeId === node.id) ? `drop-shadow(0 0 10px ${getNodeCategoryColor(node.project.category)})` : 'none' }" />
-                
-                <!-- Solid node filled container -->
-                <circle :cx="node.x" :cy="node.y" r="42" class="node-circle" 
-                        :style="{ '--active-stroke': getNodeCategoryColor(node.project.category) }" />
-                
-                <!-- Cropped project logo -->
-                <image :href="node.logo" 
-                       :x="node.x - 38" :y="node.y - 38" 
-                       width="76" height="76" 
-                       :clip-path="'url(#clip-' + node.id + ')'"
-                       class="node-logo" />
-                
-                <!-- Node name badge below with dynamic hover state color -->
-                <rect :x="node.x - 55" :y="node.y + 50" width="110" height="24" rx="12" class="label-bg" 
-                      :style="{ fill: (hoveredNodeId === node.id || selectedNodeId === node.id) ? getNodeCategoryColor(node.project.category) : 'var(--color-background-soft)', stroke: (hoveredNodeId === node.id || selectedNodeId === node.id) ? getNodeCategoryColor(node.project.category) : 'var(--color-border)' }" />
-                <text :x="node.x" :y="node.y + 66" text-anchor="middle" class="node-label">{{ node.name }}</text>
+                <circle :cx="core.x" :cy="core.y" :r="core.r + 8" class="core-halo" />
+                <circle :cx="core.x" :cy="core.y" :r="core.r" class="core-ring" />
+                <circle :cx="core.x" :cy="core.y" :r="core.r - 8" class="core-fill" />
+                <image :href="getLogoSrc(coreProject)"
+                       :x="core.x - (core.r - 8)" :y="core.y - (core.r - 8)"
+                       :width="(core.r - 8) * 2" :height="(core.r - 8) * 2"
+                       clip-path="url(#clip-core)" class="node-logo" />
+                <rect :x="core.x - 64" :y="core.y + core.r + 10" width="128" height="28" rx="14" class="core-label-bg" />
+                <text :x="core.x" :y="core.y + core.r + 25" text-anchor="middle" class="core-label">Victoria</text>
+              </g>
+
+              <!-- Satellite nodes -->
+              <g v-for="node in nodes" :key="node.id"
+                 class="node satellite-node"
+                 :class="{ 'is-active': activeId === node.id, 'is-dimmed': isDimmed(node.id) }"
+                 :style="{ '--cat': catColor(node.project.category) }"
+                 @mouseenter="hoveredId = node.id"
+                 @mouseleave="hoveredId = null"
+                 @click="selectNode(node.id)">
+                <defs>
+                  <clipPath :id="'clip-' + node.id">
+                    <circle :cx="node.x" :cy="node.y" :r="node.r - 6" />
+                  </clipPath>
+                </defs>
+                <circle :cx="node.x" :cy="node.y" :r="node.r" class="node-ring" />
+                <circle :cx="node.x" :cy="node.y" :r="node.r - 6" class="node-fill" />
+                <image :href="node.logo"
+                       :x="node.x - (node.r - 6)" :y="node.y - (node.r - 6)"
+                       :width="(node.r - 6) * 2" :height="(node.r - 6) * 2"
+                       :clip-path="'url(#clip-' + node.id + ')'" class="node-logo" />
+                <rect :x="node.x - 62" :y="node.y + node.r + 8" width="124" height="26" rx="13" class="node-label-bg" />
+                <text :x="node.x" :y="node.y + node.r + 21" text-anchor="middle" class="node-label">
+                  {{ node.project.name }}
+                </text>
               </g>
             </svg>
           </div>
+
+          <p class="graph-hint">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 8h.01M11 12h1v4h1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>{{ t('common.ecosystem_hint') }}</span>
+          </p>
         </div>
 
-        <!-- Premium Glassmorphic details panel -->
+        <!-- Details panel -->
         <div class="info-column">
           <Transition name="fade-slide" mode="out-in">
-            <div :key="activeNode.id" class="info-card glass-panel">
-              <!-- Category badge -->
-              <span class="info-category">
-                {{ activeNode.isCore ? (locale === 'fr' ? 'Écosystème' : 'Ecosystem') : t(`projects.categories.${categoryMap[activeNode.category as ProjectCategory] || 'ia'}`) }}
-              </span>
-              
-              <!-- Title group -->
+            <div :key="activeId" class="info-card">
+              <div class="info-top">
+                <span class="role-pill" :style="{ '--cat': catColor(activeProject.category) }">{{ activeRoleTag }}</span>
+                <span class="info-category">{{ activeCategory }}</span>
+              </div>
+
               <div class="info-header">
-                <div v-if="!activeNode.isCore" class="info-logo-wrapper">
-                  <img :src="getLogoSrc(activeNode)" :alt="activeNode.name" class="info-logo" />
-                </div>
-                <div v-else class="info-logo-wrapper core-logo">
-                  <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                <div class="info-logo-wrapper">
+                  <img :src="getLogoSrc(activeProject)" :alt="activeProject.name" class="info-logo" />
                 </div>
                 <div class="info-title-group">
-                  <h2 class="info-title">{{ activeNode.name }}</h2>
-                  <span v-if="activeNode.version" class="info-version">v{{ activeNode.version }}</span>
+                  <h2 class="info-title">{{ activeProject.name }}</h2>
+                  <span v-if="activeProject.version" class="info-version">v{{ activeProject.version }}</span>
                 </div>
               </div>
-              
-              <div class="info-divider"></div>
-              
-              <!-- Project description -->
-              <p class="info-desc">
-                {{ activeNode.isCore ? activeNode.description : t(activeNode.description) }}
-              </p>
 
-              <!-- Main project features list -->
-              <div v-if="activeNode.features && activeNode.features.length" class="info-features-section">
+              <!-- The "logic" / relationship to the ecosystem -->
+              <p class="role-desc">{{ activeRoleDesc }}</p>
+
+              <div class="info-divider"></div>
+
+              <p class="info-desc">{{ activeDesc }}</p>
+
+              <div v-if="activeProject.features && activeProject.features.length" class="info-section">
                 <h4 class="section-subtitle">{{ t('projects.features') }}</h4>
                 <ul class="features-list">
-                  <li v-for="(feat, idx) in activeNode.features.slice(0, 3)" :key="idx" class="feature-item">
+                  <li v-for="(feat, idx) in activeProject.features.slice(0, 3)" :key="idx" class="feature-item">
                     <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <span>{{ activeNode.isCore ? feat : t(feat) }}</span>
+                    <span>{{ t(feat) }}</span>
                   </li>
                 </ul>
               </div>
 
-              <!-- Tech Badges -->
-              <div class="info-techs-section">
+              <div class="info-section">
                 <h4 class="section-subtitle">Technologies</h4>
                 <div class="techs-badges-grid">
-                  <TechBadge v-for="tech in activeNode.tags" :key="tech" :tech="tech" :show-icon="true" />
+                  <TechBadge v-for="tech in activeProject.tags" :key="tech" :tech="tech" :show-icon="true" />
                 </div>
               </div>
 
-              <!-- Call to Action button -->
               <div class="info-action">
-                <button v-if="!activeNode.isCore" class="action-btn" @click="goToProject(activeNode.id)">
+                <button class="action-btn" @click="goToProject(activeProject.id)">
                   <span>{{ t('projects.view_project_link') }}</span>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </button>
-                <RouterLink v-else to="/projects" class="action-btn core-btn">
-                  <span>{{ t('home.view_projects') }}</span>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </RouterLink>
               </div>
             </div>
           </Transition>
@@ -545,71 +280,28 @@ onUnmounted(() => {
 .ecosystem-page {
   min-height: 100vh;
   padding: 4rem 2rem;
-  background: radial-gradient(circle at center, var(--color-background-soft) 0%, var(--color-background) 100%);
+  background: var(--color-background);
   color: var(--color-text);
-  overflow: hidden;
   position: relative;
 }
-
-  .bg-vignette {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, transparent 30%, rgba(var(--primary-rgb), 0.03) 100%);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* Background chambers styles */
-  .chamber-blur {
-    filter: blur(55px);
-    opacity: 0.65;
-    transition: cx 0.2s ease-out, cy 0.2s ease-out, r 0.3s ease;
-    pointer-events: none;
-  }
-
-  .chamber-ring {
-    opacity: 0.12;
-    transition: cx 0.2s ease-out, cy 0.2s ease-out, r 0.3s ease;
-    pointer-events: none;
-    animation: rotateDotted 90s linear infinite;
-    transform-origin: center;
-    transform-box: fill-box;
-  }
-
-  @keyframes rotateDotted {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  .chamber-label-bg {
-    transition: x 0.2s ease-out, y 0.2s ease-out;
-    opacity: 0.92;
-  }
-
-  .chamber-label {
-    font-size: 10px;
-    font-weight: 900;
-    letter-spacing: 1.5px;
-    pointer-events: none;
-    transition: x 0.2s ease-out, y 0.2s ease-out;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05));
-  }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  position: relative;
-  z-index: 2;
 }
 
+/* Header */
 .header {
   display: flex;
   align-items: center;
   gap: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .back-btn {
@@ -625,17 +317,16 @@ onUnmounted(() => {
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
 }
 
 .back-btn:hover {
-  background: var(--color-background-mute);
   border-color: var(--primary);
-  transform: translateX(-5px);
-  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.15);
+  transform: translateX(-4px);
 }
 
 .page-title {
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   font-weight: 850;
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   -webkit-background-clip: text;
@@ -644,11 +335,18 @@ onUnmounted(() => {
   letter-spacing: -0.5px;
 }
 
-/* Layout Grid */
+.page-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--color-text-soft);
+  max-width: 720px;
+}
+
+/* Layout */
 .ecosystem-layout {
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2.5rem;
   align-items: start;
 }
 
@@ -656,340 +354,263 @@ onUnmounted(() => {
   width: 100%;
 }
 
+/* Legend */
+.graph-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.4rem;
+  margin-bottom: 1rem;
+  padding: 0.7rem 1.1rem;
+  background: var(--color-background-soft);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 650;
+  color: var(--color-text-soft);
+}
+
+.legend-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-dot.core-dot {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+}
+
+/* Diagram surface */
 .graph-wrapper {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(var(--primary-rgb), 0.02);
+  background: var(--color-background-soft);
   border: 1px solid var(--color-border);
-  border-radius: 24px;
-  box-shadow: var(--shadow-lg);
+  border-radius: 20px;
   overflow: hidden;
-  backdrop-filter: blur(8px);
-}
-
-.background-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(var(--primary-rgb), 0.12) 0%, rgba(var(--accent-rgb), 0.05) 50%, transparent 70%);
-  filter: blur(50px);
-  z-index: 0;
-  animation: pulseCore 6s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes pulseCore {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-  50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.9; }
 }
 
 .ecosystem-graph {
   width: 100%;
   height: 100%;
-  z-index: 2;
 }
 
-/* Background spores styling */
-.spore-circle {
-  transition: r 0.3s ease;
-}
-
-/* Dynamic line connection styling */
-.connection-glow {
-  stroke: var(--primary);
-  stroke-width: 7;
+/* Connectors */
+.connector {
   fill: none;
-  opacity: 0.05;
-  transition: opacity 0.5s ease, stroke 0.5s ease;
-}
-.connection-glow.is-active {
-  stroke: var(--accent);
-  opacity: 0.22;
-}
-.connection-glow.is-dimmed {
-  opacity: 0.02;
-}
-
-.connection-line {
-  stroke: var(--primary);
-  stroke-width: 1.5;
-  fill: none;
-  opacity: 0.2;
-  stroke-dasharray: 4 4;
-  transition: opacity 0.5s ease, stroke 0.5s ease;
-}
-.connection-line.is-active {
-  stroke: var(--accent);
-  opacity: 0.55;
-}
-.connection-line.is-dimmed {
-  opacity: 0.07;
-}
-
-.connection-pulse {
-  stroke: var(--accent);
+  stroke: var(--color-border);
   stroke-width: 2;
-  fill: none;
-  stroke-dasharray: 12 130;
-  stroke-linecap: round;
+  opacity: 0.9;
+  transition: stroke 0.3s ease, stroke-width 0.3s ease, opacity 0.3s ease;
+}
+
+.connector.is-active {
+  stroke: var(--cat);
+  stroke-width: 2.5;
+}
+
+.connector.is-dimmed {
+  opacity: 0.3;
+}
+
+/* Relation labels */
+.relation-tag {
+  transition: opacity 0.3s ease;
+}
+
+.relation-tag.is-dimmed {
   opacity: 0.35;
-  animation: pulseFlow 4.5s linear infinite;
-  transition: opacity 0.5s ease, stroke 0.5s ease;
-}
-.connection-pulse.is-active {
-  stroke: var(--accent);
-  stroke-width: 3.5;
-  opacity: 0.85;
-  animation-duration: 2.2s; /* flows faster on hover! */
-}
-.connection-pulse.is-dimmed {
-  opacity: 0.07;
 }
 
-@keyframes pulseFlow {
-  from { stroke-dashoffset: 142; }
-  to { stroke-dashoffset: 0; }
+.relation-bg {
+  fill: var(--color-background);
+  stroke: var(--color-border);
+  stroke-width: 1;
+  transition: fill 0.3s ease, stroke 0.3s ease;
 }
 
-/* Nodes styling */
+.relation-text {
+  fill: var(--color-text-soft);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  transition: fill 0.3s ease;
+}
+
+.relation-tag.is-active .relation-bg {
+  fill: var(--cat);
+  stroke: var(--cat);
+}
+
+.relation-tag.is-active .relation-text {
+  fill: #fff;
+}
+
+/* Nodes */
 .node {
   cursor: pointer;
-  transition: opacity 0.5s ease;
 }
 
 .node.is-dimmed {
-  opacity: 0.35;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
 }
 
-.node-circle-outer {
+.node-ring {
   fill: none;
-  stroke: var(--primary);
-  stroke-width: 1.5px;
-  opacity: 0.25;
-  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  stroke: var(--cat);
+  stroke-width: 2;
+  opacity: 0.4;
+  transition: opacity 0.3s ease, stroke-width 0.3s ease;
   transform-box: fill-box;
   transform-origin: center;
 }
 
-.peripheral-node:hover .node-circle-outer,
-.peripheral-node.is-active .node-circle-outer {
-  opacity: 0.75;
-  stroke-width: 2.5px;
-  transform: scale(1.18);
+.satellite-node:hover .node-ring,
+.satellite-node.is-active .node-ring {
+  opacity: 1;
+  stroke-width: 3;
 }
 
-.node-circle {
-  fill: var(--color-background-soft);
+.node-fill {
+  fill: var(--color-background);
   stroke: var(--color-border);
-  stroke-width: 2px;
-  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  stroke-width: 1.5;
+  transition: stroke 0.3s ease;
+}
+
+.satellite-node:hover .node-fill,
+.satellite-node.is-active .node-fill {
+  stroke: var(--cat);
+}
+
+.node-logo {
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   transform-box: fill-box;
   transform-origin: center;
 }
 
-.peripheral-node:hover .node-circle,
-.peripheral-node.is-active .node-circle {
-  stroke: var(--active-stroke, var(--accent));
-  fill: var(--color-background-mute);
-  transform: scale(1.08);
-}
-
-/* Center node (Victoria core node) */
-.center-node {
-  cursor: default;
-}
-
-.node-circle.center {
-  fill: var(--primary);
-  stroke: var(--accent);
-  stroke-width: 3.5px;
-  filter: drop-shadow(0 0 20px rgba(var(--primary-rgb), 0.45));
-  animation: centerBeat 4s ease-in-out infinite;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-@keyframes centerBeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); filter: drop-shadow(0 0 30px rgba(var(--primary-rgb), 0.65)); }
-}
-
-.node-circle-outer.center {
-  stroke: var(--accent);
-  opacity: 0.35;
-  animation: spinOuter 24s linear infinite;
-  stroke-dasharray: 12 6;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-@keyframes spinOuter {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.satellite-node:hover .node-logo {
+  transform: scale(1.06);
 }
 
 .node-label {
   fill: var(--color-text);
-  font-weight: 750;
-  font-size: 13px;
-  letter-spacing: -0.1px;
+  font-weight: 700;
+  font-size: 14px;
   pointer-events: none;
-  transition: fill 0.3s ease;
 }
 
-.node-label.center {
-  fill: white;
-  font-size: 19px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-}
-
-.label-bg {
+.node-label-bg {
   fill: var(--color-background-soft);
   stroke: var(--color-border);
-  stroke-width: 1px;
-  opacity: 0.95;
-  transition: all 0.3s ease;
+  stroke-width: 1;
+  transition: fill 0.3s ease, stroke 0.3s ease;
 }
 
-.peripheral-node:hover .label-bg,
-.peripheral-node.is-active .label-bg {
-  fill: var(--accent);
-  stroke: var(--accent);
-  filter: drop-shadow(0 4px 10px rgba(var(--accent-rgb), 0.3));
+.satellite-node:hover .node-label-bg,
+.satellite-node.is-active .node-label-bg {
+  stroke: var(--cat);
 }
 
-.peripheral-node:hover .node-label,
-.peripheral-node.is-active .node-label {
-  fill: white;
+/* Core node */
+.core-node {
+  cursor: pointer;
 }
 
-.node-logo {
-  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  transform-box: fill-box;
-  transform-origin: center;
+.core-halo {
+  fill: rgba(var(--primary-rgb), 0.06);
 }
 
-.peripheral-node:hover .node-logo,
-.peripheral-node.is-active .node-logo {
-  transform: scale(1.12);
-}
-
-/* Concentric rippling pulse waves from center */
-.center-pulse-ring {
+.core-ring {
   fill: none;
   stroke: var(--primary);
-  stroke-width: 2px;
-  opacity: 0;
+  stroke-width: 2.5;
+  opacity: 0.55;
+}
+
+.core-fill {
+  fill: var(--color-background);
+  stroke: var(--primary);
+  stroke-width: 2;
+}
+
+.core-label-bg {
+  fill: var(--primary);
+}
+
+.core-label {
+  fill: #fff;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.5px;
   pointer-events: none;
-  transform-origin: center;
-  transform-box: fill-box;
-}
-.ring-1 {
-  animation: ringPulse 4.5s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
-}
-.ring-2 {
-  animation: ringPulse 4.5s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
-  animation-delay: 1.5s;
-}
-.ring-3 {
-  animation: ringPulse 4.5s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
-  animation-delay: 3s;
 }
 
-@keyframes ringPulse {
-  0% {
-    transform: scale(0.9);
-    opacity: 0.85;
-    stroke: var(--primary);
-  }
-  50% {
-    stroke: var(--accent);
-  }
-  100% {
-    transform: scale(3.2);
-    opacity: 0;
-  }
-}
-
-/* Info Column & Premium Card */
+/* Info panel */
 .info-column {
   width: 100%;
 }
 
 .info-card {
-  padding: 2.2rem;
-  min-height: 480px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 1.5rem;
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  gap: 1.2rem;
+  background: var(--color-background-soft);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
 }
 
-.glass-panel {
-  background: rgba(255, 255, 255, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 24px;
-  box-shadow: 
-    0 10px 30px -10px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(16px) saturate(180%);
+.info-top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
-.dark .glass-panel {
-  background: rgba(24, 24, 28, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  box-shadow: 
-    0 15px 35px -10px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+.role-pill {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  background: var(--cat);
+  color: #fff;
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
 }
 
 .info-category {
-  display: inline-block;
-  align-self: flex-start;
-  padding: 0.35rem 0.9rem;
-  background: rgba(var(--primary-rgb), 0.1);
-  color: var(--primary);
-  border: 1px solid rgba(var(--primary-rgb), 0.2);
-  border-radius: 99px;
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: 0.8rem;
+  font-weight: 650;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  color: var(--color-text-soft);
 }
 
 .info-header {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
 .info-logo-wrapper {
-  width: 60px;
-  height: 60px;
-  border-radius: 16px;
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
   overflow: hidden;
-  background: var(--color-background-soft);
+  background: var(--color-background);
   border: 1px solid var(--color-border);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: var(--shadow-sm);
-}
-
-.info-logo-wrapper.core-logo {
-  background: rgba(var(--primary-rgb), 0.08);
-  border-color: rgba(var(--primary-rgb), 0.2);
+  flex-shrink: 0;
 }
 
 .info-logo {
@@ -1004,7 +625,7 @@ onUnmounted(() => {
 }
 
 .info-title {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: 850;
   letter-spacing: -0.3px;
   color: var(--color-heading);
@@ -1016,25 +637,35 @@ onUnmounted(() => {
   font-weight: 600;
 }
 
+.role-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  padding: 0.9rem 1.1rem;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--primary);
+  border-radius: 10px;
+}
+
 .info-divider {
   height: 1px;
-  background: linear-gradient(to right, var(--color-border) 0%, transparent 100%);
+  background: var(--color-border);
   width: 100%;
 }
 
 .info-desc {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   line-height: 1.6;
-  color: var(--color-text);
-  opacity: 0.9;
+  color: var(--color-text-soft);
 }
 
 .section-subtitle {
-  font-size: 0.9rem;
-  font-weight: 750;
+  font-size: 0.85rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.7rem;
   color: var(--color-text-soft);
 }
 
@@ -1043,14 +674,14 @@ onUnmounted(() => {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.55rem;
 }
 
 .feature-item {
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   line-height: 1.4;
 }
 
@@ -1063,75 +694,73 @@ onUnmounted(() => {
 .techs-badges-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.55rem;
 }
 
 .info-action {
-  margin-top: 1rem;
+  margin-top: 0.4rem;
 }
 
 .action-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.8rem;
+  gap: 0.7rem;
   width: 100%;
-  padding: 0.9rem 1.8rem;
+  padding: 0.85rem 1.6rem;
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-  color: white;
+  color: #fff;
   border: none;
-  border-radius: 16px;
-  font-size: 1.05rem;
+  border-radius: 14px;
+  font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-  box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.3);
-  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 6px 18px rgba(var(--primary-rgb), 0.25);
 }
 
 .action-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(var(--primary-rgb), 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(var(--primary-rgb), 0.35);
 }
 
-.action-btn:active {
-  transform: translateY(-1px);
+/* Interaction hint */
+.graph-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
 }
 
-.action-btn.core-btn {
-  background: var(--color-background-soft);
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
+.graph-hint svg {
+  flex-shrink: 0;
+  color: var(--primary);
 }
 
-.action-btn.core-btn:hover {
-  border-color: var(--primary);
-  background: var(--color-background-mute);
-  box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.12);
-}
-
-/* Transitions */
+/* Transition */
 .fade-slide-enter-active,
 .fade-slide-leave-active {
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s ease;
 }
 
 .fade-slide-enter-from {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(12px);
 }
 
 .fade-slide-leave-to {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(-12px);
 }
 
-/* Responsiveness */
+/* Responsive */
 @media (max-width: 992px) {
   .ecosystem-layout {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 }
 
@@ -1139,27 +768,28 @@ onUnmounted(() => {
   .ecosystem-page {
     padding: 2rem 1rem;
   }
-  
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+
   .page-title {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
   }
-  
-  .graph-wrapper {
-    aspect-ratio: 1;
-    border-radius: 16px;
+
+  .page-subtitle {
+    font-size: 0.95rem;
   }
-  
-  .node-label {
-    font-size: 11px;
+
+  .graph-legend {
+    gap: 1rem;
+    font-size: 0.8rem;
   }
-  
-  .node-label.center {
-    font-size: 16px;
-  }
-  
+
   .info-card {
     padding: 1.5rem;
-    min-height: auto;
   }
 }
 </style>
