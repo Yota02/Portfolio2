@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import { useI18n } from "vue-i18n";
+import { usePageMeta } from "@/composables/usePageMeta";
 
-const { t } = useI18n()
+const { t } = useI18n();
+usePageMeta("objectives.title", "objectives.subtitle");
 const baseUrl = import.meta.env.BASE_URL;
 
 interface TimelineItem {
@@ -10,90 +12,99 @@ interface TimelineItem {
   institutionKey: string;
   date: string;
   descriptionKey: string;
-  type: 'education' | 'experience';
+  type: "education" | "experience";
   image: string;
 }
 
 const timelineItems: TimelineItem[] = [
   {
-    id: 'obj-7',
-    titleKey: 'obj-7.title',
-    institutionKey: 'obj-7.institution',
-    date: 'Avril 2026 - Juillet 2026',
-    descriptionKey: 'obj-7.description',
-    type: 'experience',
-    image: 'csum.webp'
+    id: "obj-10",
+    titleKey: "obj-10.title",
+    institutionKey: "obj-10.institution",
+    date: "Septembre 2026 - Juin 2028",
+    descriptionKey: "obj-10.description",
+    type: "education",
+    image: "university_lyon.png",
   },
   {
-    id: 'obj-8',
-    titleKey: 'obj-8.title',
-    institutionKey: 'obj-8.institution',
-    date: 'Mars 2026',
-    descriptionKey: 'obj-8.description',
-    type: 'experience',
-    image: 'Gecolab.png'
+    id: "obj-7",
+    titleKey: "obj-7.title",
+    institutionKey: "obj-7.institution",
+    date: "Avril 2026 - Juillet 2026",
+    descriptionKey: "obj-7.description",
+    type: "experience",
+    image: "csum.webp",
   },
   {
-    id: 'obj-5',
-    titleKey: 'obj-5.title',
-    institutionKey: 'obj-5.institution',
-    date: '2025 - 2026',
-    descriptionKey: 'obj-5.description',
-    type: 'education',
-    image: 'iae.webp'
+    id: "obj-8",
+    titleKey: "obj-8.title",
+    institutionKey: "obj-8.institution",
+    date: "Mars 2026",
+    descriptionKey: "obj-8.description",
+    type: "experience",
+    image: "Gecolab.png",
   },
   {
-    id: 'obj-6',
-    titleKey: 'obj-6.title',
-    institutionKey: 'obj-6.institution',
-    date: 'Janvier 2025 - Avril 2025',
-    descriptionKey: 'obj-6.description',
-    type: 'experience',
-    image: 'csum.webp'
+    id: "obj-5",
+    titleKey: "obj-5.title",
+    institutionKey: "obj-5.institution",
+    date: "2025 - 2026",
+    descriptionKey: "obj-5.description",
+    type: "education",
+    image: "iae.webp",
   },
   {
-    id: 'obj-1',
-    titleKey: 'obj-1.title',
-    institutionKey: 'obj-1.institution',
-    date: '2023 - 2026',
-    descriptionKey: 'obj-1.description',
-    type: 'education',
-    image: 'IUT-Montpellier.webp'
+    id: "obj-6",
+    titleKey: "obj-6.title",
+    institutionKey: "obj-6.institution",
+    date: "Janvier 2025 - Avril 2025",
+    descriptionKey: "obj-6.description",
+    type: "experience",
+    image: "csum.webp",
   },
   {
-    id: 'obj-2',
-    titleKey: 'obj-2.title',
-    institutionKey: 'obj-2.institution',
-    date: '2020 - 2023',
-    descriptionKey: 'obj-2.description',
-    type: 'education',
-    image: 'jeanJaurès.webp'
+    id: "obj-1",
+    titleKey: "obj-1.title",
+    institutionKey: "obj-1.institution",
+    date: "2023 - 2026",
+    descriptionKey: "obj-1.description",
+    type: "education",
+    image: "IUT-Montpellier.webp",
   },
   {
-    id: 'obj-9',
-    titleKey: 'obj-9.title',
-    institutionKey: 'obj-9.institution',
-    date: 'Juillet 2021',
-    descriptionKey: 'obj-9.description',
-    type: 'education',
-    image: 'bia.gif'
-  }
-]
+    id: "obj-2",
+    titleKey: "obj-2.title",
+    institutionKey: "obj-2.institution",
+    date: "2020 - 2023",
+    descriptionKey: "obj-2.description",
+    type: "education",
+    image: "jeanJaurès.webp",
+  },
+  {
+    id: "obj-9",
+    titleKey: "obj-9.title",
+    institutionKey: "obj-9.institution",
+    date: "Juillet 2021",
+    descriptionKey: "obj-9.description",
+    type: "education",
+    image: "bia.gif",
+  },
+];
 </script>
 
 <template>
   <div class="objectives-page">
     <div class="container">
       <header class="header reveal-up">
-        <h1 class="page-title">{{ t('objectives.title') }}</h1>
-        <p class="page-subtitle">{{ t('objectives.subtitle') }}</p>
+        <h1 class="page-title">{{ t("objectives.title") }}</h1>
+        <p class="page-subtitle">{{ t("objectives.subtitle") }}</p>
       </header>
 
       <div class="timeline-container">
         <div class="timeline-line"></div>
-        
-        <div 
-          v-for="(item, index) in timelineItems" 
+
+        <div
+          v-for="(item, index) in timelineItems"
           :key="item.id"
           class="timeline-item reveal"
           :class="[item.type, index % 2 === 0 ? 'left' : 'right']"
@@ -102,14 +113,18 @@ const timelineItems: TimelineItem[] = [
           <div class="timeline-content">
             <div class="content-header">
               <div class="icon-wrapper">
-                <img :src="`${baseUrl}icone/${item.image}`" :alt="t('objectives.items.' + item.institutionKey)" class="institution-logo" />
+                <img
+                  :src="`${baseUrl}icone/${item.image}`"
+                  :alt="t('objectives.items.' + item.institutionKey)"
+                  class="institution-logo"
+                />
               </div>
               <span class="item-date">{{ item.date }}</span>
             </div>
-            <h3 class="item-title">{{ t('objectives.items.' + item.titleKey) }}</h3>
-            <h4 class="item-institution">{{ t('objectives.items.' + item.institutionKey) }}</h4>
-            <p class="item-description">{{ t('objectives.items.' + item.descriptionKey) }}</p>
-            <span class="item-type-badge">{{ t('objectives.types.' + item.type) }}</span>
+            <h3 class="item-title">{{ t("objectives.items." + item.titleKey) }}</h3>
+            <h4 class="item-institution">{{ t("objectives.items." + item.institutionKey) }}</h4>
+            <p class="item-description">{{ t("objectives.items." + item.descriptionKey) }}</p>
+            <span class="item-type-badge">{{ t("objectives.types." + item.type) }}</span>
           </div>
         </div>
       </div>
@@ -291,24 +306,26 @@ const timelineItems: TimelineItem[] = [
   letter-spacing: 0.5px;
 }
 
-.timeline-item.education .timeline-dot { border-color: #10b981; }
+.timeline-item.education .timeline-dot {
+  border-color: #10b981;
+}
 
 @media (max-width: 768px) {
   .timeline-line {
     left: 20px;
   }
-  
+
   .timeline-item {
     width: 100%;
     padding-left: 3rem !important;
     padding-right: 0 !important;
     text-align: left !important;
   }
-  
+
   .timeline-item.right {
     left: 0;
   }
-  
+
   .timeline-item.left .timeline-dot,
   .timeline-item.right .timeline-dot {
     left: 10px;

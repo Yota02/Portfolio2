@@ -2,11 +2,13 @@
 import { computed, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { usePageMeta } from '@/composables/usePageMeta'
 import { projects, categoryOrder, getProjectsByCategory, type ProjectCategory, type Project, categoryMap } from '@/data/projects'
 import TechBadge from '@/components/TechBadge.vue'
 import ProjectCard from '@/components/ProjectCard.vue'
 
 const { t } = useI18n()
+usePageMeta('projects.title')
 
 // Search queries
 const searchQuery = ref('')

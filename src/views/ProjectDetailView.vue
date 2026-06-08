@@ -2,7 +2,9 @@
 import { useRoute, RouterLink } from 'vue-router'
 import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useSeoMeta } from '@unhead/vue'
 import { getProjectById, purposeMap, type ProjectPurpose, type ProjectMetric } from '@/data/projects'
+import { SITE_URL } from '@/utils/seo'
 import TechBadge from '@/components/TechBadge.vue'
 import ImageCarousel from '@/components/ImageCarousel.vue'
 import ProjectEvolution from '@/components/ProjectEvolution.vue'
@@ -60,6 +62,32 @@ const calculatedDuration = computed(() => {
     locale.value,
     t
   )
+})
+
+// SEO : title / description / image propres à chaque projet
+const seoTitle = computed(() => `${project.value.name} | Alexis Michaux-Kinet`)
+const seoDescription = computed(() =>
+  project.value.description ? t(project.value.description) : ''
+)
+const seoImage = computed(() =>
+  project.value.folder && project.value.logo
+    ? `${SITE_URL}/projet/${project.value.folder}/${project.value.logo}`
+    : `${SITE_URL}/projet/Victoria/logo.webp`
+)
+const seoUrl = computed(() => `${SITE_URL}/project/${projectId}`)
+
+useSeoMeta({
+  title: seoTitle,
+  description: seoDescription,
+  ogType: 'article',
+  ogTitle: seoTitle,
+  ogDescription: seoDescription,
+  ogImage: seoImage,
+  ogUrl: seoUrl,
+  twitterCard: 'summary_large_image',
+  twitterTitle: seoTitle,
+  twitterDescription: seoDescription,
+  twitterImage: seoImage,
 })
 
 // Logic for key metrics scroll animation

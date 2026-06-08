@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { usePageMeta } from '@/composables/usePageMeta'
 import AppPageHeader from '@/components/AppPageHeader.vue'
 import AppSection from '@/components/AppSection.vue'
 import AppCard from '@/components/AppCard.vue'
@@ -7,6 +8,7 @@ import AppBackgroundDecor from '@/components/AppBackgroundDecor.vue'
 import { Eye, GraduationCap, Globe, Plus, Fingerprint, ArrowRight } from 'lucide-vue-next'
 
 const { t } = useI18n()
+usePageMeta('about.title', 'about.subtitle')
 const baseUrl = import.meta.env.BASE_URL;
 
 const hobbies = [

@@ -37,7 +37,8 @@
     "parcours": {
       "title": "Mon Parcours",
       "p1": "Actuellement en <strong class=\"text-dark\">3ème année de BUT Informatique à l'IUT de Montpellier</strong> et en double diplomation <strong class=\"text-dark\">L3 MTS à l'IAE de Montpellier</strong>, je me spécialise dans l'algorithmique et les systèmes complexes.",
-      "p2": "Mon objectif est de poursuivre en <span class=\"text-blue\">Master Bioinformatique</span>, où je pourrai allier informatique et sciences du vivant pour analyser des données biologiques."
+      "p2": "Mon objectif est de poursuivre en <span class=\"text-blue\">Master Bioinformatique</span>, où je pourrai allier informatique et sciences du vivant pour analyser des données biologiques.",
+      "p3": "Parallèlement, je développe une <span class=\"text-emerald\">IA personnelle</span> pour explorer le Machine Learning et ses applications pratiques."
     },
     "international": {
       "title": "Ambition Internationale",
@@ -661,6 +662,11 @@
         "title": "BIA (Brevet d'Initiation Aéronautique)",
         "institution": "Académie de Montpellier",
         "description": "Diplôme validant des connaissances théoriques et pratiques en aéronautique, avec mention Bien."
+      },
+      "obj-10": {
+        "title": "Master Bioinformatique",
+        "institution": "Université de Lyon",
+        "description": "Formation de haut niveau alliant informatique et sciences du vivant : analyse de données génomiques, apprentissage automatique appliqué à la biologie, modélisation moléculaire et bioinformatique structurale."
       }
     }
   },
@@ -693,5 +699,26 @@
   },
   "footer": {
     "rights": "© 2026 Mon Portfolio. Tous droits réservés."
+  },
+  "resume": {
+    "generator_title": "Générateur de Portfolio PDF",
+    "generator_subtitle": "Exportez un résumé professionnel de vos réalisations.",
+    "print_button": "Imprimer / Enregistrer en PDF",
+    "catalogue_title": "Catalogue de projets",
+    "present": "Présent",
+    "generated_from": "Généré depuis mon portfolio en ligne :",
+    "professional_profile": "PROFIL PROFESSIONNEL",
+    "experiences": {
+      "ctf": {
+        "detail_0": "Conception d'une plateforme de défis de cybersécurité (Capture The Flag).",
+        "detail_1": "Développement backend avec Flask et gestion des conteneurs Docker pour les défis.",
+        "detail_2": "Mise en place de la méthodologie Agile Scrum pour le suivi du projet."
+      },
+      "victoria": {
+        "detail_0": "Création d'un assistant modulaire utilisant des LLM locaux (Ollama).",
+        "detail_1": "Implémentation d'un système de plugins pour étendre les fonctionnalités.",
+        "detail_2": "Développement d'une interface graphique moderne avec CustomTkinter."
+      }
+    }
   }
 }

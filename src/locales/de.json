@@ -104,7 +104,8 @@
         "startDate": "April 2025",
         "features": {
           "0": "Intelligenter Chatbot basierend auf GPT",
-          "1": "Praktische Übungen mit automatischer Korrektur"
+          "1": "Praktische Übungen mit automatischer Korrektur",
+          "2": "Strukturierte Lernpfade nach Schwierigkeitsgraden geordnet"
         },
         "context": "",
         "personalContribution": "",
@@ -137,7 +138,10 @@
               "1": "Flaggen-Belohnung"
             }
           }
-        }
+        },
+        "context": "Akademisches Projekt, durchgeführt in einer Gruppe von 4 Personen im Rahmen der SAÉ (Lern- und Bewertungssituation) des BUT Informatik. Ziel war es, ein pädagogisches Werkzeug für Erstsemester zu erstellen.",
+        "duration": "4 intensive Monate (etwa 150 Stunden Gemeinschaftsarbeit, davon 50 persönliche Stunden).",
+        "personalContribution": "Mein Hauptbeitrag war die Anpassung der Flask-API unter Einhaltung der BUT-Standards und die Einrichtung der Docker-Infrastruktur. Außerdem habe ich zwei komplexe Challenges erstellt: eine SSH-Injection-Schwachstelle und ein Spiel namens „Rainbow Jumper“, das ein Flag in seinen Sprungmechaniken verbirgt."
       },
       "project-3": {
         "description": "Webanwendung für ein Wirtschaftssimulations-Videospiel.",
@@ -149,7 +153,10 @@
           "2": "Wettbewerb zwischen Spielern",
           "3": "Ressourcenmanagement in Echtzeit",
           "4": "Erstellung von Bilanzen, Gewinn- und Verlustrechnungen"
-        }
+        },
+        "context": "Durchgeführt während der SAÉ des 3. Semesters des BUT Informatik. Dieses Gruppenprojekt (5 Personen) zielte darauf ab, die internen Abläufe eines Unternehmens und seine Buchhaltung über eine Weboberfläche zu simulieren.",
+        "duration": "Ein akademisches Semester (~2000 Stunden Gruppenarbeit, 500 persönliche Stunden).",
+        "personalContribution": "Ich übernahm die Datenbankmodellierung und die Implementierung der Geschäftslogik mit Symfony. Ich entwickelte die Algorithmen zur automatischen Berechnung der Bilanzen und Gewinn-und-Verlust-Rechnungen und sorgte für die Konsistenz der wirtschaftlichen Spieldaten."
       },
       "project-4": {
         "description": "Statistische Datenanalysetools für Satellitenkollisionswarnungen.",
@@ -158,8 +165,12 @@
         "endDate": "April 2025",
         "features": {
           "0": "Intuitive Datenvisualisierungsoberfläche",
-          "1": "Statistische Analyse von Kollisionswahrscheinlichkeiten"
-        }
+          "1": "Statistische Analyse von Kollisionswahrscheinlichkeiten",
+          "2": "Automatische Erstellung von Sicherheitsberichten im Excel-Format"
+        },
+        "context": "Praktikum am Universitären Raumfahrtzentrum Montpellier (CSUM). Ziel war es, ein reales Problem des Weltraumverkehrsmanagements für den Betreiber des Zentrums zu lösen.",
+        "duration": "2 Monate intensives Praktikum.",
+        "personalContribution": "Ich habe die gesamte Analyse-Engine in Python mit Pandas konzipiert und entwickelt. Ich habe die Benutzeroberfläche mit Tkinter erstellt und den strukturierten Export nach Excel verwaltet. Außerdem habe ich das Werkzeug dokumentiert, um seine Wartung durch die CSUM-Teams zu gewährleisten."
       },
       "project-5": {
         "description": "Adaption des Brettspiels Trains als Java-Videospiel.",
@@ -169,7 +180,10 @@
         "features": {
           "0": "Mit JavaFX entwickelte Grafikoberfläche",
           "1": "Testgetriebene Entwicklung (TDD) mit JUnit"
-        }
+        },
+        "context": "Akademisches Projekt im zweiten Jahr (zu zweit), fokussiert auf Softwarequalität und testgetriebene Entwicklung (TDD). Der Schwerpunkt lag auf der Robustheit des Codes statt auf der grafischen Ästhetik.",
+        "duration": "4 Monate (etwa 100 Arbeitsstunden, davon 60 persönliche).",
+        "personalContribution": "Ich war verantwortlich für die Einrichtung der Unit-Test-Suite (JUnit) und die Implementierung der Geschäftslogik. Ich habe besonders am Pfadfindungsalgorithmus (Dijkstra) gearbeitet, um die Konnektivität zwischen den Städten auf dem Spielbrett zu validieren."
       },
       "project-6": {
         "description": "KI-basierte Software zur Sortierung von Bildern.",
@@ -180,7 +194,10 @@
           "0": "Erkennung mit 98% Genauigkeit",
           "1": "Convolutional Neural Networks (CNN)",
           "2": "Fortschritts-Dashboard"
-        }
+        },
+        "context": "Persönliches Selbstlernprojekt im Bereich Deep Learning. Ich wollte den schulischen Rahmen verlassen, um modernste Technologien der künstlichen Intelligenz (PyTorch) zu erkunden.",
+        "duration": "Ein Jahr sporadischen Lernens und Experimentierens (~150 kumulierte Stunden).",
+        "personalContribution": "Alleiniger Entwickler. Ich habe den Datensatz gesammelt und beschriftet, die CNN-Architektur (Faltungs-, Pooling-, Dropout-Schichten) entworfen und die Hyperparameter optimiert, um 98 % Genauigkeit zu erreichen. Außerdem habe ich ein Dashboard erstellt, um Verlust (Loss) und Genauigkeit während des Trainings zu visualisieren."
       },
       "project-7": {
         "description": "Modularer Desktop-Assistent mit lokaler KI.",
@@ -208,7 +225,10 @@
               "1": "Automatische Generierung"
             }
           }
-        }
+        },
+        "context": "Persönliches „Schaufenster“-Projekt, das meine Fähigkeit demonstrieren soll, komplexe modulare Systeme zu entwerfen und Technologien der generativen KI (LLM/RAG) zu integrieren.",
+        "duration": "Vorzeigeprojekt in Entwicklung (~200 Stunden investiert).",
+        "personalContribution": "Hauptentwickler. Ich habe ein System zum dynamischen Laden von Plugins in Python entwickelt und eine Vektordatenbank (ChromaDB) implementiert, um der KI ein „Langzeitgedächtnis“ meiner lokalen Dokumente zu geben."
       },
       "project-8": {
         "description": "Sprachlern-Anwendung durch Gamifizierung.",
@@ -218,7 +238,10 @@
           "0": "Gamifiziertes tägliches Lernen",
           "1": "Intelligentes Erinnerungssystem",
           "2": "Unterstützung für 10 Sprachen"
-        }
+        },
+        "context": "Persönliches Projekt, entstanden aus meiner eigenen Schwierigkeit, beim Sprachenlernen (Mandarin, Japanisch) konsequent zu bleiben. Ich wollte ein Werkzeug schaffen, das sich perfekt in den Alltag einfügt, ohne zeitaufwändig zu sein.",
+        "duration": "Projekt gestartet im September 2025, etwa 80 Stunden aktive Entwicklung.",
+        "personalContribution": "Alleiniger Full-Stack-Entwickler. Ich habe Symfony für die Benutzer- und Inhaltsverwaltung verwendet und Firebase integriert, um eine sofortige Synchronisierung des Fortschritts zwischen verschiedenen Geräten zu gewährleisten. Außerdem habe ich den Algorithmus zur Wortauswahl auf Basis der früheren Fehler des Benutzers entworfen."
       },
       "project-10": {
         "description": "Community-Website zur Bewertung von Videospielen, Anime und Manga.",
@@ -228,7 +251,10 @@
         "features": {
           "0": "Bewertung und Kommentare",
           "1": "Community-Rankings"
-        }
+        },
+        "context": "Persönliches Projekt zur praktischen Anwendung meiner Kenntnisse in der Verwaltung komplexer relationaler Datenbanken und in der Flask-Entwicklung.",
+        "duration": "Projekt über einen intensiven Monat realisiert (~50 Stunden).",
+        "personalContribution": "Konzepteur und Entwickler. Ich habe das MySQL-Datenbankschema erstellt, das Tausende von Referenzen verwaltet, und das System zur Berechnung des gewichteten Durchschnitts für die Community-Ranglisten implementiert."
       },
       "project-11": {
         "description": "Nationale Webentwicklungs-Herausforderung in Teams über eine ganze Nacht.",
@@ -239,7 +265,10 @@
           "0": "Intensive Entwicklung in begrenzter Zeit (Hackathon)",
           "1": "Kollaboratives Arbeiten und Aufgabenverteilung",
           "2": "Einhaltung eines Themen und technischer Einschränkungen"
-        }
+        },
+        "context": "Nationaler Wettbewerb zwischen Hochschulen. Es ist eine Prüfung von Ausdauer und extremer Zusammenarbeit unter hohem Zeitdruck.",
+        "duration": "15 intensive Stunden ohne Unterbrechung.",
+        "personalContribution": "Ich habe die Organisation des Vue.js-Codes, die Integration der Grafik-Assets verwaltet und die Abstimmung mit dem Backend-Entwickler für die Echtzeit-API-Nutzung sichergestellt. Außerdem habe ich die Versionierung über Git verwaltet, um nächtliche Konflikte zu vermeiden."
       },
       "project-12": {
         "description": "CHIRAL ist ein Lernspiel über die Gefahren der Erschaffung von Spiegelleben.",
@@ -249,12 +278,23 @@
           "0": "Bewusstsein für die Gefahren von Spiegelleben",
           "1": "Pädagogische Interaktion",
           "2": "Ansprechendes Gameplay"
-        }
+        },
+        "context": "Persönliches Projekt, das meine Leidenschaft für Biologie (Bioinformatik) und Videospielentwicklung verbindet. Ziel ist es, die Öffentlichkeit spielerisch für komplexe wissenschaftliche Konzepte zu sensibilisieren.",
+        "duration": "Laufendes Projekt seit Januar 2026 (~40 Stunden investiert).",
+        "personalContribution": "Entwickler und Autor. Ich habe die Spielmechaniken in reinem JavaScript erstellt und alle pädagogischen Dialoge verfasst. Außerdem habe ich das Simulationssystem für die Ausbreitung des Spiegelbakteriums entworfen."
       },
       "project-13": {
         "description": "Datenverarbeitungspipeline für Machine Learning.",
         "longDescription": "Loom ist ein Projekt zur Automatisierung des Daten-Workflows für KI-Modelle, von der Sammlung bis zur Bereitstellung.",
-        "startDate": "Janvier 2026"
+        "startDate": "Janvier 2026",
+        "context": "Persönliches Projekt, entstanden aus dem Bedarf, meine eigenen KI-Experimente zu industrialisieren. Ich wollte ein wiederverwendbares Werkzeug für alle meine zukünftigen Forschungsprojekte schaffen.",
+        "duration": "Laufendes Forschungs- und Entwicklungsprojekt (~60 Stunden).",
+        "features": {
+          "0": "Vollständige Automatisierung des ML-Modell-Lebenszyklus (MLOps)",
+          "1": "Skalierbare Vorverarbeitungs-Pipeline für riesige Datensätze",
+          "2": "Automatische Modellbereitstellung über Flask/Docker-API"
+        },
+        "personalContribution": "Systemarchitekt. Ich habe den Kern der Pipeline in Python entwickelt, der eine flexible Konfiguration über YAML-Dateien ermöglicht. Außerdem habe ich Monitoring-Tools integriert, um die Modellleistung in der Produktion zu verfolgen."
       },
       "project-gecolab": {
         "description": "Professionelle Showcase-Website für ein Labor für Genetik und Naturschutz.",
@@ -327,7 +367,8 @@
         "features": {
           "0": "",
           "1": ""
-        }
+        },
+        "endDate": ""
       }
     },
     "metrics": {
@@ -400,7 +441,20 @@
         "client_satisfaction": "Kundenzufriedenheit",
         "manual_deploys": "Manuelle Bereitstellungen"
       }
-    }
+    },
+    "context": "Kontext",
+    "duration": "Projektdauer",
+    "evolution": "Projektentwicklung",
+    "evolution_details_button": "Details v1 → v2",
+    "evolution_details_title": "Entwicklung v1 → v2",
+    "evolution_notes": "- Umstellung auf eine Architektur mit Flask-Backend + React-Frontend\n- Moderne Oberfläche und klarerer Benutzerfluss\n- Verzicht auf PyInstaller zugunsten eines dienstbasierten Starts\n- Robustere KI-Engine mit Qualitäts-/Leistungsmodi\n- Asynchrone Verarbeitung und bessere Layout-Erhaltung\n- Hinzufügen des zweisprachigen Leseraums und EPUB-Export",
+    "evolution_types": {
+      "added": "Neu",
+      "info": "Allgemein",
+      "optimized": "Optimiert",
+      "removed": "Ersetzt"
+    },
+    "personalContribution": "Persönlicher Beitrag"
   },
   "victoria": {
     "ai_precision": "KI-Präzision:",
@@ -569,6 +623,36 @@
         "title": "KI-Entwickler & Desktop-Assistent",
         "institution": "Persönliches Projekt (Victoria)",
         "description": "Erstellung eines modularen Assistenten mit lokaler KI. Integration von LLM und Plugin-System."
+      },
+      "obj-5": {
+        "description": "Doppeldiplom im Management von Dienstleistungstechnologien, E-Learning-Studiengang.",
+        "institution": "IAE Montpellier",
+        "title": "L3 MTS E-Learning"
+      },
+      "obj-6": {
+        "description": "Entwicklungs- und Forschungspraktikum am Universitären Raumfahrtzentrum Montpellier.",
+        "institution": "Universität Montpellier",
+        "title": "Praktikum - Raumfahrtzentrum (CSUM)"
+      },
+      "obj-7": {
+        "description": "Technisches Praktikum am Universitären Raumfahrtzentrum Montpellier.",
+        "institution": "Universität Montpellier",
+        "title": "Praktikum - Raumfahrtzentrum (CSUM)"
+      },
+      "obj-8": {
+        "description": "Praktikum im Gecolab-Labor in Lüttich, Belgien.",
+        "institution": "Gecolab-Labor (Lüttich)",
+        "title": "Forschungspraktikum"
+      },
+      "obj-9": {
+        "description": "Diplom zur Bestätigung theoretischer und praktischer Kenntnisse in der Luftfahrt, mit der Note „Gut”.",
+        "institution": "Akademie Montpellier",
+        "title": "BIA (Luftfahrt-Einführungszertifikat)"
+      },
+      "obj-10": {
+        "title": "Master Bioinformatik",
+        "institution": "Universität Lyon",
+        "description": "Hochqualifiziertes Programm, das Informatik und Biowissenschaften verbindet: genomische Datenanalyse, maschinelles Lernen in der Biologie, Molekularmodellierung und strukturelle Bioinformatik."
       }
     }
   },

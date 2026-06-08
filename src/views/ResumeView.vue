@@ -51,7 +51,7 @@ const printResume = () => {
           <ul class="contact-list">
             <li>
               <span class="icon">📧</span>
-              <span>alexis.michaux-kinet@etu.montpellier.fr</span>
+              <span>amichauxkinet@gmail.com</span>
             </li>
             <li>
               <span class="icon">🔗</span>

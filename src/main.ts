@@ -2,6 +2,7 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createI18n } from 'vue-i18n'
+import { createHead } from '@unhead/vue/client'
 import App from './App.vue'
 import router from './router'
 
@@ -24,8 +25,10 @@ const i18n = createI18n({
 })
 
 const app = createApp(App)
+const head = createHead()
 
 app.use(i18n)
 app.use(router)
+app.use(head)
 
 app.mount('#app')

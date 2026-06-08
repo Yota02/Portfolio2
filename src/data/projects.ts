@@ -84,7 +84,7 @@ export const techIconMap: Record<string, string> = {
   "Twig": "twig",
   "JUnit": "junit",
   "Tkinter": "Tkinter",
-  "CustomTkinter": "CustomTkinter",
+  "CustomTkinter": "customtkinter.ico",
   "Watchdog": "Watchdog",
   "Firebase": "firebase",
   "ChromaDb": "chromadb",
@@ -95,7 +95,7 @@ export const techIconMap: Record<string, string> = {
   "Terraform": "terraform",
   "Prometheus": "prometheus",
   "Grafana": "grafana",
-  "GitHub Actions": "githubactions",
+  "GitHub Actions": "github_action.png",
   "react": "react.png",
   "Hugging face": "huggingface.png"
 };
@@ -774,7 +774,7 @@ export const getProjectsByGroupId = (groupId: string): Project[] => {
 export const getProjectsByCategory = (): Record<ProjectCategory, Project[]> => {
   // First, identify the latest version for each groupId
   const latestVersions: Record<string, Project> = {};
-  
+
   projects.forEach(project => {
     if (project.groupId) {
       const existing = latestVersions[project.groupId];

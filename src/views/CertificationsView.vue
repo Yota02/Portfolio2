@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { usePageMeta } from '@/composables/usePageMeta'
 import AppPageHeader from '@/components/AppPageHeader.vue'
 import AppCard from '@/components/AppCard.vue'
 import AppButton from '@/components/AppButton.vue'
 import { ExternalLink } from 'lucide-vue-next'
 
 const { t } = useI18n()
+usePageMeta('certifications.title', 'certifications.subtitle')
 const baseUrl = import.meta.env.BASE_URL;
 
 interface Certification {

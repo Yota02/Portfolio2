@@ -37,7 +37,8 @@
     "parcours": {
       "title": "My Journey",
       "p1": "Currently in my <strong class=\"text-dark\">3rd year of computer science at the IUT of Montpellier</strong> and in a double degree <strong class=\"text-dark\">L3 MTS at IAE Montpellier</strong>, I specialize in algorithms and complex systems.",
-      "p2": "My goal is to pursue a <span class=\"text-blue\">Master's in Bioinformatics</span>, where I will combine computer science and life sciences to analyze biological data."
+      "p2": "My goal is to pursue a <span class=\"text-blue\">Master's in Bioinformatics</span>, where I will combine computer science and life sciences to analyze biological data.",
+      "p3": "In parallel, I am developing a <span class=\"text-emerald\">personal AI</span> to explore Machine Learning and its practical applications."
     },
     "international": {
       "title": "International Ambition",
@@ -84,7 +85,9 @@
       "education": "Academic Project",
       "education_desc": "This project was carried out as part of my BUT Computer Science curriculum. It meets specific educational objectives and was evaluated by teachers.",
       "personnel": "Personal Project",
-      "personnel_desc": "This project was carried out in my free time out of pure passion. It allows me to explore new technologies and push my limits outside the school framework."
+      "personnel_desc": "This project was carried out in my free time out of pure passion. It allows me to explore new technologies and push my limits outside the school framework.",
+      "professionnel": "Client Order",
+      "professionnel_desc": "This project was carried out for a real client. It involves direct communication with the client, requirements management, and compliance with a strict set of specifications."
     },
     "subprojects": "Sub-projects",
     "evolution": "Project Evolution",
@@ -111,7 +114,8 @@
         "startDate": "April 2025",
         "features": {
           "0": "Intelligent chatbot based on GPT",
-          "1": "Practical exercises with automatic correction"
+          "1": "Practical exercises with automatic correction",
+          "2": "Structured learning paths organized by difficulty level"
         },
         "context": "",
         "personalContribution": "",
@@ -144,7 +148,10 @@
               "1": "Flag reward"
             }
           }
-        }
+        },
+        "context": "Academic project carried out in a group of 4 people as part of the SAÉ (Learning and Assessment Situation) of the Computer Science BUT. The goal was to create an educational tool for first-year students.",
+        "duration": "4 intensive months (about 150 hours of collective work, including 50 personal hours).",
+        "personalContribution": "My major contribution was adapting the Flask API in compliance with BUT standards and setting up the Docker infrastructure. I also created two complex challenges: an SSH injection flaw and a 'Rainbow Jumper' game hiding a flag within its jump mechanics."
       },
       "project-3": {
         "description": "Web application for a business simulation video game.",
@@ -156,7 +163,10 @@
           "2": "Competition between players",
           "3": "Real-time resource management",
           "4": "Writing Balance Sheets, Profit and Loss accounts"
-        }
+        },
+        "context": "Completed during the SAÉ of the 3rd semester of the Computer Science BUT. This group project (5 people) aimed to simulate the internal workings of a company and its accounting management through a web interface.",
+        "duration": "One academic semester (~2000 hours of group work, 500 personal hours).",
+        "personalContribution": "I took charge of the database modeling and the implementation of the business logic in Symfony. I developed the algorithms for the automatic calculation of financial statements and income statements, ensuring the consistency of the game's economic data."
       },
       "project-4": {
         "description": "Statistical data analysis tools for satellite collision warnings.",
@@ -165,8 +175,12 @@
         "endDate": "April 2025",
         "features": {
           "0": "Intuitive data visualization interface",
-          "1": "Statistical analysis of collision probabilities"
-        }
+          "1": "Statistical analysis of collision probabilities",
+          "2": "Automatic generation of security reports in Excel format"
+        },
+        "context": "Internship carried out at the University Space Center of Montpellier (CSUM). The goal was to address a real space traffic management problem for the center's operator.",
+        "duration": "2 months of intensive internship.",
+        "personalContribution": "I designed and developed the entire analysis engine in Python with Pandas. I built the user interface with Tkinter and handled structured export to Excel. I also documented the tool to ensure its maintenance by the CSUM teams."
       },
       "project-5": {
         "description": "Adaptation of the board game Trains into a Java video game.",
@@ -176,7 +190,10 @@
         "features": {
           "0": "Graphical interface developed with JavaFX",
           "1": "Test-driven development (TDD) with JUnit"
-        }
+        },
+        "context": "Second-year academic project (pair) focused on Software Quality and Test-Driven Development (TDD). The emphasis was on code robustness rather than graphic aesthetics.",
+        "duration": "4 months (about 100 hours of work, including 60 personal hours).",
+        "personalContribution": "I was responsible for setting up the unit test suite (JUnit) and implementing the business logic. I worked particularly on the pathfinding algorithm (Dijkstra) to validate connectivity between cities on the game board."
       },
       "project-6": {
         "description": "AI-based software for sorting images.",
@@ -187,7 +204,10 @@
           "0": "Detection with 98% accuracy",
           "1": "Convolutional Neural Networks (CNN)",
           "2": "Progress dashboard"
-        }
+        },
+        "context": "Personal self-training project in Deep Learning. I wanted to step outside the academic framework to explore cutting-edge artificial intelligence technologies (PyTorch).",
+        "duration": "One year of sporadic learning and experimentation (~150 cumulative hours).",
+        "personalContribution": "Sole developer. I collected and labeled the dataset, designed the CNN architecture (convolution, pooling, dropout layers) and optimized the hyperparameters to reach 98% accuracy. I also created a dashboard to visualize loss and accuracy during training."
       },
       "project-7": {
         "description": "Modular desktop assistant with local AI.",
@@ -215,7 +235,10 @@
               "1": "Automatic generation"
             }
           }
-        }
+        },
+        "context": "Personal 'showcase' project aiming to demonstrate my ability to design complex modular systems and integrate generative AI technologies (LLM/RAG).",
+        "duration": "Flagship project under development (~200 hours invested).",
+        "personalContribution": "Lead designer. I developed a dynamic plugin loading system in Python and implemented a vector database (ChromaDB) to give the AI a 'long-term memory' of my local documents."
       },
       "project-8": {
         "description": "Language learning application through gamification.",
@@ -225,7 +248,10 @@
           "0": "Gamified daily learning",
           "1": "Intelligent reminder system",
           "2": "Support for 10 languages"
-        }
+        },
+        "context": "Personal project born from my own difficulty in staying consistent in language learning (Mandarin, Japanese). I wanted to create a tool that fits perfectly into a daily routine without being time-consuming.",
+        "duration": "Project started in September 2025, about 80 hours of active development.",
+        "personalContribution": "Sole full-stack developer. I used Symfony for user and content management, and integrated Firebase to ensure instant synchronization of progress across different devices. I also designed the word selection algorithm based on the user's past mistakes."
       },
       "project-10": {
         "description": "Community site for rating video games, anime, and manga.",
@@ -235,7 +261,10 @@
         "features": {
           "0": "Rating and comments",
           "1": "Community rankings"
-        }
+        },
+        "context": "Personal project carried out to put into practice my skills in managing complex relational databases and in Flask development.",
+        "duration": "Project completed over one intensive month (~50 hours).",
+        "personalContribution": "Designer and developer. I set up the MySQL database schema handling thousands of references and implemented the weighted average calculation system for community rankings."
       },
       "project-11": {
         "description": "National web development challenge in teams over an entire night.",
@@ -246,7 +275,10 @@
           "0": "Intensive development in limited time (Hackathon)",
           "1": "Collaborative work and task distribution",
           "2": "Respect for a theme and technical constraints"
-        }
+        },
+        "context": "National inter-school competition. It is a test of endurance and extreme collaboration under high time pressure.",
+        "duration": "15 intensive non-stop hours.",
+        "personalContribution": "I handled the organization of the Vue.js code, the integration of graphic assets, and ensured liaison with the backend developer for real-time API consumption. I also managed versioning via Git to avoid any conflict during the night."
       },
       "project-12": {
         "description": "CHIRAL is an educational video game about the dangers of mirror life creation.",
@@ -256,7 +288,10 @@
           "0": "Awareness of mirror life dangers",
           "1": "Educational interaction",
           "2": "Engaging gameplay"
-        }
+        },
+        "context": "Personal project combining my passion for biology (Bioinformatics) and video game development. The goal is to raise public awareness of complex scientific concepts through play.",
+        "duration": "Project ongoing since January 2026 (~40 hours invested).",
+        "personalContribution": "Developer and writer. I created the game mechanics in pure JavaScript and wrote all the educational dialogues. I also designed the simulation system for the spread of the mirror bacterium."
       },
       "project-13": {
         "description": "Data processing pipeline for machine learning.",
@@ -266,7 +301,10 @@
           "0": "Complete ML lifecycle automation (MLOps)",
           "1": "Scalable preprocessing pipeline for massive datasets",
           "2": "Automatic model deployment via Flask/Docker API"
-        }
+        },
+        "context": "Personal project born from the need to industrialize my own AI experiments. I wanted to create a reusable tool for all my future research projects.",
+        "duration": "Ongoing research and development project (~60 hours).",
+        "personalContribution": "System architect. I developed the core of the pipeline in Python, allowing flexible configuration through YAML files. I also integrated monitoring tools to track model performance in production."
       },
       "project-14": {
         "description": "Big Data analysis platform for genomics.",
@@ -357,7 +395,12 @@
         "context": "",
         "personalContribution": "",
         "duration": "",
-        "startDate": ""
+        "startDate": "",
+        "features": {
+          "0": "Modern and responsive interface with Vue.js",
+          "1": "Interactive mapping of projects",
+          "2": "Multilingual management (French/English)"
+        }
       }
     },
     "metrics": {
@@ -430,7 +473,10 @@
         "client_satisfaction": "Client satisfaction",
         "manual_deploys": "Manual deploys"
       }
-    }
+    },
+    "context": "Context",
+    "duration": "Project Duration",
+    "personalContribution": "Personal Contribution"
   },
   "victoria": {
     "ai_precision": "AI Precision:",
@@ -624,6 +670,11 @@
         "title": "BIA (Aeronautical Initiation Certificate)",
         "institution": "Academy of Montpellier",
         "description": "Diploma validating theoretical and practical knowledge in aeronautics, with honors (Bien)."
+      },
+      "obj-10": {
+        "title": "Master's in Bioinformatics",
+        "institution": "University of Lyon",
+        "description": "Advanced program combining computer science and life sciences: genomic data analysis, machine learning applied to biology, molecular modeling, and structural bioinformatics."
       }
     }
   },

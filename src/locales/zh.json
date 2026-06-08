@@ -83,7 +83,11 @@
     },
     "purposes": {
       "education": "教育",
-      "personnel": "个人"
+      "personnel": "个人",
+      "education_desc": "本项目是在我的信息技术 BUT 课程框架内完成的。它满足明确的教学目标，并由教师进行评估。",
+      "personnel_desc": "本项目是我出于纯粹热情在业余时间完成的。它让我能够探索新技术，并在校园框架之外突破自己的极限。",
+      "professionnel": "客户订单",
+      "professionnel_desc": "本项目是为真实客户完成的。它涉及与客户的直接沟通、需求管理以及对严格规格说明书的遵守。"
     },
     "subprojects": "子项目",
     "view_project_link": "查看项目 →",
@@ -100,7 +104,8 @@
         "startDate": "2025年4月",
         "features": {
           "0": "基于 GPT 的智能聊天机器人",
-          "1": "带自动纠错功能的实践练习"
+          "1": "带自动纠错功能的实践练习",
+          "2": "按难度级别组织的结构化学习路径"
         },
         "context": "",
         "personalContribution": "",
@@ -133,7 +138,10 @@
               "1": "旗帜奖励"
             }
           }
-        }
+        },
+        "context": "在信息技术 BUT 的 SAÉ（学习与评估情境）框架下，由 4 人小组完成的学术项目。目标是为一年级学生创建一个教学工具。",
+        "duration": "4 个月的高强度工作（约 150 小时集体工作，其中 50 小时个人工作）。",
+        "personalContribution": "我的主要贡献是按照 BUT 标准调整 Flask API 并搭建 Docker 基础设施。我还创建了两个复杂的挑战：一个 SSH 注入漏洞，以及一款在跳跃机制中隐藏旗标的「Rainbow Jumper」游戏。"
       },
       "project-3": {
         "description": "商业模拟视频游戏的 Web 应用程序。",
@@ -145,7 +153,10 @@
           "2": "玩家间的竞争",
           "3": "实时资源管理",
           "4": "编制资产负债表、损益表"
-        }
+        },
+        "context": "在信息技术 BUT 第三学期的 SAÉ 中完成。这个小组项目（5 人）旨在通过 Web 界面模拟企业的内部运作及其会计管理。",
+        "duration": "一个大学学期（约 2000 小时小组工作，500 小时个人工作）。",
+        "personalContribution": "我负责数据库建模以及使用 Symfony 实现业务逻辑。我开发了自动计算财务报表和损益表的算法，确保游戏经济数据的一致性。"
       },
       "project-4": {
         "description": "卫星碰撞警告统计数据分析工具。",
@@ -154,8 +165,12 @@
         "endDate": "2025年4月",
         "features": {
           "0": "直观的数据可视化界面",
-          "1": "碰撞概率的统计分析"
-        }
+          "1": "碰撞概率的统计分析",
+          "2": "以 Excel 格式自动生成安全报告"
+        },
+        "context": "在蒙彼利埃大学航天中心（CSUM）完成的实习。目标是为中心运营方解决一个真实的空间交通管理问题。",
+        "duration": "2 个月的高强度实习。",
+        "personalContribution": "我使用 Python 和 Pandas 设计并开发了整个分析引擎。我用 Tkinter 构建了用户界面，并处理了向 Excel 的结构化导出。我还编写了工具文档，以确保 CSUM 团队能够进行维护。"
       },
       "project-5": {
         "description": "将棋盘游戏 Trains 改编为 Java 视频游戏。",
@@ -165,7 +180,10 @@
         "features": {
           "0": "使用 JavaFX 开发的图形界面",
           "1": "使用 JUnit 进行测试驱动开发 (TDD)"
-        }
+        },
+        "context": "专注于软件质量和测试驱动开发（TDD）的二年级学术项目（双人）。重点放在代码的健壮性上，而非图形美观。",
+        "duration": "4 个月（约 100 小时工作，其中 60 小时为个人工作）。",
+        "personalContribution": "我负责搭建单元测试套件（JUnit）和实现业务逻辑。我特别研究了路径搜索算法（Dijkstra），用于验证游戏棋盘上城市之间的连通性。"
       },
       "project-6": {
         "description": "基于 AI 的图像分类软件。",
@@ -176,7 +194,10 @@
           "0": "检测准确率达 98%",
           "1": "卷积神经网络 (CNN)",
           "2": "进度仪表板"
-        }
+        },
+        "context": "深度学习自学的个人项目。我希望走出校园框架，探索前沿的人工智能技术（PyTorch）。",
+        "duration": "一年的零散学习与实验（累计约 150 小时）。",
+        "personalContribution": "独立开发者。我收集并标注了数据集，设计了 CNN 架构（卷积层、池化层、dropout 层），并优化超参数以达到 98% 的准确率。我还创建了一个仪表板，用于在训练期间可视化损失（loss）和准确率。"
       },
       "project-7": {
         "description": "具有本地 AI 的模块化桌面助手。",
@@ -204,7 +225,10 @@
               "1": "自动生成"
             }
           }
-        }
+        },
+        "context": "旨在展示我设计复杂模块化系统并集成生成式 AI 技术（LLM/RAG）能力的个人「展示」项目。",
+        "duration": "正在开发中的旗舰项目（已投入约 200 小时）。",
+        "personalContribution": "首席设计者。我用 Python 开发了插件动态加载系统，并实现了向量数据库（ChromaDB），让 AI 对我的本地文档拥有「长期记忆」。"
       },
       "project-8": {
         "description": "通过游戏化进行语言学习的应用程序。",
@@ -214,7 +238,10 @@
           "0": "游戏化每日学习",
           "1": "智能提醒系统",
           "2": "支持 10 种语言"
-        }
+        },
+        "context": "源于我自己在语言学习（普通话、日语）中难以保持坚持的个人项目。我希望创建一个能完美融入日常生活、又不占用太多时间的工具。",
+        "duration": "项目于 2025 年 9 月启动，约 80 小时的积极开发。",
+        "personalContribution": "独立全栈开发者。我使用 Symfony 进行用户和内容管理，并集成 Firebase 以确保在不同设备之间即时同步进度。我还设计了基于用户过往错误的选词算法。"
       },
       "project-10": {
         "description": "用于对视频游戏、动漫和漫画进行评分的社区网站。",
@@ -224,7 +251,10 @@
         "features": {
           "0": "评分和评论",
           "1": "社区排名"
-        }
+        },
+        "context": "为实践我在复杂关系型数据库管理和 Flask 开发方面的技能而完成的个人项目。",
+        "duration": "用一个月集中完成（约 50 小时）。",
+        "personalContribution": "设计者兼开发者。我搭建了管理数千条记录的 MySQL 数据库架构，并实现了用于社区排名的加权平均计算系统。"
       },
       "project-11": {
         "description": "彻夜进行的团队国家 Web 开发挑战赛。",
@@ -235,7 +265,10 @@
           "0": "限时高强度开发（黑客松）",
           "1": "协作工作和任务分配",
           "2": "遵守主题和技术限制"
-        }
+        },
+        "context": "全国校际竞赛。这是在高度时间压力下对耐力和极限协作的考验。",
+        "duration": "连续 15 小时的高强度作业。",
+        "personalContribution": "我负责 Vue.js 代码的组织、图形素材的集成，并与后端开发者协调以实现实时 API 调用。我还通过 Git 管理版本控制，以避免夜间出现冲突。"
       },
       "project-12": {
         "description": "CHIRAL 是一款关于创建镜像生命危险的教育视频游戏。",
@@ -245,12 +278,23 @@
           "0": "镜像生命危险意识",
           "1": "教育互动",
           "2": "引人入胜的游戏玩法"
-        }
+        },
+        "context": "将我对生物学（生物信息学）的热情与电子游戏开发相结合的个人项目。目标是通过游戏让公众了解复杂的科学概念。",
+        "duration": "自 2026 年 1 月起进行中的项目（已投入约 40 小时）。",
+        "personalContribution": "开发者兼编剧。我用纯 JavaScript 创建了游戏机制，并撰写了所有教学对话。我还设计了镜像细菌传播的模拟系统。"
       },
       "project-13": {
         "description": "用于机器学习的数据处理流水线。",
         "longDescription": "Loom 是一个旨在自动化 AI 模型数据工作流的项目，从收集到部署。",
-        "startDate": "2026年1月"
+        "startDate": "2026年1月",
+        "context": "源于将我自己的 AI 实验工业化需求而诞生的个人项目。我希望为我未来所有的研究项目创建一个可重用的工具。",
+        "duration": "进行中的研发项目（约 60 小时）。",
+        "features": {
+          "0": "ML 模型生命周期的完全自动化（MLOps）",
+          "1": "面向海量数据集的可扩展预处理管道",
+          "2": "通过 Flask/Docker API 自动部署模型"
+        },
+        "personalContribution": "系统架构师。我用 Python 开发了管道的核心，可通过 YAML 文件进行灵活配置。我还集成了监控工具，以跟踪生产环境中模型的性能。"
       },
       "y": {
         "description": "",
@@ -306,7 +350,12 @@
         "context": "",
         "personalContribution": "",
         "duration": "",
-        "startDate": ""
+        "startDate": "",
+        "features": {
+          "0": "使用 Vue.js 的现代响应式界面",
+          "1": "项目的交互式地图",
+          "2": "多语言管理（法语/英语）"
+        }
       },
       "projekt-bersetzung": {
         "description": "",
@@ -318,7 +367,8 @@
         "features": {
           "0": "",
           "1": ""
-        }
+        },
+        "endDate": ""
       }
     },
     "metrics": {
@@ -391,7 +441,20 @@
         "client_satisfaction": "客户满意度",
         "manual_deploys": "手动部署"
       }
-    }
+    },
+    "context": "背景",
+    "duration": "项目周期",
+    "evolution": "项目演进",
+    "evolution_details_button": "详情 v1 → v2",
+    "evolution_details_title": "演进 v1 → v2",
+    "evolution_notes": "- 迁移到 Flask 后端 + React 前端架构\n- 现代化界面和更清晰的用户流程\n- 放弃 PyInstaller，改用基于服务的启动方式\n- 更强大的 AI 引擎，具备质量/性能模式\n- 异步处理和更好的版式保留\n- 新增双语阅读室和 EPUB 导出",
+    "evolution_types": {
+      "added": "新增",
+      "info": "通用",
+      "optimized": "已优化",
+      "removed": "已替换"
+    },
+    "personalContribution": "个人贡献"
   },
   "victoria": {
     "ai_precision": "AI 精度：",
@@ -560,6 +623,36 @@
         "title": "人工智能开发者与桌面助手",
         "institution": "个人项目 (Victoria)",
         "description": "使用本地 AI 创建模块化助手。集成 LLM 和插件系统。"
+      },
+      "obj-5": {
+        "description": "服务技术管理双学位，在线学习方向。",
+        "institution": "蒙彼利埃企业管理学院（IAE）",
+        "title": "L3 MTS 在线学习"
+      },
+      "obj-6": {
+        "description": "在蒙彼利埃大学航天中心进行的开发与研究实习。",
+        "institution": "蒙彼利埃大学",
+        "title": "实习 - 航天中心（CSUM）"
+      },
+      "obj-7": {
+        "description": "在蒙彼利埃大学航天中心进行的技术实习。",
+        "institution": "蒙彼利埃大学",
+        "title": "实习 - 航天中心（CSUM）"
+      },
+      "obj-8": {
+        "description": "在比利时列日的 Gecolab 实验室进行的实习。",
+        "institution": "Gecolab 实验室（列日）",
+        "title": "研究实习"
+      },
+      "obj-9": {
+        "description": "证明航空领域理论与实践知识的文凭，以「良」等级获得。",
+        "institution": "蒙彼利埃学区",
+        "title": "BIA（航空入门证书）"
+      },
+      "obj-10": {
+        "title": "生物信息学硕士",
+        "institution": "里昂大学",
+        "description": "高水平项目，融合计算机科学与生命科学：基因组数据分析、应用于生物学的机器学习、分子建模与结构生物信息学。"
       }
     }
   },

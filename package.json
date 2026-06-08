@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@types/sortablejs": "^1.15.9",
+    "@unhead/vue": "^3.1.1",
     "cropperjs": "^1.5.13",
     "lucide-vue-next": "^0.553.0",
     "sortablejs": "^1.15.7",

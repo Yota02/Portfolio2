@@ -76,9 +76,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { usePageMeta } from '@/composables/usePageMeta'
 import { GraduationCap, Target, Calendar, Trophy, Users, Rocket } from 'lucide-vue-next'
 
 const { t } = useI18n()
+usePageMeta('participations.title', 'participations.subtitle')
 const baseUrl = import.meta.env.BASE_URL
 
 const participationsData = [

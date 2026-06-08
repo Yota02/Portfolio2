@@ -2,8 +2,10 @@
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { usePageMeta } from '@/composables/usePageMeta'
 
 const { t } = useI18n()
+usePageMeta('languages.title')
 
 type LanguageStatus = 'mastered' | 'learning' | 'planned'
 
