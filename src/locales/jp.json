@@ -11,7 +11,8 @@
     "blog": "ブログ",
     "timeline": "タイムライン",
     "toggle_theme": "テーマ切り替え",
-    "toggle_nav": "ナビゲーション切り替え"
+    "toggle_nav": "ナビゲーション切り替え",
+    "rosalind": "Rosalind"
   },
   "common": {
     "back": "Back",
@@ -706,5 +707,17 @@
         "detail_2": "CustomTkinterによるモダンなグラフィカルインターフェースの開発。"
       }
     }
+  },
+  "rosalind": {
+    "title": "Rosalind",
+    "subtitle": "バイオインフォマティクスプラットフォームRosalindでの進捗 — GitHubから自動同期。",
+    "github_link": "GitHubで見る",
+    "total": "全体の進捗",
+    "easy": "易しい",
+    "medium": "普通",
+    "hard": "難しい",
+    "loading": "読み込み中…",
+    "error": "データの読み込みに失敗しました。",
+    "auto_updated": "データはGitHubから自動同期されています。"
   }
 }

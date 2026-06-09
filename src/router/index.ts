@@ -77,6 +77,11 @@ const routes = [
       path: '/ecosystem',
       name: 'ecosystem',
       component: () => import('../views/EcosystemView.vue')
+    },
+    {
+      path: '/rosalind',
+      name: 'rosalind',
+      component: () => import('../views/RosalindView.vue')
     }
   ]
 

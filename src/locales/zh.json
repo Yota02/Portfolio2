@@ -11,7 +11,8 @@
     "blog": "博客",
     "timeline": "时间线",
     "toggle_theme": "切换主题",
-    "toggle_nav": "切换导航"
+    "toggle_nav": "切换导航",
+    "rosalind": "Rosalind"
   },
   "common": {
     "back": "Back",
@@ -706,5 +707,17 @@
         "detail_2": "使用 CustomTkinter 开发现代图形界面。"
       }
     }
+  },
+  "rosalind": {
+    "title": "Rosalind",
+    "subtitle": "我在生物信息学平台 Rosalind 上的进度 — 自动从 GitHub 同步。",
+    "github_link": "在 GitHub 上查看",
+    "total": "总体进度",
+    "easy": "简单",
+    "medium": "中等",
+    "hard": "困难",
+    "loading": "加载中…",
+    "error": "无法加载数据。",
+    "auto_updated": "数据自动从 GitHub 同步。"
   }
 }

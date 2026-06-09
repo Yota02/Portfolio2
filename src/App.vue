@@ -83,11 +83,12 @@ onMounted(() => {
         <div class="nav-links" :class="{ open: isOpen }">
           <RouterLink to="/" class="nav-link" @click="closeMenu">{{ t('nav.home') }}</RouterLink>
 
-          <AppNavDropdown 
-            :label="t('nav.projects')" 
+          <AppNavDropdown
+            :label="t('nav.projects')"
             :items="[
               { to: '/projects', label: t('nav.projects') },
-              { to: '/projects-timeline', label: t('nav.timeline') }
+              { to: '/projects-timeline', label: t('nav.timeline') },
+              { to: '/rosalind', label: t('nav.rosalind') }
             ]"
             @close-menu="closeMenu"
           />

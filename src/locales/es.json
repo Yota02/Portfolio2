@@ -11,7 +11,8 @@
     "blog": "Blog",
     "timeline": "Cronología",
     "toggle_theme": "Cambiar tema",
-    "toggle_nav": "Alternar navegación"
+    "toggle_nav": "Alternar navegación",
+    "rosalind": "Rosalind"
   },
   "common": {
     "back": "Back",
@@ -706,5 +707,17 @@
         "detail_2": "Desarrollo de una interfaz gráfica moderna con CustomTkinter."
       }
     }
+  },
+  "rosalind": {
+    "title": "Rosalind",
+    "subtitle": "Mi progreso en la plataforma de bioinformática Rosalind — sincronizado automáticamente desde GitHub.",
+    "github_link": "Ver en GitHub",
+    "total": "Progreso total",
+    "easy": "Fácil",
+    "medium": "Medio",
+    "hard": "Difícil",
+    "loading": "Cargando progreso…",
+    "error": "No se pudieron cargar los datos.",
+    "auto_updated": "Datos sincronizados automáticamente desde GitHub."
   }
 }
