@@ -710,7 +710,7 @@
   },
   "rosalind": {
     "title": "Rosalind",
-    "subtitle": "我在生物信息学平台 Rosalind 上的进度 — 自动从 GitHub 同步。",
+    "subtitle": "我在生物信息学平台 Rosalind 上的进度。",
     "github_link": "在 GitHub 上查看",
     "total": "总体进度",
     "easy": "简单",

@@ -710,7 +710,7 @@
   },
   "rosalind": {
     "title": "Rosalind",
-    "subtitle": "バイオインフォマティクスプラットフォームRosalindでの進捗 — GitHubから自動同期。",
+    "subtitle": "バイオインフォマティクスプラットフォームRosalindでの進捗。",
     "github_link": "GitHubで見る",
     "total": "全体の進捗",
     "easy": "易しい",

@@ -209,9 +209,6 @@ const ringOffset = (pct: number) => CIRCUMFERENCE - (pct / 100) * CIRCUMFERENCE
           </AppCard>
         </section>
 
-        <p class="auto-note reveal-up">
-          ⚡ {{ t('rosalind.auto_updated') }}
-        </p>
       </template>
     </div>
   </div>
@@ -569,13 +566,6 @@ const ringOffset = (pct: number) => CIRCUMFERENCE - (pct / 100) * CIRCUMFERENCE
   transform: translateY(-6px);
 }
 
-.auto-note {
-  text-align: center;
-  font-size: 0.78rem;
-  color: var(--color-text);
-  opacity: 0.35;
-  margin-top: 3rem;
-}
 
 @media (max-width: 600px) {
   .stats-section {
