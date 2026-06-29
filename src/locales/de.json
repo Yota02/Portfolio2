@@ -370,6 +370,30 @@
           "1": ""
         },
         "endDate": ""
+      },
+      "yomu": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": ""
+      },
+      "installer_linux": {
+        "description": "",
+        "longDescription": "",
+        "context": "",
+        "personalContribution": "",
+        "duration": "",
+        "startDate": "",
+        "endDate": "",
+        "features": {
+          "0": "",
+          "1": "",
+          "2": "",
+          "3": ""
+        }
       }
     },
     "metrics": {

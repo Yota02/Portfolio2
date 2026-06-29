@@ -29,6 +29,7 @@ export interface Project {
   images: string[];
   logo: string;
   logo_recadrer?: string;
+  logoFit?: 'cover' | 'contain';
   category: ProjectCategory;
   purpose: ProjectPurpose;
   features: string[]; // Keys
@@ -57,8 +58,8 @@ export const techIconMap: Record<string, string> = {
   "MySQL": "mysql",
   "MVC": "mvc",
   "Vue.js": "vuejs",
-  "TypeScript": "typescript",
-  "Vite": "vite",
+  "TypeScript": "typescript.svg",
+  "Vite": "vite.svg",
   "Unity": "unity",
   "C#": "csharp",
   "IA": "ia",
@@ -97,7 +98,13 @@ export const techIconMap: Record<string, string> = {
   "Grafana": "grafana",
   "GitHub Actions": "github_action.png",
   "react": "react.png",
-  "Hugging face": "huggingface.png"
+  "React": "react.png",
+  "Hugging face": "huggingface.png",
+  "Tauri": "tauri.svg",
+  "Capacitor": "capacitor.svg",
+  "Express": "express.svg",
+  "Node.js": "nodejs.svg",
+  "Bash": "bash.svg"
 };
 
 export const categoryOrder: ProjectCategory[] = ["Dev Web", "IA", "Jeux Vidéo", "Logiciel"];
@@ -754,6 +761,53 @@ export const projects: Project[] = [
   startDate: "projects.items.yomu.startDate",
   endDate: "projects.items.yomu.endDate",
   newTech: []
+},
+  {
+  id: "project-installer-linux",
+  name: "ShellPack",
+  description: "projects.items.installer_linux.description",
+  longDescription: "projects.items.installer_linux.longDescription",
+  context: "projects.items.installer_linux.context",
+  personalContribution: "projects.items.installer_linux.personalContribution",
+  duration: "projects.items.installer_linux.duration",
+  tags: [
+    "TypeScript",
+    "React",
+    "Vite",
+    "Tauri",
+    "Capacitor",
+    "Express",
+    "Node.js",
+    "Bash",
+    "Git"
+  ],
+  images: [
+    "dashboard.png",
+    "config.png"
+  ],
+  logo: "ShellPack.png",
+  logoFit: "contain",
+  category: "Logiciel",
+  purpose: "Personnel",
+  features: [
+    "projects.items.installer_linux.features.0",
+    "projects.items.installer_linux.features.1",
+    "projects.items.installer_linux.features.2",
+    "projects.items.installer_linux.features.3"
+  ],
+  links: {
+    demo: "",
+    github: "https://github.com/Yota02/installer_linux"
+  },
+  folder: "installer_linux",
+  startDate: "projects.items.installer_linux.startDate",
+  endDate: "projects.items.installer_linux.endDate",
+  isOngoing: false,
+  newTech: [
+    "Tauri",
+    "Capacitor",
+    "TypeScript"
+  ]
 }
 ];
 

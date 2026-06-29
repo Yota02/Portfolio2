@@ -400,6 +400,21 @@
         "startDate": "May 10, 2026",
         "endDate": "May 20, 2026"
       },
+      "installer_linux": {
+        "description": "Modern and automated environment setup script generator for Linux.",
+        "longDescription": "ShellPack is a modern and cross-platform tool utilizing a monorepo architecture (npm workspaces). It includes a shared TypeScript core library, a command-line tool (CLI) to compile JSON configurations into Bash scripts, an Express HTTP API, and an interactive web dashboard (React + Vite) packaged for Web, Desktop (Tauri), and Mobile (Capacitor).",
+        "context": "Project born from the need to automate and simplify the rapid reinstallation of customized development environments on Debian/Ubuntu Linux distributions.",
+        "personalContribution": "Full design and development of the monorepo: core TypeScript generation engine, API server, CLI, reactive web interface, and native desktop (Tauri) and mobile (Capacitor) packages.",
+        "duration": "1 month",
+        "startDate": "June 2026",
+        "endDate": "June 2026",
+        "features": {
+          "0": "Generation of custom and interactive Bash configuration scripts",
+          "1": "Modular monorepo architecture with Core, API, CLI, and Frontend packages",
+          "2": "Lightweight desktop app compiled with Tauri (.deb and .AppImage)",
+          "3": "Android mobile app packaged using Capacitor"
+        }
+      },
       "projekt-bersetzung": {
         "description": "PDF novel translation software (v1 of Yomu).",
         "longDescription": "Initial project focused on translating PDF novels into French with a simple workflow. This v1 laid the functional foundation that evolved into Yomu (v2).",

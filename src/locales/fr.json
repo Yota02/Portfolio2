@@ -420,6 +420,21 @@
         "duration": "10 jours",
         "startDate": "10 mai 2026",
         "endDate": "20 mai 2026"
+      },
+      "installer_linux": {
+        "description": "Générateur moderne et automatisé de configuration d'environnement de développement pour Linux.",
+        "longDescription": "ShellPack est un outil moderne et multi-plateforme utilisant une architecture monorepo (travail avec des workspaces npm). Il comprend une bibliothèque TypeScript partagée (core), un utilitaire en ligne de commande (CLI) pour compiler des fichiers de configuration JSON en scripts Bash, une API Express HTTP, et un dashboard web interactif (React + Vite) packagé pour le Web, le Bureau (Tauri) et le Mobile (Capacitor).",
+        "context": "Projet né d'une volonté d'automatiser et de simplifier la réinstallation rapide d'environnements de développement personnalisés sur des distributions Linux Debian/Ubuntu.",
+        "personalContribution": "Conception et développement complet du monorepo : moteur de génération core en TypeScript, serveur API, CLI, interface web réactive et packagings natifs de bureau (Tauri) et mobile (Capacitor).",
+        "duration": "1 mois",
+        "startDate": "Juin 2026",
+        "endDate": "Juin 2026",
+        "features": {
+          "0": "Génération de scripts de configuration Bash personnalisés et interactifs",
+          "1": "Architecture monorepo modulaire avec packages Core, API, CLI et Frontend",
+          "2": "Application de bureau légère packagée avec Tauri (.deb et .AppImage)",
+          "3": "Application mobile Android packagée avec Capacitor"
+        }
       }
     },
     "metrics": {

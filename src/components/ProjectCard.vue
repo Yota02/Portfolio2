@@ -174,13 +174,14 @@ const getDisplayedTags = (tags: string[], maxTags: number = 3) => {
 .card-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 1.5rem;
   transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
 .project-card:hover .card-image {
-  transform: scale(1.2) translateY(-10px);
+  transform: scale(1.08) translateY(-5px);
 }
 
 .card-info-badges {
