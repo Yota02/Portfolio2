@@ -415,9 +415,9 @@
           "3": "Android mobile app packaged using Capacitor"
         }
       },
-      "bio_note": {
+      "codon": {
         "description": "Personal and private web application for biology note-taking.",
-        "longDescription": "Bio_note is a self-hosted web application designed to collect, organize, and easily retrieve biology notes (lessons, diagrams, images, YouTube videos). It features a Notion-like rich text editor (WYSIWYG with TipTap), a case- and accent-insensitive FTS5 full-text search, and a file storage system for uploaded images and diagrams.",
+        "longDescription": "Codon is a self-hosted web application designed to collect, organize, and easily retrieve biology notes (lessons, diagrams, images, YouTube videos). It features a Notion-like rich text editor (WYSIWYG with TipTap), a case- and accent-insensitive FTS5 full-text search, and a file storage system for uploaded images and diagrams.",
         "context": "Personal project born from the desire to centralize my biology courses and notes in an interactive digital format. Existing solutions were either too heavy or not adapted to scientific media and equations, so I built this tailored tool.",
         "personalContribution": "Full application development: Python FastAPI backend with SQLite database, React TypeScript frontend with Vite, integration and customization of the TipTap editor, and implementation of a fast search index using SQLite FTS5.",
         "duration": "2 weeks (~40 hours of development).",

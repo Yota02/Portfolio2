@@ -810,13 +810,13 @@ export const projects: Project[] = [
   ]
 },
   {
-  id: "project-bio-note",
-  name: "Bio_note",
-  description: "projects.items.bio_note.description",
-  longDescription: "projects.items.bio_note.longDescription",
-  context: "projects.items.bio_note.context",
-  personalContribution: "projects.items.bio_note.personalContribution",
-  duration: "projects.items.bio_note.duration",
+  id: "project-codon",
+  name: "Codon",
+  description: "projects.items.codon.description",
+  longDescription: "projects.items.codon.longDescription",
+  context: "projects.items.codon.context",
+  personalContribution: "projects.items.codon.personalContribution",
+  duration: "projects.items.codon.duration",
   tags: [
     "Python",
     "React",
@@ -833,16 +833,16 @@ export const projects: Project[] = [
   category: "Dev Web",
   purpose: "Personnel",
   features: [
-    "projects.items.bio_note.features.0",
-    "projects.items.bio_note.features.1",
-    "projects.items.bio_note.features.2"
+    "projects.items.codon.features.0",
+    "projects.items.codon.features.1",
+    "projects.items.codon.features.2"
   ],
   links: {
     demo: "",
     github: "https://github.com/Yota02/Bio_note"
   },
-  folder: "Bio_note",
-  startDate: "projects.items.bio_note.startDate",
+  folder: "Codon",
+  startDate: "projects.items.codon.startDate",
   isOngoing: true,
   newTech: []
 }

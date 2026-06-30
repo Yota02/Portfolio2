@@ -395,9 +395,9 @@
           "3": ""
         }
       },
-      "bio_note": {
+      "codon": {
         "description": "Persönliche und private Webanwendung zur Erfassung von Biologienotizen.",
-        "longDescription": "Bio_note ist eine selbstgehostete Webanwendung zum Sammeln, Organisieren und einfachen Abrufen von Biologienotizen (Vorlesungen, Diagramme, Bilder, YouTube-Videos). Sie verfügt über einen Notion-ähnlichen Rich-Text-Editor (WYSIWYG mit TipTap), eine FTS5-Volltextsuche, die Groß-/Kleinschreibung sowie Akzente ignoriert, und ein Dateispeichersystem für hochgeladene Bilder und Diagramme.",
+        "longDescription": "Codon ist eine selbstgehostete Webanwendung zum Sammeln, Organisieren und einfachen Abrufen von Biologienotizen (Vorlesungen, Diagramme, Bilder, YouTube-Videos). Sie verfügt über einen Notion-ähnlichen Rich-Text-Editor (WYSIWYG mit TipTap), eine FTS5-Volltextsuche, die Groß-/Kleinschreibung sowie Akzente ignoriert, und ein Dateispeichersystem für hochgeladene Bilder und Diagramme.",
         "context": "Ein persönliches Projekt aus dem Wunsch heraus, meine Biologiekurse und -notizen in einem interaktiven digitalen Format zu zentralisieren.",
         "personalContribution": "Vollständige Anwendungsentwicklung: Python FastAPI-Backend mit SQLite-Datenbank, React TypeScript-Frontend mit Vite, Integration und Anpassung des TipTap-Editors und Implementierung eines schnellen Suchindexes mit SQLite FTS5.",
         "duration": "2 Wochen (~40 Entwicklungsstunden)",

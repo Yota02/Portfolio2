@@ -395,9 +395,9 @@
           "3": ""
         }
       },
-      "bio_note": {
+      "codon": {
         "description": "Aplicación web personal y privada para tomar notas de biología.",
-        "longDescription": "Bio_note es una aplicación web autoalojada diseñada para recopilar, organizar y recuperar fácilmente notas de biología (lecciones, esquemas, imágenes, videos de YouTube). Cuenta con un editor de texto enriquecido tipo Notion (WYSIWYG con TipTap), una búsqueda de texto completo FTS5 insensible a mayúsculas y acentos, y un sistema de almacenamiento de archivos para imágenes y esquemas subidos.",
+        "longDescription": "Codon es una aplicación web autoalojada diseñada para recopilar, organizar y recuperar fácilmente notas de biología (lecciones, esquemas, imágenes, videos de YouTube). Cuenta con un editor de texto enriquecido tipo Notion (WYSIWYG con TipTap), una búsqueda de texto completo FTS5 insensible a mayúsculas y acentos, y un sistema de almacenamiento de archivos para imágenes y esquemas subidos.",
         "context": "Proyecto personal nacido del deseo de centralizar mis cursos y notas de biología en un formato digital interactivo.",
         "personalContribution": "Desarrollo completo de la aplicación: backend FastAPI en Python con base de datos SQLite, frontend React en TypeScript con Vite, integración y personalización del editor TipTap, e implementación de un índice de búsqueda rápido usando SQLite FTS5.",
         "duration": "2 semanas (~40 horas de desarrollo)",
