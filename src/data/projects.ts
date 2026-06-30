@@ -808,6 +808,43 @@ export const projects: Project[] = [
     "Capacitor",
     "TypeScript"
   ]
+},
+  {
+  id: "project-bio-note",
+  name: "Bio_note",
+  description: "projects.items.bio_note.description",
+  longDescription: "projects.items.bio_note.longDescription",
+  context: "projects.items.bio_note.context",
+  personalContribution: "projects.items.bio_note.personalContribution",
+  duration: "projects.items.bio_note.duration",
+  tags: [
+    "Python",
+    "React",
+    "TypeScript",
+    "Vite"
+  ],
+  images: [
+    "login.png",
+    "dashboard.png",
+    "replication.png",
+    "search.png"
+  ],
+  logo: "logo.png",
+  category: "Dev Web",
+  purpose: "Personnel",
+  features: [
+    "projects.items.bio_note.features.0",
+    "projects.items.bio_note.features.1",
+    "projects.items.bio_note.features.2"
+  ],
+  links: {
+    demo: "",
+    github: "https://github.com/Yota02/Bio_note"
+  },
+  folder: "Bio_note",
+  startDate: "projects.items.bio_note.startDate",
+  isOngoing: true,
+  newTech: []
 }
 ];
 

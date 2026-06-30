@@ -394,6 +394,19 @@
           "2": "",
           "3": ""
         }
+      },
+      "bio_note": {
+        "description": "个人专用的私有生物学笔记网页应用。",
+        "longDescription": "Bio_note 是一款自托管的网页应用，旨在收集、整理并轻松检索生物学笔记（课程、图表、图片、YouTube 视频）。它拥有类似 Notion 的富文本编辑器（基于 TipTap 的 WYSIWYG）、不区分大小写及音标的 FTS5 全文搜索，以及用于存储上传图片和图表的文件系统。",
+        "context": "出于将我的生物学课程和笔记数字化并统一管理的个人需求而开发。",
+        "personalContribution": "独立完成应用的完整开发：使用 Python FastAPI 编写后端并采用 SQLite 数据库，使用 React TypeScript 与 Vite 构建前端，整合并定制 TipTap 编辑器，以及利用 SQLite FTS5 实现高效的搜索索引。",
+        "duration": "2 周（约 40 小时的开发时间）",
+        "startDate": "2026年6月",
+        "features": {
+          "0": "支持图片上传和 YouTube 视频嵌入的完整类 Notion WYSIWYG 编辑器",
+          "1": "不区分大小写及音标的超快速 FTS5 全文搜索",
+          "2": "通过带有 HttpOnly 签名的会话 Cookie 实现安全的单用户身份验证"
+        }
       }
     },
     "metrics": {

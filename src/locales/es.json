@@ -394,6 +394,19 @@
           "2": "",
           "3": ""
         }
+      },
+      "bio_note": {
+        "description": "Aplicación web personal y privada para tomar notas de biología.",
+        "longDescription": "Bio_note es una aplicación web autoalojada diseñada para recopilar, organizar y recuperar fácilmente notas de biología (lecciones, esquemas, imágenes, videos de YouTube). Cuenta con un editor de texto enriquecido tipo Notion (WYSIWYG con TipTap), una búsqueda de texto completo FTS5 insensible a mayúsculas y acentos, y un sistema de almacenamiento de archivos para imágenes y esquemas subidos.",
+        "context": "Proyecto personal nacido del deseo de centralizar mis cursos y notas de biología en un formato digital interactivo.",
+        "personalContribution": "Desarrollo completo de la aplicación: backend FastAPI en Python con base de datos SQLite, frontend React en TypeScript con Vite, integración y personalización del editor TipTap, e implementación de un índice de búsqueda rápido usando SQLite FTS5.",
+        "duration": "2 semanas (~40 horas de desarrollo)",
+        "startDate": "Junio de 2026",
+        "features": {
+          "0": "Editor WYSIWYG completo tipo Notion con carga de imágenes e integración de videos de YouTube",
+          "1": "Búsqueda de texto completo FTS5 ultrarrápida e insensible a mayúsculas y acentos",
+          "2": "Autenticación segura de usuario único mediante cookies de sesión firmadas HttpOnly"
+        }
       }
     },
     "metrics": {
